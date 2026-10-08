@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <title>Page Not Found — Alex Akinjiola | Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="main.css"/>
+  <link rel="icon" type="image/jpeg" href="OCHL9530.jpeg"/>
+  <style>
+    .not-found {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 3rem 5vw;
+      position: relative; overflow: hidden;
+    }
+    .nf-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+      pointer-events: none;
+    }
+    .nf-code {
+      font-family: 'Playfair Display',serif;
+      font-size: clamp(6rem,20vw,12rem);
+      font-weight: 700; line-height: 1;
+      background: linear-gradient(135deg,rgba(200,169,126,.15),rgba(232,213,176,.08));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      position: relative; z-index: 1; margin-bottom: .5rem;
+    }
+    .nf-title {
+      font-family: 'Playfair Display',serif;
+      font-size: clamp(1.4rem,4vw,2rem);
+      font-weight: 700; line-height: 1.2;
+      position: relative; z-index: 1; margin-bottom: .8rem;
+    }
+    .nf-title em { font-style: italic; background: linear-gradient(135deg,#c8a97e,#e8d5b0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .nf-sub {
+      font-size: clamp(.88rem,2vw,1rem); color: #888;
+      max-width: 400px; line-height: 1.8;
+      position: relative; z-index: 1; margin-bottom: 2.5rem;
+    }
+    .nf-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+    .nf-logo { position: relative; z-index: 1; margin-bottom: 2rem; }
+    @media(max-width:480px){ .nf-btns{flex-direction:column;align-items:stretch;} }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none"><defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs><rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/><polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/><polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/><line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/><line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/><circle cx="39" cy="44" r="2" fill="#e8d5b0"/><line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/><text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text><text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Capabilities</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay">
+  <div class="mob-header">
+    <div class="mob-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" style="width:160px;height:auto"><defs><linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs><rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/><polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/><polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/><line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/><line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/><circle cx="39" cy="44" r="2" fill="#e8d5b0"/><line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/><text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text><text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text></svg></div>
+    <button class="mob-close" onclick="closeMobileMenu()" aria-label="Close"><svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg></button>
+  </div>
+  <ul class="mob-nav">
+    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+    <li><a href="projects.html" onclick="closeMobileMenu()">Work</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="skills.html" onclick="closeMobileMenu()">Capabilities</a></li>
+    <li><a href="resume.html" onclick="closeMobileMenu()">Resume</a></li>
+    <li><a href="experience.html" onclick="closeMobileMenu()">Experience</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+  </ul>
+  <div class="mob-footer"><a href="contact.html" class="mob-cta" onclick="closeMobileMenu()">Let's Talk</a></div>
+</div>
+
+<div class="not-found">
+  <div class="nf-grid"></div>
+  <div class="nf-code">404</div>
+  <h1 class="nf-title">This page doesn't <em>exist.</em></h1>
+  <p class="nf-sub">The page you're looking for has moved, been renamed, or never existed. Let's get you back on track.</p>
+  <div class="nf-btns">
+    <a href="index.html" class="btn-primary">Go Home</a>
+    <a href="projects.html" class="btn-outline">View My Work</a>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

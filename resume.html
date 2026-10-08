@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Resume — Alex Akinjiola | Product Designer with 5+ years of experience across SaaS, EdTech, e-commerce, and fintech." />
+  <title>Resume — Alex Akinjiola | Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
+  <meta property="og:title" content="Resume — Alex Akinjiola | Product Designer" />
+  <meta property="og:description" content="Resume of Alex Akinjiola — Product Designer with 5+ years of experience across SaaS, EdTech, e-commerce, and fintech." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="OCHL9530.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Resume — Alex Akinjiola | Product Designer" />
+  <meta name="twitter:description" content="Resume of Alex Akinjiola — Product Designer with 5+ years of experience across SaaS, EdTech, e-commerce, and fintech." />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="canonical" href="https://alexakinjiola.com/resume.html" />
+  <link rel="apple-touch-icon" href="OCHL9530.jpeg" />
+  <link rel="icon" type="image/png" href="OCHL9530.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d; --surface: #111111; --surface2: #181818;
+      --border: rgba(255,255,255,0.07); --text: #f0ede8;
+      --muted: #888; --muted2: #4a4a4a;
+      --accent: #c8a97e; --accent2: #e8d5b0;
+      --gradient: linear-gradient(135deg,#c8a97e 0%,#e8d5b0 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:400; line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    ::-webkit-scrollbar { width:4px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+    .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; font-size:20px; line-height:1; display:inline-block; white-space:nowrap; direction:ltr; -webkit-font-smoothing:antialiased; font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
+    nav.scrolled { padding:.75rem 5vw; }
+    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+    .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--text); }
+    .nav-cta { padding:.55rem 1.2rem; background:var(--accent); color:#0d0d0d !important; font-weight:600 !important; }
+    .hamburger { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:0; z-index:601; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--text); border-radius:2px; transition:transform .3s ease,opacity .3s ease,width .3s ease; }
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;width:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
+    .mob-logo span { color:var(--accent); }
+    .mob-close { width:44px; height:44px; border-radius:12px; border:none; background:rgba(255,255,255,.08); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+    .mob-close svg { width:17px; height:17px; stroke:#f0ede8; stroke-width:2.2; stroke-linecap:round; fill:none; }
+    .mob-nav { flex:1; padding:10px 14px; display:flex; flex-direction:column; gap:2px; list-style:none; }
+    .mob-nav li a { display:flex; align-items:center; width:100%; padding:15px 18px; border-radius:12px; font-size:1.05rem; font-weight:500; color:#c8c4be; text-decoration:none; transition:background .2s,color .2s; }
+    .mob-nav li a:hover { background:rgba(255,255,255,.06); color:#f0ede8; }
+    .mob-nav li a.active { background:rgba(200,169,126,.12); color:var(--accent); font-weight:600; }
+    .mob-nav li a,.mob-cta { opacity:0; transform:translateY(10px); transition:opacity .3s ease,transform .3s ease,background .2s,color .2s; }
+    .mobile-overlay.open .mob-nav li:nth-child(1) a{transition-delay:.06s;}
+    .mobile-overlay.open .mob-nav li:nth-child(2) a{transition-delay:.10s;}
+    .mobile-overlay.open .mob-nav li:nth-child(3) a{transition-delay:.14s;}
+    .mobile-overlay.open .mob-nav li:nth-child(4) a{transition-delay:.18s;}
+    .mobile-overlay.open .mob-nav li:nth-child(5) a{transition-delay:.22s;}
+    .mobile-overlay.open .mob-nav li:nth-child(6) a{transition-delay:.26s;}
+    .mobile-overlay.open .mob-nav li:nth-child(7) a{transition-delay:.30s;}
+    .mobile-overlay.open .mob-cta{transition-delay:.35s;}
+    .mobile-overlay.open .mob-nav li a,.mobile-overlay.open .mob-cta{opacity:1;transform:translateY(0);}
+    .mob-footer { padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px)); }
+    .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
+
+    /* PAGE HERO */
+    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%); pointer-events:none; }
+    .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; position:relative; z-index:1; }
+    .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
+    h1.page-title { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.08; letter-spacing:-.025em; position:relative; z-index:1; }
+    h1.page-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .page-hero-lead { font-size:clamp(.92rem,2vw,1.05rem); color:var(--muted); max-width:560px; margin-top:1.2rem; line-height:1.85; position:relative; z-index:1; }
+    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; position:relative; z-index:1; }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .avail-dot, .badge-avail-dot { animation: none; }
+    }
+
+    /* BUTTONS */
+    .btn-primary { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:var(--accent); color:#0d0d0d; font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:700; letter-spacing:.05em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:opacity .2s,transform .15s; }
+    .btn-primary:hover { opacity:.88; transform:translateY(-1px); }
+    .btn-outline { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:transparent; color:var(--text); font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:500; letter-spacing:.05em; text-transform:uppercase; border:1px solid rgba(255,255,255,.18); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:border-color .2s,color .2s,transform .15s; }
+    .btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+
+    /* RESUME LAYOUT */
+    .resume-layout { display:grid; grid-template-columns:240px 1fr; min-height:70vh; }
+
+    /* SIDEBAR */
+    .resume-sidebar { background:var(--surface); border-right:1px solid var(--border); padding:clamp(2rem,4vw,3rem) clamp(1.5rem,3vw,2rem); position:sticky; top:72px; height:calc(100vh - 72px); overflow-y:auto; }
+    .sidebar-section { margin-bottom:2rem; }
+    .sidebar-label { font-size:.62rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted2); margin-bottom:.9rem; }
+    .sidebar-nav { display:flex; flex-direction:column; gap:2px; }
+    .sidebar-link { display:flex; align-items:center; gap:.65rem; padding:.55rem .7rem; font-size:.82rem; font-weight:500; color:var(--muted); background:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; text-align:left; width:100%; transition:color .2s,background .2s; }
+    .sidebar-link:hover { color:var(--text); background:rgba(255,255,255,.04); }
+    .sidebar-link.active { color:var(--accent); }
+    .sidebar-link .material-symbols-outlined { font-size:16px; flex-shrink:0; }
+    .sidebar-divider { height:1px; background:var(--border); margin:1.5rem 0; }
+    .sidebar-dl { display:flex; flex-direction:column; gap:.6rem; }
+    .dl-btn { display:flex; align-items:center; gap:.6rem; padding:.7rem .9rem; font-size:.76rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); background:transparent; border:1px solid rgba(200,169,126,.25); cursor:pointer; font-family:'DM Sans',sans-serif; text-decoration:none; transition:background .2s,border-color .2s; width:100%; }
+    .dl-btn:hover { background:rgba(200,169,126,.06); border-color:rgba(200,169,126,.5); }
+    .dl-btn .material-symbols-outlined { font-size:16px; }
+
+    /* MAIN */
+    .resume-main { padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,4rem) clamp(4rem,8vw,7rem); }
+
+    /* RESUME SECTIONS */
+    .resume-section { margin-bottom:clamp(4rem,7vw,6rem); scroll-margin-top:80px; }
+    .rs-eyebrow { font-size:.68rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:.7rem; display:flex; align-items:center; gap:.5rem; }
+    .rs-eyebrow::before { content:''; width:18px; height:1px; background:var(--accent); display:block; }
+    .rs-title { font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:700; line-height:1.2; letter-spacing:-.02em; margin-bottom:clamp(2rem,4vw,2.5rem); }
+    .rs-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* EXPERIENCE ITEMS */
+    .exp-item { position:relative; padding-left:clamp(1.5rem,3vw,2rem); margin-bottom:clamp(2.5rem,5vw,3.5rem); border-left:1px solid var(--border); }
+    .exp-item:last-child { margin-bottom:0; }
+    .exp-dot { position:absolute; left:-5px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:1.5px solid var(--accent); }
+    .exp-dot.current { background:var(--accent); }
+    .exp-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:.5rem; }
+    .exp-role { font-size:clamp(.92rem,2vw,1.02rem); font-weight:600; }
+    .exp-company { font-size:clamp(.85rem,1.9vw,.92rem); color:var(--accent); margin-bottom:.3rem; }
+    .exp-period { font-size:.74rem; color:var(--muted); white-space:nowrap; padding-top:.15rem; }
+    .exp-type { font-size:.65rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.18rem .6rem; background:rgba(200,169,126,.07); color:var(--accent); border:1px solid rgba(200,169,126,.15); }
+    .exp-desc { font-size:clamp(.82rem,1.9vw,.9rem); color:var(--muted); line-height:1.82; margin-bottom:1rem; }
+    .exp-bullets { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+    .exp-bullet { display:flex; gap:.7rem; font-size:clamp(.8rem,1.8vw,.88rem); color:var(--muted); line-height:1.65; }
+    .exp-bullet::before { content:'→'; color:var(--accent); flex-shrink:0; font-size:.82rem; margin-top:.05rem; }
+    .exp-result { display:inline-flex; align-items:baseline; gap:.4rem; padding:.4rem .8rem; border:1px solid rgba(200,169,126,.18); background:rgba(200,169,126,.04); margin-bottom:1rem; }
+    .exp-result-num { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+    .exp-result-label { font-size:.74rem; color:var(--muted); }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+    .exp-tag { font-size:.65rem; font-weight:500; letter-spacing:.05em; padding:.18rem .55rem; background:rgba(255,255,255,.04); color:var(--muted); border:1px solid var(--border); }
+
+    /* EDUCATION */
+    .edu-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); }
+    .edu-card { background:var(--bg); padding:clamp(1.5rem,3vw,2rem); transition:background .2s; }
+    .edu-card:hover { background:var(--surface2); }
+    .edu-degree { font-size:clamp(.9rem,2vw,1rem); font-weight:600; margin-bottom:.25rem; }
+    .edu-school { font-size:clamp(.82rem,1.9vw,.9rem); color:var(--accent); margin-bottom:.3rem; }
+    .edu-period { font-size:.74rem; color:var(--muted); margin-bottom:.7rem; }
+    .edu-detail { font-size:clamp(.78rem,1.7vw,.85rem); color:var(--muted); line-height:1.7; }
+    .edu-honour { display:inline-flex; align-items:center; gap:.4rem; font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-top:.8rem; padding:.25rem .7rem; background:rgba(200,169,126,.07); border:1px solid rgba(200,169,126,.15); }
+
+    /* CERTIFICATIONS */
+    .cert-list { display:flex; flex-direction:column; gap:1px; background:var(--border); }
+    .cert-item { background:var(--bg); padding:clamp(1rem,2.5vw,1.4rem) clamp(1.2rem,3vw,2rem); display:flex; align-items:center; gap:1.2rem; transition:background .2s; }
+    .cert-item:hover { background:var(--surface2); }
+    .cert-year { font-size:.7rem; font-weight:600; color:var(--accent); min-width:36px; font-variant-numeric:tabular-nums; }
+    .cert-name { font-size:clamp(.85rem,2vw,.92rem); font-weight:500; flex:1; }
+    .cert-issuer { font-size:clamp(.75rem,1.7vw,.8rem); color:var(--muted); }
+    .cert-sep { color:var(--muted2); }
+
+    /* SKILLS */
+    .skills-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.5rem,3vw,2.5rem); }
+    .skills-col-label { font-size:.65rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.9rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
+    .skills-list { display:flex; flex-direction:column; gap:.3rem; }
+    .skills-list span { font-size:clamp(.8rem,1.8vw,.88rem); color:var(--muted); }
+
+    /* CTA */
+    .resume-cta { padding:clamp(4rem,9vw,7rem) 5vw; background:var(--surface); border-top:1px solid var(--border); text-align:center; }
+    .resume-cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; margin-bottom:1rem; }
+    .resume-cta h2 em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .resume-cta p { color:var(--muted); font-size:clamp(.9rem,2vw,1rem); max-width:480px; margin:0 auto 2.5rem; line-height:1.85; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* FOOTER */
+    footer { padding:clamp(1.5rem,4vw,2.5rem) 5vw; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.72rem; color:var(--muted2); }
+    .footer-socials { display:flex; gap:1.2rem; flex-wrap:wrap; }
+    .footer-socials a { font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-socials a:hover { color:var(--accent); }
+
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.07s;} .d2{transition-delay:.14s;}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .resume-layout{grid-template-columns:1fr;}
+      .resume-sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:1.5rem 5vw;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;}
+      .sidebar-section{margin-bottom:0;}
+      .sidebar-nav{flex-direction:row;flex-wrap:wrap;gap:.4rem;}
+      .sidebar-link{padding:.4rem .8rem;background:var(--surface2);font-size:.75rem;}
+      .sidebar-divider{display:none;}
+      .sidebar-dl{flex-direction:row;}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .edu-grid{grid-template-columns:1fr;}
+      .skills-cols{grid-template-columns:1fr 1fr;}
+      footer{flex-direction:column;align-items:flex-start;}
+      .cta-row{flex-direction:column;align-items:stretch;}
+      .btn-primary,.btn-outline{justify-content:center;}
+    }
+    @media(max-width:480px){
+      .skills-cols{grid-template-columns:1fr;}
+      .hero-actions{flex-direction:column;align-items:flex-start;}
+    }
+
+    /* ACCESSIBILITY — FOCUS STATES */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    a:focus:not(:focus-visible),
+    button:focus:not(:focus-visible) {
+      outline: none;
+    }
+    .nav-logo-svg {
+      display:flex; align-items:center; gap:.65rem;
+      text-decoration:none; flex-shrink:0;
+    }
+    .nav-logo-svg svg { width:28px; height:24px; }
+    .nav-logo-text {
+      font-family:"DM Sans",sans-serif;
+      font-size:clamp(.9rem,2.5vw,1rem);
+      font-weight:600; letter-spacing:.01em;
+      color:var(--text);
+    }
+    .nav-logo-text span { color:var(--accent); }
+  </style>
+</head>
+<body>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div id="page-loader" aria-hidden="true">
+  <div class="loader-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 170" fill="none" style="width:220px;height:auto">
+  <defs>
+    <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="28" y="28" width="88" height="114" fill="none" stroke="#c8a97e" stroke-width="0.6" opacity="0.5"/>
+  <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+  <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="48" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="96" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="56" y1="92" x2="88" y2="92" stroke="#c8a97e" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="43" y1="118" x2="53" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="91" y1="118" x2="101" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="69" y1="45" x2="75" y2="45" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="108" cy="134" r="3" fill="#e8d5b0"/>
+  <line x1="134" y1="35" x2="134" y2="135" stroke="#c8a97e" stroke-width="0.5" opacity="0.35"/>
+  <text x="148" y="78" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="28" font-weight="700" letter-spacing="8" fill="#f0ede8">ALEX</text>
+  <text x="148" y="110" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="20" font-weight="400" letter-spacing="5.5" fill="#c8a97e">AKINJIOLA</text>
+  <line x1="148" y1="120" x2="356" y2="120" stroke="#c8a97e" stroke-width="0.4" opacity="0.6"/>
+  <text x="150" y="134" font-family="'DM Sans',Arial,sans-serif"
+    font-size="7.5" font-weight="400" letter-spacing="5.5" fill="#888">PRODUCT  DESIGNER</text>
+</svg>
+    <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+
+<div class="loader-text-block">
+      <div class="loader-name-text">Alex Akinjiola</div>
+      <div class="loader-role-text">Product Designer</div>
+    </div>
+  </div>
+  <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+</div>
+
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <!-- Monogram frame — hairline -->
+  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+  <!-- Corner brackets -->
+  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+  <!-- A letterform — left leg -->
+  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- A letterform — right leg -->
+  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossbar -->
+  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Serif feet -->
+  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Apex serif -->
+  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Brand dot -->
+  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+  <!-- Vertical rule separator -->
+  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+  <!-- ALEX — serif bold -->
+  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+  <!-- AKINJIOLA — serif light gold -->
+  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+</svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Capabilities</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <div class="mob-header">
+    <div class="mob-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true" style="width:160px;height:auto">
+  <defs>
+    <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+</svg>
+    </div>
+      <span class="mob-logo-label">Alex Akinjiola<em>.</em></span>
+    </div>
+    <button class="mob-close" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg>
+    </button>
+  </div>
+  <ul class="mob-nav">
+    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+    <li><a href="projects.html" onclick="closeMobileMenu()">Work</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="skills.html" onclick="closeMobileMenu()">Capabilities</a></li>
+    <li><a href="resume.html" onclick="closeMobileMenu()" class="active">Resume</a></li>
+    <li><a href="experience.html" onclick="closeMobileMenu()">Experience</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+  </ul>
+  <div class="mob-footer"><a href="contact.html" class="mob-cta" onclick="closeMobileMenu()">Let's Talk</a></div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="eyebrow" style="animation:fadeUp .6s .1s both;opacity:0">Resume</div>
+  <h1 class="page-title" style="animation:fadeUp .6s .22s both;opacity:0">The complete <em>picture.</em></h1>
+  <p class="page-hero-lead" style="animation:fadeUp .6s .36s both;opacity:0">5+ years of product design experience across SaaS, EdTech, e-commerce, and fintech. My portfolio shows the products — this shows the broader context.</p>
+  <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.8rem;animation:fadeUp .6s .3s both;opacity:0">
+    <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(200,169,126,.4);flex-shrink:0;background:#181818;">
+      <img src="OCHL9530.jpeg" alt="Alex Akinjiola" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"
+        onerror="this.style.display='none'"/>
+    </div>
+    <div>
+      <div style="font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);">Alex Akinjiola</div>
+      <div style="font-size:.78rem;color:var(--muted);margin-top:.15rem;">Product Designer · Lagos, Nigeria</div>
+    </div>
+  </div>
+  <div class="hero-actions" style="animation:fadeUp .6s .48s both;opacity:0">
+    <a href="Akinjiola_Alex _ CV.pdf" download class="btn-primary"><span class="material-symbols-outlined" style="font-size:17px">download</span>Download CV</a>
+    <a href="contact.html" class="btn-outline">Get in Touch</a>
+  </div>
+</div>
+
+<!-- RESUME LAYOUT -->
+<div class="resume-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="resume-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Jump to</div>
+      <div class="sidebar-nav">
+        <button class="sidebar-link active" onclick="jumpTo('experience',this)"><span class="material-symbols-outlined">work</span>Experience</button>
+        <button class="sidebar-link" onclick="jumpTo('education',this)"><span class="material-symbols-outlined">school</span>Education</button>
+        <button class="sidebar-link" onclick="jumpTo('certifications',this)"><span class="material-symbols-outlined">verified</span>Certifications</button>
+        <button class="sidebar-link" onclick="jumpTo('skills',this)"><span class="material-symbols-outlined">category</span>Skills</button>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Downloads</div>
+      <div class="sidebar-dl">
+        <a href="Akinjiola_Alex _ CV.pdf" download class="dl-btn"><span class="material-symbols-outlined">download</span>Download CV</a>
+        <a href="Alex Akinjiola's Cover letter.pdf" download class="dl-btn"><span class="material-symbols-outlined">description</span>Cover Letter</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="resume-main">
+
+    <!-- EXPERIENCE -->
+    <section class="resume-section" id="experience">
+      <div class="rs-eyebrow">Career</div>
+      <h2 class="rs-title">Work <em>Experience</em></h2>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot current"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Product Designer</div>
+            <div class="exp-company">Morgen Green Limited</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem">
+            <span class="exp-period">October 2025 — Present</span>
+            <span class="exp-type">Current · Hybrid</span>
+          </div>
+        </div>
+        <p class="exp-desc">Morgen Green is a technology company building digital products for the African education market. I work on SaaS and EdTech products where the challenges involve complex workflows, interconnected systems, and multiple user types.</p>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Translate product requirements into user journeys, workflows, information architecture, and interfaces</div>
+          <div class="exp-bullet">Create and maintain reusable design systems to keep products consistent as they evolve</div>
+          <div class="exp-bullet">Work closely with engineering from Figma through implementation — reducing handoff friction</div>
+          <div class="exp-bullet">Produce PRDs, user flows, and design documentation that keep product and engineering aligned</div>
+        </div>
+        <div class="exp-tags"><span class="exp-tag">UX Strategy</span><span class="exp-tag">Information Architecture</span><span class="exp-tag">UI Design</span><span class="exp-tag">Design Systems</span><span class="exp-tag">PRDs</span><span class="exp-tag">SaaS</span><span class="exp-tag">EdTech</span></div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Product Designer</div>
+            <div class="exp-company">Ajiroba Technologies Limited</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem">
+            <span class="exp-period">November 2023 — September 2025</span>
+            <span class="exp-type">Remote</span>
+          </div>
+        </div>
+        <p class="exp-desc">Ajiroba is a B2C e-commerce platform serving users across web and mobile. As the product grew, the experience accumulated more workflows and more opportunities for friction. My responsibility was to identify where the experience could be improved and translate those findings into a clearer product.</p>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Conducted UX audits examining navigation, workflows, information hierarchy, and interaction patterns</div>
+          <div class="exp-bullet">Simplified complex product flows to make the sequence of actions easier to follow</div>
+          <div class="exp-bullet">Built a scalable Figma design system that improved consistency across the product</div>
+          <div class="exp-bullet">Collaborated with developers throughout implementation — not just at handoff</div>
+        </div>
+        <div class="exp-result"><span class="exp-result-num">30%</span><span class="exp-result-label">Improvement in platform usability and perceived performance</span></div>
+        <div class="exp-tags"><span class="exp-tag">UX Audit</span><span class="exp-tag">User Flows</span><span class="exp-tag">Design Systems</span><span class="exp-tag">Navigation</span><span class="exp-tag">E-commerce</span><span class="exp-tag">Mobile</span></div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Product Designer</div>
+            <div class="exp-company">Creatifff</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem">
+            <span class="exp-period">March 2022 — October 2023</span>
+            <span class="exp-type">Remote</span>
+          </div>
+        </div>
+        <p class="exp-desc">Designed a mobile-first fashion e-commerce application across the full design lifecycle — from user research and journey mapping through to high-fidelity UI, design systems, prototyping, and collaboration with engineering.</p>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Improved key onboarding and checkout flows, focusing on making critical user journeys clearer</div>
+          <div class="exp-bullet">Conducted user research and journey mapping to understand where friction existed</div>
+          <div class="exp-bullet">Built and maintained the product design system used across the mobile application</div>
+        </div>
+        <div class="exp-result"><span class="exp-result-num">15%</span><span class="exp-result-label">Increase in user satisfaction</span></div>
+        <div class="exp-tags"><span class="exp-tag">User Research</span><span class="exp-tag">Journey Mapping</span><span class="exp-tag">Interaction Design</span><span class="exp-tag">Design Systems</span><span class="exp-tag">Mobile App</span><span class="exp-tag">Prototyping</span></div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="resume-section" id="education">
+      <div class="rs-eyebrow">Academic</div>
+      <h2 class="rs-title">Education</h2>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <div class="edu-degree">B.Sc. Civil Engineering</div>
+          <div class="edu-school">Obafemi Awolowo University</div>
+          <div class="edu-period">2017 — 2022</div>
+          <p class="edu-detail">Engineering taught me to think about systems, constraints, relationships, and dependencies — the same thinking I now apply to product design.</p>
+          <div class="edu-honour">Second Class Upper · CGPA 4.09/5.0</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">OND Civil Engineering</div>
+          <div class="edu-school">Moshood Abiola Polytechnic</div>
+          <div class="edu-period">Foundation</div>
+          <p class="edu-detail">Technical foundation in engineering principles, problem-solving methodology, and structured analytical thinking.</p>
+          <div class="edu-honour">Upper Credit · CGPA 3.28</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="resume-section" id="certifications">
+      <div class="rs-eyebrow">Credentials</div>
+      <h2 class="rs-title">Certifications</h2>
+      <div class="cert-list reveal">
+        <div class="cert-item"><span class="cert-year">2026</span><div><div class="cert-name">Frontend Development</div><div class="cert-issuer">TS Academy</div></div></div>
+        <div class="cert-item"><span class="cert-year">2026</span><div><div class="cert-name">Data Analytics</div><div class="cert-issuer">Data Academy</div></div></div>
+        <div class="cert-item"><span class="cert-year">2023</span><div><div class="cert-name">Google UX Design Process</div><div class="cert-issuer">Google</div></div></div>
+        <div class="cert-item"><span class="cert-year">2023</span><div><div class="cert-name">UI/UX Design with Adobe XD &amp; Figma</div><div class="cert-issuer">AQSkills</div></div></div>
+        <div class="cert-item"><span class="cert-year">2022</span><div><div class="cert-name">Google Foundation of Project Management</div><div class="cert-issuer">Google</div></div></div>
+        <div class="cert-item"><span class="cert-year">2022</span><div><div class="cert-name">Google Foundations of UX Design</div><div class="cert-issuer">Google</div></div></div>
+        <div class="cert-item"><span class="cert-year">2022</span><div><div class="cert-name">Product Design</div><div class="cert-issuer">Future Academy Africa</div></div></div>
+        <div class="cert-item"><span class="cert-year">2021</span><div><div class="cert-name">Project Management Essentials</div><div class="cert-issuer">PMI</div></div></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="resume-section" id="skills">
+      <div class="rs-eyebrow">Capabilities</div>
+      <h2 class="rs-title">Skills</h2>
+      <div class="skills-cols reveal">
+        <div>
+          <div class="skills-col-label">Product Design</div>
+          <div class="skills-list">
+            <span>UX Strategy</span><span>Product Discovery</span><span>User Research</span>
+            <span>User Flows</span><span>Information Architecture</span><span>Wireframing</span>
+            <span>Interaction Design</span><span>UI Design</span><span>Prototyping</span>
+            <span>Responsive Design</span><span>Usability Testing</span><span>Journey Mapping</span>
+            <span>Design Systems</span><span>PRDs</span><span>Developer Handoff</span>
+          </div>
+        </div>
+        <div>
+          <div class="skills-col-label">Frontend Awareness</div>
+          <div class="skills-list">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+            <span>React (learning)</span><span>Git / GitHub</span><span>Responsive Web</span>
+          </div>
+          <div class="skills-col-label" style="margin-top:1.5rem">Data &amp; Analytics</div>
+          <div class="skills-list">
+            <span>SQL</span><span>Microsoft Excel</span><span>Power BI</span>
+            <span>Data Cleaning</span><span>Data Modelling</span><span>Data Visualisation</span>
+          </div>
+        </div>
+        <div>
+          <div class="skills-col-label">Tools</div>
+          <div class="skills-list">
+            <span>Figma</span><span>Adobe XD</span><span>Photoshop</span>
+            <span>Miro / Whimsical</span><span>Notion</span><span>Trello</span>
+            <span>VS Code</span><span>GitHub</span>
+          </div>
+          <div class="skills-col-label" style="margin-top:1.5rem">Industries</div>
+          <div class="skills-list">
+            <span>SaaS</span><span>EdTech</span><span>E-commerce</span>
+            <span>Fintech</span><span>PropTech</span><span>FoodTech</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- CTA -->
+<div class="resume-cta">
+  <h2 class="reveal">Ready to <em>work together?</em></h2>
+  <p class="reveal d1">I'm currently available for new product design roles — full-time, remote, hybrid, or contract.</p>
+  <div class="cta-row reveal d2">
+    <a href="contact.html" class="btn-primary">Get in Touch <span class="material-symbols-outlined" style="font-size:17px">arrow_forward</span></a>
+    <a href="Akinjiola_Alex _ CV.pdf" download class="btn-outline"><span class="material-symbols-outlined" style="font-size:17px">download</span>Download CV</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-copy">© 2026 Alex Akinjiola. All rights reserved.</span>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/alexakinjiola/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener">Behance</a>
+    <a href="https://github.com/alexakinjiola" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:tayoalex7@gmail.com">Email</a>
+  </div>
+</footer>
+
+
+<button id="back-to-top" aria-label="Back to top">
+  <span class="material-symbols-outlined">keyboard_arrow_up</span>
+</button>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Experience — Alex Akinjiola | Product Designer with 5+ years across SaaS, EdTech, e-commerce, and fintech." />
+  <meta property="og:title" content="Experience — Alex Akinjiola | Product Designer" />
+  <meta property="og:description" content="Work history and experience of Alex Akinjiola — Product Designer with 5+ years across SaaS, EdTech, e-commerce, and fintech." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="OCHL9530.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Experience — Alex Akinjiola | Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="canonical" href="https://alexakinjiola.com/experience.html" />
+  <link rel="apple-touch-icon" href="OCHL9530.jpeg" />
+  <link rel="icon" type="image/png" href="OCHL9530.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d; --surface: #111111; --surface2: #181818;
+      --border: rgba(255,255,255,0.07); --text: #f0ede8;
+      --muted: #888; --muted2: #4a4a4a;
+      --accent: #c8a97e; --accent2: #e8d5b0;
+      --gradient: linear-gradient(135deg,#c8a97e 0%,#e8d5b0 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:400; line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    ::-webkit-scrollbar { width:4px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+    .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; font-size:20px; line-height:1; display:inline-block; white-space:nowrap; direction:ltr; -webkit-font-smoothing:antialiased; font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
+    nav.scrolled { padding:.75rem 5vw; }
+    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+    .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--text); }
+    .nav-cta { padding:.55rem 1.2rem; background:var(--accent); color:#0d0d0d !important; font-weight:600 !important; }
+    .hamburger { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:0; z-index:601; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--text); border-radius:2px; transition:transform .3s ease,opacity .3s ease,width .3s ease; }
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;width:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
+    .mob-logo span { color:var(--accent); }
+    .mob-close { width:44px; height:44px; border-radius:12px; border:none; background:rgba(255,255,255,.08); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+    .mob-close svg { width:17px; height:17px; stroke:#f0ede8; stroke-width:2.2; stroke-linecap:round; fill:none; }
+    .mob-nav { flex:1; padding:10px 14px; display:flex; flex-direction:column; gap:2px; list-style:none; }
+    .mob-nav li a { display:flex; align-items:center; width:100%; padding:15px 18px; border-radius:12px; font-size:1.05rem; font-weight:500; color:#c8c4be; text-decoration:none; transition:background .2s,color .2s; }
+    .mob-nav li a:hover { background:rgba(255,255,255,.06); color:#f0ede8; }
+    .mob-nav li a.active { background:rgba(200,169,126,.12); color:var(--accent); font-weight:600; }
+    .mob-nav li a,.mob-cta { opacity:0; transform:translateY(10px); transition:opacity .3s ease,transform .3s ease,background .2s,color .2s; }
+    .mobile-overlay.open .mob-nav li:nth-child(1) a{transition-delay:.06s;}
+    .mobile-overlay.open .mob-nav li:nth-child(2) a{transition-delay:.10s;}
+    .mobile-overlay.open .mob-nav li:nth-child(3) a{transition-delay:.14s;}
+    .mobile-overlay.open .mob-nav li:nth-child(4) a{transition-delay:.18s;}
+    .mobile-overlay.open .mob-nav li:nth-child(5) a{transition-delay:.22s;}
+    .mobile-overlay.open .mob-nav li:nth-child(6) a{transition-delay:.26s;}
+    .mobile-overlay.open .mob-nav li:nth-child(7) a{transition-delay:.30s;}
+    .mobile-overlay.open .mob-cta{transition-delay:.35s;}
+    .mobile-overlay.open .mob-nav li a,.mobile-overlay.open .mob-cta{opacity:1;transform:translateY(0);}
+    .mob-footer { padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px)); }
+    .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
+
+    /* PAGE HERO */
+    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%); pointer-events:none; }
+    .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; position:relative; z-index:1; }
+    .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
+    h1.page-title { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.08; letter-spacing:-.025em; position:relative; z-index:1; }
+    h1.page-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .page-hero-lead { font-size:clamp(.92rem,2vw,1.05rem); color:var(--muted); max-width:560px; margin-top:1.2rem; line-height:1.85; position:relative; z-index:1; }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+    /* EXPERIENCE */
+    .exp-section { padding:clamp(4rem,9vw,6rem) 5vw; border-bottom:1px solid var(--border); }
+    .exp-section.alt { background:var(--surface); }
+    .sec-eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
+    .sec-eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
+    .sec-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3.5vw,2.2rem); font-weight:700; line-height:1.18; letter-spacing:-.02em; margin-bottom:clamp(2.5rem,5vw,4rem); }
+    .sec-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    .timeline { position:relative; padding-left:clamp(1.5rem,3vw,2rem); }
+    .timeline::before { content:''; position:absolute; left:0; top:6px; bottom:6px; width:1px; background:var(--border); }
+    .timeline-item { position:relative; padding-left:clamp(1.8rem,3.5vw,2.5rem); padding-bottom:clamp(2.5rem,5vw,4rem); }
+    .timeline-item:last-child { padding-bottom:0; }
+    .tl-dot { position:absolute; left:-2.1rem; top:4px; width:12px; height:12px; border-radius:50%; background:var(--bg); border:1.5px solid var(--border); }
+    .tl-dot.active { background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 4px rgba(200,169,126,.15); }
+    .tl-period { font-size:.72rem; font-weight:600; color:var(--muted); letter-spacing:.05em; margin-bottom:.5rem; }
+    .tl-role { font-size:clamp(.95rem,2.2vw,1.05rem); font-weight:600; margin-bottom:.2rem; }
+    .tl-company { font-size:clamp(.85rem,2vw,.92rem); color:var(--accent); margin-bottom:.2rem; }
+    .tl-type { font-size:.65rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.15rem .55rem; background:rgba(200,169,126,.07); color:var(--muted); border:1px solid var(--border); display:inline-block; margin-bottom:1rem; }
+    .tl-desc { font-size:clamp(.82rem,1.9vw,.9rem); color:var(--muted); line-height:1.82; margin-bottom:1rem; }
+    .tl-bullets { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+    .tl-bullet { display:flex; gap:.7rem; font-size:clamp(.8rem,1.8vw,.88rem); color:var(--muted); line-height:1.65; }
+    .tl-bullet::before { content:'→'; color:var(--accent); flex-shrink:0; font-size:.8rem; margin-top:.06rem; }
+    .tl-result { display:inline-flex; align-items:baseline; gap:.45rem; padding:.4rem .9rem; border:1px solid rgba(200,169,126,.2); background:rgba(200,169,126,.05); margin-bottom:1rem; }
+    .tl-result-num { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+    .tl-result-label { font-size:.74rem; color:var(--muted); }
+    .tl-tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+    .tl-tag { font-size:.64rem; font-weight:500; letter-spacing:.05em; padding:.17rem .52rem; background:rgba(255,255,255,.04); color:var(--muted); border:1px solid var(--border); }
+
+    /* CTA */
+    .exp-cta { padding:clamp(4rem,9vw,7rem) 5vw; background:var(--surface); border-top:1px solid var(--border); text-align:center; }
+    .exp-cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; margin-bottom:1rem; }
+    .exp-cta h2 em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .exp-cta p { color:var(--muted); font-size:clamp(.9rem,2vw,1rem); max-width:480px; margin:0 auto 2.5rem; line-height:1.85; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn-primary { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:var(--accent); color:#0d0d0d; font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:700; letter-spacing:.05em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:opacity .2s,transform .15s; }
+    .btn-primary:hover { opacity:.88; transform:translateY(-1px); }
+    .btn-outline { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:transparent; color:var(--text); font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:500; letter-spacing:.05em; text-transform:uppercase; border:1px solid rgba(255,255,255,.18); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:border-color .2s,color .2s; }
+    .btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+
+    footer { padding:clamp(1.5rem,4vw,2.5rem) 5vw; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.72rem; color:var(--muted2); }
+    .footer-socials { display:flex; gap:1.2rem; flex-wrap:wrap; }
+    .footer-socials a { font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-socials a:hover { color:var(--accent); }
+
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.07s;} .d2{transition-delay:.14s;}
+
+    @media (max-width:1024px) {
+      .timeline { padding-left:1rem; }
+    }
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      footer{flex-direction:column;align-items:flex-start;}
+      .cta-row{flex-direction:column;align-items:stretch;}
+      .btn-primary,.btn-outline{justify-content:center;}
+    }
+
+    /* ACCESSIBILITY — FOCUS STATES */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    a:focus:not(:focus-visible),
+    button:focus:not(:focus-visible) {
+      outline: none;
+    }
+    .nav-logo-svg {
+      display:flex; align-items:center; gap:.65rem;
+      text-decoration:none; flex-shrink:0;
+    }
+    .nav-logo-svg svg { width:28px; height:24px; }
+    .nav-logo-text {
+      font-family:"DM Sans",sans-serif;
+      font-size:clamp(.9rem,2.5vw,1rem);
+      font-weight:600; letter-spacing:.01em;
+      color:var(--text);
+    }
+    .nav-logo-text span { color:var(--accent); }
+  </style>
+</head>
+<body>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div id="page-loader" aria-hidden="true">
+  <div class="loader-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 170" fill="none" style="width:220px;height:auto">
+  <defs>
+    <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="28" y="28" width="88" height="114" fill="none" stroke="#c8a97e" stroke-width="0.6" opacity="0.5"/>
+  <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+  <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="48" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="96" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="56" y1="92" x2="88" y2="92" stroke="#c8a97e" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="43" y1="118" x2="53" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="91" y1="118" x2="101" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="69" y1="45" x2="75" y2="45" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="108" cy="134" r="3" fill="#e8d5b0"/>
+  <line x1="134" y1="35" x2="134" y2="135" stroke="#c8a97e" stroke-width="0.5" opacity="0.35"/>
+  <text x="148" y="78" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="28" font-weight="700" letter-spacing="8" fill="#f0ede8">ALEX</text>
+  <text x="148" y="110" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="20" font-weight="400" letter-spacing="5.5" fill="#c8a97e">AKINJIOLA</text>
+  <line x1="148" y1="120" x2="356" y2="120" stroke="#c8a97e" stroke-width="0.4" opacity="0.6"/>
+  <text x="150" y="134" font-family="'DM Sans',Arial,sans-serif"
+    font-size="7.5" font-weight="400" letter-spacing="5.5" fill="#888">PRODUCT  DESIGNER</text>
+</svg>
+    <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+
+<div class="loader-text-block">
+      <div class="loader-name-text">Alex Akinjiola</div>
+      <div class="loader-role-text">Product Designer</div>
+    </div>
+  </div>
+  <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+</div>
+
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <!-- Monogram frame — hairline -->
+  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+  <!-- Corner brackets -->
+  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+  <!-- A letterform — left leg -->
+  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- A letterform — right leg -->
+  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossbar -->
+  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Serif feet -->
+  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Apex serif -->
+  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Brand dot -->
+  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+  <!-- Vertical rule separator -->
+  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+  <!-- ALEX — serif bold -->
+  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+  <!-- AKINJIOLA — serif light gold -->
+  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+</svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Capabilities</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <div class="mob-header">
+    <div class="mob-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true" style="width:160px;height:auto">
+  <defs>
+    <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+</svg>
+    </div>
+      <span class="mob-logo-label">Alex Akinjiola<em>.</em></span>
+    </div>
+    <button class="mob-close" onclick="closeMobileMenu()" aria-label="Close menu">
+      <svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg>
+    </button>
+  </div>
+  <ul class="mob-nav">
+    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+    <li><a href="projects.html" onclick="closeMobileMenu()">Work</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="skills.html" onclick="closeMobileMenu()">Capabilities</a></li>
+    <li><a href="resume.html" onclick="closeMobileMenu()">Resume</a></li>
+    <li><a href="experience.html" onclick="closeMobileMenu()" class="active">Experience</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+  </ul>
+  <div class="mob-footer"><a href="contact.html" class="mob-cta" onclick="closeMobileMenu()">Let's Talk</a></div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="eyebrow" style="animation:fadeUp .6s .1s both;opacity:0">Work History</div>
+  <h1 class="page-title" style="animation:fadeUp .6s .22s both;opacity:0">Where I've worked<br>and what I <em>shipped.</em></h1>
+  <p class="page-hero-lead" style="animation:fadeUp .6s .36s both;opacity:0">5+ years of product design experience across three companies, two industries, and a variety of product challenges — from B2C e-commerce to SaaS and EdTech platforms.</p>
+</div>
+
+<!-- EXPERIENCE TIMELINE -->
+<div class="exp-section">
+  <div class="sec-eyebrow reveal">Experience</div>
+  <h2 class="sec-title reveal">The full <em>work history.</em></h2>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="tl-dot active"></div>
+      <div class="tl-period">October 2025 — Present</div>
+      <div class="tl-role">Product Designer</div>
+      <div class="tl-company">Morgen Green Limited</div>
+      <span class="tl-type">Current · Hybrid · Lagos, Nigeria</span>
+      <p class="tl-desc">Morgen Green builds technology solutions for the African education sector. I work on SaaS and EdTech products where the design challenges involve complex interconnected workflows, multiple user types with different access levels and priorities, and large amounts of information that need to be structured so they feel manageable rather than overwhelming.</p>
+      <div class="tl-bullets">
+        <div class="tl-bullet">Translate product requirements and business goals into user journeys, information architecture, wireframes, and high-fidelity interfaces</div>
+        <div class="tl-bullet">Build and maintain reusable design systems that keep the product consistent as it grows</div>
+        <div class="tl-bullet">Produce PRDs, design specifications, and developer handoff documentation to reduce ambiguity</div>
+        <div class="tl-bullet">Work closely with engineering through implementation — not just at handoff</div>
+        <div class="tl-bullet">Facilitate stakeholder reviews and gather structured feedback to inform design iterations</div>
+      </div>
+      <div class="tl-tags"><span class="tl-tag">UX Strategy</span><span class="tl-tag">Information Architecture</span><span class="tl-tag">UI Design</span><span class="tl-tag">Design Systems</span><span class="tl-tag">PRDs</span><span class="tl-tag">Figma</span><span class="tl-tag">SaaS</span><span class="tl-tag">EdTech</span></div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">November 2023 — September 2025</div>
+      <div class="tl-role">Product Designer</div>
+      <div class="tl-company">Ajiroba Technologies Limited</div>
+      <span class="tl-type">Remote · Nigeria</span>
+      <p class="tl-desc">Ajiroba is a B2C e-commerce platform serving users across web and mobile. As the platform grew, the experience had accumulated complexity that was making it harder for users to find what they needed and complete the actions they intended to take. My job was to identify where the friction was and redesign the experience to remove it.</p>
+      <div class="tl-bullets">
+        <div class="tl-bullet">Conducted a structured UX audit covering navigation patterns, task flows, information hierarchy, and interaction consistency</div>
+        <div class="tl-bullet">Simplified navigation structure and reduced unnecessary steps in core user workflows</div>
+        <div class="tl-bullet">Built a scalable Figma design system to improve interface consistency across the product</div>
+        <div class="tl-bullet">Collaborated with engineers through implementation — providing specs, answering questions, and reviewing shipped work</div>
+        <div class="tl-bullet">Facilitated design critique sessions to improve design quality across the team</div>
+      </div>
+      <div class="tl-result"><span class="tl-result-num">30%</span><span class="tl-result-label">Improvement in platform usability and perceived performance</span></div>
+      <div class="tl-tags"><span class="tl-tag">UX Audit</span><span class="tl-tag">User Flows</span><span class="tl-tag">Design Systems</span><span class="tl-tag">Navigation Design</span><span class="tl-tag">E-commerce</span><span class="tl-tag">Mobile</span><span class="tl-tag">Figma</span></div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">March 2022 — October 2023</div>
+      <div class="tl-role">Product Designer</div>
+      <div class="tl-company">Creatifff</div>
+      <span class="tl-type">Remote · Nigeria</span>
+      <p class="tl-desc">I joined Creatifff to design a mobile-first fashion e-commerce application from the ground up. I worked across the full design lifecycle — from initial user research and journey mapping through wireframes, high-fidelity UI design, prototyping, design systems, and close collaboration with engineering throughout the build.</p>
+      <div class="tl-bullets">
+        <div class="tl-bullet">Conducted user research to understand shopping behaviour, pain points, and decision-making patterns</div>
+        <div class="tl-bullet">Mapped user journeys to identify where the experience needed to be clearest</div>
+        <div class="tl-bullet">Designed and improved the onboarding and checkout flows — two of the highest-stakes sequences in any e-commerce product</div>
+        <div class="tl-bullet">Built the product's design system to ensure consistency across all screens and states</div>
+        <div class="tl-bullet">Prototyped and tested key interaction patterns before engineering implementation</div>
+      </div>
+      <div class="tl-result"><span class="tl-result-num">15%</span><span class="tl-result-label">Increase in user satisfaction</span></div>
+      <div class="tl-tags"><span class="tl-tag">User Research</span><span class="tl-tag">Journey Mapping</span><span class="tl-tag">Interaction Design</span><span class="tl-tag">Design Systems</span><span class="tl-tag">Mobile App</span><span class="tl-tag">Prototyping</span><span class="tl-tag">Figma</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="exp-cta">
+  <h2 class="reveal">Want to work <em>together?</em></h2>
+  <p class="reveal d1">I'm currently open to new product design roles — full-time, remote, hybrid, contract, and relocation opportunities.</p>
+  <div class="cta-row reveal d2">
+    <a href="contact.html" class="btn-primary">Get in Touch <span class="material-symbols-outlined" style="font-size:17px">arrow_forward</span></a>
+    <a href="resume.html" class="btn-outline">View Full Resume</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-copy">© 2026 Alex Akinjiola. All rights reserved.</span>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/alexakinjiola/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener">Behance</a>
+    <a href="https://github.com/alexakinjiola" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:tayoalex7@gmail.com">Email</a>
+  </div>
+</footer>
+
+
+<button id="back-to-top" aria-label="Back to top">
+  <span class="material-symbols-outlined">keyboard_arrow_up</span>
+</button>
+  <script src="main.js"></script>
+</body>
+</html>

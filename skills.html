@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Capabilities — Alex Akinjiola | Product Designer. UX strategy, design systems, frontend awareness, and data analytics." />
+  <title>Capabilities — Alex Akinjiola | Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
+  <meta property="og:title" content="Capabilities — Alex Akinjiola | Product Designer" />
+  <meta property="og:description" content="Capabilities of Alex Akinjiola — Product Designer. UX strategy, design systems, frontend awareness, and data analytics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="OCHL9530.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Capabilities — Alex Akinjiola | Product Designer" />
+  <meta name="twitter:description" content="Capabilities of Alex Akinjiola — Product Designer. UX strategy, design systems, frontend awareness, and data analytics." />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="canonical" href="https://alexakinjiola.com/skills.html" />
+  <link rel="apple-touch-icon" href="OCHL9530.jpeg" />
+  <link rel="icon" type="image/png" href="OCHL9530.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d; --surface: #111111; --surface2: #181818;
+      --border: rgba(255,255,255,0.07); --text: #f0ede8;
+      --muted: #888; --muted2: #4a4a4a;
+      --accent: #c8a97e; --accent2: #e8d5b0;
+      --gradient: linear-gradient(135deg,#c8a97e 0%,#e8d5b0 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:400; line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    ::-webkit-scrollbar { width:4px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+    .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; font-size:20px; line-height:1; display:inline-block; white-space:nowrap; direction:ltr; -webkit-font-smoothing:antialiased; font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
+    nav.scrolled { padding:.75rem 5vw; }
+    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+    .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--text); }
+    .nav-cta { padding:.55rem 1.2rem; background:var(--accent); color:#0d0d0d !important; font-weight:600 !important; }
+    .hamburger { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:0; z-index:601; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--text); border-radius:2px; transition:transform .3s ease,opacity .3s ease,width .3s ease; }
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;width:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
+    .mob-logo span { color:var(--accent); }
+    .mob-close { width:44px; height:44px; border-radius:12px; border:none; background:rgba(255,255,255,.08); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+    .mob-close svg { width:17px; height:17px; stroke:#f0ede8; stroke-width:2.2; stroke-linecap:round; fill:none; }
+    .mob-nav { flex:1; padding:10px 14px; display:flex; flex-direction:column; gap:2px; list-style:none; }
+    .mob-nav li a { display:flex; align-items:center; width:100%; padding:15px 18px; border-radius:12px; font-size:1.05rem; font-weight:500; color:#c8c4be; text-decoration:none; transition:background .2s,color .2s; }
+    .mob-nav li a:hover { background:rgba(255,255,255,.06); color:#f0ede8; }
+    .mob-nav li a.active { background:rgba(200,169,126,.12); color:var(--accent); font-weight:600; }
+    .mob-nav li a,.mob-cta { opacity:0; transform:translateY(10px); transition:opacity .3s ease,transform .3s ease,background .2s,color .2s; }
+    .mobile-overlay.open .mob-nav li:nth-child(1) a{transition-delay:.06s;}
+    .mobile-overlay.open .mob-nav li:nth-child(2) a{transition-delay:.10s;}
+    .mobile-overlay.open .mob-nav li:nth-child(3) a{transition-delay:.14s;}
+    .mobile-overlay.open .mob-nav li:nth-child(4) a{transition-delay:.18s;}
+    .mobile-overlay.open .mob-nav li:nth-child(5) a{transition-delay:.22s;}
+    .mobile-overlay.open .mob-nav li:nth-child(6) a{transition-delay:.26s;}
+    .mobile-overlay.open .mob-nav li:nth-child(7) a{transition-delay:.30s;}
+    .mobile-overlay.open .mob-cta{transition-delay:.35s;}
+    .mobile-overlay.open .mob-nav li a,.mobile-overlay.open .mob-cta{opacity:1;transform:translateY(0);}
+    .mob-footer { padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px)); }
+    .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
+
+    /* PAGE HERO */
+    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%); pointer-events:none; }
+    .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; position:relative; z-index:1; }
+    .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
+    h1.page-title { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.08; letter-spacing:-.025em; position:relative; z-index:1; }
+    h1.page-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .page-hero-lead { font-size:clamp(.92rem,2vw,1.05rem); color:var(--muted); max-width:580px; margin-top:1.2rem; line-height:1.85; position:relative; z-index:1; }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .avail-dot, .badge-avail-dot { animation: none; }
+    }
+
+    /* SECTIONS */
+    .cap-section { padding:clamp(4rem,9vw,6rem) 5vw; border-bottom:1px solid var(--border); }
+    .cap-section.alt { background:var(--surface); }
+    .sec-eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
+    .sec-eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
+    .sec-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3.5vw,2.2rem); font-weight:700; line-height:1.18; letter-spacing:-.02em; margin-bottom:.8rem; }
+    .sec-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .sec-lead { color:var(--muted); font-size:clamp(.88rem,2vw,.98rem); max-width:600px; line-height:1.85; margin-bottom:clamp(2rem,5vw,3rem); }
+
+    /* PRIMARY DESIGN SECTION */
+    .design-layout { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,6vw,5rem); align-items:start; }
+    .design-left { }
+    .design-statement { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,3vw,1.7rem); font-weight:700; line-height:1.3; letter-spacing:-.015em; margin-bottom:1.5rem; }
+    .design-statement em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .design-body { color:var(--muted); font-size:clamp(.88rem,2vw,.95rem); line-height:1.88; }
+    .design-body p + p { margin-top:.9rem; }
+    .design-body strong { color:var(--text); font-weight:500; }
+    .design-disciplines { display:flex; flex-direction:column; gap:0; }
+    .discipline { padding:1.1rem 0; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:1rem; }
+    .discipline:last-child { border-bottom:none; }
+    .discipline-icon { width:32px; height:32px; display:flex; align-items:center; justify-content:center; flex-shrink:0; padding-top:.1rem; }
+    .discipline-icon .material-symbols-outlined { font-size:18px; color:var(--accent); }
+    .discipline h4 { font-size:clamp(.85rem,2vw,.9rem); font-weight:600; margin-bottom:.2rem; }
+    .discipline p { font-size:clamp(.78rem,1.7vw,.84rem); color:var(--muted); line-height:1.72; }
+
+    /* PROCESS */
+    .process-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); }
+    .process-card { background:var(--bg); padding:clamp(1.5rem,3.5vw,2.2rem); position:relative; }
+    .process-card.alt-bg { background:var(--surface2); }
+    .process-num { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3rem); font-weight:700; color:rgba(200,169,126,.12); line-height:1; margin-bottom:1rem; letter-spacing:-.03em; }
+    .process-card h3 { font-size:clamp(.88rem,2vw,.95rem); font-weight:600; margin-bottom:.5rem; }
+    .process-card p { font-size:clamp(.78rem,1.7vw,.84rem); color:var(--muted); line-height:1.75; }
+
+    /* DIFFERENTIATORS */
+    .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); }
+    .diff-card { padding:clamp(2rem,4vw,3rem); border:1px solid var(--border); background:var(--surface2); position:relative; overflow:hidden; }
+    .diff-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gradient); }
+    .diff-eyebrow { font-size:.65rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .diff-card h2 { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,3vw,1.5rem); font-weight:700; line-height:1.2; margin-bottom:1rem; }
+    .diff-card h2 em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .diff-body { color:var(--muted); font-size:clamp(.85rem,1.9vw,.92rem); line-height:1.85; margin-bottom:1.4rem; }
+    .diff-body p + p { margin-top:.8rem; }
+    .diff-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .diff-tag { font-size:.68rem; font-weight:500; letter-spacing:.05em; padding:.2rem .6rem; background:rgba(200,169,126,.06); color:var(--muted); border:1px solid var(--border); }
+
+    /* SKILLS TABLE */
+    .skills-table { width:100%; border-collapse:collapse; }
+    .skills-table th { font-size:.66rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); padding:.8rem 1.2rem; text-align:left; border-bottom:1px solid var(--border); background:var(--surface2); }
+    .skills-table td { font-size:clamp(.8rem,1.8vw,.88rem); color:var(--muted); padding:.7rem 1.2rem; border-bottom:1px solid rgba(255,255,255,.04); line-height:1.5; vertical-align:top; }
+    .skills-table tr:hover td { background:rgba(255,255,255,.02); }
+    .skill-primary { color:var(--text); font-weight:500; }
+    .skill-level { font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.15rem .55rem; border:1px solid var(--border); color:var(--muted); white-space:nowrap; }
+    .skill-level.primary { border-color:rgba(200,169,126,.3); color:var(--accent); background:rgba(200,169,126,.05); }
+
+    /* TOOLS */
+    .tools-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); }
+    .tool-item { background:var(--bg); padding:clamp(1rem,2.5vw,1.5rem); display:flex; align-items:center; gap:.7rem; transition:background .2s; }
+    .tool-item:hover { background:var(--surface2); }
+    .tool-name { font-size:clamp(.8rem,1.8vw,.88rem); font-weight:500; }
+    .tool-cat { font-size:.68rem; color:var(--muted); }
+
+    /* CTA */
+    .cap-cta { padding:clamp(4rem,9vw,7rem) 5vw; text-align:center; background:var(--surface); }
+    .cap-cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; margin-bottom:1rem; }
+    .cap-cta h2 em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .cap-cta p { color:var(--muted); font-size:clamp(.9rem,2vw,1rem); max-width:480px; margin:0 auto 2.5rem; line-height:1.85; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn-primary { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:var(--accent); color:#0d0d0d; font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:700; letter-spacing:.05em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:opacity .2s,transform .15s; }
+    .btn-primary:hover { opacity:.88; transform:translateY(-1px); }
+    .btn-outline { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:transparent; color:var(--text); font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:500; letter-spacing:.05em; text-transform:uppercase; border:1px solid rgba(255,255,255,.18); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:border-color .2s,color .2s,transform .15s; }
+    .btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+
+    /* FOOTER */
+    footer { padding:clamp(1.5rem,4vw,2.5rem) 5vw; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.72rem; color:var(--muted2); }
+    .footer-socials { display:flex; gap:1.2rem; flex-wrap:wrap; }
+    .footer-socials a { font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-socials a:hover { color:var(--accent); }
+
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .design-layout{grid-template-columns:1fr;}
+      .process-layout{grid-template-columns:repeat(2,1fr);}
+      .diff-grid{grid-template-columns:1fr;}
+      .tools-grid{grid-template-columns:repeat(3,1fr);}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .process-layout{grid-template-columns:1fr;}
+      .tools-grid{grid-template-columns:repeat(2,1fr);}
+      .skills-table{font-size:.8rem;}
+      footer{flex-direction:column;align-items:flex-start;}
+      .cta-row{flex-direction:column;align-items:stretch;}
+      .btn-primary,.btn-outline{justify-content:center;}
+    }
+    @media(max-width:480px){
+      .tools-grid{grid-template-columns:1fr 1fr;}
+    }
+
+    /* ACCESSIBILITY — FOCUS STATES */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    a:focus:not(:focus-visible),
+    button:focus:not(:focus-visible) {
+      outline: none;
+    }
+    .nav-logo-svg {
+      display:flex; align-items:center; gap:.65rem;
+      text-decoration:none; flex-shrink:0;
+    }
+    .nav-logo-svg svg { width:28px; height:24px; }
+    .nav-logo-text {
+      font-family:"DM Sans",sans-serif;
+      font-size:clamp(.9rem,2.5vw,1rem);
+      font-weight:600; letter-spacing:.01em;
+      color:var(--text);
+    }
+    .nav-logo-text span { color:var(--accent); }
+  </style>
+</head>
+<body>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div id="page-loader" aria-hidden="true">
+  <div class="loader-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 170" fill="none" style="width:220px;height:auto">
+  <defs>
+    <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="28" y="28" width="88" height="114" fill="none" stroke="#c8a97e" stroke-width="0.6" opacity="0.5"/>
+  <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+  <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+  <line x1="48" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="96" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="56" y1="92" x2="88" y2="92" stroke="#c8a97e" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="43" y1="118" x2="53" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="91" y1="118" x2="101" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="69" y1="45" x2="75" y2="45" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="108" cy="134" r="3" fill="#e8d5b0"/>
+  <line x1="134" y1="35" x2="134" y2="135" stroke="#c8a97e" stroke-width="0.5" opacity="0.35"/>
+  <text x="148" y="78" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="28" font-weight="700" letter-spacing="8" fill="#f0ede8">ALEX</text>
+  <text x="148" y="110" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="20" font-weight="400" letter-spacing="5.5" fill="#c8a97e">AKINJIOLA</text>
+  <line x1="148" y1="120" x2="356" y2="120" stroke="#c8a97e" stroke-width="0.4" opacity="0.6"/>
+  <text x="150" y="134" font-family="'DM Sans',Arial,sans-serif"
+    font-size="7.5" font-weight="400" letter-spacing="5.5" fill="#888">PRODUCT  DESIGNER</text>
+</svg>
+    <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+
+<div class="loader-text-block">
+      <div class="loader-name-text">Alex Akinjiola</div>
+      <div class="loader-role-text">Product Designer</div>
+    </div>
+  </div>
+  <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+</div>
+
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <!-- Monogram frame — hairline -->
+  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+  <!-- Corner brackets -->
+  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+  <!-- A letterform — left leg -->
+  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- A letterform — right leg -->
+  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossbar -->
+  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Serif feet -->
+  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Apex serif -->
+  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Brand dot -->
+  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+  <!-- Vertical rule separator -->
+  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+  <!-- ALEX — serif bold -->
+  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+  <!-- AKINJIOLA — serif light gold -->
+  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+</svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html" class="active">Capabilities</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <div class="mob-header">
+    <div class="mob-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true" style="width:160px;height:auto">
+  <defs>
+    <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a97e"/>
+      <stop offset="100%" stop-color="#e8d5b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
+    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+</svg>
+    </div>
+      <span class="mob-logo-label">Alex Akinjiola<em>.</em></span>
+    </div>
+    <button class="mob-close" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg>
+    </button>
+  </div>
+  <ul class="mob-nav">
+    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+    <li><a href="projects.html" onclick="closeMobileMenu()">Work</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="skills.html" onclick="closeMobileMenu()" class="active">Capabilities</a></li>
+    <li><a href="resume.html" onclick="closeMobileMenu()">Resume</a></li>
+    <li><a href="experience.html" onclick="closeMobileMenu()">Experience</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+  </ul>
+  <div class="mob-footer"><a href="contact.html" class="mob-cta" onclick="closeMobileMenu()">Let's Talk</a></div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="eyebrow" style="animation:fadeUp .6s .1s both;opacity:0">Capabilities</div>
+  <h1 class="page-title" style="animation:fadeUp .6s .22s both;opacity:0">What I bring<br>to a product <em>team.</em></h1>
+  <p class="page-hero-lead" style="animation:fadeUp .6s .36s both;opacity:0">Product Design is at the center. Frontend development and data analytics are supporting perspectives that make the design work more grounded and more implementation-aware.</p>
+</div>
+
+<!-- PRIMARY: PRODUCT DESIGN -->
+<div class="cap-section">
+  <div class="sec-eyebrow reveal">Primary Discipline</div>
+  <div class="design-layout">
+    <div class="design-left reveal">
+      <div class="design-statement">Product Design is how I solve <em>complex problems.</em></div>
+      <div class="design-body">
+        <p>Good product design isn't about how things look. It's about how things <strong>work for the people using them.</strong></p>
+        <p>I work across the full design process — from understanding the problem and structuring the experience through to designing the interface, building the design system, and working with engineering through implementation.</p>
+        <p>The skills below are the ones I use to do that work.</p>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <div class="design-disciplines">
+        <div class="discipline">
+          <div class="discipline-icon"><span class="material-symbols-outlined">search_insights</span></div>
+          <div><h4>Research &amp; Discovery</h4><p>User interviews, UX audits, competitive analysis, journey mapping. Understanding the problem before designing the solution.</p></div>
+        </div>
+        <div class="discipline">
+          <div class="discipline-icon"><span class="material-symbols-outlined">account_tree</span></div>
+          <div><h4>Information Architecture &amp; User Flows</h4><p>Organising information and mapping user journeys so the structure of the product makes sense before a single screen is designed.</p></div>
+        </div>
+        <div class="discipline">
+          <div class="discipline-icon"><span class="material-symbols-outlined">design_services</span></div>
+          <div><h4>UI Design &amp; Interaction</h4><p>High-fidelity interfaces, interaction states, responsive design, accessibility, and visual hierarchy.</p></div>
+        </div>
+        <div class="discipline">
+          <div class="discipline-icon"><span class="material-symbols-outlined">grid_view</span></div>
+          <div><h4>Design Systems</h4><p>Reusable components, design tokens, and scalable patterns that keep products consistent as they grow.</p></div>
+        </div>
+        <div class="discipline">
+          <div class="discipline-icon"><span class="material-symbols-outlined">description</span></div>
+          <div><h4>Documentation &amp; Handoff</h4><p>PRDs, design specs, user flows, and developer handoff documentation that reduce ambiguity and keep teams aligned.</p></div>
+        </div>
+        <div class="discipline">
+          <div class="discipline-icon"><span class="material-symbols-outlined">groups</span></div>
+          <div><h4>Collaboration</h4><p>Working with product managers, engineers, and stakeholders through the design process — not just delivering files.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="cap-section alt">
+  <div class="sec-eyebrow reveal">How I Work</div>
+  <h2 class="sec-title reveal">How I turn problems<br>into <em>products.</em></h2>
+  <div class="process-layout reveal d1">
+    <div class="process-card">
+      <div class="process-num">01</div>
+      <h3>Understand</h3>
+      <p>Who are we building for? What are they trying to accomplish? What does the business need? What are the constraints?</p>
+    </div>
+    <div class="process-card alt-bg">
+      <div class="process-num">02</div>
+      <h3>Structure</h3>
+      <p>User journeys, information architecture, workflow mapping. This is where complexity becomes manageable.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">03</div>
+      <h3>Design</h3>
+      <p>Wireframes, interaction patterns, high-fidelity UI, responsive layouts, prototypes — validated with users.</p>
+    </div>
+    <div class="process-card alt-bg">
+      <div class="process-num">04</div>
+      <h3>Systemize</h3>
+      <p>Design systems, component libraries, and reusable patterns. Products grow — design should grow with them.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">05</div>
+      <h3>Validate</h3>
+      <p>Usability testing, stakeholder review, and iteration before engineering begins.</p>
+    </div>
+    <div class="process-card alt-bg">
+      <div class="process-num">06</div>
+      <h3>Ship</h3>
+      <p>Close collaboration with engineering through implementation. The work doesn't end at handoff.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIFFERENTIATORS -->
+<div class="cap-section">
+  <div class="sec-eyebrow reveal">What Makes Me Different</div>
+  <h2 class="sec-title reveal">Two perspectives that<br>strengthen the <em>design work.</em></h2>
+  <p class="sec-lead reveal">Most product designers work in Figma and hand off to engineering. I understand what happens on the other side of that handoff — and I can use data to investigate problems rather than guess.</p>
+  <div class="diff-grid">
+    <div class="diff-card reveal">
+      <div class="diff-eyebrow">Technical Awareness</div>
+      <h2>I understand what<br>happens <em>after Figma.</em></h2>
+      <div class="diff-body">
+        <p>My frontend development experience gives me working knowledge of HTML, CSS, JavaScript, and how designs are actually implemented. I understand responsive behaviour, component structure, and browser constraints.</p>
+        <p>This means I design with implementation in mind, collaborate with engineers more effectively, and reduce the gap between what was designed and what ships.</p>
+      </div>
+      <div class="diff-tags">
+        <span class="diff-tag">HTML5</span><span class="diff-tag">CSS3</span><span class="diff-tag">JavaScript</span><span class="diff-tag">React</span><span class="diff-tag">Git / GitHub</span><span class="diff-tag">Responsive Web</span>
+      </div>
+    </div>
+    <div class="diff-card reveal d1">
+      <div class="diff-eyebrow">Analytical Thinking</div>
+      <h2>I don't ignore<br>the <em>numbers.</em></h2>
+      <div class="diff-body">
+        <p>My data analytics experience gives me another way to investigate product problems. I can query databases, build dashboards, and understand what the numbers are actually saying about how people use a product.</p>
+        <p>This helps me challenge assumptions, identify problems early, and support design decisions with evidence — not just intuition.</p>
+      </div>
+      <div class="diff-tags">
+        <span class="diff-tag">SQL</span><span class="diff-tag">Excel</span><span class="diff-tag">Power BI</span><span class="diff-tag">Data Visualisation</span><span class="diff-tag">Data Modelling</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL SKILLS TABLE -->
+<div class="cap-section alt">
+  <div class="sec-eyebrow reveal">Complete Skill Set</div>
+  <h2 class="sec-title reveal">Everything I can<br>bring to a <em>role.</em></h2>
+  <div class="reveal d1" style="overflow-x:auto">
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Category</th><th>Level</th></tr></thead>
+      <tbody>
+        <tr><td class="skill-primary">Product Design</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td class="skill-primary">UX Strategy</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td class="skill-primary">Information Architecture</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td class="skill-primary">User Flows</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td class="skill-primary">UI Design</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td class="skill-primary">Design Systems</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td class="skill-primary">Prototyping</td><td>Design</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td>User Research</td><td>Design</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>Usability Testing</td><td>Design</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>Journey Mapping</td><td>Design</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>Interaction Design</td><td>Design</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>Responsive Design</td><td>Design</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>PRDs &amp; Documentation</td><td>Design</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>Figma</td><td>Tools</td><td><span class="skill-level primary">Primary</span></td></tr>
+        <tr><td>Adobe XD</td><td>Tools</td><td><span class="skill-level">Strong</span></td></tr>
+        <tr><td>HTML5 / CSS3</td><td>Frontend</td><td><span class="skill-level">Proficient</span></td></tr>
+        <tr><td>JavaScript</td><td>Frontend</td><td><span class="skill-level">Proficient</span></td></tr>
+        <tr><td>React</td><td>Frontend</td><td><span class="skill-level">Learning</span></td></tr>
+        <tr><td>SQL</td><td>Data</td><td><span class="skill-level">Proficient</span></td></tr>
+        <tr><td>Microsoft Excel</td><td>Data</td><td><span class="skill-level">Proficient</span></td></tr>
+        <tr><td>Power BI</td><td>Data</td><td><span class="skill-level">Proficient</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="cap-section">
+  <div class="sec-eyebrow reveal">Tools</div>
+  <h2 class="sec-title reveal">What I work with<br>day to <em>day.</em></h2>
+  <div class="tools-grid reveal d1">
+    <div class="tool-item"><div><div class="tool-name">Figma</div><div class="tool-cat">Design · Primary</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">Adobe XD</div><div class="tool-cat">Design</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">HTML / CSS / JS</div><div class="tool-cat">Frontend</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">React</div><div class="tool-cat">Frontend · Learning</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">GitHub</div><div class="tool-cat">Version Control</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">VS Code</div><div class="tool-cat">Development</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">SQL</div><div class="tool-cat">Data</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">Power BI</div><div class="tool-cat">Analytics</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">Microsoft Excel</div><div class="tool-cat">Data</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">Miro / Whimsical</div><div class="tool-cat">Collaboration</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">Notion</div><div class="tool-cat">Documentation</div></div></div>
+    <div class="tool-item"><div><div class="tool-name">Trello</div><div class="tool-cat">Project Management</div></div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cap-cta">
+  <h2 class="reveal">Looking for a product designer<br>who can <em>do more than design?</em></h2>
+  <p class="reveal d1">I bring product thinking, design craft, technical awareness, and data literacy to every role I work in.</p>
+  <div class="cta-row reveal d2">
+    <a href="contact.html" class="btn-primary">Let's Talk <span class="material-symbols-outlined" style="font-size:17px">arrow_forward</span></a>
+    <a href="projects.html" class="btn-outline">See My Work</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-copy">© 2026 Alex Akinjiola. All rights reserved.</span>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/alexakinjiola/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener">Behance</a>
+    <a href="https://github.com/alexakinjiola" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:tayoalex7@gmail.com">Email</a>
+  </div>
+</footer>
+
+
+<button id="back-to-top" aria-label="Back to top">
+  <span class="material-symbols-outlined">keyboard_arrow_up</span>
+</button>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -40,8 +40,6 @@
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
     nav.scrolled { padding:.75rem 5vw; }
-    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
-    .nav-logo span { color:var(--accent); }
     .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
     .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
     .nav-links a:hover,.nav-links a.active { color:var(--text); }
@@ -51,8 +49,8 @@
     .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
     .hamburger.open span:nth-child(2){opacity:0;width:0;}
     .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
-    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mobile-overlay { position:fixed; inset:0; visibility:hidden; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; visibility:visible; transform:translateX(0); pointer-events:all; }
     .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
     .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
     .mob-logo span { color:var(--accent); }
@@ -76,7 +74,7 @@
     .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
 
     /* PAGE HERO */
-    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); }
+    .page-hero { padding:clamp(5.5rem,10vw,7rem) 5vw clamp(2.5rem,5vw,4rem); border-bottom:1px solid var(--border); }
     .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; }
     .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
     h1.page-title { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.08; letter-spacing:-.025em; }
@@ -134,7 +132,7 @@
     .submit-btn { width:100%; padding:.9rem 1.5rem; background:var(--accent); color:#0d0d0d; font-family:'DM Sans',sans-serif; font-size:.85rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; border:none; cursor:pointer; transition:opacity .2s; margin-top:.5rem; display:flex; align-items:center; justify-content:center; gap:.5rem; }
     .submit-btn:hover:not(:disabled) { opacity:.88; }
     .submit-btn:disabled { opacity:.5; cursor:not-allowed; }
-    .form-success { display:none; padding:1.2rem; background:rgba(62,207,142,.08); border:1px solid rgba(62,207,142,.2); color:var(--green); font-size:.88rem; text-align:center; margin-top:1rem; }
+    .form-success { display:none; padding:1.8rem 1.4rem; background:rgba(62,207,142,.06); border:1px solid rgba(62,207,142,.2); color:var(--text); font-size:.92rem; text-align:center; margin-top:1rem; line-height:1.7; } .form-success strong { color:#3ecf8e; }
     .form-error { display:none; padding:.8rem 1rem; background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.2); color:#f87171; font-size:.82rem; margin-top:.8rem; }
 
     /* AVAIL BAR */
@@ -463,47 +461,59 @@
   <div class="contact-form-section reveal d1">
     <div class="form-title">Send a Message</div>
     <p class="form-sub">I respond to every message. Usually within 24 hours.</p>
-    <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="firstName">First Name *</label>
-          <input type="text" id="firstName" name="firstName" placeholder="Alex" required />
+    <form id="contactForm" action="https://formspree.io/f/xjkwpqvr" method="POST" novalidate>
+        <!-- Honeypot -->
+        <div class="hp-field" aria-hidden="true" style="display:none!important;visibility:hidden!important;position:absolute!important;">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"/>
+        </div>
+        <!-- Redirect after submission -->
+        <input type="hidden" name="_next" value="https://alexakinjiola.com/contact.html?submitted=true"/>
+        <input type="hidden" name="_subject" value="New enquiry from portfolio — Alex Akinjiola"/>
+        <input type="hidden" name="_replyto" value="tayoalex7@gmail.com"/>
+        <input type="hidden" name="_cc" value="tayoalex7@gmail.com"/>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Alex" required autocomplete="given-name"/>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Smith" autocomplete="family-name"/>
+          </div>
         </div>
         <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Smith" />
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email"/>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" placeholder="you@company.com" required />
-      </div>
-      <div class="form-group">
-        <label for="company">Company / Organisation</label>
-        <input type="text" id="company" name="company" placeholder="Your company" />
-      </div>
-      <div class="form-group">
-        <label for="subject">Subject</label>
-        <select id="subject" name="subject">
-          <option value="">Select a topic</option>
-          <option>Full-time role opportunity</option>
-          <option>Freelance / Contract project</option>
-          <option>Product design collaboration</option>
-          <option>Just saying hello</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Message *</label>
-        <textarea id="message" name="message" placeholder="Tell me what you're working on or what you're looking for..." required></textarea>
-      </div>
-      <div class="hp-field" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"/></div>
-      <button type="submit" class="submit-btn" id="submitBtn">
-        Send Message <span class="material-symbols-outlined" style="font-size:18px">send</span>
-      </button>
-      <div class="form-error" id="formError"></div>
-      <div class="form-success" id="formSuccess">Message sent — I'll be in touch soon.</div>
-    </form>
+        <div class="form-group">
+          <label for="company">Company / Organisation</label>
+          <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization"/>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="">Select a topic</option>
+            <option>Full-time role opportunity</option>
+            <option>Freelance / Contract project</option>
+            <option>Product design collaboration</option>
+            <option>Just saying hello</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" placeholder="Tell me what you're working on or what you're looking for..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Send Message <span class="material-symbols-outlined" style="font-size:18px">send</span>
+        </button>
+        <div class="form-error" id="formError" style="display:none"></div>
+        <div class="form-success" id="formSuccess" style="display:none">
+          <span class="material-symbols-outlined" style="font-size:28px;color:#3ecf8e;margin-bottom:.5rem;display:block">check_circle</span>
+          <strong>Message sent successfully!</strong><br>
+          I'll get back to you within 24 hours. Check your inbox — you'll also receive a confirmation email from me shortly.
+        </div>
+      </form>
   </div>
 
 </div>
@@ -523,5 +533,86 @@
   <span class="material-symbols-outlined">keyboard_arrow_up</span>
 </button>
   <script src="main.js"></script>
+
+  <script>
+  /* ── CONTACT FORM — Formspree AJAX ─────────────────── */
+  (function() {
+    var form = document.getElementById('contactForm');
+    var btn  = document.getElementById('submitBtn');
+    var err  = document.getElementById('formError');
+    var succ = document.getElementById('formSuccess');
+    if (!form) return;
+
+    /* Show success if redirected back with ?submitted=true */
+    if (window.location.search.includes('submitted=true')) {
+      form.style.display = 'none';
+      if (succ) succ.style.display = 'block';
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (err)  { err.style.display  = 'none'; err.textContent = ''; }
+      if (succ) { succ.style.display = 'none'; }
+
+      /* Client-side validation */
+      var firstName = (document.getElementById('firstName')||{}).value||'';
+      var email     = (document.getElementById('email')||{}).value||'';
+      var message   = (document.getElementById('message')||{}).value||'';
+      firstName = firstName.trim(); email = email.trim(); message = message.trim();
+
+      if (!firstName) { showError('Please enter your name.'); return; }
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        showError('Please enter a valid email address.'); return;
+      }
+      if (message.length < 10) { showError('Please enter a message (at least 10 characters).'); return; }
+
+      /* Submit via AJAX to Formspree */
+      if (btn) { btn.disabled = true; btn.innerHTML = 'Sending<span style="animation:dots 1.2s infinite">...</span>'; }
+
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(res) {
+        if (res.ok) {
+          showSuccess();
+        } else {
+          res.json().then(function(d) {
+            showError(d.errors ? d.errors.map(function(e){return e.message;}).join(', ') : 'Something went wrong. Please email me directly at tayoalex7@gmail.com');
+          });
+        }
+      })
+      .catch(function() {
+        showError('Network error. Please email me directly at tayoalex7@gmail.com');
+      })
+      .finally(function() {
+        if (btn) { btn.disabled = false; btn.innerHTML = 'Send Message <span class="material-symbols-outlined" style="font-size:18px">send</span>'; }
+      });
+    });
+
+    function showError(msg) {
+      if (!err) return;
+      err.textContent = msg;
+      err.style.display = 'block';
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function showSuccess() {
+      form.reset();
+      form.style.display = 'none';
+      if (succ) {
+        succ.style.display = 'block';
+        succ.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  })();
+
+  /* dots animation */
+  var style = document.createElement('style');
+  style.textContent = '@keyframes dots{0%,20%{content:"."}40%{content:".."}60%,100%{content:"..."}}';
+  document.head.appendChild(style);
+  </script>
 </body>
 </html>

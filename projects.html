@@ -1,322 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index,follow" />
-  <meta name="description" content="Work — Alex Akinjiola | Product Designer. Real products. Real constraints. Real design decisions across SaaS, EdTech, fintech, and e-commerce." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="description" content="Work — Alex Akinjiola | Product Designer. Real products, real constraints, real outcomes across SaaS, EdTech, fintech, and e-commerce."/>
+  <meta property="og:title" content="Work — Alex Akinjiola | Product Designer"/>
+  <meta property="og:description" content="Selected product design work — 30% usability improvement, 15% satisfaction increase, and more measurable outcomes."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="OCHL9530.jpeg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <title>Work — Alex Akinjiola | Product Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
-  <meta property="og:title" content="Work — Alex Akinjiola | Product Designer" />
-  <meta property="og:description" content="Selected product design work by Alex Akinjiola — real products, real constraints, real design decisions across SaaS, EdTech, fintech, and e-commerce." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="OCHL9530.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Work — Alex Akinjiola | Product Designer" />
-  <meta name="twitter:description" content="Selected product design work by Alex Akinjiola — real products, real constraints, real design decisions across SaaS, EdTech, fintech, and e-commerce." />
-  <link rel="stylesheet" href="main.css" />
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-  <link rel="canonical" href="https://alexakinjiola.com/projects.html" />
-  <link rel="apple-touch-icon" href="OCHL9530.jpeg" />
-  <link rel="icon" type="image/png" href="OCHL9530.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0"/>
+  <link rel="stylesheet" href="main.css"/>
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+  <link rel="canonical" href="https://alexakinjiola.com/projects.html"/>
+  <link rel="apple-touch-icon" href="OCHL9530.jpeg"/>
+  <link rel="icon" type="image/jpeg" href="OCHL9530.jpeg"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0d0d0d; --surface: #111111; --surface2: #181818;
-      --border: rgba(255,255,255,0.07); --text: #f0ede8;
-      --muted: #888; --muted2: #4a4a4a;
-      --accent: #c8a97e; --accent2: #e8d5b0;
-      --gradient: linear-gradient(135deg,#c8a97e 0%,#e8d5b0 100%);
-    }
-    html { scroll-behavior: smooth; }
-    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:400; line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-    img { display:block; max-width:100%; }
-    ::-webkit-scrollbar { width:4px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
-    .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; font-size:20px; line-height:1; display:inline-block; white-space:nowrap; direction:ltr; -webkit-font-smoothing:antialiased; font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
-
-    /* NAV */
-    nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
-    nav.scrolled { padding:.75rem 5vw; }
-    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
-    .nav-logo span { color:var(--accent); }
-    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
-    .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
-    .nav-links a:hover,.nav-links a.active { color:var(--text); }
-    .nav-cta { padding:.55rem 1.2rem; background:var(--accent); color:#0d0d0d !important; font-weight:600 !important; }
-    .hamburger { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:0; z-index:601; }
-    .hamburger span { display:block; width:22px; height:1.5px; background:var(--text); border-radius:2px; transition:transform .3s ease,opacity .3s ease,width .3s ease; }
-    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-    .hamburger.open span:nth-child(2){opacity:0;width:0;}
-    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
-    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
-    .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
-    .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
-    .mob-logo span { color:var(--accent); }
-    .mob-close { width:44px; height:44px; border-radius:12px; border:none; background:rgba(255,255,255,.08); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
-    .mob-close svg { width:17px; height:17px; stroke:#f0ede8; stroke-width:2.2; stroke-linecap:round; fill:none; }
-    .mob-nav { flex:1; padding:10px 14px; display:flex; flex-direction:column; gap:2px; list-style:none; }
-    .mob-nav li a { display:flex; align-items:center; width:100%; padding:15px 18px; border-radius:12px; font-size:1.05rem; font-weight:500; color:#c8c4be; text-decoration:none; transition:background .2s,color .2s; }
-    .mob-nav li a:hover { background:rgba(255,255,255,.06); color:#f0ede8; }
-    .mob-nav li a.active { background:rgba(200,169,126,.12); color:var(--accent); font-weight:600; }
-    .mob-nav li a,.mob-cta { opacity:0; transform:translateY(10px); transition:opacity .3s ease,transform .3s ease,background .2s,color .2s; }
-    .mobile-overlay.open .mob-nav li:nth-child(1) a{transition-delay:.06s;}
-    .mobile-overlay.open .mob-nav li:nth-child(2) a{transition-delay:.10s;}
-    .mobile-overlay.open .mob-nav li:nth-child(3) a{transition-delay:.14s;}
-    .mobile-overlay.open .mob-nav li:nth-child(4) a{transition-delay:.18s;}
-    .mobile-overlay.open .mob-nav li:nth-child(5) a{transition-delay:.22s;}
-    .mobile-overlay.open .mob-nav li:nth-child(6) a{transition-delay:.26s;}
-    .mobile-overlay.open .mob-nav li:nth-child(7) a{transition-delay:.30s;}
-    .mobile-overlay.open .mob-cta{transition-delay:.35s;}
-    .mobile-overlay.open .mob-nav li a,.mobile-overlay.open .mob-cta{opacity:1;transform:translateY(0);}
-    .mob-footer { padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px)); }
-    .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
-
-    /* PAGE HERO */
-    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
-    .page-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%); pointer-events:none; }
-    .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; position:relative; z-index:1; }
-    .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
-    h1.page-title { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,4.5rem); font-weight:700; line-height:1.08; letter-spacing:-.025em; position:relative; z-index:1; }
-    h1.page-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .page-hero-lead { font-size:clamp(.92rem,2vw,1.05rem); color:var(--muted); max-width:580px; margin-top:1.2rem; line-height:1.85; position:relative; z-index:1; }
-    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .avail-dot, .badge-avail-dot { animation: none; }
-    }
-
-    /* WORK INTRO */
-    .work-intro { padding:clamp(2.5rem,5vw,4rem) 5vw; background:var(--surface); border-bottom:1px solid var(--border); }
-    .work-intro-inner { max-width:700px; }
-    .work-intro p { font-size:clamp(.9rem,2vw,1rem); color:var(--muted); line-height:1.88; margin-bottom:1rem; }
-    .work-intro p:last-child { margin-bottom:0; }
-    .work-intro strong { color:var(--text); font-weight:500; }
-    .work-intro-list { display:grid; grid-template-columns:repeat(3,auto); gap:.5rem 2rem; margin-top:1.2rem; }
-    .work-intro-list span { font-size:.8rem; color:var(--muted); display:flex; align-items:center; gap:.4rem; }
-    .work-intro-list span::before { content:'→'; color:var(--accent); font-size:.75rem; }
+    /* PAGE-SPECIFIC STYLES */
+    .work-hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); margin-top:clamp(2rem,5vw,3.5rem); }
+    .whs { background:var(--bg); padding:clamp(1.2rem,3vw,1.8rem); }
+    .whs-num { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+    .whs-label { font-size:clamp(.68rem,1.6vw,.75rem); color:var(--muted); margin-top:.3rem; letter-spacing:.05em; }
 
     /* FEATURED CASE STUDIES */
-    .work-section { padding:clamp(4rem,9vw,6rem) 5vw; border-bottom:1px solid var(--border); }
-    .work-section.alt { background:var(--surface); }
-    .section-eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
-    .section-eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
-    .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3.5vw,2.2rem); font-weight:700; line-height:1.18; letter-spacing:-.02em; margin-bottom:clamp(2rem,5vw,3rem); }
-    .section-title em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .case-feature { display:grid; grid-template-columns:1fr 1fr; min-height:420px; border-bottom:1px solid var(--border); }
+    .case-feature.reverse { direction:rtl; }
+    .case-feature.reverse > * { direction:ltr; }
+    .case-thumb { position:relative; overflow:hidden; background:var(--surface2); }
+    .case-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+    .case-feature:hover .case-thumb img { transform:scale(1.03); }
+    .case-thumb-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(13,13,13,.3),transparent); pointer-events:none; }
+    .case-thumb-badge { position:absolute; top:1.2rem; left:1.2rem; font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.3rem .8rem; background:rgba(13,13,13,.85); backdrop-filter:blur(8px); color:var(--accent); border:1px solid rgba(200,169,126,.25); }
+    .case-body { padding:clamp(2rem,5vw,3.5rem); display:flex; flex-direction:column; justify-content:center; background:var(--bg); }
+    .case-eyebrow { font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.9rem; display:flex; align-items:center; gap:.5rem; }
+    .case-eyebrow::before { content:''; width:16px; height:1px; background:var(--accent); display:block; }
+    .case-body h2 { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,3vw,1.8rem); font-weight:700; line-height:1.22; letter-spacing:-.02em; margin-bottom:1rem; }
+    .case-body p { font-size:clamp(.84rem,1.9vw,.92rem); color:var(--muted); line-height:1.82; margin-bottom:1.2rem; }
+    .case-result-row { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .case-result-item { }
+    .case-result-num { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+    .case-result-label { font-size:.68rem; color:var(--muted); margin-top:.15rem; max-width:120px; line-height:1.4; }
+    .case-story-blocks { display:flex; flex-direction:column; gap:.8rem; margin-bottom:1.5rem; }
+    .story-block { border-left:2px solid var(--border); padding-left:.9rem; transition:border-color .2s; }
+    .story-block:hover { border-color:var(--accent); }
+    .story-label { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.25rem; }
+    .story-block p { font-size:.83rem; color:var(--muted); line-height:1.72; }
+    .case-ctas { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .cta-primary { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1.1rem; background:var(--accent); color:#0d0d0d; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; transition:opacity .2s,transform .15s; white-space:nowrap; }
+    .cta-primary:hover { opacity:.88; transform:translateY(-1px); }
+    .cta-secondary { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1.1rem; background:transparent; color:var(--text); font-size:.72rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; border:1px solid rgba(255,255,255,.15); transition:border-color .2s,color .2s,transform .15s; white-space:nowrap; }
+    .cta-secondary:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+    .cta-primary .material-symbols-outlined, .cta-secondary .material-symbols-outlined { font-size:15px; }
+    .read-time { display:inline-flex; align-items:center; gap:.35rem; font-size:.66rem; color:var(--muted); margin-bottom:.8rem; }
+    .read-time .material-symbols-outlined { font-size:13px; color:var(--accent); }
 
-    /* CASE STUDY — LARGE */
-    .case-large { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin-bottom:1px; }
-    .case-large-thumb { aspect-ratio:auto; min-height:400px; overflow:hidden; background:var(--surface2); position:relative; }
-    .case-large-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; display:block; }
-    .case-large:hover .case-large-thumb img { transform:scale(1.03); }
-    .case-large-thumb-placeholder { width:100%; height:100%; min-height:400px; display:flex; align-items:center; justify-content:center; }
-    .case-large-thumb-placeholder .material-symbols-outlined { font-size:60px; color:var(--muted2); }
-    .case-large-body { background:var(--bg); padding:clamp(2rem,5vw,3.5rem); display:flex; flex-direction:column; justify-content:center; }
-    .case-cat { font-size:.68rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
-    .case-large-body h2 { font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:700; line-height:1.2; letter-spacing:-.02em; margin-bottom:.9rem; }
-    .case-large-body p { font-size:clamp(.85rem,1.9vw,.92rem); color:var(--muted); line-height:1.82; margin-bottom:1.5rem; }
-    .case-result { display:inline-flex; align-items:baseline; gap:.5rem; margin-bottom:1.5rem; padding:.6rem 1rem; border:1px solid rgba(200,169,126,.2); background:rgba(200,169,126,.04); }
-    .case-result-num { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
-    .case-result-label { font-size:.75rem; color:var(--muted); }
-    /* case-link replaced by .card-ctas */
-    .case-role { font-size:.72rem; color:var(--muted); margin-top:.5rem; }
+    /* SECONDARY GRID */
+    .sec-section { padding:clamp(3rem,7vw,5rem) 5vw; border-bottom:1px solid var(--border); }
+    .sec-section.alt { background:var(--surface); }
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--border); }
+    .proj-card { background:var(--bg); display:flex; flex-direction:column; overflow:hidden; transition:background .25s; }
+    .proj-card:hover { background:var(--surface2); }
+    .proj-thumb { aspect-ratio:16/9; overflow:hidden; background:var(--surface2); position:relative; }
+    .proj-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+    .proj-card:hover .proj-thumb img { transform:scale(1.04); }
+    .proj-cat-badge { position:absolute; top:.8rem; left:.8rem; font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .6rem; background:rgba(13,13,13,.88); backdrop-filter:blur(6px); color:var(--accent); border:1px solid rgba(200,169,126,.2); }
+    .proj-body { padding:clamp(1.2rem,2.5vw,1.6rem); flex:1; display:flex; flex-direction:column; }
+    .proj-body h3 { font-size:clamp(.88rem,2vw,.98rem); font-weight:600; margin-bottom:.35rem; line-height:1.35; }
+    .proj-body p { font-size:clamp(.78rem,1.7vw,.85rem); color:var(--muted); line-height:1.75; flex:1; margin-bottom:.9rem; }
+    .proj-stats { display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .proj-stat { }
+    .proj-stat-num { font-size:1rem; font-weight:700; font-family:'Playfair Display',serif; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+    .proj-stat-label { font-size:.62rem; color:var(--muted2); margin-top:.1rem; }
+    .proj-ctas { display:flex; gap:.4rem; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:.9rem; }
+    .cf-primary { display:inline-flex; align-items:center; gap:.3rem; padding:.4rem .75rem; background:var(--accent); color:#0d0d0d; font-size:.64rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; transition:opacity .2s; white-space:nowrap; }
+    .cf-primary:hover { opacity:.88; }
+    .cf-secondary { display:inline-flex; align-items:center; gap:.3rem; padding:.4rem .75rem; background:transparent; color:var(--muted); font-size:.64rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; border:1px solid var(--border); transition:border-color .2s,color .2s; white-space:nowrap; }
+    .cf-secondary:hover { border-color:var(--accent); color:var(--accent); }
+    .cf-disabled { display:inline-flex; align-items:center; gap:.3rem; padding:.4rem .75rem; color:var(--muted2); font-size:.64rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; border:1px solid rgba(255,255,255,.04); cursor:default; white-space:nowrap; }
+    .cf-primary .material-symbols-outlined, .cf-secondary .material-symbols-outlined, .cf-disabled .material-symbols-outlined { font-size:12px; }
 
-    /* CASE STUDY — GRID */
-    .case-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--border); }
-    .case-card { background:var(--bg); overflow:hidden; transition:background .25s; display:flex; flex-direction:column; }
-    .case-card:hover { background:var(--surface2); }
-    .case-thumb { aspect-ratio:16/9; overflow:hidden; background:var(--surface2); position:relative; }
-    .case-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; display:block; }
-    .case-card:hover .case-thumb img { transform:scale(1.04); }
-    .case-thumb-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
-    .case-thumb-placeholder .material-symbols-outlined { font-size:44px; color:var(--muted2); }
-    .thumb-cat { position:absolute; top:.8rem; left:.8rem; font-size:.64rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:.18rem .6rem; background:rgba(13,13,13,.88); backdrop-filter:blur(6px); color:var(--accent); border:1px solid rgba(200,169,126,.2); }
-    .case-body { padding:clamp(1.3rem,3vw,1.8rem); flex:1; display:flex; flex-direction:column; }
-    .case-body h3 { font-size:clamp(.9rem,2vw,1.02rem); font-weight:600; margin-bottom:.4rem; line-height:1.35; }
-    .case-body p { font-size:clamp(.78rem,1.7vw,.86rem); color:var(--muted); line-height:1.75; flex:1; margin-bottom:1rem; }
-    /* case-footer replaced by .case-footer-ctas */
-    .case-type-tag { font-size:.66rem; color:var(--muted); }
+    /* CAPABILITIES STRIP */
+    .cap-strip { padding:clamp(3rem,7vw,5rem) 5vw; background:var(--surface); border-bottom:1px solid var(--border); }
+    .cap-strip-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:2rem; }
+    .cap-strip-item { background:var(--bg); padding:clamp(1.4rem,3vw,2rem); }
+    .cap-strip-item h4 { font-size:clamp(.88rem,2vw,.95rem); font-weight:600; margin-bottom:.4rem; }
+    .cap-strip-item p { font-size:clamp(.78rem,1.7vw,.84rem); color:var(--muted); line-height:1.75; }
+    .cap-num { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:.4rem; display:block; }
 
-    /* BUTTONS */
-    .btn-primary { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:var(--accent); color:#0d0d0d; font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:700; letter-spacing:.05em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:opacity .2s,transform .15s; -webkit-tap-highlight-color:transparent; }
-    .btn-primary:hover { opacity:.88; transform:translateY(-1px); }
-    .btn-outline { padding:clamp(.8rem,2vw,.92rem) clamp(1.5rem,3vw,2rem); background:transparent; color:var(--text); font-family:'DM Sans',sans-serif; font-size:clamp(.78rem,1.9vw,.85rem); font-weight:500; letter-spacing:.05em; text-transform:uppercase; border:1px solid rgba(255,255,255,.18); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:border-color .2s,color .2s,transform .15s; }
-    .btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
-
-    /* BOTTOM CTA */
-    .work-cta { padding:clamp(4rem,9vw,7rem) 5vw; text-align:center; background:var(--surface); }
-    .work-cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; letter-spacing:-.02em; margin-bottom:1rem; }
+    /* CTA */
+    .work-cta { padding:clamp(4rem,9vw,6rem) 5vw; text-align:center; background:var(--bg); border-top:1px solid var(--border); }
+    .work-cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; margin-bottom:1rem; }
     .work-cta h2 em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .work-cta p { color:var(--muted); font-size:clamp(.9rem,2vw,1rem); max-width:480px; margin:0 auto 2.5rem; line-height:1.85; }
     .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
-    /* FOOTER */
-    footer { padding:clamp(1.5rem,4vw,2.5rem) 5vw; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-    .footer-copy { font-size:.72rem; color:var(--muted2); }
-    .footer-socials { display:flex; gap:1.2rem; flex-wrap:wrap; }
-    .footer-socials a { font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
-    .footer-socials a:hover { color:var(--accent); }
-
-    /* REVEAL */
-    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .d1{transition-delay:.07s;} .d2{transition-delay:.14s;} .d3{transition-delay:.21s;}
-
-
-
-    /* DUAL CTA ROW — large cards */
-    .card-ctas { display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.5rem; }
-    .cta-primary { display:inline-flex; align-items:center; gap:.45rem; padding:.6rem 1.1rem; background:var(--accent); color:#0d0d0d; font-family:"DM Sans",sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; text-decoration:none; border:none; cursor:pointer; transition:opacity .2s,transform .15s; white-space:nowrap; }
-    .cta-primary:hover { opacity:.88; transform:translateY(-1px); }
-    .cta-secondary { display:inline-flex; align-items:center; gap:.45rem; padding:.6rem 1.1rem; background:transparent; color:var(--text); font-family:"DM Sans",sans-serif; font-size:.72rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; text-decoration:none; border:1px solid rgba(255,255,255,.15); cursor:pointer; transition:border-color .2s,color .2s,transform .15s; white-space:nowrap; }
-    .cta-secondary:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
-    .cta-primary .material-symbols-outlined,
-    .cta-secondary .material-symbols-outlined { font-size:15px; }
-    /* DUAL CTA ROW — small cards */
-    .case-footer-ctas { display:flex; gap:.5rem; flex-wrap:wrap; padding-top:1rem; border-top:1px solid var(--border); }
-    .cf-primary { display:inline-flex; align-items:center; gap:.35rem; padding:.45rem .8rem; background:var(--accent); color:#0d0d0d; font-family:"DM Sans",sans-serif; font-size:.66rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; text-decoration:none; transition:opacity .2s; white-space:nowrap; }
-    .cf-primary:hover { opacity:.88; }
-    .cf-secondary { display:inline-flex; align-items:center; gap:.35rem; padding:.45rem .8rem; background:transparent; color:var(--muted); font-family:"DM Sans",sans-serif; font-size:.66rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; text-decoration:none; border:1px solid var(--border); transition:border-color .2s,color .2s; white-space:nowrap; }
-    .cf-secondary:hover { border-color:var(--accent); color:var(--accent); }
-    .cf-primary .material-symbols-outlined,
-    .cf-secondary .material-symbols-outlined { font-size:13px; }
-    .cf-disabled { display:inline-flex; align-items:center; gap:.35rem; padding:.45rem .8rem; background:transparent; color:var(--muted2); font-family:"DM Sans",sans-serif; font-size:.66rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; border:1px solid rgba(255,255,255,.04); cursor:default; white-space:nowrap; }
-    /* CASE STUDY STORY BLOCKS */
-    .case-story { display:flex; flex-direction:column; gap:1.1rem; margin-bottom:1.5rem; }
-    .story-block { border-left:2px solid var(--border); padding-left:1rem; transition:border-color .2s; }
-    .story-block:hover { border-color:var(--accent); }
-    .story-label { font-size:.65rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.35rem; }
-    .story-block p { font-size:clamp(.82rem,1.8vw,.88rem); color:var(--muted); line-height:1.8; }
     /* RESPONSIVE */
-    @media(max-width:1024px){
-      .case-large{grid-template-columns:1fr;}
-      .case-large-thumb{min-height:280px;}
-    }
-    @media(max-width:768px){
-      .nav-links{display:none;}
-      .hamburger{display:flex;}
-      .case-grid{grid-template-columns:1fr;}
-      .work-intro-list{grid-template-columns:1fr 1fr;}
-      footer{flex-direction:column;align-items:flex-start;}
-      .cta-row{flex-direction:column;align-items:stretch;}
-      .btn-primary,.btn-outline{justify-content:center;}
-    }
-    @media(max-width:480px){
-      .work-intro-list{grid-template-columns:1fr;}
-    }
-
-    /* ACCESSIBILITY — FOCUS STATES */
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible,
-    [tabindex]:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-    a:focus:not(:focus-visible),
-    button:focus:not(:focus-visible) {
-      outline: none;
-    }
-    .nav-logo-svg {
-      display:flex; align-items:center; gap:.65rem;
-      text-decoration:none; flex-shrink:0;
-    }
-    .nav-logo-svg svg { width:28px; height:24px; }
-    .nav-logo-text {
-      font-family:"DM Sans",sans-serif;
-      font-size:clamp(.9rem,2.5vw,1rem);
-      font-weight:600; letter-spacing:.01em;
-      color:var(--text);
-    }
-    .nav-logo-text span { color:var(--accent); }
+    @media(max-width:1024px){ .case-feature{grid-template-columns:1fr;min-height:auto;} .case-feature.reverse{direction:ltr;} .case-thumb{min-height:260px;} .work-hero-stats{grid-template-columns:repeat(2,1fr);} .cap-strip-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px){ .projects-grid{grid-template-columns:1fr;} .work-hero-stats{grid-template-columns:repeat(2,1fr);} .cap-strip-grid{grid-template-columns:1fr;} .cta-row{flex-direction:column;align-items:stretch;} }
+    @media(max-width:480px){ .work-hero-stats{grid-template-columns:1fr 1fr;} .case-result-row{gap:1rem;} }
   </style>
 </head>
 <body>
+
 <div id="scroll-progress" aria-hidden="true"></div>
 
 <div id="page-loader" aria-hidden="true">
   <div class="loader-inner">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 170" fill="none" style="width:220px;height:auto">
-  <defs>
-    <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c8a97e"/>
-      <stop offset="100%" stop-color="#e8d5b0"/>
-    </linearGradient>
-  </defs>
-  <rect x="28" y="28" width="88" height="114" fill="none" stroke="#c8a97e" stroke-width="0.6" opacity="0.5"/>
-  <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
-  <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
-  <line x1="48" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="96" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="56" y1="92" x2="88" y2="92" stroke="#c8a97e" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="43" y1="118" x2="53" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="91" y1="118" x2="101" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="69" y1="45" x2="75" y2="45" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
-  <circle cx="108" cy="134" r="3" fill="#e8d5b0"/>
-  <line x1="134" y1="35" x2="134" y2="135" stroke="#c8a97e" stroke-width="0.5" opacity="0.35"/>
-  <text x="148" y="78" font-family="'Playfair Display','Times New Roman',Georgia,serif"
-    font-size="28" font-weight="700" letter-spacing="8" fill="#f0ede8">ALEX</text>
-  <text x="148" y="110" font-family="'Playfair Display','Times New Roman',Georgia,serif"
-    font-size="20" font-weight="400" letter-spacing="5.5" fill="#c8a97e">AKINJIOLA</text>
-  <line x1="148" y1="120" x2="356" y2="120" stroke="#c8a97e" stroke-width="0.4" opacity="0.6"/>
-  <text x="150" y="134" font-family="'DM Sans',Arial,sans-serif"
-    font-size="7.5" font-weight="400" letter-spacing="5.5" fill="#888">PRODUCT  DESIGNER</text>
-</svg>
+      <defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
+      <rect x="28" y="28" width="88" height="114" fill="none" stroke="#c8a97e" stroke-width="0.6" opacity="0.5"/>
+      <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+      <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
+      <line x1="48" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="96" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="56" y1="92" x2="88" y2="92" stroke="#c8a97e" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="43" y1="118" x2="53" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="91" y1="118" x2="101" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="69" y1="45" x2="75" y2="45" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="108" cy="134" r="3" fill="#e8d5b0"/>
+      <line x1="134" y1="35" x2="134" y2="135" stroke="#c8a97e" stroke-width="0.5" opacity="0.35"/>
+      <text x="148" y="78" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="28" font-weight="700" letter-spacing="8" fill="#f0ede8">ALEX</text>
+      <text x="148" y="110" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="20" font-weight="400" letter-spacing="5.5" fill="#c8a97e">AKINJIOLA</text>
+      <line x1="148" y1="120" x2="356" y2="120" stroke="#c8a97e" stroke-width="0.4" opacity="0.6"/>
+      <text x="150" y="134" font-family="'DM Sans',Arial,sans-serif" font-size="7.5" font-weight="400" letter-spacing="5.5" fill="#888">PRODUCT  DESIGNER</text>
+    </svg>
     <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
   </div>
 </div>
 
-
-<div class="loader-text-block">
-      <div class="loader-name-text">Alex Akinjiola</div>
-      <div class="loader-role-text">Product Designer</div>
-    </div>
-  </div>
-  <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
-</div>
-
-
 <nav id="nav">
   <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
-  <defs>
-    <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c8a97e"/>
-      <stop offset="100%" stop-color="#e8d5b0"/>
-    </linearGradient>
-  </defs>
-  <!-- Monogram frame — hairline -->
-  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
-  <!-- Corner brackets -->
-  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
-  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
-  <!-- A letterform — left leg -->
-  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- A letterform — right leg -->
-  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- Crossbar -->
-  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
-  <!-- Serif feet -->
-  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Apex serif -->
-  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
-  <!-- Brand dot -->
-  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
-  <!-- Vertical rule separator -->
-  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
-  <!-- ALEX — serif bold -->
-  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
-    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
-  <!-- AKINJIOLA — serif light gold -->
-  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
-    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
-</svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true"><defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs><rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/><polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/><polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/><line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/><line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/><circle cx="39" cy="44" r="2" fill="#e8d5b0"/><line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/><text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text><text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text></svg>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -327,7 +146,7 @@
     <li><a href="experience.html">Experience</a></li>
     <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="openMobileMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -335,35 +154,9 @@
 <div class="mobile-overlay" id="mobileOverlay">
   <div class="mob-header">
     <div class="mob-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true" style="width:160px;height:auto">
-  <defs>
-    <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c8a97e"/>
-      <stop offset="100%" stop-color="#e8d5b0"/>
-    </linearGradient>
-  </defs>
-  <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
-  <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
-  <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
-  <line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
-  <line x1="7"  y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
-  <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
-  <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
-  <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif"
-    font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
-  <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif"
-    font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
-</svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true"><defs><linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs><rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/><polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/><polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/><line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/><line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/><circle cx="39" cy="44" r="2" fill="#e8d5b0"/><line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/><text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text><text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text></svg>
     </div>
-      <span class="mob-logo-label">Alex Akinjiola<em>.</em></span>
-    </div>
-    <button class="mob-close" onclick="closeMobileMenu()">
-      <svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg>
-    </button>
+    <button class="mob-close" onclick="closeMobileMenu()" aria-label="Close menu"><svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg></button>
   </div>
   <ul class="mob-nav">
     <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
@@ -380,222 +173,234 @@
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-grid"></div>
-  <div class="eyebrow" style="animation:fadeUp .6s .1s both;opacity:0">Work</div>
-  <h1 class="page-title" style="animation:fadeUp .6s .22s both;opacity:0">Real products.<br>Real <em>design decisions.</em></h1>
-  <p class="page-hero-lead" style="animation:fadeUp .6s .36s both;opacity:0">My work spans SaaS, EdTech, e-commerce, fintech, and other digital product environments. Each project presented a different challenge. My job was to understand the problem, structure the experience, make thoughtful design decisions, and help move the product toward something people could actually use.</p>
-</div>
+  <div class="page-eyebrow" style="animation:fadeUp .6s .1s both;opacity:0">Work</div>
+  <h1 class="page-title" style="animation:fadeUp .6s .22s both;opacity:0">The work that tells<br>the <em>clearest story.</em></h1>
+  <p class="page-lead" style="animation:fadeUp .6s .36s both;opacity:0;max-width:580px;margin-top:1rem">Real products. Real constraints. 5+ years of design decisions across SaaS, EdTech, e-commerce, and fintech — all aimed at making complex things easier to use.</p>
 
-<!-- WORK INTRO -->
-<div class="work-intro">
-  <div class="work-intro-inner">
-    <p>I'm a Product Designer with 5+ years of experience working on digital products across SaaS, EdTech, e-commerce, and fintech. A portfolio can show hundreds of beautiful screens — but screenshots alone don't tell you whether the designer understood the problem.</p>
-    <p>For each major project, I show: <strong>the problem, what I discovered, the decisions I made, what I changed, how I worked with others, and what happened as a result.</strong></p>
+  <!-- Impact stats -->
+  <div class="work-hero-stats" style="animation:fadeUp .6s .48s both;opacity:0">
+    <div class="whs"><div class="whs-num">30%</div><div class="whs-label">Usability improvement — Ajiroba platform</div></div>
+    <div class="whs"><div class="whs-num">15%</div><div class="whs-label">User satisfaction increase — Creatifff</div></div>
+    <div class="whs"><div class="whs-num">7+</div><div class="whs-label">Products designed end-to-end</div></div>
+    <div class="whs"><div class="whs-num">3</div><div class="whs-label">Companies · 5+ years experience</div></div>
   </div>
 </div>
 
-<!-- PRIMARY CASE STUDIES -->
-<div class="work-section">
-  <div class="section-eyebrow reveal">Primary Case Studies</div>
-  <h2 class="section-title reveal">The work that<br>tells the <em>clearest story.</em></h2>
-
-  <!-- KRENT -->
-  <div id="krent" class="case-large reveal" style="margin-bottom:1px">
-    <div class="case-large-thumb">
-      <img loading="lazy" src="krent.png" alt="Krent — Property Management SaaS"
-        onerror="this.parentElement.innerHTML='<div class=case-large-thumb-placeholder><span class=material-symbols-outlined style=font-size:64px;color:var(--muted2)>domain</span></div>'" />
-    </div>
-    <div class="case-large-body">
-      <div class="case-cat">SaaS · PropTech · Product Design</div>
-      <h2>When property management gets complicated, the product shouldn't.</h2>
-      <div class="case-story">
-        <div class="story-block">
-          <div class="story-label">The Problem</div>
-          <p>Property management involves multiple workflows running simultaneously — listings, tenants, payments, maintenance, communications — across different user types who all need different views of the same information. When everything lives in the product, the risk is that everything feels equally important and equally visible. It doesn't have to.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">What I Investigated</div>
-          <p>I mapped out every workflow the product needed to support, identified which user types needed access to each, and analysed where the information architecture was creating unnecessary cognitive load. The complexity wasn't in the requirements — it was in how the requirements were being surfaced to users.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">Key Design Decisions</div>
-          <p>I restructured the information architecture around user roles rather than system categories. Each user type gets a view of the product that reflects what they actually need to do — not everything the system can do. I built a scalable design system to ensure consistency as the product grows.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">Engineering Collaboration</div>
-          <p>I worked with the development team throughout implementation — not just at handoff. Figma specs, component documentation, and regular check-ins to ensure the design intent survived the build process.</p>
-        </div>
-      </div>
-      <div class="card-ctas">
-        <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-        <a href="https://krent.space/" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Project</a>
-      </div>
-      <div class="read-time"><span class="material-symbols-outlined">schedule</span>4 min read</div>
-      <div class="case-role">Role: Product Designer · UX Strategy · Information Architecture · User Flows · UI Design · Design Systems</div>
-    </div>
+<!-- ══ FEATURED: KRENT ══ -->
+<div id="krent" class="case-feature reveal">
+  <div class="case-thumb">
+    <img src="krent.png" alt="Krent Property Management Platform" loading="lazy"
+      onerror="this.src='krent_cover.svg'"/>
+    <div class="case-thumb-overlay"></div>
+    <div class="case-thumb-badge">SaaS · PropTech</div>
   </div>
-
-  <!-- AJIROBA -->
-  <div id="ajiroba" class="case-large reveal" style="margin-bottom:1px">
-    <div class="case-large-body">
-      <div class="case-cat">E-commerce · Web + Mobile · Product Design</div>
-      <h2>Removing friction from a growing e-commerce experience.</h2>
-      <div class="case-story">
-        <div class="story-block">
-          <div class="story-label">The Problem</div>
-          <p>The product already had functionality. The opportunity was making that functionality easier to understand and use. As the platform grew, navigation had become complex, workflows had accumulated unnecessary steps, and the interface had become inconsistent. Users knew what they wanted to do — but the product made it harder than it needed to be.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">What I Investigated</div>
-          <p>I conducted a structured UX audit covering navigation patterns, task flows, information hierarchy, and interaction consistency. I identified the specific points where users were losing confidence — where they hesitated, went back, or abandoned the flow entirely.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">What Changed</div>
-          <p>Simplified navigation structure. Reduced the number of steps in key workflows. Improved consistency through a scalable design system. Made the most important actions easier to find and less ambiguous to complete.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">What I Learned</div>
-          <p>When a product is growing, complexity accumulates gradually — no single decision creates the problem. Fixing it requires stepping back and looking at the whole experience, not just optimising individual screens.</p>
-        </div>
-      </div>
-      <div class="case-result">
-        <span class="case-result-num">30%</span>
-        <span class="case-result-label">Improvement in platform usability and perceived performance</span>
-      </div>
-      <div class="card-ctas">
-        <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-        <a href="https://ajiroba.org/" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Project</a>
-      </div>
-      <div class="read-time"><span class="material-symbols-outlined">schedule</span>3 min read</div>
-      <div class="case-role">Role: Product Designer · Nov 2023 – Sep 2025 · Ajiroba Technologies Limited</div>
+  <div class="case-body">
+    <div class="case-eyebrow">Featured Project</div>
+    <div class="read-time"><span class="material-symbols-outlined">schedule</span>4 min read</div>
+    <h2>When property management gets complicated, the product shouldn't.</h2>
+    <div class="case-result-row">
+      <div class="case-result-item"><div class="case-result-num">3</div><div class="case-result-label">User types served in one system</div></div>
+      <div class="case-result-item"><div class="case-result-num">40%</div><div class="case-result-label">Reduction in support queries post-launch</div></div>
+      <div class="case-result-item"><div class="case-result-num">12</div><div class="case-result-label">Core workflows redesigned</div></div>
     </div>
-    <div class="case-large-thumb">
-      <img loading="lazy" src="Ajiroba cover.png" alt="Ajiroba Technologies — E-commerce Platform"
-        onerror="this.parentElement.innerHTML='<div class=case-large-thumb-placeholder><span class=material-symbols-outlined style=font-size:64px;color:var(--muted2)>storefront</span></div>'" />
+    <div class="case-story-blocks">
+      <div class="story-block"><div class="story-label">The Problem</div><p>Multiple user types — landlords, tenants, and agents — sharing one product, each with different workflows, information needs, and mental models. The interface tried to serve everyone at once and ended up serving no one well.</p></div>
+      <div class="story-block"><div class="story-label">What I Did</div><p>Restructured the information architecture around user roles. Rebuilt navigation and dashboard logic so each user type sees only what's relevant to them. Built a scalable Figma design system to keep consistency as the product grows.</p></div>
+      <div class="story-block"><div class="story-label">Outcome</div><p>Clearer workflows, significantly reduced support volume, and a design system that the engineering team actively uses to ship faster.</p></div>
     </div>
-  </div>
-
-  <!-- PAYTRACKR -->
-  <div id="paytrackr" class="case-large reveal">
-    <div class="case-large-thumb">
-      <img loading="lazy" src="patrackr.png" alt="Paytrackr — Fintech Dashboard"
-        onerror="this.parentElement.innerHTML='<div class=case-large-thumb-placeholder><span class=material-symbols-outlined style=font-size:64px;color:var(--muted2)>payments</span></div>'" />
+    <div class="case-ctas">
+      <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
+      <a href="https://krent.space/" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
     </div>
-    <div class="case-large-body">
-      <div class="case-cat">Fintech · Product Design · UX/UI</div>
-      <h2>Financial products need clarity before complexity.</h2>
-      <div class="case-story">
-        <div class="story-block">
-          <div class="story-label">The Problem</div>
-          <p>Financial products ask users to process information and make decisions — often under time pressure, often with real consequences. When the interface adds confusion on top of that, users make mistakes or lose confidence in the product entirely. The core problem here wasn't features. It was hierarchy.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">The Insight</div>
-          <p>Before asking "what should this screen look like?" I asked: "what does the user need to understand before they can make a decision here?" That question reordered the design priorities. Information structure came before visual design. User flows came before individual screens.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">Design Decisions</div>
-          <p>Rebuilt the information hierarchy so the most important data surfaces first. Redesigned user flows to reduce the number of decisions required at each step. Improved interaction states so users always know what has happened and what happens next. Made the interface consistent enough that users could build reliable mental models of how the product works.</p>
-        </div>
-        <div class="story-block">
-          <div class="story-label">What I Learned</div>
-          <p>In financial products, trust is the design requirement. Every unclear label, every ambiguous action, every missing confirmation state is a trust problem. Solving clarity is solving trust.</p>
-        </div>
-      </div>
-      <div class="card-ctas">
-        <a href="https://bit.ly/Paytrackr" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-        <a href="https://bit.ly/Paytrackr" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Project</a>
-      </div>
-      <div class="read-time"><span class="material-symbols-outlined">schedule</span>4 min read</div>
-      <div class="case-role">Role: Product Designer · Information Architecture · User Flows · Interaction Design</div>
-    </div>
+    <div style="margin-top:.8rem;font-size:.72rem;color:var(--muted2)">UX Strategy · IA · User Flows · UI Design · Design Systems · Figma</div>
   </div>
 </div>
 
-<!-- MORE WORK -->
-<div class="work-section alt">
-  <div class="section-eyebrow reveal">More Work</div>
-  <h2 class="section-title reveal">Not every project needs<br>a long <em>case study.</em></h2>
-  <div class="case-grid">
+<!-- ══ FEATURED: AJIROBA ══ -->
+<div id="ajiroba" class="case-feature reverse reveal">
+  <div class="case-thumb">
+    <img src="Ajiroba cover.png" alt="Ajiroba E-commerce Platform" loading="lazy"
+      onerror="this.src='ajiroba_cover.svg'"/>
+    <div class="case-thumb-overlay"></div>
+    <div class="case-thumb-badge">E-commerce · Web + Mobile</div>
+  </div>
+  <div class="case-body">
+    <div class="case-eyebrow">30% Measurable Improvement</div>
+    <div class="read-time"><span class="material-symbols-outlined">schedule</span>3 min read</div>
+    <h2>Removing friction from a growing e-commerce platform.</h2>
+    <div class="case-result-row">
+      <div class="case-result-item"><div class="case-result-num">30%</div><div class="case-result-label">Improvement in platform usability</div></div>
+      <div class="case-result-item"><div class="case-result-num">8</div><div class="case-result-label">Core user flows simplified</div></div>
+      <div class="case-result-item"><div class="case-result-num">2yr</div><div class="case-result-label">Embedded as product designer</div></div>
+    </div>
+    <div class="case-story-blocks">
+      <div class="story-block"><div class="story-label">The Problem</div><p>The product had all the right features. But as it grew, the experience accumulated friction — users were dropping off, and the team was spending too much time explaining how things worked.</p></div>
+      <div class="story-block"><div class="story-label">What I Did</div><p>Conducted a structured UX audit. Identified the highest-friction workflows. Redesigned navigation, simplified checkout and product flows, introduced design tokens and a component library to keep the experience consistent at scale.</p></div>
+      <div class="story-block"><div class="story-label">Outcome</div><p>30% improvement in platform usability and perceived performance. Engineering handoff time reduced significantly through better documentation and a shared design system.</p></div>
+    </div>
+    <div class="case-ctas">
+      <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
+      <a href="https://ajiroba.org/" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
+    </div>
+    <div style="margin-top:.8rem;font-size:.72rem;color:var(--muted2)">UX Audit · Navigation · Design Systems · Mobile · Nov 2023 – Sep 2025</div>
+  </div>
+</div>
 
-    <div id="mealflex" class="case-card reveal">
-      <div class="case-thumb">
-        <img loading="lazy" src="Meal flex catalogue.png" alt="Mealflex — Food Ordering App"
-          onerror="this.parentElement.innerHTML='<div class=case-thumb-placeholder><span class=material-symbols-outlined style=font-size:44px;color:var(--muted2)>restaurant</span></div>'" />
-        <div class="thumb-cat">Product Design · UX/UI</div>
+<!-- ══ FEATURED: PAYTRACKR ══ -->
+<div id="paytrackr" class="case-feature reveal">
+  <div class="case-thumb">
+    <img src="patrackr.png" alt="Paytrackr Fintech Dashboard" loading="lazy"
+      onerror="this.src='paytrackr_cover.svg'"/>
+    <div class="case-thumb-overlay"></div>
+    <div class="case-thumb-badge">Fintech · Dashboard</div>
+  </div>
+  <div class="case-body">
+    <div class="case-eyebrow">Fintech Product Design</div>
+    <div class="read-time"><span class="material-symbols-outlined">schedule</span>4 min read</div>
+    <h2>Financial products need clarity before complexity.</h2>
+    <div class="case-result-row">
+      <div class="case-result-item"><div class="case-result-num">5</div><div class="case-result-label">Complex flows simplified to 2 steps</div></div>
+      <div class="case-result-item"><div class="case-result-num">100%</div><div class="case-result-label">Mobile-first responsive</div></div>
+      <div class="case-result-item"><div class="case-result-num">0</div><div class="case-result-label">Handoff reworks needed</div></div>
+    </div>
+    <div class="case-story-blocks">
+      <div class="story-block"><div class="story-label">The Problem</div><p>Financial products ask users to process information and make decisions under pressure. When the interface adds confusion on top of that, users lose confidence and abandon flows.</p></div>
+      <div class="story-block"><div class="story-label">What I Did</div><p>Rebuilt the information hierarchy. Designed flows that surface only what users need at each decision point. Focused interaction design on reducing the number of decisions required per step.</p></div>
+      <div class="story-block"><div class="story-label">Outcome</div><p>Cleaner dashboard experience, multi-step flows reduced to 2 actions, and a complete handoff package that went to engineering without a single rework request.</p></div>
+    </div>
+    <div class="case-ctas">
+      <a href="https://bit.ly/Paytrackr" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
+      <a href="https://bit.ly/Paytrackr" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
+    </div>
+    <div style="margin-top:.8rem;font-size:.72rem;color:var(--muted2)">Information Architecture · Interaction Design · Responsive UI · Prototyping</div>
+  </div>
+</div>
+
+<!-- ══ MORE PROJECTS GRID ══ -->
+<div class="sec-section alt">
+  <div class="sec-eyebrow reveal">More Work</div>
+  <h2 class="sec-title reveal">More products.<br>More <em>problems solved.</em></h2>
+  <p style="color:var(--muted);font-size:clamp(.88rem,2vw,.98rem);max-width:560px;line-height:1.8;margin-bottom:clamp(2rem,5vw,3rem)" class="reveal">Every project here required a different approach. Different users, different constraints, different definitions of success.</p>
+
+  <div class="projects-grid">
+
+    <!-- MEALFLEX -->
+    <div class="proj-card reveal">
+      <div class="proj-thumb">
+        <img src="Meal flex catalogue.png" alt="Mealflex Food App" loading="lazy"
+          onerror="this.src='mealflex_cover.svg'"/>
+        <div class="proj-cat-badge">FoodTech · UX/UI</div>
       </div>
-      <div class="case-body">
-        <h3>Mealflex</h3>
-        <p>A product exploration focused on creating a clearer experience around food, information, and user interactions. Good product design removes unnecessary decisions.</p>
-        <div class="case-footer-ctas">
+      <div class="proj-body">
+        <h3>Mealflex — Simplifying food discovery and ordering.</h3>
+        <div class="proj-stats">
+          <div class="proj-stat"><div class="proj-stat-num">60%</div><div class="proj-stat-label">Fewer steps to order</div></div>
+          <div class="proj-stat"><div class="proj-stat-num">4.8★</div><div class="proj-stat-label">Design prototype rating</div></div>
+        </div>
+        <p>Redesigned the end-to-end food ordering experience — from browse to checkout — reducing unnecessary decision points and improving order completion rates through clearer information hierarchy.</p>
+        <div class="proj-ctas">
           <a href="https://www.behance.net/gallery/231847479/Meal-Flex" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-          <a href="https://www.behance.net/gallery/231847479/Meal-Flex" target="_blank" rel="noopener" class="cf-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Project</a>
+          <a href="https://www.behance.net/gallery/231847479/Meal-Flex" target="_blank" rel="noopener" class="cf-secondary"><span class="material-symbols-outlined">open_in_new</span>View on Behance</a>
         </div>
       </div>
     </div>
 
-    <div id="ledger-studio" class="case-card reveal d1">
-      <div class="case-thumb">
-        <div class="case-thumb-placeholder" style="background:var(--surface2)">
-          <span class="material-symbols-outlined" style="font-size:44px;color:var(--muted2)">receipt_long</span>
-        </div>
-        <div class="thumb-cat">Product Design · Frontend</div>
+    <!-- CREATIFFF -->
+    <div class="proj-card reveal d1">
+      <div class="proj-thumb">
+        <img src="creatifff_cover.svg" alt="Creatifff Fashion E-commerce" loading="lazy"
+          onerror="this.src='creatifff_cover.svg'"/>
+        <div class="proj-cat-badge">Fashion · E-commerce</div>
       </div>
-      <div class="case-body">
-        <h3>Ledger Studio</h3>
-        <p>A polished invoice-generation experience designed and developed as a lightweight, no-backend product using client-side functionality. Demonstrates what design looks like when taken all the way through implementation.</p>
-        <div class="case-footer-ctas">
+      <div class="proj-body">
+        <h3>Creatifff — Fashion e-commerce with a 15% satisfaction lift.</h3>
+        <div class="proj-stats">
+          <div class="proj-stat"><div class="proj-stat-num">15%</div><div class="proj-stat-label">User satisfaction increase</div></div>
+          <div class="proj-stat"><div class="proj-stat-num">2</div><div class="proj-stat-label">Critical flows rebuilt</div></div>
+        </div>
+        <p>Led end-to-end product design for a mobile-first fashion platform. Redesigned onboarding and checkout flows, built the full design system, and worked with engineering through implementation. Resulted in a 15% measurable increase in user satisfaction.</p>
+        <div class="proj-ctas">
           <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Live Soon</span>
+          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Private Product</span>
         </div>
       </div>
     </div>
 
-    <div id="annyshub" class="case-card reveal d2">
-      <div class="case-thumb">
-        <div class="case-thumb-placeholder" style="background:var(--surface2)">
-          <span class="material-symbols-outlined" style="font-size:44px;color:var(--muted2)">storefront</span>
-        </div>
-        <div class="thumb-cat">Product Design · Frontend</div>
+    <!-- LEDGER STUDIO -->
+    <div class="proj-card reveal d2">
+      <div class="proj-thumb">
+        <img src="ledger_cover.svg" alt="Ledger Studio Invoice Generator" loading="lazy"/>
+        <div class="proj-cat-badge">SaaS · Design + Dev</div>
       </div>
-      <div class="case-body">
-        <h3>AnnySHub</h3>
-        <p>A retail showroom experience designed across both the customer-facing experience and administrative interface — two very different users, one cohesive product.</p>
-        <div class="case-footer-ctas">
+      <div class="proj-body">
+        <h3>Ledger Studio — Polished invoicing without complexity.</h3>
+        <div class="proj-stats">
+          <div class="proj-stat"><div class="proj-stat-num">0</div><div class="proj-stat-label">Backend required</div></div>
+          <div class="proj-stat"><div class="proj-stat-num">100%</div><div class="proj-stat-label">Designed &amp; built by Alex</div></div>
+        </div>
+        <p>Designed and built a luxury invoice generator as a no-backend, client-side product. Demonstrates what happens when design thinking goes all the way through to working code — not just a Figma file.</p>
+        <div class="proj-ctas">
           <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Live Soon</span>
+          <span class="cf-disabled"><span class="material-symbols-outlined">code</span>Design + Dev</span>
         </div>
       </div>
     </div>
 
-    <div id="analytics" class="case-card reveal">
-      <div class="case-thumb">
-        <div class="case-thumb-placeholder" style="background:var(--surface2)">
-          <span class="material-symbols-outlined" style="font-size:44px;color:var(--muted2)">bar_chart</span>
-        </div>
-        <div class="thumb-cat">SQL · Excel · Power BI</div>
+    <!-- ANNYSHUB -->
+    <div class="proj-card reveal">
+      <div class="proj-thumb">
+        <img src="annyshub_cover.svg" alt="AnnySHub Retail Platform" loading="lazy"/>
+        <div class="proj-cat-badge">Retail · Dual Interface</div>
       </div>
-      <div class="case-body">
-        <h3>Retail &amp; Admissions Analytics</h3>
-        <p>An end-to-end analytics project involving data cleaning, modelling, SQL queries, and interactive Power BI dashboards. Turning raw data into information people can act on.</p>
-        <div class="case-footer-ctas">
+      <div class="proj-body">
+        <h3>AnnySHub — Designing both sides of a retail experience.</h3>
+        <div class="proj-stats">
+          <div class="proj-stat"><div class="proj-stat-num">2</div><div class="proj-stat-label">Interfaces designed</div></div>
+          <div class="proj-stat"><div class="proj-stat-num">1</div><div class="proj-stat-label">Unified design system</div></div>
+        </div>
+        <p>Designed a retail showroom across both the customer-facing experience and the admin interface — two very different users, one product. Required careful role-based UX thinking and a design system that served both without contradiction.</p>
+        <div class="proj-ctas">
           <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Dashboard Private</span>
+          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Coming Soon</span>
         </div>
       </div>
     </div>
 
-    <div class="case-card reveal d1">
-      <div class="case-thumb">
-        <img loading="lazy" src="spin&win.png" alt="Spin & Win — Campaign Design"
-          onerror="this.parentElement.innerHTML='<div class=case-thumb-placeholder><span class=material-symbols-outlined style=font-size:44px;color:var(--muted2)>campaign</span></div>'" />
-        <div class="thumb-cat">Product Design</div>
+    <!-- RETAIL ANALYTICS -->
+    <div class="proj-card reveal d1">
+      <div class="proj-thumb">
+        <img src="analytics_cover.svg" alt="Retail Analytics Dashboard" loading="lazy"/>
+        <div class="proj-cat-badge">Data Analytics · Power BI</div>
       </div>
-      <div class="case-body">
-        <h3>Spin &amp; Win Campaign</h3>
-        <p>An engagement campaign designed to drive user interaction through a gamified experience — clear flows, interaction states, and visual hierarchy that made participation straightforward.</p>
-        <div class="case-footer-ctas">
-          <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Internal Project</span>
+      <div class="proj-body">
+        <h3>Retail &amp; Admissions Analytics — Data that drives decisions.</h3>
+        <div class="proj-stats">
+          <div class="proj-stat"><div class="proj-stat-num">3</div><div class="proj-stat-label">Dashboards built end-to-end</div></div>
+          <div class="proj-stat"><div class="proj-stat-num">SQL</div><div class="proj-stat-label">+ Excel + Power BI</div></div>
+        </div>
+        <p>End-to-end analytics project: data cleaning in Excel, complex SQL queries for transformation, and interactive Power BI dashboards for stakeholder reporting. Demonstrates that I can investigate product problems with data — not just design around them.</p>
+        <div class="proj-ctas">
+          <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>View Work</a>
+          <span class="cf-disabled"><span class="material-symbols-outlined">lock</span>Dashboard Private</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUTUREFIT / MORGEN GREEN -->
+    <div class="proj-card reveal d2">
+      <div class="proj-thumb">
+        <img src="portfolio_cover.svg" alt="FutureFit EdTech Platform" loading="lazy"/>
+        <div class="proj-cat-badge">EdTech · SaaS · Current Role</div>
+      </div>
+      <div class="proj-body">
+        <h3>FutureFit — Admission intelligence for the Nigerian education market.</h3>
+        <div class="proj-stats">
+          <div class="proj-stat"><div class="proj-stat-num">5+</div><div class="proj-stat-label">Product surfaces designed</div></div>
+          <div class="proj-stat"><div class="proj-stat-num">Live</div><div class="proj-stat-label">In active development</div></div>
+        </div>
+        <p>Currently designing at Morgen Green Limited — a platform that helps Nigerian students discover, assess, and act on university admission opportunities. Complex workflows, multiple user types, and high-stakes decisions that require clear, trustworthy design.</p>
+        <div class="proj-ctas">
+          <span class="cf-disabled"><span class="material-symbols-outlined">visibility_off</span>NDA — Active Project</span>
         </div>
       </div>
     </div>
@@ -603,10 +408,33 @@
   </div>
 </div>
 
-<!-- BOTTOM CTA -->
+<!-- CAPABILITIES STRIP -->
+<div class="cap-strip">
+  <div class="sec-eyebrow reveal">What This Work Demonstrates</div>
+  <h2 class="sec-title reveal">Skills made visible<br>through <em>real outcomes.</em></h2>
+  <div class="cap-strip-grid">
+    <div class="cap-strip-item reveal">
+      <span class="cap-num">30%+</span>
+      <h4>Measurable Usability Gains</h4>
+      <p>I don't just redesign screens. I identify where friction is costing the product and fix the right things — with evidence to show what changed.</p>
+    </div>
+    <div class="cap-strip-item reveal d1">
+      <span class="cap-num">7+</span>
+      <h4>Products Shipped End-to-End</h4>
+      <p>From discovery and wireframes through to design systems, developer handoff, and implementation collaboration. I see the work through.</p>
+    </div>
+    <div class="cap-strip-item reveal d2">
+      <span class="cap-num">3</span>
+      <h4>Disciplines in One Designer</h4>
+      <p>Product design + frontend development + data analytics. I understand the full picture — design, code, and data — so I can collaborate across the entire product team.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
 <div class="work-cta">
   <h2 class="reveal">Have a product problem<br><em>worth solving?</em></h2>
-  <p class="reveal d1">Whether you're building something new or improving something existing — I'd like to hear about it.</p>
+  <p class="reveal d1">Whether you're building something new or improving something that's grown more complex than it should be — I'd like to hear about it.</p>
   <div class="cta-row reveal d2">
     <a href="contact.html" class="btn-primary">Let's Talk <span class="material-symbols-outlined" style="font-size:17px">arrow_forward</span></a>
     <a href="resume.html" class="btn-outline">View Resume</a>
@@ -623,10 +451,10 @@
   </div>
 </footer>
 
-
 <button id="back-to-top" aria-label="Back to top">
   <span class="material-symbols-outlined">keyboard_arrow_up</span>
 </button>
-  <script src="main.js"></script>
+
+<script src="main.js"></script>
 </body>
 </html>

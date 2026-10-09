@@ -39,8 +39,6 @@
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
     nav.scrolled { padding:.75rem 5vw; }
-    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
-    .nav-logo span { color:var(--accent); }
     .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
     .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
     .nav-links a:hover,.nav-links a.active { color:var(--text); }
@@ -50,8 +48,8 @@
     .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
     .hamburger.open span:nth-child(2){opacity:0;width:0;}
     .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
-    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mobile-overlay { position:fixed; inset:0; visibility:hidden; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; visibility:visible; transform:translateX(0); pointer-events:all; }
     .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
     .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
     .mob-logo span { color:var(--accent); }
@@ -75,7 +73,7 @@
     .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
 
     /* PAGE HERO */
-    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero { padding:clamp(5.5rem,10vw,7rem) 5vw clamp(2.5rem,5vw,4rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
     .page-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%); pointer-events:none; }
     .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; position:relative; z-index:1; }
     .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
@@ -396,7 +394,7 @@
     </div>
   </div>
   <div class="hero-actions" style="animation:fadeUp .6s .48s both;opacity:0">
-    <a href="Akinjiola_Alex _ CV.pdf" download class="btn-primary"><span class="material-symbols-outlined" style="font-size:17px">download</span>Download CV</a>
+    <a href="Alex_Akinjiola_CV.pdf" download class="btn-primary"><span class="material-symbols-outlined" style="font-size:17px">download</span>Download CV</a>
     <a href="contact.html" class="btn-outline">Get in Touch</a>
   </div>
 </div>
@@ -419,8 +417,12 @@
     <div class="sidebar-section">
       <div class="sidebar-label">Downloads</div>
       <div class="sidebar-dl">
-        <a href="Akinjiola_Alex _ CV.pdf" download class="dl-btn"><span class="material-symbols-outlined">download</span>Download CV</a>
-        <a href="Alex Akinjiola's Cover letter.pdf" download class="dl-btn"><span class="material-symbols-outlined">description</span>Cover Letter</a>
+        <a href="Alex_Akinjiola_CV.pdf" download class="dl-btn" onclick="trackDownload('CV')">
+          <span class="material-symbols-outlined">download</span>Download CV
+        </a>
+        <a href="Alex_Akinjiola_Cover_Letter.pdf" download class="dl-btn" onclick="trackDownload('Cover Letter')">
+          <span class="material-symbols-outlined">description</span>Cover Letter
+        </a>
       </div>
     </div>
   </aside>
@@ -471,7 +473,7 @@
         <div class="exp-bullets">
           <div class="exp-bullet">Conducted UX audits examining navigation, workflows, information hierarchy, and interaction patterns</div>
           <div class="exp-bullet">Simplified complex product flows to make the sequence of actions easier to follow</div>
-          <div class="exp-bullet">Built a scalable Figma design system that improved consistency across the product</div>
+          <div class="exp-bullet">Built a Figma design system spanning 60+ components — reduced design inconsistencies by 80% and cut handoff time significantly</div>
           <div class="exp-bullet">Collaborated with developers throughout implementation — not just at handoff</div>
         </div>
         <div class="exp-result"><span class="exp-result-num">30%</span><span class="exp-result-label">Improvement in platform usability and perceived performance</span></div>
@@ -591,7 +593,7 @@
   <p class="reveal d1">I'm currently available for new product design roles — full-time, remote, hybrid, or contract.</p>
   <div class="cta-row reveal d2">
     <a href="contact.html" class="btn-primary">Get in Touch <span class="material-symbols-outlined" style="font-size:17px">arrow_forward</span></a>
-    <a href="Akinjiola_Alex _ CV.pdf" download class="btn-outline"><span class="material-symbols-outlined" style="font-size:17px">download</span>Download CV</a>
+    <a href="Alex_Akinjiola_CV.pdf" download class="btn-outline"><span class="material-symbols-outlined" style="font-size:17px">download</span>Download CV</a>
   </div>
 </div>
 

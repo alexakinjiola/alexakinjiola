@@ -44,8 +44,6 @@
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
     nav.scrolled { padding:.75rem 5vw; }
-    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; letter-spacing:.01em; color:var(--text); text-decoration:none; }
-    .nav-logo span { color:var(--accent); }
     .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
     .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
     .nav-links a:hover,.nav-links a.active { color:var(--text); }
@@ -58,8 +56,8 @@
     .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 
     /* MOBILE OVERLAY */
-    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
-    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mobile-overlay { position:fixed; inset:0; visibility:hidden; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; visibility:visible; transform:translateX(0); pointer-events:all; }
     .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
     .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.15rem; font-weight:600; color:#f0ede8; }
     .mob-logo span { color:var(--accent); }
@@ -482,8 +480,8 @@
   <div class="hero-content">
     <div class="hero-eyebrow"><span></span>Product Designer · UX/UI · Digital Products</div>
     <h1 class="hero-title">I turn complex product problems into<br><em>simple, scalable experiences.</em></h1>
-    <p class="hero-sub">I'm a Product Designer with 5+ years of experience helping teams turn complex requirements, workflows, and business goals into digital products that are clear, usable, and scalable.</p>
-    <div class="hero-availability"><div class="avail-dot"></div>Currently open to remote, hybrid, and relocation opportunities.</div>
+    <p class="hero-sub">I'm a Product Designer with 5+ years of experience across SaaS, EdTech, fintech, and e-commerce — delivering measurable improvements in usability, user satisfaction, and product clarity.</p>
+    <div class="hero-availability"><div class="avail-dot"></div>Open to remote, hybrid, and relocation opportunities — available immediately.</div>
     <div class="hero-cta">
       <a href="projects.html" class="btn-primary">View My Work <span class="material-symbols-outlined" style="font-size:17px">arrow_forward</span></a>
       <a href="contact.html" class="btn-outline">Let's Talk</a>

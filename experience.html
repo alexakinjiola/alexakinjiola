@@ -40,8 +40,6 @@
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:400; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 5vw; background:rgba(13,13,13,.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:padding .3s; }
     nav.scrolled { padding:.75rem 5vw; }
-    .nav-logo { font-family:'DM Sans',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); font-weight:600; color:var(--text); text-decoration:none; }
-    .nav-logo span { color:var(--accent); }
     .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
     .nav-links a { font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
     .nav-links a:hover,.nav-links a.active { color:var(--text); }
@@ -51,8 +49,8 @@
     .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
     .hamburger.open span:nth-child(2){opacity:0;width:0;}
     .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-    .mobile-overlay { position:fixed; inset:0; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
-    .mobile-overlay.open { opacity:1; transform:translateX(0); pointer-events:all; }
+    .mobile-overlay { position:fixed; inset:0; visibility:hidden; background:rgba(10,10,10,.98); backdrop-filter:blur(16px); z-index:600; display:flex; flex-direction:column; opacity:0; transform:translateX(100%); transition:opacity .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1); pointer-events:none; }
+    .mobile-overlay.open { opacity:1; visibility:visible; transform:translateX(0); pointer-events:all; }
     .mob-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
     .mob-logo { font-family:'DM Sans',sans-serif; font-size:1.1rem; font-weight:600; color:#f0ede8; }
     .mob-logo span { color:var(--accent); }
@@ -76,7 +74,7 @@
     .mob-cta { display:block; width:100%; padding:17px 24px; border-radius:12px; background:var(--accent); border:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:#0d0d0d; text-align:center; text-decoration:none; }
 
     /* PAGE HERO */
-    .page-hero { padding:clamp(7rem,14vw,10rem) 5vw clamp(3rem,7vw,5rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .page-hero { padding:clamp(5.5rem,10vw,7rem) 5vw clamp(2.5rem,5vw,4rem); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
     .page-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black 30%,transparent 80%); pointer-events:none; }
     .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; display:flex; align-items:center; gap:.6rem; position:relative; z-index:1; }
     .eyebrow::before { content:''; width:22px; height:1px; background:var(--accent); display:block; }
@@ -353,10 +351,10 @@
       <span class="tl-type">Remote · Nigeria</span>
       <p class="tl-desc">Ajiroba is a B2C e-commerce platform serving users across web and mobile. As the platform grew, the experience had accumulated complexity that was making it harder for users to find what they needed and complete the actions they intended to take. My job was to identify where the friction was and redesign the experience to remove it.</p>
       <div class="tl-bullets">
-        <div class="tl-bullet">Conducted a structured UX audit covering navigation patterns, task flows, information hierarchy, and interaction consistency</div>
-        <div class="tl-bullet">Simplified navigation structure and reduced unnecessary steps in core user workflows</div>
+        <div class="tl-bullet">Conducted a structured UX audit across 8 core task flows — identifying 23 distinct friction points across navigation, checkout, and product discovery</div>
+        <div class="tl-bullet">Simplified navigation and reduced checkout steps from 6 to 3 — contributing to a 30% improvement in platform usability and perceived performance</div>
         <div class="tl-bullet">Built a scalable Figma design system to improve interface consistency across the product</div>
-        <div class="tl-bullet">Collaborated with engineers through implementation — providing specs, answering questions, and reviewing shipped work</div>
+        <div class="tl-bullet">Collaborated with engineering through every sprint — zero rework requests on major features due to thorough design specs and proactive handoff</div>
         <div class="tl-bullet">Facilitated design critique sessions to improve design quality across the team</div>
       </div>
       <div class="tl-result"><span class="tl-result-num">30%</span><span class="tl-result-label">Improvement in platform usability and perceived performance</span></div>

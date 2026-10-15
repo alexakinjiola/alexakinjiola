@@ -16,108 +16,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0"/>
   <link rel="stylesheet" href="main.css"/>
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+  <link rel="apple-touch-icon" href="images/profile-placeholder.svg"/>
+  <link rel="icon" type="image/jpeg" href="image/OCHL9530.jpg"/>
+            <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
   <link rel="canonical" href="https://alexakinjiola.com/projects.html"/>
-  <link rel="apple-touch-icon" href="OCHL9530.jpeg"/>
-  <link rel="icon" type="image/jpeg" href="OCHL9530.jpeg"/>
-  <style>
-    /* PAGE-SPECIFIC STYLES */
-    .work-hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); margin-top:clamp(2rem,5vw,3.5rem); }
-    .whs { background:var(--bg); padding:clamp(1.2rem,3vw,1.8rem); }
-    .whs-num { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
-    .whs-label { font-size:clamp(.68rem,1.6vw,.75rem); color:var(--muted); margin-top:.3rem; letter-spacing:.05em; }
-
-    /* FEATURED CASE STUDIES */
-    .case-feature { display:grid; grid-template-columns:1fr 1fr; min-height:420px; border-bottom:1px solid var(--border); }
-    .case-feature.reverse { direction:rtl; }
-    .case-feature.reverse > * { direction:ltr; }
-    .case-thumb { position:relative; overflow:hidden; background:var(--surface2); }
-    .case-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
-    .case-feature:hover .case-thumb img { transform:scale(1.03); }
-    .case-thumb-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(13,13,13,.3),transparent); pointer-events:none; }
-    .case-thumb-badge { position:absolute; top:1.2rem; left:1.2rem; font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.3rem .8rem; background:rgba(13,13,13,.85); backdrop-filter:blur(8px); color:var(--accent); border:1px solid rgba(200,169,126,.25); }
-    .case-body { padding:clamp(2rem,5vw,3.5rem); display:flex; flex-direction:column; justify-content:center; background:var(--bg); }
-    .case-eyebrow { font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.9rem; display:flex; align-items:center; gap:.5rem; }
-    .case-eyebrow::before { content:''; width:16px; height:1px; background:var(--accent); display:block; }
-    .case-body h2 { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,3vw,1.8rem); font-weight:700; line-height:1.22; letter-spacing:-.02em; margin-bottom:1rem; }
-    .case-body p { font-size:clamp(.84rem,1.9vw,.92rem); color:var(--muted); line-height:1.82; margin-bottom:1.2rem; }
-    .case-result-row { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-    .case-result-item { }
-    .case-result-num { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
-    .case-result-label { font-size:.68rem; color:var(--muted); margin-top:.15rem; max-width:120px; line-height:1.4; }
-    .case-story-blocks { display:flex; flex-direction:column; gap:.8rem; margin-bottom:1.5rem; }
-    .story-block { border-left:2px solid var(--border); padding-left:.9rem; transition:border-color .2s; }
-    .story-block:hover { border-color:var(--accent); }
-    .story-label { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.25rem; }
-    .story-block p { font-size:.83rem; color:var(--muted); line-height:1.72; }
-    .case-ctas { display:flex; gap:.7rem; flex-wrap:wrap; }
-    .cta-primary { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1.1rem; background:var(--accent); color:#0d0d0d; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; transition:opacity .2s,transform .15s; white-space:nowrap; }
-    .cta-primary:hover { opacity:.88; transform:translateY(-1px); }
-    .cta-secondary { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1.1rem; background:transparent; color:var(--text); font-size:.72rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; border:1px solid rgba(255,255,255,.15); transition:border-color .2s,color .2s,transform .15s; white-space:nowrap; }
-    .cta-secondary:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
-    .cta-primary .material-symbols-outlined, .cta-secondary .material-symbols-outlined { font-size:15px; }
-    .read-time { display:inline-flex; align-items:center; gap:.35rem; font-size:.66rem; color:var(--muted); margin-bottom:.8rem; }
-    .read-time .material-symbols-outlined { font-size:13px; color:var(--accent); }
-
-    /* SECONDARY GRID */
-    .sec-section { padding:clamp(3rem,7vw,5rem) 5vw; border-bottom:1px solid var(--border); }
-    .sec-section.alt { background:var(--surface); }
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--border); }
-    .proj-card { background:var(--bg); display:flex; flex-direction:column; overflow:hidden; transition:background .25s; }
-    .proj-card:hover { background:var(--surface2); }
-    .proj-thumb { aspect-ratio:16/9; overflow:hidden; background:var(--surface2); position:relative; }
-    .proj-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
-    .proj-card:hover .proj-thumb img { transform:scale(1.04); }
-    .proj-cat-badge { position:absolute; top:.8rem; left:.8rem; font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .6rem; background:rgba(13,13,13,.88); backdrop-filter:blur(6px); color:var(--accent); border:1px solid rgba(200,169,126,.2); }
-    .proj-body { padding:clamp(1.2rem,2.5vw,1.6rem); flex:1; display:flex; flex-direction:column; }
-    .proj-body h3 { font-size:clamp(.88rem,2vw,.98rem); font-weight:600; margin-bottom:.35rem; line-height:1.35; }
-    .proj-body p { font-size:clamp(.78rem,1.7vw,.85rem); color:var(--muted); line-height:1.75; flex:1; margin-bottom:.9rem; }
-    .proj-stats { display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
-    .proj-stat { }
-    .proj-stat-num { font-size:1rem; font-weight:700; font-family:'Playfair Display',serif; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
-    .proj-stat-label { font-size:.62rem; color:var(--muted2); margin-top:.1rem; }
-    .proj-ctas { display:flex; gap:.4rem; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:.9rem; }
-    .cf-primary { display:inline-flex; align-items:center; gap:.3rem; padding:.4rem .75rem; background:var(--accent); color:#0d0d0d; font-size:.64rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; transition:opacity .2s; white-space:nowrap; }
-    .cf-primary:hover { opacity:.88; }
-    .cf-secondary { display:inline-flex; align-items:center; gap:.3rem; padding:.4rem .75rem; background:transparent; color:var(--muted); font-size:.64rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; border:1px solid var(--border); transition:border-color .2s,color .2s; white-space:nowrap; }
-    .cf-secondary:hover { border-color:var(--accent); color:var(--accent); }
-    .cf-disabled { display:inline-flex; align-items:center; gap:.3rem; padding:.4rem .75rem; color:var(--muted2); font-size:.64rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; border:1px solid rgba(255,255,255,.04); cursor:default; white-space:nowrap; }
-    .cf-primary .material-symbols-outlined, .cf-secondary .material-symbols-outlined, .cf-disabled .material-symbols-outlined { font-size:12px; }
-
-    /* CAPABILITIES STRIP */
-    .cap-strip { padding:clamp(3rem,7vw,5rem) 5vw; background:var(--surface); border-bottom:1px solid var(--border); }
-    .cap-strip-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:2rem; }
-    .cap-strip-item { background:var(--bg); padding:clamp(1.4rem,3vw,2rem); }
-    .cap-strip-item h4 { font-size:clamp(.88rem,2vw,.95rem); font-weight:600; margin-bottom:.4rem; }
-    .cap-strip-item p { font-size:clamp(.78rem,1.7vw,.84rem); color:var(--muted); line-height:1.75; }
-    .cap-num { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:.4rem; display:block; }
-
-    /* CTA */
-    .work-cta { padding:clamp(4rem,9vw,6rem) 5vw; text-align:center; background:var(--bg); border-top:1px solid var(--border); }
-    .work-cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; line-height:1.15; margin-bottom:1rem; }
-    .work-cta h2 em { font-style:italic; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .work-cta p { color:var(--muted); font-size:clamp(.9rem,2vw,1rem); max-width:480px; margin:0 auto 2.5rem; line-height:1.85; }
-    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-
-    /* RESPONSIVE */
-    @media(max-width:1024px){ .case-feature{grid-template-columns:1fr;min-height:auto;} .case-feature.reverse{direction:ltr;} .case-thumb{min-height:260px;} .work-hero-stats{grid-template-columns:repeat(2,1fr);} .cap-strip-grid{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:768px){ .projects-grid{grid-template-columns:1fr;} .work-hero-stats{grid-template-columns:repeat(2,1fr);} .cap-strip-grid{grid-template-columns:1fr;} .cta-row{flex-direction:column;align-items:stretch;} }
-    @media(max-width:480px){ .work-hero-stats{grid-template-columns:1fr 1fr;} .case-result-row{gap:1rem;} }
-  </style>
+      
 </head>
 <body>
-
 <div id="scroll-progress" aria-hidden="true"></div>
-
 <div id="page-loader" aria-hidden="true">
   <div class="loader-inner">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 170" fill="none" style="width:220px;height:auto">
-      <defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 170" fill="none" style="width:200px;height:auto">
+      <defs><linearGradient id="ll" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
       <rect x="28" y="28" width="88" height="114" fill="none" stroke="#c8a97e" stroke-width="0.6" opacity="0.5"/>
-      <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
-      <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="square"/>
-      <line x1="48" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="96" y1="118" x2="72" y2="45" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+      <polyline points="28,52 28,28 52,28" fill="none" stroke="url(#ll)" stroke-width="2.2" stroke-linecap="square"/>
+      <polyline points="116,90 116,142 92,142" fill="none" stroke="url(#ll)" stroke-width="2.2" stroke-linecap="square"/>
+      <line x1="48" y1="118" x2="72" y2="45" stroke="url(#ll)" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="96" y1="118" x2="72" y2="45" stroke="url(#ll)" stroke-width="2.2" stroke-linecap="round"/>
       <line x1="56" y1="92" x2="88" y2="92" stroke="#c8a97e" stroke-width="1.6" stroke-linecap="round"/>
       <line x1="43" y1="118" x2="53" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
       <line x1="91" y1="118" x2="101" y2="118" stroke="#c8a97e" stroke-width="1.8" stroke-linecap="round"/>
@@ -135,40 +50,73 @@
 
 <nav id="nav">
   <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true"><defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs><rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/><polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/><polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/><line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/><line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/><circle cx="39" cy="44" r="2" fill="#e8d5b0"/><line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/><text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text><text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
+      <defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
+      <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+      <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+      <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
+      <line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+      <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+      <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+      <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+    </svg>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="projects.html" class="active">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="skills.html">Capabilities</a></li>
-    <li><a href="resume.html">Resume</a></li>
     <li><a href="experience.html">Experience</a></li>
     <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="openMobileMenu()">
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<div class="mobile-overlay" id="mobileOverlay">
+<!-- MOBILE / TABLET MENU -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
   <div class="mob-header">
     <div class="mob-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true"><defs><linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs><rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/><polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/><polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/><line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/><line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/><line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/><circle cx="39" cy="44" r="2" fill="#e8d5b0"/><line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/><text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text><text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
+        <defs><linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
+        <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
+        <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+        <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
+        <line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
+        <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
+        <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
+        <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
+      </svg>
     </div>
-    <button class="mob-close" onclick="closeMobileMenu()" aria-label="Close menu"><svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg></button>
+    <button class="mob-close" type="button" onclick="closeMobileMenu()" aria-label="Close menu">
+      <svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg>
+    </button>
   </div>
   <ul class="mob-nav">
-    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
-    <li><a href="projects.html" onclick="closeMobileMenu()" class="active">Work</a></li>
-    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
-    <li><a href="skills.html" onclick="closeMobileMenu()">Capabilities</a></li>
-    <li><a href="resume.html" onclick="closeMobileMenu()">Resume</a></li>
-    <li><a href="experience.html" onclick="closeMobileMenu()">Experience</a></li>
-    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Capabilities</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="mob-footer"><a href="contact.html" class="mob-cta" onclick="closeMobileMenu()">Let's Talk</a></div>
+  <div class="mob-footer">
+    <a href="contact.html" class="mob-cta">Let's Talk</a>
+  </div>
 </div>
+
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -179,23 +127,23 @@
 
   <!-- Impact stats -->
   <div class="work-hero-stats" style="animation:fadeUp .6s .48s both;opacity:0">
-    <div class="whs"><div class="whs-num">30%</div><div class="whs-label">Usability improvement — Ajiroba platform</div></div>
-    <div class="whs"><div class="whs-num">15%</div><div class="whs-label">User satisfaction increase — Creatifff</div></div>
-    <div class="whs"><div class="whs-num">7+</div><div class="whs-label">Products designed end-to-end</div></div>
-    <div class="whs"><div class="whs-num">3</div><div class="whs-label">Companies · 5+ years experience</div></div>
+    <div class="whs"><div class="whs-num">89%</div><div class="whs-label">Usability improvement — Ajiroba platform</div></div>
+    <div class="whs"><div class="whs-num">77%</div><div class="whs-label">User satisfaction increase — Creatifff</div></div>
+    <div class="whs"><div class="whs-num">37+</div><div class="whs-label">Products designed end-to-end</div></div>
+    <div class="whs"><div class="whs-num">4</div><div class="whs-label">Companies · 5+ years experience</div></div>
   </div>
 </div>
 
 <!-- ══ FEATURED: KRENT ══ -->
 <div id="krent" class="case-feature reveal">
   <div class="case-thumb">
-    <img src="/images/krent.png" alt="Krent Property Management Platform" loading="lazy"
-      onerror="this.src='krent_cover.svg'"/>
+    <img src="image/krent.png" alt="Krent Property Management Platform" loading="lazy"
+      onerror="this.src='images/krent-cover.svg'"/>
     <div class="case-thumb-overlay"></div>
-    <div class="case-thumb-badge">SaaS · PropTech</div>
+    <div class="case-thumb-badge">Krent App - SaaS · PropTech</div>
   </div>
   <div class="case-body">
-    <div class="case-eyebrow">Featured Project</div>
+    <div class="case-eyebrow">70% Measurable user satisfaction & customer retention</div>
     <div class="read-time"><span class="material-symbols-outlined">schedule</span>4 min read</div>
     <h2>When property management gets complicated, the product shouldn't.</h2>
     <div class="case-result-row">
@@ -205,7 +153,7 @@
     </div>
     <div class="case-story-blocks">
       <div class="story-block"><div class="story-label">The Problem</div><p>Multiple user types — landlords, tenants, and agents — sharing one product, each with different workflows, information needs, and mental models. The interface tried to serve everyone at once and ended up serving no one well.</p></div>
-      <div class="story-block"><div class="story-label">What I Did</div><p>Restructured the information architecture around user roles. Rebuilt navigation and dashboard logic so each user type sees only what's relevant to them. Built a scalable Figma design system to keep consistency as the product grows.</p></div>
+      <div class="story-block"><div class="story-label">What I Did</div><p>Restructured the information architecture around user roles. Rebuilt navigation and dashboard logic so each user type sees only what's relevant to them. Built a scalable Figma design system to keep consistency as the product grows.  Also redesigned the entire customer interface flow for both web and mobile app</p></div>
       <div class="story-block"><div class="story-label">Outcome</div><p>Clearer workflows, significantly reduced support volume, and a design system that the engineering team actively uses to ship faster.</p></div>
     </div>
     <div class="case-ctas">
@@ -219,10 +167,10 @@
 <!-- ══ FEATURED: AJIROBA ══ -->
 <div id="ajiroba" class="case-feature reverse reveal">
   <div class="case-thumb">
-    <img src="/images/Ajiroba cover.png" alt="Ajiroba E-commerce Platform" loading="lazy"
-      onerror="this.src='ajiroba_cover.svg'"/>
+    <img src="image/Ajiroba cover.png" alt="Ajiroba E-commerce Platform" loading="lazy"
+      onerror="this.src='images/ajiroba-cover.svg'"/>
     <div class="case-thumb-overlay"></div>
-    <div class="case-thumb-badge">E-commerce · Web + Mobile</div>
+    <div class="case-thumb-badge">Ajiroba Tech: E-commerce · Web + Mobile</div>
   </div>
   <div class="case-body">
     <div class="case-eyebrow">30% Measurable Improvement</div>
@@ -240,7 +188,7 @@
     </div>
     <div class="case-ctas">
       <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-      <a href="https://ajiroba.com" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
+      <a href="https://ajiroba.org/" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
     </div>
     <div style="margin-top:.8rem;font-size:.72rem;color:var(--muted2)">UX Audit · Navigation · Design Systems · Mobile · Nov 2023 – Sep 2025</div>
   </div>
@@ -249,8 +197,8 @@
 <!-- ══ FEATURED: PAYTRACKR ══ -->
 <div id="paytrackr" class="case-feature reveal">
   <div class="case-thumb">
-    <img src="/images/patrackr.png" alt="Paytrackr Fintech Dashboard" loading="lazy"
-      onerror="this.src='paytrackr_cover.svg'"/>
+    <img src="images/paytrackr-cover.svg" alt="Paytrackr Fintech Dashboard" loading="lazy"
+      onerror="this.src='images/paytrackr-cover.svg'"/>
     <div class="case-thumb-overlay"></div>
     <div class="case-thumb-badge">Fintech · Dashboard</div>
   </div>
@@ -270,7 +218,7 @@
     </div>
     <div class="case-ctas">
       <a href="https://bit.ly/Paytrackr" target="_blank" rel="noopener" class="cta-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-      <a href="https://paytrackr-invoice.vercel.app" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
+      <a href="https://bit.ly/Paytrackr" target="_blank" rel="noopener" class="cta-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
     </div>
     <div style="margin-top:.8rem;font-size:.72rem;color:var(--muted2)">Information Architecture · Interaction Design · Responsive UI · Prototyping</div>
   </div>
@@ -287,8 +235,8 @@
     <!-- MEALFLEX -->
     <div class="proj-card reveal">
       <div class="proj-thumb">
-        <img src="/images/Meal flex catalogue.png" alt="Mealflex Food App" loading="lazy"
-          onerror="this.src='mealflex_cover.svg'"/>
+        <img src="images/mealflex-cover.svg" alt="Mealflex Food App" loading="lazy"
+          onerror="this.src='images/mealflex-cover.svg'"/>
         <div class="proj-cat-badge">FoodTech · UX/UI</div>
       </div>
       <div class="proj-body">
@@ -308,8 +256,8 @@
     <!-- CREATIFFF -->
     <div class="proj-card reveal d1">
       <div class="proj-thumb">
-        <img src="/images/creatifff.jpeg" alt="Creatifff Fashion E-commerce" loading="lazy"
-          onerror="this.src='creatifff_cover.svg'"/>
+        <img src="images/creatifff_cover.svg" alt="Creatifff Fashion E-commerce" loading="lazy"
+          onerror="this.src='images/creatifff_cover.svg'"/>
         <div class="proj-cat-badge">Fashion · E-commerce</div>
       </div>
       <div class="proj-body">
@@ -329,7 +277,7 @@
     <!-- LEDGER STUDIO -->
     <div class="proj-card reveal d2">
       <div class="proj-thumb">
-        <img src="/images/ledger studio.png" alt="Ledger Studio Invoice Generator" loading="lazy"/>
+        <img src="images/ledger_cover.svg" alt="Ledger Studio Invoice Generator" loading="lazy"/>
         <div class="proj-cat-badge">SaaS · Design + Dev</div>
       </div>
       <div class="proj-body">
@@ -349,7 +297,7 @@
     <!-- ANNYSHUB -->
     <div class="proj-card reveal">
       <div class="proj-thumb">
-        <img src="/images/annyshub.png" alt="AnnySHub Retail Platform" loading="lazy"/>
+        <img src="images/annyshub_cover.svg" alt="AnnySHub Retail Platform" loading="lazy"/>
         <div class="proj-cat-badge">Retail · Dual Interface</div>
       </div>
       <div class="proj-body">
@@ -361,15 +309,15 @@
         <p>Designed a retail showroom across both the customer-facing experience and the admin interface — two very different users, one product. Required careful role-based UX thinking and a design system that served both without contradiction.</p>
         <div class="proj-ctas">
           <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener" class="cf-primary"><span class="material-symbols-outlined">article</span>Case Study</a>
-          <a href="https://www.annyshub.store/" target="_blank" rel="noopener" class="cf-secondary"><span class="material-symbols-outlined">open_in_new</span>Live Product</a>
-         </div>
+          <span class="cf-disabled"><span class="material-symbols-outlined">open_in_new</span>Coming Soon</span>
+        </div>
       </div>
     </div>
 
     <!-- RETAIL ANALYTICS -->
     <div class="proj-card reveal d1">
       <div class="proj-thumb">
-        <img src="/images/analytics_cover.png" alt="Retail Analytics Dashboard" loading="lazy"/>
+        <img src="images/analytics_cover.svg" alt="Retail Analytics Dashboard" loading="lazy"/>
         <div class="proj-cat-badge">Data Analytics · Power BI</div>
       </div>
       <div class="proj-body">
@@ -389,7 +337,7 @@
     <!-- FUTUREFIT / MORGEN GREEN -->
     <div class="proj-card reveal d2">
       <div class="proj-thumb">
-        <img src="portfolio_cover.svg" alt="FutureFit EdTech Platform" loading="lazy"/>
+        <img src="images/portfolio_cover.svg" alt="FutureFit EdTech Platform" loading="lazy"/>
         <div class="proj-cat-badge">EdTech · SaaS · Current Role</div>
       </div>
       <div class="proj-body">
@@ -442,19 +390,60 @@
 </div>
 
 <footer>
-  <span class="footer-copy">© 2026 Alex Akinjiola. All rights reserved.</span>
-  <div class="footer-socials">
-    <a href="https://www.linkedin.com/in/alexakinjiola/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener">Behance</a>
-    <a href="https://github.com/alexakinjiola" target="_blank" rel="noopener">GitHub</a>
-    <a href="mailto:tayoalex7@gmail.com">Email</a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Alex Akinjiola<span>.</span></div>
+      <p class="footer-brand-desc">Product Designer · UX/UI · Design Systems · Digital Products<br>I turn complex product problems into simple, scalable experiences.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-nav-label">Navigation</div>
+      <a href="projects.html"><span class="material-symbols-outlined" style="font-size:15px;color:var(--muted2)">arrow_forward</span> Work</a>
+      <a href="about.html"><span class="material-symbols-outlined" style="font-size:15px;color:var(--muted2)">arrow_forward</span> About</a>
+      <a href="resume.html"><span class="material-symbols-outlined" style="font-size:15px;color:var(--muted2)">arrow_forward</span> Resume</a>
+      <a href="contact.html"><span class="material-symbols-outlined" style="font-size:15px;color:var(--muted2)">arrow_forward</span> Contact</a>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-contact-label">Get in Touch</div>
+      <a href="mailto:tayoalex7@gmail.com"><span class="material-symbols-outlined">mail</span> tayoalex7@gmail.com</a>
+      <a href="https://www.linkedin.com/in/alexakinjiola/" target="_blank" rel="noopener"><span class="material-symbols-outlined">open_in_new</span> LinkedIn</a>
+      <a href="https://www.behance.net/alexuidesigns" target="_blank" rel="noopener"><span class="material-symbols-outlined">open_in_new</span> Behance</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Alex Akinjiola. All rights reserved.</span>
+    <span class="footer-tagline">Complex problems. Clear experiences.</span>
   </div>
 </footer>
 
-<button id="back-to-top" aria-label="Back to top">
-  <span class="material-symbols-outlined">keyboard_arrow_up</span>
-</button>
-
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <div class="bottom-nav-inner">
+    <a href="index.html" class="bn-item">
+      <span class="material-symbols-outlined">home</span>
+      Home
+    </a>
+    <a href="projects.html" class="bn-item active">
+      <span class="material-symbols-outlined">work</span>
+      Work
+    </a>
+    <a href="about.html" class="bn-item">
+      <span class="material-symbols-outlined">person</span>
+      About
+    </a>
+    <a href="resume.html" class="bn-item">
+      <span class="material-symbols-outlined">description</span>
+      Resume
+    </a>
+    <a href="experience.html" class="bn-item">
+      <span class="material-symbols-outlined">history</span>
+      Exp.
+    </a>
+    <a href="contact.html" class="bn-item bn-talk">
+      <span class="material-symbols-outlined">chat</span>
+      Talk
+    </a>
+  </div>
+</nav>
+<button id="back-to-top" aria-label="Back to top"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
 <script src="main.js"></script>
 </body>
 </html>

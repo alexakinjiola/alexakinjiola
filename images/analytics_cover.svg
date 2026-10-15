@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="DATA & ANALYTICS — PRODUCT DESIGN">
+ <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171715"/><stop offset="1" stop-color="#30291f"/></linearGradient><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#c8a97e" stroke-opacity=".12"/></pattern></defs>
+ <rect width="1200" height="800" fill="url(#bg)"/><rect width="1200" height="800" fill="url(#grid)"/>
+ <circle cx="930" cy="210" r="240" fill="#c8a97e" fill-opacity=".07"/><circle cx="930" cy="210" r="170" fill="none" stroke="#c8a97e" stroke-opacity=".3"/>
+ <path d="M0 650 Q320 480 610 680 T1200 610V800H0Z" fill="#c8a97e" fill-opacity=".06"/>
+ <text x="90" y="170" font-family="Arial,sans-serif" font-size="26" letter-spacing="8" fill="#c8a97e">ALEX AKINJIOLA / SELECTED WORK</text>
+ <text x="80" y="490" font-family="Arial,sans-serif" font-size="180" font-weight="700" fill="#f0ede8">DA</text>
+ <text x="90" y="570" font-family="Arial,sans-serif" font-size="48" font-weight="700" letter-spacing="2" fill="#f0ede8">DATA & ANALYTICS</text>
+ <text x="92" y="625" font-family="Arial,sans-serif" font-size="24" letter-spacing="6" fill="#c8a97e">PRODUCT DESIGN</text>
+ <path d="M90 685H270" stroke="#c8a97e" stroke-width="3"/><text x="1100" y="735" text-anchor="end" font-family="Arial,sans-serif" font-size="18" letter-spacing="4" fill="#f0ede8" fill-opacity=".55">CASE STUDY</text>
+ </svg>

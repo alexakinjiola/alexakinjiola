@@ -23,7 +23,8 @@ export function DecisionForm({ request, consent, needsReauth, institutionName }:
   const router = useRouter();
   const [pending, start] = useTransition();
   const [mode, setMode] = useState<"approve" | "partial">("approve");
-  const records = request.matching_records ?? [];
+  const records = useMemo(() => request.matching_records ?? [], [request.matching_records]);
+  const [openedAt] = useState(() => Date.now());
   const [cats, setCats] = useState<string[]>(request.categories);
   const [selected, setSelected] = useState<Set<string>>(new Set(records.map((r) => r.id)));
   const [days, setDays] = useState(request.duration_days);
@@ -41,7 +42,7 @@ export function DecisionForm({ request, consent, needsReauth, institutionName }:
     const d = r.clinical_date ?? "";
     return (!from || !d || d >= from) && (!to || !d || d <= to);
   }), [records, mode, cats, selected, from, to]);
-  const until = new Date(Date.now() + (mode === "approve" ? request.duration_days : days) * 86_400_000);
+  const until = new Date(openedAt + (mode === "approve" ? request.duration_days : days) * 86_400_000);
 
   const submit = () => {
     setError(null);

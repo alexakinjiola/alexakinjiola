@@ -10,12 +10,12 @@ export function SubmissionsChart({ data }: { data: { week: string; count: number
     <figure>
       <div className="h-48" aria-hidden>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: -24 }}>
+          <BarChart accessibilityLayer={false} data={data} margin={{ top: 4, right: 4, bottom: 0, left: -24 }}>
             <CartesianGrid vertical={false} stroke="#e3ded3" />
             <XAxis dataKey="week" tickFormatter={short} tick={axis} axisLine={false} tickLine={false} />
             <YAxis allowDecimals={false} tick={axis} axisLine={false} tickLine={false} />
             <Tooltip labelFormatter={(l) => `Week of ${short(String(l))}`} cursor={{ fill: "#efece5" }} />
-            <Bar dataKey="count" name="Records" fill="#0f6e5c" radius={[4, 4, 0, 0]} maxBarSize={36} />
+            <Bar isAnimationActive={false} dataKey="count" name="Records" fill="#0f6e5c" radius={[4, 4, 0, 0]} maxBarSize={36} />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -29,14 +29,14 @@ export function AccessChart({ data }: { data: { day: string; allowed: number; de
     <figure>
       <div className="h-56" aria-hidden>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 4, right: 8, bottom: 0, left: -24 }}>
+          <LineChart accessibilityLayer={false} data={data} margin={{ top: 4, right: 8, bottom: 0, left: -24 }}>
             <CartesianGrid vertical={false} stroke="#e3ded3" />
             <XAxis dataKey="day" tickFormatter={short} tick={axis} axisLine={false} tickLine={false} />
             <YAxis allowDecimals={false} tick={axis} axisLine={false} tickLine={false} />
             <Tooltip labelFormatter={(l) => short(String(l))} />
             <Legend iconType="plainline" wrapperStyle={{ fontSize: 12 }} />
-            <Line type="monotone" dataKey="allowed" name="Allowed" stroke="#0f6e5c" strokeWidth={2} dot={false} />
-            <Line type="monotone" dataKey="denied" name="Denied" stroke="#a1291d" strokeWidth={2} strokeDasharray="4 3" dot={false} />
+            <Line isAnimationActive={false} type="monotone" dataKey="allowed" name="Allowed" stroke="#0f6e5c" strokeWidth={2} dot={false} />
+            <Line isAnimationActive={false} type="monotone" dataKey="denied" name="Denied" stroke="#a1291d" strokeWidth={2} strokeDasharray="4 3" dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -77,7 +77,7 @@ export default async function RequestPage({ params }: { params: Promise<{ id: st
             </Callout>
           )}
         </div>
-        <aside className="space-y-6">
+        <aside className="order-first space-y-6 lg:order-last">
           <Card>
             <CardHeader><CardTitle>Who is asking</CardTitle></CardHeader>
             <CardBody className="space-y-5">

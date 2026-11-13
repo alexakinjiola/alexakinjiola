@@ -92,6 +92,10 @@ export async function updateTicketAction(ticketId: string, status: string, input
   }, "Ticket updated.");
 }
 
+export async function internalTicketNoteAction(ticketId: string, status: string, input: Input) {
+  return updateTicketAction(ticketId, status, { ...input, internal: true });
+}
+
 export async function updateSettingAction(key: string, input: Input) {
   return handle("admin_setting", async () => {
     const { actor, meta } = await admin(input);

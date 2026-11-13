@@ -8,6 +8,9 @@ const base64Key = z
 
 const schema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+  // Deployment stage, independent of the build mode. Defaults to "production"
+  // for production builds so a missing value fails safe.
+  APP_ENV: z.enum(["development", "staging", "production"]).optional(),
   APP_URL: z.string().url().default("http://localhost:3000"),
   DATABASE_URL: z.string().url(),
   APP_ENCRYPTION_KEY: base64Key,
@@ -24,7 +27,7 @@ const schema = z.object({
   ENABLE_DEV_MAILBOX: z.string().default("false"),
 });
 
-type Env = z.infer<typeof schema>;
+type Env = z.infer<typeof schema> & { APP_ENV: "development" | "staging" | "production" };
 let cached: Env | null = null;
 
 /** Validated server environment. Throws at first use if misconfigured. */
@@ -35,8 +38,8 @@ export function env(): Env {
     const issues = parsed.error.issues.map((i) => `${i.path.join(".")} ${i.message}`).join("; ");
     throw new Error(`Invalid environment configuration: ${issues}`);
   }
-  const e = parsed.data;
-  if (e.NODE_ENV === "production") {
+  const e = { ...parsed.data, APP_ENV: parsed.data.APP_ENV ?? (parsed.data.NODE_ENV === "production" ? "production" : "development") };
+  if (e.APP_ENV === "production") {
     if (e.IDENTITY_PROVIDER === "sandbox") throw new Error("IDENTITY_PROVIDER=sandbox is not allowed in production");
     if (e.ENABLE_DEV_MAILBOX === "true") throw new Error("ENABLE_DEV_MAILBOX must be false in production");
   }
@@ -44,5 +47,5 @@ export function env(): Env {
   return e;
 }
 
-export const isProduction = () => env().NODE_ENV === "production";
+export const isProduction = () => env().APP_ENV === "production";
 export const devMailboxEnabled = () => !isProduction() && env().ENABLE_DEV_MAILBOX === "true";

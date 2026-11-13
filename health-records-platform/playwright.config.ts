@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: [["list"]],
   use: { baseURL: process.env.E2E_BASE_URL ?? "http://localhost:3000", trace: "off" },
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"] } },
+    { name: "desktop", use: { ...devices["Desktop Chrome"], launchOptions: process.env.PW_CHROMIUM_PATH ? { executablePath: process.env.PW_CHROMIUM_PATH } : {} } },
   ],
   webServer: process.env.E2E_BASE_URL
     ? undefined

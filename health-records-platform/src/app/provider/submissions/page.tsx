@@ -41,7 +41,7 @@ export default async function SubmissionsPage() {
                     title={s === "resolved" ? "Resolve this query" : "Decline this query"} confirmLabel="Send response"
                     description="Your response is shared with the patient. If the record needs amending, submit a corrected record — the original stays in its history."
                     reason={{ label: "Response to the patient", required: true, minLength: 10 }}
-                    onConfirm={(i) => resolveCorrectionAction(c.id, s, i)} />
+                    onConfirm={resolveCorrectionAction.bind(null, c.id, s)} />
                 ))}
               </div>
             </li>

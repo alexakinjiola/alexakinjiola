@@ -49,14 +49,14 @@ export default async function StaffPage() {
                   {!s.is_me && s.status === "active" && <>
                     <ConfirmDialog trigger={<Button size="sm" variant="ghost">Suspend</Button>} title={`Suspend ${s.full_name}?`} confirmLabel="Suspend"
                       description="They lose access immediately and can be reinstated later." reason={{ label: "Reason", required: true, minLength: 5 }}
-                      onConfirm={(i) => setStaffStatusAction(s.affiliation_id, "suspended", i)} />
+                      onConfirm={setStaffStatusAction.bind(null, s.affiliation_id, "suspended")} />
                     <ConfirmDialog trigger={<Button size="sm" variant="ghost" className="text-danger-fg">Remove</Button>} title={`Remove ${s.full_name}?`} tone="danger" confirmLabel="Remove access"
                       description="Use this when someone leaves. Their access ends now, and permissions patients granted to them personally are revoked." reason={{ label: "Reason", required: true, minLength: 5 }}
-                      onConfirm={(i) => setStaffStatusAction(s.affiliation_id, "ended", i)} />
+                      onConfirm={setStaffStatusAction.bind(null, s.affiliation_id, "ended")} />
                   </>}
                   {!s.is_me && s.status === "suspended" && (
                     <ConfirmDialog trigger={<Button size="sm" variant="secondary">Reinstate</Button>} title={`Reinstate ${s.full_name}?`} confirmLabel="Reinstate"
-                      reason={{ label: "Reason" }} onConfirm={(i) => setStaffStatusAction(s.affiliation_id, "active", i)} />
+                      reason={{ label: "Reason" }} onConfirm={setStaffStatusAction.bind(null, s.affiliation_id, "active")} />
                   )}
                 </Td>
               </Tr>

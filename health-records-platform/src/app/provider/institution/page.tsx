@@ -37,7 +37,7 @@ export default async function InstitutionPage() {
       {i.status_reason && <Callout tone={i.status === "approved" ? "info" : "danger"} className="mb-6" title="Message from the platform team">{i.status_reason}</Callout>}
       {editable && (
         <Callout tone="info" className="mb-6" title={hasLicence ? "Ready to submit?" : "Upload your operating licence to continue"}
-          action={<ActionButton disabled={!hasLicence} icon="send" action={() => submitInstitutionAction(i.id)}>Submit for verification</ActionButton>}>
+          action={<ActionButton disabled={!hasLicence} icon="send" action={submitInstitutionAction.bind(null, i.id)}>Submit for verification</ActionButton>}>
           Once submitted, details are locked while the platform team reviews them. You'll be notified of the outcome.
         </Callout>
       )}

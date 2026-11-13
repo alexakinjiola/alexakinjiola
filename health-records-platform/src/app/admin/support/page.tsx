@@ -10,7 +10,7 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { EmptyState } from "@/components/ui/empty-state";
 import { TICKET_CATEGORY, TICKET_STATUS } from "@/lib/labels";
 import { formatDateTime } from "@/lib/format";
-import { updateTicketAction } from "../actions";
+import { internalTicketNoteAction, updateTicketAction } from "../actions";
 
 export const metadata: Metadata = { title: "Support" };
 const PRIORITY: Record<string, "neutral" | "info" | "warning" | "danger"> = { low: "neutral", normal: "info", high: "warning", urgent: "danger" };
@@ -48,10 +48,10 @@ export default async function SupportAdmin({ searchParams }: { searchParams: Pro
                 {(["in_progress", "awaiting_requester", "resolved"] as const).map((s) => (
                   <ConfirmDialog key={s} trigger={<Button size="sm" variant={s === "resolved" ? "primary" : "secondary"}>{TICKET_STATUS[s].label}</Button>}
                     title={`Mark as ${TICKET_STATUS[s].label.toLowerCase()}`} confirmLabel="Update" description="Your note is shared with the requester."
-                    reason={{ label: "Message to requester", required: s !== "in_progress", minLength: 5 }} onConfirm={(i) => updateTicketAction(t.id, s, i)} />
+                    reason={{ label: "Message to requester", required: s !== "in_progress", minLength: 5 }} onConfirm={updateTicketAction.bind(null, t.id, s)} />
                 ))}
                 <ConfirmDialog trigger={<Button size="sm" variant="ghost">Internal note</Button>} title="Add internal note" confirmLabel="Save note" description="Not visible to the requester."
-                  reason={{ label: "Note", required: true, minLength: 3 }} onConfirm={(i) => updateTicketAction(t.id, t.status, { ...i, internal: true })} />
+                  reason={{ label: "Note", required: true, minLength: 3 }} onConfirm={internalTicketNoteAction.bind(null, t.id, t.status)} />
               </div>
             )}
           </div></Card>

@@ -273,3 +273,76 @@ test("15. direct API calls cannot bypass the UI", async ({ page, request }) => {
   const csrf = await page.request.post("/api/records/upload", { headers: { origin: "https://evil.example" }, multipart: { title: "x" } });
   expect(csrf.status()).toBe(403);
 });
+
+test("Export: patient downloads a PDF summary and a FHIR bundle; both are logged", async ({ page }) => {
+  await signIn(page, "adaeze@demo.continuum.test");
+  await page.goto("/records/export");
+  const pdf = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download my records" }).click();
+  const file = await pdf;
+  expect(file.suggestedFilename()).toMatch(/health-record-summary-.*\.pdf$/);
+  const head = (await (await import("node:fs/promises")).readFile((await file.path())!)).subarray(0, 5).toString();
+  expect(head).toBe("%PDF-");
+  await page.getByText("Structured data (FHIR R4 JSON)").click();
+  const json = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download my records" }).click();
+  const bundle = JSON.parse(await (await import("node:fs/promises")).readFile((await (await json).path())!, "utf8"));
+  expect(bundle).toMatchObject({ resourceType: "Bundle", type: "collection" });
+  expect(bundle.entry[0].resource.resourceType).toBe("Patient");
+  const [x] = await db`select count(*)::int n from export_events e join patient_profiles p on p.patient_id = e.patient_id
+                       where p.full_name = 'Adaeze Okafor' and e.export_type in ('record_summary_pdf','structured_bundle')`;
+  expect(x.n).toBe(2);
+});
+
+test("Representative: a patient requests to act for a family member", async ({ page }) => {
+  const hid = await healthId("Emeka Nwosu");
+  await signIn(page, "halima@demo.continuum.test");
+  await page.goto("/settings/representatives");
+  await page.getByRole("textbox", { name: "Their Health ID" }).fill(hid);
+  await page.getByLabel("Their date of birth").fill("1972-09-30");
+  await page.getByLabel("Your relationship").selectOption("power_of_attorney");
+  await page.getByRole("button", { name: "Send request" }).click();
+  await expect(page.getByText("Request received")).toBeVisible();
+  await expect(page.getByText("Request pending")).toBeVisible();
+  // Nothing is granted until the platform verifies documents.
+  const [r] = await db`select pr.status from patient_representatives pr join users u on u.id = pr.representative_user_id where u.email = 'halima@demo.continuum.test'`;
+  expect(r.status).toBe("pending_verification");
+});
+
+test("Integration: institution registers a system, admin activates it, a FHIR bundle lands on the patient record", async ({ page, request }) => {
+  await signIn(page, "owner.ikeja@demo.continuum.test", "NBSWY3DPNBSWY3DPNBSWY3DPNBSWY3DP");
+  await page.goto("/provider/integrations");
+  await page.getByRole("button", { name: "Connect a system" }).click();
+  await page.getByLabel("System name").fill("OpenMRS — main hospital");
+  await page.getByRole("button", { name: "Create connection" }).click();
+  const key = (await page.getByRole("dialog").locator("code").innerText()).trim();
+  expect(key).toMatch(/^cnt_live_/);
+  const hid = await healthId("Emeka Nwosu");
+  const bundle = { resourceType: "Bundle", type: "transaction", entry: [
+    { resource: { resourceType: "Patient", id: "p", identifier: [{ system: "https://continuum/fhir/health-id", value: hid }] } },
+    { resource: { resourceType: "Immunization", id: "imm-e2e-1", vaccineCode: { text: "Yellow fever vaccine" }, occurrenceDateTime: "2025-11-01" } },
+  ] };
+  // Pending connection is refused.
+  expect((await request.post("/api/v1/fhir/Bundle", { headers: { Authorization: `Bearer ${key}` }, data: bundle })).status()).toBe(403);
+  expect((await request.post("/api/v1/fhir/Bundle", { data: bundle })).status()).toBe(401);
+
+  await signIn(page, "admin@demo.continuum.test", TOTP.admin);
+  const [inst] = await db`select id from healthcare_institutions where name like 'Ikeja Specialist%'`;
+  await page.goto(`/admin/institutions/${inst.id}`);
+  await page.getByRole("button", { name: "Activate" }).click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByLabel(/Confirm it's you/).fill(await generate({ secret: TOTP.admin }));
+  await dialog.getByRole("button", { name: "Activate" }).click();
+  await expect(page.getByText(/· active/)).toBeVisible();
+
+  const res = await request.post("/api/v1/fhir/Bundle", { headers: { Authorization: `Bearer ${key}` }, data: bundle });
+  expect(res.status()).toBe(200);
+  expect((await res.json()).summary.created).toBe(1);
+  const again = await request.post("/api/v1/fhir/Bundle", { headers: { Authorization: `Bearer ${key}` }, data: bundle });
+  expect((await again.json()).summary.skipped_duplicates).toBe(1);
+
+  await signIn(page, "emeka@demo.continuum.test");
+  await page.goto("/records?q=Yellow");
+  await expect(page.getByText("Yellow fever vaccine")).toBeVisible();
+  await expect(page.locator("main ul").getByText("Approved integration")).toBeVisible();
+});

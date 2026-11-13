@@ -28,7 +28,7 @@ See `.env.example`, which documents every variable. Production essentials:
 3. Create a dedicated login role for the app (`create role continuum_app login password '…' noinherit; grant authenticated, service_role to continuum_app;`) and use it in `DATABASE_URL` through the **session-mode** pooler. Transaction-mode pooling also works, because all claims are transaction-local.
 4. Create a private Storage bucket `medical-records`. Leave every storage policy closed: the server reads it with the service key after authorizing in SQL.
 5. Deploy the Next.js app (`pnpm build && pnpm start`) to a Node host behind TLS with exactly one trusted proxy (for `X-Forwarded-For`).
-6. Schedule `POST /api/cron/expire` every 5–15 minutes with `Authorization: Bearer $CRON_SECRET`.
+6. Schedule `POST /api/cron/expire` every 5–15 minutes and `POST /api/cron/deliver` every minute, both with `Authorization: Bearer $CRON_SECRET`.
 7. **Do not seed synthetic data.** The seed script refuses when `NODE_ENV=production`.
 8. Bootstrap the first platform admin manually: create the user, insert into `user_platform_roles`, and require MFA enrolment at first sign-in.
 
@@ -41,7 +41,7 @@ Same steps as A, but run `db/local/000_supabase_compat.sql` as a superuser first
 - **Backups:** daily full backup plus PITR. Test a restore before the pilot (PRD launch gate). Storage needs its own backup policy.
 - **Monitoring:** ship stdout JSON logs. They're PHI-redacted, but treat them as sensitive anyway. Alert on `db.error`, a spike in `access_events` denials, and new `security_incidents`.
 - **Audit integrity:** run *Admin → Audit logs → Verify* (or `select * from app.verify_audit_chain()`) on a schedule, and export chain heads to write-once storage.
-- **Message delivery:** implement a worker that drains `message_outbox` (status `queued`) to an SMTP/SMS provider, with retry and backoff.
+- **Message delivery:** schedule `POST /api/cron/deliver` every minute (or `pnpm jobs:deliver`). Set `MAIL_DRIVER=smtp` and `SMTP_URL` (production refuses to start without them), plus `SMS_DRIVER=webhook` and `SMS_WEBHOOK_URL` for your SMS gateway. Failed messages retry at 1, 4, 16 and 64 minutes, then are marked `failed`. Alert on that.
 - **Key rotation:** plan a re-encryption job before rotating `APP_ENCRYPTION_KEY`. The ciphertext carries a version byte for this.
 
 ## Pilot readiness checklist
@@ -51,7 +51,7 @@ Same steps as A, but run `db/local/000_supabase_compat.sql` as a superuser first
 - [ ] Independent penetration test; findings remediated
 - [ ] ClamAV (or a managed scanner) live; `CLAMAV_ADDRESS` set
 - [ ] Identity verification partner integrated (replace `manual_review`)
-- [ ] Email and SMS delivery worker live; SMS for critical security alerts
+- [ ] SMTP and SMS gateway credentials configured; delivery cron scheduled; SMS used for critical security alerts
 - [ ] Backups and a disaster-recovery restore tested
 - [ ] Incident response runbook and on-call rota; breach notification procedure
 - [ ] Support team trained on identity reconciliation and account recovery

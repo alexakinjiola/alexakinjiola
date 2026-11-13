@@ -21,6 +21,7 @@ export default async function ProviderLayout({ children }: { children: React.Rea
   if (can("records:submit")) nav.push({ href: "/provider/submit", label: "Submit a record", icon: "upload_file" }, { href: "/provider/submissions", label: "Record submissions", icon: "receipt_long" });
   if (can("staff:manage")) nav.push({ href: "/provider/staff", label: "Staff management", icon: "group" });
   if (current && current.capabilities.includes("institution:manage") || actor.ownedInstitutionDrafts.length) nav.push({ href: "/provider/institution", label: "Institution settings", icon: "domain" });
+  if (can("integrations:manage")) nav.push({ href: "/provider/integrations", label: "Integrations", icon: "share" });
   if (can("activity:view")) nav.push({ href: "/provider/activity", label: "Activity logs", icon: "policy" });
   nav.push({ href: "/provider/notifications", label: "Notifications", icon: "notifications", badge: c.unread }, { href: "/provider/account", label: "My account", icon: "manage_accounts" });
 

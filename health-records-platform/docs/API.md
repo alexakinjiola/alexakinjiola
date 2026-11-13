@@ -14,6 +14,9 @@ The platform exposes three kinds of interface. Every one of them authenticates f
 | `GET /api/provider/access-status/:patientId?institution=:id` | staff session | Polled by open clinical screens | `200 {active, expiresAt, reason}` |
 | `GET /api/admin/institution-documents/:id` | platform admin (RLS) | View verification evidence. Audited. | `200` file, `404` |
 | `POST /api/cron/expire` | `Authorization: Bearer $CRON_SECRET` | Runs `app.run_expiry()` | `200 {permissions_expired, requests_expired, expiry_warnings}`, `401` |
+| `POST /api/cron/deliver` | `Authorization: Bearer $CRON_SECRET` | Drains the email/SMS outbox (retry with backoff) | `200 {sent, retried, failed, skipped}`, `401` |
+| `POST /api/export` | patient/representative session, same-origin, step-up | JSON `{format: "pdf"\|"fhir", categories?, credential?}` → PDF summary or FHIR R4 `collection` Bundle. Logged as an export event; patient gets a security notification. | `200` file, `401`, `403`, `429` |
+| `POST /api/v1/fhir/Bundle` | `Authorization: Bearer cnt_live_…` (integration key) | Machine ingestion from an **active** connection. Body: FHIR R4 Bundle with a `Patient` carrying the platform Health ID, plus Observation, DiagnosticReport, Condition, MedicationRequest/Statement, AllergyIntolerance, Immunization, Procedure, Encounter, DocumentReference, Composition. Idempotent per resource id. Max 5 MB / 500 resources; 600 calls per hour per key. | `200`/`207` OperationOutcome with `summary {created, skipped_duplicates, errors, unsupported_resource_types}`, `401`, `403` (inactive key / institution not approved), `404` (no verified patient), `413`, `422` |
 
 Error body shape: `{ "ok": false, "error": "<safe, user-facing message>", "fieldErrors"?: { field: message } }`. Internal errors never leak SQL or stack traces.
 
@@ -25,6 +28,7 @@ Server Actions return `ActionResult = { ok: true, data?, message? } | { ok: fals
 |---|---|
 | `app/(auth)/actions.ts` | sign in, register (patient or provider), sign out, resend verification, forgot / reset password, MFA challenge, MFA setup begin / confirm, change password, disable MFA (patients only, password required), phone code send / verify, revoke session |
 | `app/(patient)/actions.ts` | decide request (approve / partial / reject; step-up and acknowledgement required to share), revoke permission (step-up), raise correction, mark own upload as error, report suspicious activity, mark notifications read, update profile, notification preferences, NIN or in-person identity verification, support tickets, choose "acting for" (representatives), request representation |
+| `app/provider/integrations/actions.ts` | create integration (key shown once, stored as SHA-256), pause / revoke / activate (activation: platform admins only) |
 | `app/provider/actions.ts` | switch institution, search patient, create / cancel access request, emergency access (step-up with code), register / update / submit institution, invite staff, change staff status, resolve corrections, accept invitation, contact platform |
 | `app/admin/actions.ts` | institution status, professional status, end affiliation, user status, identity decision, representative status, emergency review, incident update, ticket update / internal note, settings, verify audit chain. All except tickets require step-up within 10 minutes. |
 
@@ -45,3 +49,6 @@ The stable contract for any other client, including a future mobile app or Postg
 | `patient_activity(patient, from, to, inst, kind, limit, offset)` | patient side | Unified feed |
 | `admin_*`, `verify_audit_chain()` | platform roles | No clinical fields returned |
 | `run_expiry()` | `service_role` / cron | Idempotent |
+| `patient_export(patient, record_ids[], format)` | patient side | Logs export event, critical notification |
+| `create_integration / set_integration_status` | `integrations:manage` / platform admin | Activation is a platform decision |
+| `integration_ingest(key_hash, health_id, records)` | **server only** (`service_role`) | Verified patients only; provenance `integration`; never grants read access |

@@ -25,11 +25,13 @@ async function audit(page: Page, path: string) {
 test("public pages", async ({ page }) => { for (const p of ["/", "/sign-in", "/register", "/register/provider", "/forgot-password", "/privacy"]) await audit(page, p); });
 test("patient app", async ({ page }) => {
   await signIn(page, "adaeze@demo.continuum.test");
-  for (const p of ["/dashboard", "/records", "/records/upload", "/timeline", "/access", "/access?tab=active", "/activity", "/notifications", "/settings", "/settings/security", "/settings/notifications", "/support"]) await audit(page, p);
+  for (const p of ["/dashboard", "/records", "/records/upload", "/timeline", "/access", "/access?tab=active", "/activity", "/notifications", "/settings", "/settings/security", "/settings/notifications", "/settings/representatives", "/records/export", "/support"]) await audit(page, p);
 });
 test("provider workspace", async ({ page }) => {
   await signIn(page, "dr.adeyemi@demo.continuum.test", "MFRGGZDFMZTWQ2LKMFRGGZDFMZTWQ2LK");
   for (const p of ["/provider", "/provider/search", "/provider/requests", "/provider/patients", "/provider/submit", "/provider/submissions"]) await audit(page, p);
+  await signIn(page, "owner.ikeja@demo.continuum.test", "NBSWY3DPNBSWY3DPNBSWY3DPNBSWY3DP");
+  for (const p of ["/provider", "/provider/staff", "/provider/integrations", "/provider/institution", "/provider/activity"]) await audit(page, p);
 });
 test("admin console", async ({ page }) => {
   await signIn(page, "admin@demo.continuum.test", "JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP");

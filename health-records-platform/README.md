@@ -79,6 +79,8 @@ A good five-minute demo:
 3. Back as **Adaeze**, revoke the permission. Dr Eze's open screen locks within 20 seconds.
 4. **Adaeze → Activity history** shows every view, the blocked attempt, and a *Report suspicious activity* action.
 5. Sign in as **Admin**, review the institution queue, then *Audit logs → Verify audit chain integrity*.
+6. As **Adaeze**, open *My health records → Export* and download the PDF summary or FHIR data.
+7. As **owner.ikeja**, open *Integrations* and connect a system. Activate it as Admin, then POST a FHIR Bundle (see the instructions on that page).
 
 ---
 
@@ -92,6 +94,7 @@ A good five-minute demo:
 | `pnpm db:reset` | **Local only.** Drop everything, re-migrate, reseed synthetic data |
 | `pnpm db:seed` | Seed synthetic demo data (refuses in production) |
 | `pnpm jobs:expire` | Run the expiry job (permissions, requests, expiry warnings) |
+| `pnpm jobs:deliver` | Deliver queued emails and SMS (drivers set by `MAIL_DRIVER` / `SMS_DRIVER`) |
 | `pnpm test` | Vitest: authorization, RLS, audit, file security tests against real Postgres |
 | `bash scripts/e2e.sh` | Reset, seed, start the server and run the Playwright browser flows and accessibility audit |
 | `pnpm typecheck` / `pnpm lint` | TypeScript and ESLint |

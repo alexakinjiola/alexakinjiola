@@ -63,6 +63,11 @@ This describes what's actually implemented and how it's verified. It isn't a cer
 | Anomaly detection | same file |
 | Accessibility | `e2e/accessibility.spec.ts` (axe, WCAG 2.2 A/AA, 32 screens) |
 
+## Findings fixed during this phase
+
+- **Function privileges:** PostgreSQL grants `EXECUTE` to `PUBLIC` on new functions. Functions added after migration 006 had silently regained it, including server-only `integration_ingest`. Migration 013 revokes it schema-wide and changes the default privileges; a regression test now fails if any `app.*` function becomes executable by `anon`, or if internal helpers become callable by clients.
+- **Clinical value integrity in PDFs:** Unicode normalisation turned `×10⁹/L` into `×109/L` in the PDF summary. Exponents are now rendered as `^9` before normalisation, and this is covered by a unit test.
+
 ## Known gaps (honest list)
 
 - No external penetration test yet. No dependency/SAST pipeline wired up.
@@ -70,6 +75,6 @@ This describes what's actually implemented and how it's verified. It isn't a cer
 - `script-src 'unsafe-inline'` in the CSP.
 - The `X-Forwarded-For` trust model assumes exactly one trusted proxy.
 - The Supabase storage driver is written against the documented API but untested here.
-- Email and SMS delivery adapters aren't implemented. Messages wait in `message_outbox`.
+- The SMS driver is a generic JSON webhook; it must be adapted to the chosen Nigerian SMS provider and tested.
 - No key-rotation tooling for `APP_ENCRYPTION_KEY` / `IDENTIFIER_HASH_KEY`. The ciphertext version byte allows adding it.
-- Integration (FHIR) ingestion endpoint not yet built.
+- Integration keys have no automatic rotation or expiry (revoke and recreate). Inbound FHIR attachments (binary documents) aren't accepted yet.

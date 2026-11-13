@@ -12,6 +12,7 @@ import { INSTITUTION_STATUS, INSTITUTION_TYPE, PRO_STATUS } from "@/lib/labels";
 import { formatBytes, formatDate, formatDateTime } from "@/lib/format";
 import { AdminAction } from "../../confirm";
 import { setInstitutionStatusAction } from "../../actions";
+import { setIntegrationStatusAction } from "@/app/provider/integrations/actions";
 
 export const metadata: Metadata = { title: "Institution review" };
 const DOC: Record<string, string> = { operating_license: "Operating licence", cac_certificate: "CAC certificate", representative_id: "Representative ID", accreditation: "Accreditation", other: "Other" };
@@ -28,6 +29,7 @@ export default async function InstitutionReview({ params }: { params: Promise<{ 
       docs: await tx`select id, document_type, file_name, size_bytes, created_at from institution_documents where institution_id = ${id}`,
       staff: await tx`select hp.full_name, hp.verification_status, r.name as role, a.status from professional_affiliations a join healthcare_professionals hp on hp.id = a.professional_id join roles r on r.id = a.role_id where a.institution_id = ${id}`,
       history: await tx`select action, metadata, occurred_at from audit_logs where (institution_id = ${id} and action like 'admin.institution%') or (entity_id = ${id}::text and action like 'institution.%') order by occurred_at desc limit 20`,
+      integrations: await tx`select id, name, system_type, status, api_key_prefix, last_used_at from integration_connections where institution_id = ${id} order by created_at desc`,
       perms: (await tx`select count(*)::int n from permissions where institution_id = ${id} and status = 'active'`)[0].n as number,
     };
   });
@@ -85,6 +87,13 @@ export default async function InstitutionReview({ params }: { params: Promise<{ 
             )}
             <CardBody className="border-t border-line text-xs leading-5 text-ink-3">Verify licence details directly with the issuing authority. Automated registry checks are a pilot dependency.</CardBody>
           </Card>
+          {d.integrations.length > 0 && <Card><CardHeader><CardTitle>Records-system connections</CardTitle></CardHeader>
+            <ul className="divide-y divide-line">{d.integrations.map((c) => (
+              <li key={c.id} className="flex items-center gap-3 px-5 py-3 text-sm sm:px-6"><span className="flex-1"><span className="block font-medium text-ink">{c.name}</span>
+                <span className="font-mono text-xs text-ink-3">{c.api_key_prefix}… · {c.status}</span></span>
+                {(c.status === "pending" || c.status === "paused") && s === "approved" && <AdminAction label="Activate" reasonRequired={false} reasonLabel="Notes" title={`Activate ${c.name}`}
+                  description="Records sent with this key will be added to verified patients' records, labelled as received through an approved integration." action={setIntegrationStatusAction.bind(null, c.id, "active")} />}
+              </li>))}</ul></Card>}
           <Card><CardHeader><CardTitle>History</CardTitle></CardHeader><CardBody>
             <ol className="space-y-3 text-sm">{d.history.map((h, k) => (
               <li key={k}><p className="text-ink">{h.action.replace(/[._]/g, " ")}{h.metadata?.to ? ` → ${h.metadata.to}` : ""}</p><p className="text-xs text-ink-3">{formatDateTime(h.occurred_at)}</p></li>

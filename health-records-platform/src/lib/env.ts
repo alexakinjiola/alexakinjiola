@@ -23,7 +23,12 @@ const schema = z.object({
   SUPABASE_STORAGE_BUCKET: z.string().default("medical-records"),
   CLAMAV_ADDRESS: z.string().optional(),
   IDENTITY_PROVIDER: z.enum(["sandbox", "manual_review"]).default("sandbox"),
-  MAIL_DRIVER: z.enum(["outbox"]).default("outbox"),
+  MAIL_DRIVER: z.enum(["outbox", "log", "smtp"]).default("outbox"),
+  SMTP_URL: z.string().optional(),
+  MAIL_FROM: z.string().optional(),
+  SMS_DRIVER: z.enum(["none", "log", "webhook"]).default("none"),
+  SMS_WEBHOOK_URL: z.preprocess((v) => (v === "" ? undefined : v), z.string().url().optional()),
+  SMS_WEBHOOK_TOKEN: z.string().optional(),
   ENABLE_DEV_MAILBOX: z.string().default("false"),
 });
 
@@ -42,6 +47,7 @@ export function env(): Env {
   if (e.APP_ENV === "production") {
     if (e.IDENTITY_PROVIDER === "sandbox") throw new Error("IDENTITY_PROVIDER=sandbox is not allowed in production");
     if (e.ENABLE_DEV_MAILBOX === "true") throw new Error("ENABLE_DEV_MAILBOX must be false in production");
+    if (e.MAIL_DRIVER !== "smtp" || !e.SMTP_URL) throw new Error("Production requires MAIL_DRIVER=smtp with SMTP_URL");
   }
   cached = e;
   return e;

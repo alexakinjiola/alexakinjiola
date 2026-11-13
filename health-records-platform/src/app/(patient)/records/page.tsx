@@ -41,7 +41,7 @@ export default async function RecordsPage({ searchParams }: { searchParams: Prom
       <PageHeader
         title="My health records"
         description="Everything on your record, with where it came from. Uploads you added yourself are labelled so no one mistakes them for verified clinical records."
-        actions={<Button asChild icon="upload_file"><Link href="/records/upload">Upload a record</Link></Button>}
+        actions={<><Button asChild variant="secondary" icon="download"><Link href="/records/export">Export</Link></Button><Button asChild icon="upload_file"><Link href="/records/upload">Upload a record</Link></Button></>}
       />
       <nav aria-label="Record categories" className="-mx-1 mb-5 overflow-x-auto pb-1">
         <ul className="flex min-w-max gap-2 px-1">

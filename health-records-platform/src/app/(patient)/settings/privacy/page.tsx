@@ -12,7 +12,7 @@ import { SettingsNav } from "../settings-nav";
 export const metadata: Metadata = { title: "Privacy & data" };
 
 const RIGHTS: { icon: IconName; title: string; body: string; href: string; cta: string }[] = [
-  { icon: "download", title: "Get a copy of your data", body: "Download individual documents any time, or ask for a complete copy of what we hold about you.", href: "/support?category=data_subject_request", cta: "Request a copy" },
+  { icon: "download", title: "Get a copy of your data", body: "Download a readable summary or structured FHIR data now, or ask for everything we hold about you, including account and access logs.", href: "/records/export", cta: "Export my records" },
   { icon: "edit_note", title: "Correct your information", body: "Ask us to fix personal details, or ask an institution to review a record.", href: "/support?category=profile_correction", cta: "Request a correction" },
   { icon: "person_off", title: "Close your account", body: "We'll explain what can be deleted and what must be kept under medical record retention rules.", href: "/support?category=account_closure", cta: "Ask to close account" },
 ];

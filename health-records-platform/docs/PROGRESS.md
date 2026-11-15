@@ -41,13 +41,19 @@
 - ✅ Audit log with chain verification · support tickets with history and internal notes · configurable settings
 
 ## Phase 6 — Testing & hardening
-- ✅ 40 integration tests against real Postgres (all 15 required security cases plus emergency, audit, anomaly, files, export, integrations, delivery worker, function-privilege regression, PDF clinical-value safety)
-- ✅ 13 browser tests: flows A–I, export downloads, representative request, integration lifecycle over HTTP, API-bypass and CSRF checks, axe WCAG 2.2 AA on 39 screens
-- ✅ Production build; typecheck and lint clean
-- 🟡 Responsive: verified visually on desktop and a 390px phone; no device-lab testing yet
-- ⬜ Load testing against the PRD performance targets; external penetration test
+- ✅ 49 database/integration tests against real Postgres: all 15 required security cases, emergency access, audit tamper-evidence, anomaly detection, files, export, integrations (incl. key lifecycle), delivery worker, function-privilege regression (both directions), PDF clinical-value safety, keyring rotation, proxy-hop IP trust, breached-password check
+- ✅ Provider adapters verified against local protocol mocks: ClamAV (clamd INSTREAM, fails closed), Supabase Storage (encrypted before upload), Termii, Africa's Talking
+- ✅ 21 browser tests: flows A–I, export, representatives, integration lifecycle over HTTP, API-bypass and CSRF, keyboard-only use (skip link, focus trap, Escape, radio arrows), Android (Pixel 7) and small iPhone (320px) layouts, axe WCAG 2.2 AA on 39 screens
+- ✅ Nonce-based CSP (no inline scripts); encryption keyring with rotation tool (drill-tested); identifier-key rotation for lookup; integration key expiry and rotation
+- ✅ Local load test: all PRD §8.3 targets met (`docs/load-test-results.json`, 4-core dev machine — repeat on production-like infrastructure)
+- ✅ Backup and restore drill passed (row counts, audit chain valid, every document decrypts and matches its SHA-256)
+- ✅ CI workflow: typecheck, lint, tests, build, browser suite, `pnpm audit` (no known vulnerabilities at time of writing)
+- ⬜ **Independent** penetration test (external party required)
+- ⬜ Manual screen-reader testing (TalkBack / VoiceOver) by people who use them daily
+- ⬜ Real-service verification of ClamAV, Supabase Storage and the chosen SMS provider in staging (checklist in DEPLOYMENT.md)
 
 ## Phase 7 — Pilot preparation
 - ✅ Demo accounts and synthetic data · setup, deployment, security and API documentation · pilot checklist (DEPLOYMENT.md)
-- ✅ Message delivery worker (SMTP and SMS-gateway drivers, retries with backoff, multi-instance safe)
-- ⬜ Items listed in DECISIONS.md (legal, identity partner, ClamAV deployment, SMS provider choice)
+- ✅ Message delivery worker (SMTP; Termii, Africa's Talking or webhook SMS; retries with backoff; multi-instance safe)
+- ✅ Incident response runbook (INCIDENT_RESPONSE.md) and DPIA working draft (DPIA_TEMPLATE.md)
+- ⬜ Needs people, not code: counsel review of ⚖️ items, DPIA sign-off, choosing and contracting the identity, SMS and hosting providers, signing pilot institutions, filling in the incident contacts

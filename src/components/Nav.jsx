@@ -106,7 +106,7 @@ export default function Nav() {
                   key={l.to}
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
+                  exit={{ y: 20, opacity: 0, transition: { duration: 0.2 } }}
                   transition={{ delay: 0.18 + i * 0.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <NavLink to={l.to} end={l.to === '/'} className="mobile-link">
@@ -116,7 +116,7 @@ export default function Nav() {
                 </motion.div>
               ))}
             </nav>
-            <motion.div className="mobile-foot" initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.5 } }} exit={{ opacity: 0 }}>
+            <motion.div className="mobile-foot" initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.5 } }} exit={{ opacity: 0, transition: { duration: 0.15 } }}>
               <a href={`mailto:${site.email}`} className="mobile-mail"><Icon name="mail" />{site.email}</a>
               <span className="nav-status"><span className="pulse-dot" aria-hidden="true" />Open to remote, hybrid &amp; relocation</span>
             </motion.div>

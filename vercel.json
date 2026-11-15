@@ -1,16 +1,65 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/projects.html", "destination": "/work", "permanent": true },
-    { "source": "/projects", "destination": "/work", "permanent": true },
-    { "source": "/about.html", "destination": "/about", "permanent": true },
-    { "source": "/skills.html", "destination": "/capabilities", "permanent": true },
-    { "source": "/skills", "destination": "/capabilities", "permanent": true },
-    { "source": "/experience.html", "destination": "/experience", "permanent": true },
-    { "source": "/resume.html", "destination": "/experience", "permanent": true },
-    { "source": "/resume", "destination": "/experience", "permanent": true },
-    { "source": "/contact.html", "destination": "/contact", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/projects.html",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/skills.html",
+      "destination": "/capabilities",
+      "permanent": true
+    },
+    {
+      "source": "/skills",
+      "destination": "/capabilities",
+      "permanent": true
+    },
+    {
+      "source": "/experience.html",
+      "destination": "/experience",
+      "permanent": true
+    },
+    {
+      "source": "/resume.html",
+      "destination": "/experience",
+      "permanent": true
+    },
+    {
+      "source": "/resume",
+      "destination": "/experience",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    }
   ],
-  "rewrites": [{ "source": "/((?!assets/|images/|docs/|.*\\..*).*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/((?!assets/|images/|docs/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ]
 }

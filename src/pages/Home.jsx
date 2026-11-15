@@ -47,7 +47,7 @@ function Hero({ play }) {
         <motion.div className="hero-copy" style={{ y: copyY, opacity: fade }}>
           <motion.p className="hero-chip" {...enter(0.05)}>
             <span className="pulse-dot" aria-hidden="true" />
-            Product Designer · UX/UI · Digital Products
+            Product Designer · UX/UI<span className="hide-xs"> · Digital Products</span>
           </motion.p>
           <SplitText as="h1" id="hero-title" className="hero-title" text="I turn complex product problems into" dim="simple, scalable experiences." breakBefore onMount play={play} delay={0.15} />
           <motion.p className="hero-sub" {...enter(0.55)}>

@@ -136,6 +136,10 @@ describe("function privilege regression", () => {
     const leaked = await admin`select p.proname from pg_proc p join pg_namespace n on n.oid = p.pronamespace
       where n.nspname = 'app' and p.proname = any(${internal}) and has_function_privilege('authenticated', p.oid, 'execute')`;
     expect(leaked).toEqual([]);
+    // …without over-closing: extension functions the app relies on stay usable.
+    const [ext] = await admin`select has_function_privilege('authenticated', 'citext_eq(citext, citext)', 'execute') as citext,
+      has_function_privilege('service_role', 'gen_random_bytes(integer)', 'execute') as pgcrypto`;
+    expect(ext).toEqual({ citext: true, pgcrypto: true });
   });
 });
 

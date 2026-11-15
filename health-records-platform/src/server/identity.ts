@@ -1,6 +1,6 @@
 import "server-only";
 import { withService } from "@/lib/db";
-import { hashIdentifier } from "@/lib/crypto";
+import { hashIdentifier, identifierHashCandidates } from "@/lib/crypto";
 import { identityProvider } from "@/lib/identity";
 import { AppError } from "@/lib/errors";
 import type { Actor } from "@/lib/auth/actor";
@@ -20,7 +20,8 @@ export async function submitNinVerification(actor: Actor, nin: string) {
 
   const profile = await withService(async (tx) => {
     const [p] = await tx`select full_name, date_of_birth::text as dob from patient_profiles where patient_id = ${patientId}`;
-    const [taken] = await tx`select patient_id from health_identifiers where identifier_type = 'nin' and value_hash = ${ninHash} and patient_id <> ${patientId}`;
+    const [taken] = await tx`select patient_id from health_identifiers where identifier_type = 'nin'
+      and value_hash = any(${identifierHashCandidates(clean)}) and patient_id <> ${patientId}`;
     return { full_name: p.full_name as string, dob: p.dob as string, takenBy: taken?.patient_id as string | undefined };
   });
 

@@ -95,6 +95,9 @@ A good five-minute demo:
 | `pnpm db:seed` | Seed synthetic demo data (refuses in production) |
 | `pnpm jobs:expire` | Run the expiry job (permissions, requests, expiry warnings) |
 | `pnpm jobs:deliver` | Deliver queued emails and SMS (drivers set by `MAIL_DRIVER` / `SMS_DRIVER`) |
+| `pnpm keys:rotate` | Re-encrypt documents and MFA secrets with the active key in `APP_ENCRYPTION_KEYS` |
+| `pnpm db:backup` / `pnpm db:restore-drill` | Portable backup; restore it into a scratch database and verify counts, audit chain and every document |
+| `node scripts/load-test.mjs` | Load test against the PRD performance targets (needs a running, seeded server) |
 | `pnpm test` | Vitest: authorization, RLS, audit, file security tests against real Postgres |
 | `bash scripts/e2e.sh` | Reset, seed, start the server and run the Playwright browser flows and accessibility audit |
 | `pnpm typecheck` / `pnpm lint` | TypeScript and ESLint |
@@ -111,4 +114,6 @@ A good five-minute demo:
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Environment variables, Supabase deployment, jobs, backups, pilot checklist |
 | [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) | Tokens, measured contrast, components, icons |
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Assumptions, unresolved decisions, items for legal counsel |
+| [docs/INCIDENT_RESPONSE.md](docs/INCIDENT_RESPONSE.md) | Severity levels, containment steps in the product, notification duties, contacts |
+| [docs/DPIA_TEMPLATE.md](docs/DPIA_TEMPLATE.md) | DPIA working draft pre-filled from the implementation, for DPO and counsel sign-off |
 | [docs/PROGRESS.md](docs/PROGRESS.md) | Phase-by-phase checklist with honest status |

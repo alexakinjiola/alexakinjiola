@@ -7,7 +7,8 @@ import { requestMeta } from "@/lib/request";
 import { getActor, hasRecentReauth } from "@/lib/auth/actor";
 import { INSTITUTION_COOKIE, requireProviderContext } from "@/lib/auth/provider-context";
 import { AppError } from "@/lib/errors";
-import { hashIdentifier, randomToken, sha256Hex } from "@/lib/crypto";
+import { identifierHashCandidates, randomToken, sha256Hex } from "@/lib/crypto";
+import type postgres from "postgres";
 import { queueMessage } from "@/lib/mailer";
 import { withService } from "@/lib/db";
 import { env } from "@/lib/env";
@@ -38,9 +39,15 @@ export async function searchPatientAction(input: unknown) {
   return handle("search_patient", async () => {
     const v = parse(searchSchema, input);
     const { actor, inst, meta } = await current();
-    const rows = await withActor(actor.userId, (tx) => tx`select * from app.search_patients(${inst},
-      ${v.method === "health_id" ? v.healthId : null}, ${v.method === "phone" ? v.phone : null},
-      ${v.method !== "health_id" ? v.dob : null}::date, ${v.method === "nin" ? hashIdentifier(v.nin) : null})`, meta);
+    // NIN lookups try the active fingerprint key first, then retired ones (key rotation).
+    const ninHashes = v.method === "nin" ? identifierHashCandidates(v.nin) : [null];
+    let rows: Awaited<ReturnType<typeof withActor<postgres.Row[]>>> = [];
+    for (const h of ninHashes) {
+      rows = await withActor(actor.userId, (tx) => tx`select * from app.search_patients(${inst},
+        ${v.method === "health_id" ? v.healthId : null}, ${v.method === "phone" ? v.phone : null},
+        ${v.method !== "health_id" ? v.dob : null}::date, ${h})`, meta);
+      if (rows.length) break;
+    }
     return rows.map((r) => ({ ...r })) as unknown as {
       patient_id: string; masked_name: string; birth_year: number; sex: string; health_id_hint: string; has_active_permission: boolean; has_pending_request: boolean;
     }[];

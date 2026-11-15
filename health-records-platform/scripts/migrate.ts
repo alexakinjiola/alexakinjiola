@@ -49,6 +49,10 @@ export async function migrate(databaseUrl: string, opts: { reset?: boolean; comp
       });
       log(`✓ ${file}`);
     }
+    // Close the app schema after every run: PostgreSQL grants EXECUTE to PUBLIC on
+    // new functions by default. Explicit grants to authenticated/service_role stay.
+    await sql.unsafe(`revoke execute on all functions in schema app from public, anon;
+                      grant execute on all functions in schema app to service_role;`);
     log("Migrations up to date.");
   } finally {
     await sql.end();

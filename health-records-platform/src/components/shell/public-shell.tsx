@@ -7,11 +7,11 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh">
       <SkipLink />
-      <header className="mx-auto flex h-18 max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+      <header className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-2 px-4 py-4 sm:px-8">
         <Logo />
-        <nav aria-label="Account" className="flex items-center gap-2">
+        <nav aria-label="Account" className="flex shrink-0 items-center gap-1 sm:gap-2">
           <Button asChild variant="ghost" size="sm"><Link href="/sign-in">Sign in</Link></Button>
-          <Button asChild size="sm"><Link href="/register">Create account</Link></Button>
+          <Button asChild size="sm"><Link href="/register" aria-label="Create account"><span className="hidden min-[380px]:inline">Create account</span><span aria-hidden className="min-[380px]:hidden">Join</span></Link></Button>
         </nav>
       </header>
       <main id="main">{children}</main>

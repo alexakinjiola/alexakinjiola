@@ -8,9 +8,21 @@ export const sha256Hex = (data: string | Buffer) => createHash("sha256").update(
 /** URL-safe random token with 256 bits of entropy. */
 export const randomToken = (bytes = 32) => randomBytes(bytes).toString("base64url");
 
-/** Keyed hash for national identifiers (NIN): lookup without storing the number. */
-export const hashIdentifier = (value: string) =>
-  createHmac("sha256", Buffer.from(env().IDENTIFIER_HASH_KEY, "base64")).update(value.trim()).digest("hex");
+/**
+ * Keyed hash for national identifiers (NIN): lookup without storing the number.
+ * NINs are never stored, so old fingerprints cannot be re-computed under a new
+ * key. Rotation therefore keeps retired keys for LOOKUP only:
+ *   IDENTIFIER_HASH_KEYS="<new b64>,<old b64>"  (first = used for new records)
+ * Patients re-verifying are re-fingerprinted with the active key.
+ */
+const identifierKeys = () => {
+  const list = (process.env.IDENTIFIER_HASH_KEYS ?? "").split(",").map((k) => k.trim()).filter(Boolean);
+  return (list.length ? list : [env().IDENTIFIER_HASH_KEY]).map((k) => Buffer.from(k, "base64"));
+};
+const hmac = (key: Buffer, value: string) => createHmac("sha256", key).update(value.trim()).digest("hex");
+export const hashIdentifier = (value: string) => hmac(identifierKeys()[0], value);
+/** Every fingerprint the value may be stored under (active key first). */
+export const identifierHashCandidates = (value: string) => identifierKeys().map((k) => hmac(k, value));
 
 export function safeEqual(a: string, b: string) {
   const ab = Buffer.from(a);

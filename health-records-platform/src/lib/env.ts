@@ -17,6 +17,8 @@ const schema = z.object({
   APP_ENCRYPTION_KEY: base64Key.optional(),
   APP_ENCRYPTION_KEYS: z.string().optional(),
   IDENTIFIER_HASH_KEY: base64Key,
+  // Optional rotation list "<new>,<old>" — first hashes new records, all are used for lookup.
+  IDENTIFIER_HASH_KEYS: z.string().optional(),
   CRON_SECRET: z.string().min(16),
   STORAGE_DRIVER: z.enum(["local", "supabase"]).default("local"),
   STORAGE_LOCAL_DIR: z.string().default(".data/storage"),

@@ -19,7 +19,7 @@ This describes what's actually implemented and how it's verified. It isn't a cer
 
 ## Authentication
 
-- Passwords: argon2id (19 MiB, t=2). Policy: at least 10 characters, a number or symbol, and a common-password deny-list. Breached-password checks are recommended before the pilot.
+- Passwords: argon2id (19 MiB, t=2). Policy: at least 10 characters, a number or symbol, and a common-password deny-list. With `PASSWORD_BREACH_CHECK=hibp`, passwords are also checked against Have I Been Pwned's k-anonymity range API (only a 5-character SHA-1 prefix leaves the server). The check fails open, with a logged warning, if the API is unreachable.
 - Sessions: 256-bit random tokens; only the SHA-256 is stored. `HttpOnly`, `SameSite=Lax`, and `Secure` when `APP_ENV=production`. Idle and absolute timeouts are 60 min / 12 h for patients and 30 min / 10 h for staff.
 - MFA: TOTP (RFC 6238). Secrets are encrypted at rest (AES-256-GCM, AAD bound to the user). Required for professionals and admins; optional for patients.
 - Recovery: single-use reset tokens (hashed, 30 minutes) that never reveal whether an account exists. Lost-device recovery is a manual, identity-verified support process (documented in `/help/account-recovery`).
@@ -32,7 +32,8 @@ This describes what's actually implemented and how it's verified. It isn't a cer
 
 ## Web security
 
-- CSP (`default-src 'self'`, `frame-ancestors 'none'`, `object-src 'none'`), `X-Frame-Options: DENY`, `nosniff`, a strict Referrer-Policy, a Permissions-Policy, and HSTS in production. Note: `script-src 'unsafe-inline'` is currently required by Next.js inline bootstrapping. Nonce-based CSP is a hardening item.
+- Per-request **nonce-based CSP** (`src/proxy.ts`): `script-src 'self' 'nonce-…' 'strict-dynamic'`, with no inline scripts unless they carry the nonce. Also `default-src 'self'`, `frame-ancestors 'none'`, `object-src 'none'`, `form-action 'self'`, plus `X-Frame-Options: DENY`, `nosniff`, a strict Referrer-Policy, a Permissions-Policy, and HSTS in production. `style-src` allows `'unsafe-inline'` because inline style attributes (Radix positioning, charts) can't carry nonces. That's a much lower risk than inline script.
+- Client IP: taken from `X-Forwarded-For`, trusting exactly `TRUSTED_PROXY_HOPS` proxies (right-most entries), so spoofed left-most values are ignored (tested).
 - CSRF: Server Actions check Origin (built into Next.js). Upload routes call `assertSameOrigin` (tested).
 - XSS: React escaping only. No `dangerouslySetInnerHTML`. User text is rendered as text.
 - SQL injection: parameterised queries everywhere (`postgres` tagged templates). The one dynamic `ORDER BY` uses a fixed allow-list map.
@@ -65,16 +66,18 @@ This describes what's actually implemented and how it's verified. It isn't a cer
 
 ## Findings fixed during this phase
 
-- **Function privileges:** PostgreSQL grants `EXECUTE` to `PUBLIC` on new functions. Functions added after migration 006 had silently regained it, including server-only `integration_ingest`. Migration 013 revokes it schema-wide and changes the default privileges; a regression test now fails if any `app.*` function becomes executable by `anon`, or if internal helpers become callable by clients.
+- **Function privileges:** PostgreSQL grants `EXECUTE` to `PUBLIC` on new functions. Functions added after migration 006 had silently regained it, including server-only `integration_ingest`. A first attempt to change the *global* default privileges (016) over-reached: after a reset it also closed extension functions such as `citext_eq` and broke sign-in, which the browser tests caught. The final design (017) restores PostgreSQL's default and has the migration runner revoke `PUBLIC`/`anon` execute across the `app` schema after every run. A regression test fails if any `app.*` function is executable by `anon`, if internal helpers are callable by clients, **or** if extension functions become unusable.
 - **Clinical value integrity in PDFs:** Unicode normalisation turned `×10⁹/L` into `×109/L` in the PDF summary. Exponents are now rendered as `^9` before normalisation, and this is covered by a unit test.
+
+## Key management
+
+- **Encryption keyring:** `APP_ENCRYPTION_KEYS="2:<new>,1:<old>"`. New data uses the first key, and every ciphertext records its key id. `pnpm keys:rotate` re-encrypts documents and MFA secrets. Once it reports nothing remaining, remove the old key. Drill-tested.
+- **Identifier fingerprint key:** NINs are never stored, so the fingerprint key can't be re-applied to existing records. `IDENTIFIER_HASH_KEYS="<new>,<old>"` keeps retired keys for lookup only; patients who re-verify are re-fingerprinted with the new key.
+- **Integration keys:** shown once, stored as SHA-256, expire after `integration.key_max_days` (default 365), and rotate with a grace period (default 24 h). Revocation also kills any key still in its grace period. Institutions are warned 30 days before expiry.
 
 ## Known gaps (honest list)
 
-- No external penetration test yet. No dependency/SAST pipeline wired up.
-- ClamAV isn't deployed in this environment, so heuristics only.
-- `script-src 'unsafe-inline'` in the CSP.
-- The `X-Forwarded-For` trust model assumes exactly one trusted proxy.
-- The Supabase storage driver is written against the documented API but untested here.
-- The SMS driver is a generic JSON webhook; it must be adapted to the chosen Nigerian SMS provider and tested.
-- No key-rotation tooling for `APP_ENCRYPTION_KEY` / `IDENTIFIER_HASH_KEY`. The ciphertext version byte allows adding it.
-- Integration keys have no automatic rotation or expiry (revoke and recreate). Inbound FHIR attachments (binary documents) aren't accepted yet.
+- **No independent penetration test yet.** This must be done by an external party before the pilot. Automated checks in CI: typecheck, lint, the full test suites, and `pnpm audit` (high/critical fail the build).
+- Provider adapters (ClamAV, Supabase Storage, Termii, Africa's Talking) are verified against local protocol mocks, **not** the real services. Run each against its sandbox or staging before the pilot (checklist in DEPLOYMENT.md).
+- Breached-password checking fails open during an HIBP outage, which is a deliberate availability trade-off.
+- Screen-reader behaviour is verified through automated accessibility-tree, keyboard and axe checks. Manual testing with TalkBack and VoiceOver by people who use them is still required.

@@ -15,6 +15,10 @@ The Supabase local stack couldn't run in the build environment (container images
 
 **D-04 · Providers have no RLS path to clinical tables.** They can only read through `app.provider_*` functions, which log every attempt. "Every access is logged" is therefore structural, not a convention.
 
+**D-08 · SMS provider.** Adapters exist for Termii (Nigerian, DND route for transactional codes) and Africa's Talking, plus a generic webhook. *Open:* which provider to contract. Termii requires an approved sender ID for the DND route.
+
+**D-09 · Identifier fingerprints can't be re-keyed.** NINs are never stored, so `IDENTIFIER_HASH_KEY` rotation keeps old keys for lookup only (`IDENTIFIER_HASH_KEYS`). This is the price of not storing national identifiers, and we judge it worth paying.
+
 **D-05 · File scanning.** Uploads are checked by magic bytes and scanned heuristically (EICAR, active PDF content), plus ClamAV when `CLAMAV_ADDRESS` is set. **ClamAV, or an equivalent managed scanner, is a pilot requirement.** The heuristics are not antivirus.
 
 **D-06 · Material Symbols as an inline SVG subset.** The user preference specified Google icons. Shipping only the 130 glyphs in use, rather than the multi-megabyte font, matters on slow Nigerian mobile connections.

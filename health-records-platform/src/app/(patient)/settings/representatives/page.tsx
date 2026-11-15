@@ -25,7 +25,7 @@ export default async function RepresentativesPage() {
     <div className="animate-fade-in">
       <PageHeader title="Profile & settings" />
       <SettingsNav current="representatives" />
-      <div className="grid max-w-5xl gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
         <Card>
           <CardHeader><div><CardTitle>Manage someone else's record</CardTitle>
             <p className="text-sm text-ink-3">For parents of children, legal guardians and people with legal authority to act for someone.</p></div></CardHeader>

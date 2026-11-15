@@ -34,6 +34,9 @@ export function RadioCards({
               id={id}
               value={o.value}
               disabled={o.disabled}
+              // WAI-ARIA radio pattern: arrow keys move focus AND select. Select on
+              // keyboard focus only (:focus-visible), never on mouse/programmatic focus.
+              onFocus={(e) => { if (!o.disabled && e.currentTarget.matches(":focus-visible") && value !== o.value) onValueChange(o.value); }}
               className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border border-line-strong bg-surface data-[state=checked]:border-brand-600"
             >
               <RadioGroupPrimitive.Indicator className="size-2.5 rounded-full bg-brand-600" />

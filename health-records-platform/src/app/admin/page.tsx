@@ -32,7 +32,7 @@ export default async function AdminHome() {
         <Stat label="Identity checks waiting" value={o.pending_identity} icon="id_card" href="/admin/patients" />
         <Stat label="Denied attempts (24h)" value={o.denied_24h} icon="block" href="/admin/security" />
       </section>
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <Card><CardHeader><CardTitle>Protected-data access, last 14 days</CardTitle></CardHeader><CardBody><AccessChart data={o.access_daily} /></CardBody></Card>
         <div className="space-y-6">
           <Card><CardHeader><CardTitle>Access requests by outcome</CardTitle></CardHeader>

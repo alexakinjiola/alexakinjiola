@@ -82,7 +82,7 @@ export default async function ProviderHome() {
         <Stat label="Approved requests" value={d.approved} hint={`${d.rejected} declined · ${d.expired_requests} expired`} icon="task_alt" href="/provider/requests" />
         <Stat label="Expiring permissions" value={d.expiring_soon} hint={`${d.active_permissions} active in total`} icon="hourglass_top" href="/provider/patients" tone={d.expiring_soon ? "attention" : "neutral"} />
       </section>
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-6">
           <Card>
             <CardHeader><CardTitle>Submissions per week</CardTitle><span className="text-sm text-ink-3">Last 8 weeks</span></CardHeader>

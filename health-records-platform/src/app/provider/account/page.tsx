@@ -17,7 +17,7 @@ export default async function AccountPage() {
   return (
     <div className="animate-fade-in">
       <PageHeader title="My account" />
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
         <SecuritySettings actor={actor} />
         <aside className="space-y-6">
           {pro && <Card><CardHeader><CardTitle>Professional profile</CardTitle><Badge tone={PRO_STATUS[pro.verificationStatus]?.tone}>{PRO_STATUS[pro.verificationStatus]?.label}</Badge></CardHeader>

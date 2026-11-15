@@ -35,7 +35,7 @@ export default async function RequestPage({ params }: { params: Promise<{ id: st
         </div>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="space-y-6">
           <Card>
             <CardHeader><CardTitle>Why they're asking</CardTitle></CardHeader>

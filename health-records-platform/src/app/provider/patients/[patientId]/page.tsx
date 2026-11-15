@@ -63,7 +63,7 @@ export default async function ProviderPatient({ params }: { params: Promise<{ pa
             {can("records:submit") && <Button asChild variant="secondary" icon="upload_file"><Link href={`/provider/submit?patient=${patientId}`}>Add a record</Link></Button>}
           </div>
         </header>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="space-y-6">
             <Callout tone="info" icon="policy">Only records inside the patient's approved scope are shown. Records labelled "Uploaded by patient" have not been verified by an institution.</Callout>
             {records.length === 0 ? <Card><EmptyState icon="folder_open" title="No records within the approved scope" /></Card> : (

@@ -20,7 +20,7 @@ export default async function IdentityPage() {
     <div className="animate-fade-in">
       <PageHeader title="Profile & settings" />
       <SettingsNav current="identity" />
-      <div className="grid max-w-5xl gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <Card>
           <CardHeader><div><CardTitle>Identity verification</CardTitle><p className="text-sm text-ink-3">Confirms you are who you say you are, so records are linked to the right person.</p></div>
             <Badge tone={v.tone} icon={v.icon}>{v.label}</Badge></CardHeader>

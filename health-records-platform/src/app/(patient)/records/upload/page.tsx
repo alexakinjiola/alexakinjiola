@@ -14,7 +14,7 @@ export default async function UploadPage() {
     <div className="animate-fade-in">
       <Link href="/records" className="inline-flex items-center gap-1 text-sm font-medium text-ink-3 hover:text-ink"><Icon name="arrow_back" size={18} />My health records</Link>
       <PageHeader className="mt-4" title="Upload a record" description="Add results, letters or prescriptions you already have on paper or as files." />
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <Card><CardBody className="sm:p-8"><UploadForm /></CardBody></Card>
         <aside className="space-y-4 text-sm text-ink-2">
           <div className="rounded-lg border border-line bg-surface p-5">

@@ -50,7 +50,7 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
         </div>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="space-y-6">
           <Callout tone={r.source === "patient_upload" ? "warning" : "success"} icon={src.icon} title={src.label}>{src.explain}</Callout>
           <Card>

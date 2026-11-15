@@ -23,7 +23,7 @@ export default async function SupportPage({ searchParams }: { searchParams: Prom
   return (
     <div className="animate-fade-in">
       <PageHeader title="Help & support" description="Our team can help with account access, identity checks, corrections and anything that doesn't look right." />
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_400px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_400px]">
         <Card>
           <CardHeader><CardTitle>Your requests</CardTitle></CardHeader>
           {rows.length === 0 ? <EmptyState compact icon="support_agent" title="No requests yet">When you contact us, you can follow progress here.</EmptyState> : (

@@ -54,7 +54,7 @@ export default async function InstitutionReview({ params }: { params: Promise<{ 
         </div>
       </header>
       {i.status_reason && <Callout tone="neutral" className="mb-6" title="Last decision note">{i.status_reason}</Callout>}
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-6">
           <Card><CardHeader><CardTitle>Registration & licensing</CardTitle></CardHeader><CardBody>
             <DescriptionList items={[

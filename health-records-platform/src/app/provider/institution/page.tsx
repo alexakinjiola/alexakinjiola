@@ -42,7 +42,7 @@ export default async function InstitutionPage() {
         </Callout>
       )}
       {(i.status === "submitted" || i.status === "under_review") && <Callout tone="info" className="mb-6">Submitted {formatDateTime(i.submitted_at)}. The review usually takes a few working days.</Callout>}
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <Card><CardHeader><CardTitle>Registration details</CardTitle>{!editable && <Badge tone="neutral" icon="lock">Locked</Badge>}</CardHeader>
           <CardBody><InstitutionForm initial={values as never} institutionId={i.id} disabled={!editable} /></CardBody></Card>
         <aside className="space-y-6">

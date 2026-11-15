@@ -53,7 +53,7 @@ export default async function PermissionPage({ params }: { params: Promise<{ id:
         </Callout>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="space-y-6">
           <Card>
             <CardHeader><CardTitle>What they can see</CardTitle></CardHeader>

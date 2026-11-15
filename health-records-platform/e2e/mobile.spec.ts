@@ -1,5 +1,6 @@
 /** Phone layouts: no sideways scrolling, bottom navigation, drawer, and the key decision flow on a small screen. */
 import { test, expect, type Page } from "@playwright/test";
+import { ensurePendingRequestForAdaeze } from "./support";
 
 async function signIn(page: Page, email: string) {
   await page.context().clearCookies();
@@ -36,6 +37,7 @@ test("bottom navigation and menu drawer work", async ({ page }) => {
 });
 
 test("a patient can review and decline a request on a phone, with tap targets ≥ 44px", async ({ page }) => {
+  await ensurePendingRequestForAdaeze();
   await signIn(page, "adaeze@demo.continuum.test");
   await page.goto("/access");
   await page.getByRole("link", { name: "Review and decide" }).first().click();

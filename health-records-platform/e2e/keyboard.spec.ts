@@ -1,23 +1,8 @@
 /** Keyboard-only use: skip link, visible focus, dialogs that trap focus and close on Escape, and a full decision without a mouse. */
 import { test, expect } from "@playwright/test";
-import postgres from "postgres";
-import { loadEnv } from "../scripts/env";
+import { ensurePendingRequestForAdaeze } from "./support";
 
-loadEnv();
-
-/** Give the test its own pending request so it doesn't depend on other tests' state. */
-test.beforeAll(async () => {
-  const db = postgres(process.env.DATABASE_ADMIN_URL!, { max: 1, onnotice: () => {} });
-  const [ada] = await db`select patient_id from patient_profiles where full_name = 'Adaeze Okafor'`;
-  const [lab] = await db`select id from healthcare_institutions where name like 'Meridian%'`;
-  const [bisi] = await db`select user_id from healthcare_professionals where full_name = 'Bisi Ogun'`;
-  await db`update access_requests set status = 'cancelled' where patient_id = ${ada.patient_id} and institution_id = ${lab.id} and status = 'pending'`;
-  await db.begin(async (tx) => {
-    await tx`select set_config('request.jwt.claims', ${JSON.stringify({ sub: bisi.user_id })}, true)`;
-    await tx`select app.create_access_request(${lab.id}, ${ada.patient_id}, 'diagnostic_review', 'Keyboard test: comparing cholesterol results.', array['lab_result'], null, null, 7)`;
-  });
-  await db.end();
-});
+test.beforeAll(ensurePendingRequestForAdaeze);
 
 test("sign in and decline a request using only the keyboard", async ({ page }) => {
   await page.goto("/sign-in");

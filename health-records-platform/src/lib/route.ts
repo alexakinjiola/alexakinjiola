@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { env } from "./env";
 import { AppError, toAppError } from "./errors";
 import { log } from "./log";
+import { clientIpFrom } from "./client-ip";
 
 /** CSRF defence for state-changing route handlers: the request must come from our own origin. */
 export function assertSameOrigin(req: NextRequest) {
@@ -18,6 +19,5 @@ export function jsonError(err: unknown, route: string) {
 }
 
 export function clientIp(req: NextRequest) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip");
-  return ip && /^[0-9a-fA-F:.]+$/.test(ip) ? ip : null;
+  return clientIpFrom(req.headers.get("x-forwarded-for"), req.headers.get("x-real-ip"));
 }

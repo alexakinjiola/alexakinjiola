@@ -7,7 +7,7 @@ async function main() {
   const sql = postgres(process.env.DATABASE_URL!, { max: 1, onnotice: () => {} });
   const [{ r }] = await sql.begin(async (tx) => {
     await tx`select set_config('role', 'service_role', true)`;
-    return tx`select app.run_expiry() as r`;
+    return tx`select app.run_expiry() || jsonb_build_object('integration_key_warnings', app.integration_expiry_warnings()) as r`;
   });
   console.log(JSON.stringify(r));
   await sql.end();

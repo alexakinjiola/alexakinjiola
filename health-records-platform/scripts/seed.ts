@@ -62,8 +62,8 @@ function syntheticPdf(title: string, lines: string[]) {
   return Buffer.from(out, "latin1");
 }
 
-function storeFile(ownerId: string, buf: Buffer) {
-  const key = `records/${ownerId}/${crypto.randomUUID()}`;
+function storeFile(ownerId: string, buf: Buffer, scope: "records" | "institutions" = "records") {
+  const key = `${scope}/${ownerId}/${crypto.randomUUID()}`;
   const path = join(process.cwd(), STORAGE, `${key}.enc`);
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, encrypt(buf, key));
@@ -99,8 +99,9 @@ async function main() {
   const abuja = await createInstitution(sql, { name: "Harmony Family Clinic, Abuja (Demo)", type: "clinic", status: "submitted", city: "Wuse", state: "FCT" });
   const enugu = await createInstitution(sql, { name: "Coal City Medical Centre (Demo)", status: "under_review", city: "Enugu", state: "Enugu" });
   for (const inst of [abuja, enugu]) {
+    const f = storeFile(inst, syntheticPdf("Operating licence (SYNTHETIC)", ["Issued by: State Ministry of Health (synthetic)", "This document is fictional demo data."]), "institutions");
     await sql`insert into institution_documents(institution_id, document_type, storage_key, file_name, mime_type, size_bytes, sha256, uploaded_by)
-              select ${inst}, 'operating_license', ${`institutions/${inst}/${crypto.randomUUID()}`}, 'operating-licence.pdf', 'application/pdf', 2048, repeat('a', 64), created_by
+              select ${inst}, 'operating_license', ${f.storage_key}, 'operating-licence.pdf', 'application/pdf', ${f.size_bytes}, ${f.sha256}, created_by
               from healthcare_institutions where id = ${inst}`;
   }
 

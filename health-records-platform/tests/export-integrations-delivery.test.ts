@@ -147,3 +147,32 @@ describe("PDF text safety (clinical values)", () => {
     expect(pdfSafeText("Range 12.0–15.5")).toBe("Range 12.0-15.5");
   });
 });
+
+describe("integration key lifecycle", () => {
+  it("rotation keeps the old key for the grace period only; expiry and revocation are enforced", async () => {
+    const doc = await createClinician(admin);
+    const instAdmin = await createClinician(admin, { institutionId: doc.institutionId, roleKey: "institution_admin" });
+    const patient = await createPatient(admin);
+    const [k1, k2] = ["cnt_live_rotation_key_one_xxxxxxxxxxxxxxxx", "cnt_live_rotation_key_two_xxxxxxxxxxxxxxxx"];
+    const [{ id }] = await as(app, instAdmin.userId, (tx) => tx`select app.create_integration(${doc.institutionId}, 'Rotating EMR', 'emr', 'fhir_r4', 'cnt_live_rotati', ${sha(k1)}) as id`);
+    await admin`update integration_connections set status = 'active' where id = ${id}`;
+    const ingest = (key: string, ref: string) => admin.begin(async (tx) => {
+      await tx`select set_config('role','service_role',true)`;
+      return (await tx`select app.integration_ingest(${sha(key)}, ${patient.healthId}, ${tx.json([{ source_ref: ref, category: "vaccination", title: "BCG", description: "", clinical_date: null, practitioner: null, structured_data: null }])}::jsonb) as r`)[0].r;
+    });
+    expect((await ingest(k1, "Immunization/a")).created).toBe(1);
+    // Only institution admins can rotate.
+    await expectCode(as(app, doc.userId, (tx) => tx`select app.rotate_integration_key(${id}, 'x', 'y')`), "NP403");
+    await as(app, instAdmin.userId, (tx) => tx`select app.rotate_integration_key(${id}, 'cnt_live_rotati', ${sha(k2)})`);
+    expect((await ingest(k1, "Immunization/b")).created).toBe(1);   // old key: still in grace
+    expect((await ingest(k2, "Immunization/c")).created).toBe(1);   // new key works
+    await admin`update integration_connections set previous_key_expires_at = now() - interval '1 second' where id = ${id}`;
+    await expectCode(ingest(k1, "Immunization/d"), "NP403");         // grace over
+    await admin`update integration_connections set key_expires_at = now() - interval '1 second' where id = ${id}`;
+    await expectCode(ingest(k2, "Immunization/e"), "NP403");         // key expired
+    await admin`update integration_connections set key_expires_at = now() + interval '1 day', previous_key_hash = ${sha(k1)}, previous_key_expires_at = now() + interval '1 hour' where id = ${id}`;
+    await as(app, instAdmin.userId, (tx) => tx`select app.set_integration_status(${id}, 'revoked')`);
+    await expectCode(ingest(k1, "Immunization/f"), "NP403");         // revocation kills both keys
+    await expectCode(ingest(k2, "Immunization/g"), "NP403");
+  });
+});

@@ -22,7 +22,14 @@ export interface NormalisedRecord {
   clinical_date: string | null;
   practitioner: string | null;
   structured_data: unknown;
+  /** Raw inline documents (base64) — validated, scanned and stored by the server before ingestion. */
+  attachments?: { title: string; contentType: string; data: string }[];
 }
+
+type Attachment = { contentType?: string; data?: string; title?: string; url?: string };
+const inlineAttachments = (list: Attachment[] | undefined, fallbackTitle: string) =>
+  (list ?? []).filter((a) => typeof a?.data === "string" && a.data.length > 0)
+    .map((a, i) => ({ title: a.title ?? `${fallbackTitle}${i ? `-${i + 1}` : ""}`, contentType: a.contentType ?? "application/octet-stream", data: a.data! }));
 
 const conceptText = (c?: CodeableConcept) => c?.text ?? c?.coding?.find((x) => x.display)?.display ?? c?.coding?.[0]?.code ?? "";
 const codingList = (c?: CodeableConcept) => (c?.coding ?? []).map((x) => [x.system, x.code, x.display].filter(Boolean).join(" | ")).join("; ");
@@ -72,8 +79,9 @@ export function fromFhirBundle(bundle: unknown): { records: NormalisedRecord[]; 
 
   for (const r of all) {
     const ref = `${r.resourceType}/${r.id ?? crypto.randomUUID()}`;
-    const push = (category: string, title: string, description: string, date: string | null, structured: unknown = null) =>
-      records.push({ source_ref: ref, category, title: title || r.resourceType, description, clinical_date: date, practitioner: practitionerOf(r), structured_data: structured });
+    const push = (category: string, title: string, description: string, date: string | null, structured: unknown = null, attachments?: NormalisedRecord["attachments"]) =>
+      records.push({ source_ref: ref, category, title: title || r.resourceType, description, clinical_date: date, practitioner: practitionerOf(r), structured_data: structured,
+        ...(attachments?.length ? { attachments } : {}) });
 
     switch (r.resourceType) {
       case "Patient":
@@ -85,7 +93,8 @@ export function fromFhirBundle(bundle: unknown): { records: NormalisedRecord[]; 
           .map(obsResult);
         const isImaging = conceptText((r.category as CodeableConcept[] | undefined)?.[0]).toLowerCase().includes("imag");
         push(isImaging ? "imaging" : "lab_result", conceptText(r.code as CodeableConcept), (r.conclusion as string) ?? "",
-          dateOf(r.effectiveDateTime, r.issued), results.length ? { results } : null);
+          dateOf(r.effectiveDateTime, r.issued), results.length ? { results } : null,
+          inlineAttachments(r.presentedForm as Attachment[] | undefined, conceptText(r.code as CodeableConcept) || "report"));
         break;
       }
       case "Condition":
@@ -121,7 +130,9 @@ export function fromFhirBundle(bundle: unknown): { records: NormalisedRecord[]; 
       case "Composition":
       case "DocumentReference":
         push(conceptText(r.type as CodeableConcept).toLowerCase().includes("discharge") ? "discharge_summary" : "other",
-          (r.title as string) ?? (r.description as string) ?? conceptText(r.type as CodeableConcept), (r.description as string) ?? "", dateOf(r.date));
+          (r.title as string) ?? (r.description as string) ?? conceptText(r.type as CodeableConcept), (r.description as string) ?? "", dateOf(r.date), null,
+          inlineAttachments(((r.content as { attachment?: Attachment }[] | undefined) ?? []).map((c) => c.attachment!).filter(Boolean),
+            (r.title as string) ?? "document"));
         break;
       case "Observation":
         break; // handled below

@@ -8,6 +8,14 @@ import { randomToken, sha256Hex } from "@/lib/crypto";
 import { queueMessage } from "@/lib/mailer";
 import { rateLimit } from "@/lib/rate-limit";
 import { burnPasswordCheck, hashPassword, verifyPassword } from "@/lib/auth/password";
+import { isBreachedPassword } from "@/lib/auth/breached";
+import { ValidationError } from "@/lib/action";
+
+async function rejectBreached(password: string, field = "password") {
+  if (await isBreachedPassword(password)) {
+    throw new ValidationError({ [field]: "This password has appeared in a known data breach. Choose a different one." });
+  }
+}
 import { newTotpSecret, sealTotpSecret, totpQrDataUrl, verifyTotp } from "@/lib/auth/mfa";
 import {
   clearSessionCookie, createSession, deviceHash, readSessionCookie, revokeAllSessions, revokeSession, validateSessionToken,
@@ -41,6 +49,7 @@ export async function registerPatient(
   meta: Meta,
 ) {
   await rateLimit(`register:${meta.ip ?? "unknown"}`, 10, 3600, "Too many sign-ups from this network. Try again later.");
+  await rejectBreached(input.password);
   const passwordHash = await hashPassword(input.password);
 
   const userId = await withService(async (tx) => {
@@ -85,6 +94,7 @@ export async function registerProviderAccount(
   meta: Meta,
 ) {
   await rateLimit(`register:${meta.ip ?? "unknown"}`, 10, 3600, "Too many sign-ups from this network. Try again later.");
+  await rejectBreached(input.password);
   const passwordHash = await hashPassword(input.password);
   const userId = await withService(async (tx) => {
     const [exists] = await tx`select 1 from users where email = ${input.email} or phone = ${input.phone}`;
@@ -256,6 +266,7 @@ export async function requestPasswordReset(email: string, meta: Meta) {
 }
 
 export async function resetPassword(token: string, password: string) {
+  await rejectBreached(password);
   const hashed = await hashPassword(password);
   const userId = await withService(async (tx) => {
     const [t] = await tx`
@@ -280,6 +291,7 @@ export async function changePassword(actor: Actor, current: string, next: string
   await rateLimit(`pwchange:${actor.userId}`, 5, 900);
   const [row] = await withService((tx) => tx`select password_hash from users where id = ${actor.userId}`);
   if (!(await verifyPassword(row.password_hash, current))) throw new AppError(400, "Your current password isn't correct.");
+  await rejectBreached(next);
   const hashed = await hashPassword(next);
   await withService(async (tx) => {
     await tx`update users set password_hash = ${hashed}, password_changed_at = now() where id = ${actor.userId}`;

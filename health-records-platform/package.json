@@ -17,6 +17,7 @@
     "db:reset": "tsx scripts/migrate.ts --reset && tsx scripts/seed.ts",
     "jobs:expire": "tsx scripts/run-expiry.ts",
     "jobs:deliver": "tsx scripts/deliver-messages.ts",
+    "keys:rotate": "tsx --conditions=react-server scripts/rotate-keys.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test --trace off"

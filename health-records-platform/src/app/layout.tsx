@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import "@fontsource-variable/public-sans";
 import "@fontsource-variable/newsreader";
 import "@fontsource/ibm-plex-mono/400.css";
@@ -16,7 +17,9 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#f6f4ef", width: "device-width", initialScale: 1 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Reading the nonce makes every page dynamic, which per-request CSP nonces require.
+  await headers();
   return (
     <html lang="en-NG">
       <body>

@@ -1,5 +1,6 @@
 import "server-only";
-import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { open, parseKeyring, seal, type Keyring } from "./keyring";
 import { env } from "./env";
 
 export const sha256Hex = (data: string | Buffer) => createHash("sha256").update(data).digest("hex");
@@ -17,26 +18,12 @@ export function safeEqual(a: string, b: string) {
   return ab.length === bb.length && timingSafeEqual(ab, bb);
 }
 
-const key = () => Buffer.from(env().APP_ENCRYPTION_KEY, "base64");
+let ring: Keyring | null = null;
+const keyring = () => (ring ??= parseKeyring({ APP_ENCRYPTION_KEYS: process.env.APP_ENCRYPTION_KEYS, APP_ENCRYPTION_KEY: process.env.APP_ENCRYPTION_KEY }));
 
-/** AES-256-GCM. Output layout: version(1) | iv(12) | tag(16) | ciphertext. */
-export function encryptBuffer(plain: Buffer, aad?: string): Buffer {
-  const iv = randomBytes(12);
-  const cipher = createCipheriv("aes-256-gcm", key(), iv);
-  if (aad) cipher.setAAD(Buffer.from(aad));
-  const ct = Buffer.concat([cipher.update(plain), cipher.final()]);
-  return Buffer.concat([Buffer.from([1]), iv, cipher.getAuthTag(), ct]);
-}
-
-export function decryptBuffer(blob: Buffer, aad?: string): Buffer {
-  if (blob[0] !== 1) throw new Error("Unsupported ciphertext version");
-  const iv = blob.subarray(1, 13);
-  const tag = blob.subarray(13, 29);
-  const decipher = createDecipheriv("aes-256-gcm", key(), iv);
-  if (aad) decipher.setAAD(Buffer.from(aad));
-  decipher.setAuthTag(tag);
-  return Buffer.concat([decipher.update(blob.subarray(29)), decipher.final()]);
-}
+/** AES-256-GCM with key rotation support (see keyring.ts for the format). */
+export const encryptBuffer = (plain: Buffer, aad?: string): Buffer => seal(keyring(), plain, aad);
+export const decryptBuffer = (blob: Buffer, aad?: string): Buffer => open(keyring(), blob, aad);
 
 export const encryptString = (s: string, aad?: string) => encryptBuffer(Buffer.from(s, "utf8"), aad).toString("base64");
 export const decryptString = (s: string, aad?: string) => decryptBuffer(Buffer.from(s, "base64"), aad).toString("utf8");

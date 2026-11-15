@@ -10,6 +10,8 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { ActionButton } from "@/components/ui/action-button";
 import { formatDateTime } from "@/lib/format";
 import { CreateIntegration } from "./create";
+import { RotateKey } from "./rotate";
+import { daysUntil } from "@/lib/format";
 import { setIntegrationStatusAction } from "./actions";
 
 export const metadata: Metadata = { title: "Integrations" };
@@ -18,7 +20,7 @@ const STATUS: Record<string, "warning" | "success" | "neutral" | "danger"> = { p
 export default async function IntegrationsPage() {
   const { actor, current, can } = await requireProviderContext("/provider/integrations");
   if (!current || !can("integrations:manage")) redirect("/provider");
-  const rows = await withActor(actor.userId, (tx) => tx`select id, name, system_type, standard, status, api_key_prefix, last_used_at, created_at
+  const rows = await withActor(actor.userId, (tx) => tx`select id, name, system_type, standard, status, api_key_prefix, last_used_at, created_at, key_expires_at, previous_key_expires_at
     from integration_connections where institution_id = ${current.institutionId} order by created_at desc`);
   return (
     <div className="animate-fade-in space-y-6">
@@ -27,8 +29,11 @@ export default async function IntegrationsPage() {
         <ul className="divide-y divide-line">{rows.map((c) => (
           <li key={c.id} className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:px-6">
             <div className="flex-1"><p className="font-semibold text-ink">{c.name} <Badge tone={STATUS[c.status]} className="ml-1">{c.status}</Badge></p>
-              <p className="text-sm text-ink-3"><span className="font-mono">{c.api_key_prefix}…</span> · {c.system_type.toUpperCase()} · FHIR R4 · {c.last_used_at ? `last used ${formatDateTime(c.last_used_at)}` : "never used"}</p></div>
+              <p className="text-sm text-ink-3"><span className="font-mono">{c.api_key_prefix}…</span> · {c.system_type.toUpperCase()} · FHIR R4 · {c.last_used_at ? `last used ${formatDateTime(c.last_used_at)}` : "never used"}</p>
+              {c.status !== "revoked" && <p className={`mt-1 text-xs ${daysUntil(c.key_expires_at) <= 30 ? "font-medium text-warning-fg" : "text-ink-3"}`}>
+                Key expires {formatDateTime(c.key_expires_at)}{c.previous_key_expires_at && new Date(c.previous_key_expires_at) > new Date() ? ` · previous key valid until ${formatDateTime(c.previous_key_expires_at)}` : ""}</p>}</div>
             <div className="flex gap-2">
+              {c.status !== "revoked" && <RotateKey id={c.id} name={c.name} />}
               {c.status === "active" && <ActionButton size="sm" variant="secondary" action={setIntegrationStatusAction.bind(null, c.id, "paused")}>Pause</ActionButton>}
               {c.status !== "revoked" && <ActionButton size="sm" variant="danger-outline" action={setIntegrationStatusAction.bind(null, c.id, "revoked")}>Revoke key</ActionButton>}
             </div>

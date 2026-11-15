@@ -11,9 +11,14 @@ export interface DeliveryConfig {
   mailDriver: "outbox" | "log" | "smtp";
   smtpUrl?: string;
   mailFrom?: string;
-  smsDriver: "none" | "log" | "webhook";
+  smsDriver: "none" | "log" | "webhook" | "termii" | "africastalking";
   smsWebhookUrl?: string;
   smsWebhookToken?: string;
+  /** Termii / Africa's Talking credentials. smsBaseUrl overrides the provider endpoint (sandbox, testing). */
+  smsApiKey?: string;
+  smsSenderId?: string;
+  smsUsername?: string;
+  smsBaseUrl?: string;
 }
 
 const MAX_ATTEMPTS = 5;
@@ -24,6 +29,7 @@ export function deliveryConfigFromEnv(env: NodeJS.ProcessEnv = process.env): Del
     smtpUrl: env.SMTP_URL, mailFrom: env.MAIL_FROM ?? "Continuum <no-reply@localhost>",
     smsDriver: (env.SMS_DRIVER as DeliveryConfig["smsDriver"]) ?? "none",
     smsWebhookUrl: env.SMS_WEBHOOK_URL, smsWebhookToken: env.SMS_WEBHOOK_TOKEN,
+    smsApiKey: env.SMS_API_KEY, smsSenderId: env.SMS_SENDER_ID, smsUsername: env.SMS_USERNAME, smsBaseUrl: env.SMS_BASE_URL || undefined,
   };
 }
 
@@ -37,6 +43,8 @@ async function send(cfg: DeliveryConfig, m: Msg, transport: Transporter | null) 
     return;
   }
   if (cfg.smsDriver === "log") { console.log(JSON.stringify({ event: "sms.log", id: m.id, template: m.template })); return; }
+  if (cfg.smsDriver === "termii") return sendTermii(cfg, m);
+  if (cfg.smsDriver === "africastalking") return sendAfricasTalking(cfg, m);
   if (cfg.smsDriver !== "webhook" || !cfg.smsWebhookUrl) throw new Error("SMS gateway not configured");
   // Generic JSON gateway contract: adapt the payload to the chosen Nigerian SMS provider.
   const res = await fetch(cfg.smsWebhookUrl, {
@@ -46,6 +54,36 @@ async function send(cfg: DeliveryConfig, m: Msg, transport: Transporter | null) 
     signal: AbortSignal.timeout(15_000),
   });
   if (!res.ok) throw new Error(`SMS gateway responded ${res.status}`);
+}
+
+/**
+ * Termii (https://developers.termii.com — "Send message").
+ * Transactional security messages use the "dnd" route so they reach numbers on
+ * Nigeria's Do-Not-Disturb register; this requires an approved sender ID.
+ */
+async function sendTermii(cfg: DeliveryConfig, m: Msg) {
+  if (!cfg.smsApiKey || !cfg.smsSenderId) throw new Error("Termii requires SMS_API_KEY and SMS_SENDER_ID");
+  const res = await fetch(`${cfg.smsBaseUrl ?? "https://api.ng.termii.com"}/api/sms/send`, {
+    method: "POST", headers: { "Content-Type": "application/json" }, signal: AbortSignal.timeout(15_000),
+    body: JSON.stringify({ api_key: cfg.smsApiKey, to: m.recipient.replace(/^\+/, ""), from: cfg.smsSenderId, sms: m.body, type: "plain", channel: "dnd" }),
+  });
+  const body = await res.json().catch(() => ({})) as { code?: string; message?: string };
+  if (!res.ok || (body.code && body.code !== "ok")) throw new Error(`Termii rejected the message (${res.status}${body.message ? `: ${body.message}` : ""})`);
+}
+
+/** Africa's Talking (https://developers.africastalking.com — "SMS: Sending"). Use SMS_BASE_URL=https://api.sandbox.africastalking.com for the sandbox. */
+async function sendAfricasTalking(cfg: DeliveryConfig, m: Msg) {
+  if (!cfg.smsApiKey || !cfg.smsUsername) throw new Error("Africa's Talking requires SMS_API_KEY and SMS_USERNAME");
+  const form = new URLSearchParams({ username: cfg.smsUsername, to: m.recipient, message: m.body, ...(cfg.smsSenderId ? { from: cfg.smsSenderId } : {}) });
+  const res = await fetch(`${cfg.smsBaseUrl ?? "https://api.africastalking.com"}/version1/messaging`, {
+    method: "POST", signal: AbortSignal.timeout(15_000),
+    headers: { apiKey: cfg.smsApiKey, Accept: "application/json", "Content-Type": "application/x-www-form-urlencoded" }, body: form.toString(),
+  });
+  const body = await res.json().catch(() => ({})) as { SMSMessageData?: { Recipients?: { status?: string; statusCode?: number }[] } };
+  const r = body.SMSMessageData?.Recipients?.[0];
+  if (!res.ok || !r || !(r.status === "Success" || r.statusCode === 100 || r.statusCode === 101)) {
+    throw new Error(`Africa's Talking rejected the message (${res.status}${r?.status ? `: ${r.status}` : ""})`);
+  }
 }
 
 /** Deliver up to `limit` due messages. Returns counts. With mailDriver "outbox" nothing is sent (development). */

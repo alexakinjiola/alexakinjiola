@@ -13,7 +13,9 @@ const schema = z.object({
   APP_ENV: z.enum(["development", "staging", "production"]).optional(),
   APP_URL: z.string().url().default("http://localhost:3000"),
   DATABASE_URL: z.string().url(),
-  APP_ENCRYPTION_KEY: base64Key,
+  // Either a single key (treated as key id 1) or a keyring "2:<b64>,1:<b64>" (first = active).
+  APP_ENCRYPTION_KEY: base64Key.optional(),
+  APP_ENCRYPTION_KEYS: z.string().optional(),
   IDENTIFIER_HASH_KEY: base64Key,
   CRON_SECRET: z.string().min(16),
   STORAGE_DRIVER: z.enum(["local", "supabase"]).default("local"),
@@ -26,7 +28,11 @@ const schema = z.object({
   MAIL_DRIVER: z.enum(["outbox", "log", "smtp"]).default("outbox"),
   SMTP_URL: z.string().optional(),
   MAIL_FROM: z.string().optional(),
-  SMS_DRIVER: z.enum(["none", "log", "webhook"]).default("none"),
+  SMS_DRIVER: z.enum(["none", "log", "webhook", "termii", "africastalking"]).default("none"),
+  SMS_API_KEY: z.string().optional(),
+  SMS_SENDER_ID: z.string().optional(),
+  SMS_USERNAME: z.string().optional(),
+  SMS_BASE_URL: z.preprocess((v) => (v === "" ? undefined : v), z.string().url().optional()),
   SMS_WEBHOOK_URL: z.preprocess((v) => (v === "" ? undefined : v), z.string().url().optional()),
   SMS_WEBHOOK_TOKEN: z.string().optional(),
   ENABLE_DEV_MAILBOX: z.string().default("false"),
@@ -43,6 +49,7 @@ export function env(): Env {
     const issues = parsed.error.issues.map((i) => `${i.path.join(".")} ${i.message}`).join("; ");
     throw new Error(`Invalid environment configuration: ${issues}`);
   }
+  if (!parsed.data.APP_ENCRYPTION_KEY && !parsed.data.APP_ENCRYPTION_KEYS) throw new Error("Invalid environment configuration: set APP_ENCRYPTION_KEYS or APP_ENCRYPTION_KEY");
   const e = { ...parsed.data, APP_ENV: parsed.data.APP_ENV ?? (parsed.data.NODE_ENV === "production" ? "production" : "development") };
   if (e.APP_ENV === "production") {
     if (e.IDENTITY_PROVIDER === "sandbox") throw new Error("IDENTITY_PROVIDER=sandbox is not allowed in production");

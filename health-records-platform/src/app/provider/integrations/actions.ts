@@ -29,3 +29,12 @@ export async function setIntegrationStatusAction(id: string, status: "paused" | 
     await withActor(actor.userId, (tx) => tx`select app.set_integration_status(${z.string().uuid().parse(id)}, ${status})`, await requestMeta());
   }, "Connection updated.");
 }
+
+export async function rotateIntegrationKeyAction(id: string) {
+  return handle("rotate_integration", async () => {
+    const { actor } = await requireProviderContext();
+    const key = `cnt_live_${randomToken(30)}`;
+    const [r] = await withActor(actor.userId, (tx) => tx`select app.rotate_integration_key(${z.string().uuid().parse(id)}, ${key.slice(0, 16)}, ${sha256Hex(key)}) as grace`, await requestMeta());
+    return { key, previousValidUntil: r.grace as string | null };
+  });
+}

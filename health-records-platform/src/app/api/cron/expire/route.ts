@@ -7,6 +7,6 @@ import { safeEqual } from "@/lib/crypto";
 export async function POST(req: NextRequest) {
   const auth = req.headers.get("authorization") ?? "";
   if (!safeEqual(auth, `Bearer ${env().CRON_SECRET}`)) return NextResponse.json({ ok: false }, { status: 401 });
-  const [{ r }] = await withService((tx) => tx`select app.run_expiry() as r`);
-  return NextResponse.json({ ok: true, ...r });
+  const [{ r, k }] = await withService((tx) => tx`select app.run_expiry() as r, app.integration_expiry_warnings() as k`);
+  return NextResponse.json({ ok: true, ...r, integration_key_warnings: k });
 }

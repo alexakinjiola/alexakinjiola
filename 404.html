@@ -7,7 +7,9 @@
   <title>Page Not Found — Alex Akinjiola | Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <meta name="theme-color" content="#0B0C0E"/>
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="main.css"/>
   <link rel="icon" type="image/jpeg" href="images/profile-placeholder.svg"/>
   <style>
@@ -26,22 +28,21 @@
       pointer-events: none;
     }
     .nf-code {
-      font-family: 'Playfair Display',serif;
-      font-size: clamp(6rem,20vw,12rem);
-      font-weight: 700; line-height: 1;
-      background: linear-gradient(135deg,rgba(200,169,126,.15),rgba(232,213,176,.08));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      position: relative; z-index: 1; margin-bottom: .5rem;
+      font-family: var(--font-mono);
+      font-size: clamp(6rem,20vw,11rem);
+      font-weight: 500; line-height: 1; letter-spacing: -.06em;
+      color: var(--surface3);
+      position: relative; z-index: 1; margin-bottom: 1rem;
     }
     .nf-title {
-      font-family: 'Playfair Display',serif;
-      font-size: clamp(1.4rem,4vw,2rem);
-      font-weight: 700; line-height: 1.2;
+      font-family: var(--font-sans);
+      font-size: clamp(1.6rem,4vw,2.25rem);
+      font-weight: 600; letter-spacing: -.035em; line-height: 1.2;
       position: relative; z-index: 1; margin-bottom: .8rem;
     }
-    .nf-title em { font-style: italic; background: linear-gradient(135deg,#c8a97e,#e8d5b0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .nf-title em { font-style: normal; color: var(--muted); }
     .nf-sub {
-      font-size: clamp(.88rem,2vw,1rem); color: #888;
+      font-size: clamp(.88rem,2vw,1rem); color: var(--muted);
       max-width: 400px; line-height: 1.8;
       position: relative; z-index: 1; margin-bottom: 2.5rem;
     }
@@ -53,22 +54,7 @@
 <body>
 <nav id="nav">
   <a href="index.html" class="nav-logo" aria-label="Alex Akinjiola — Home">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
-      <defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
-      <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
-      <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
-      <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="square"/>
-      <line x1="10" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="34" y1="40" x2="22" y2="9" stroke="url(#ng)" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
-      <line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
-      <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
-      <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
-      <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
-      <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
-    </svg>
+    <span class="logo-mono" aria-hidden="true">AA</span><span class="logo-word">Alex Akinjiola</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -87,22 +73,7 @@
 <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
   <div class="mob-header">
     <div class="mob-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" aria-hidden="true">
-        <defs><linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8a97e"/><stop offset="100%" stop-color="#e8d5b0"/></linearGradient></defs>
-        <rect x="1" y="1" width="42" height="46" fill="none" stroke="#c8a97e" stroke-width="0.5" opacity="0.45"/>
-        <polyline points="1,13 1,1 13,1" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
-        <polyline points="43,35 43,47 31,47" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="square"/>
-        <line x1="10" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="34" y1="40" x2="22" y2="9" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="14" y1="30" x2="30" y2="30" stroke="#c8a97e" stroke-width="1.4" stroke-linecap="round"/>
-        <line x1="7" y1="40" x2="14" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="30" y1="40" x2="37" y2="40" stroke="#c8a97e" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="20" y1="9" x2="24" y2="9" stroke="#c8a97e" stroke-width="1.2" stroke-linecap="round"/>
-        <circle cx="39" cy="44" r="2" fill="#e8d5b0"/>
-        <line x1="54" y1="6" x2="54" y2="42" stroke="#c8a97e" stroke-width="0.4" opacity="0.35"/>
-        <text x="63" y="27" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="16" font-weight="700" letter-spacing="4" fill="#f0ede8">ALEX</text>
-        <text x="63" y="40" font-family="'Playfair Display','Times New Roman',Georgia,serif" font-size="10" font-weight="400" letter-spacing="3" fill="#c8a97e">AKINJIOLA</text>
-      </svg>
+      <span class="logo-mono" aria-hidden="true">AA</span><span class="logo-word">Alex Akinjiola</span>
     </div>
     <button class="mob-close" type="button" onclick="closeMobileMenu()" aria-label="Close menu">
       <svg viewBox="0 0 17 17"><line x1="1" y1="1" x2="16" y2="16"/><line x1="16" y1="1" x2="1" y2="16"/></svg>

@@ -1,18 +1,16 @@
-const behance = 'https://www.behance.net/alexuidesigns';
-
 /* Shown on the homepage bento grid. */
 export const selectedWork = [
   {
     id: 'krent', title: 'Krent', category: 'SaaS · PropTech', image: '/images/krent.webp',
     headline: 'Making complex property management easier to navigate.',
     summary: 'Turned interconnected workflows, multiple user types, and large amounts of information into a structured experience that felt clear rather than overwhelming.',
-    links: [{ label: 'Case Study', href: behance, icon: 'article' }, { label: 'Live Project', href: 'https://krent.space/', icon: 'open_in_new' }],
+    links: [{ label: 'Live Project', href: 'https://krent.space/', icon: 'open_in_new' }],
   },
   {
     id: 'ajiroba', title: 'Ajiroba', category: 'E-commerce', image: '/images/ajiroba.webp',
     headline: 'Removing friction from a growing e-commerce experience.',
     summary: 'UX audit, simplified workflows, improved navigation clarity, and a scalable design system. 70% improvement in usability and perceived performance.',
-    links: [{ label: 'Case Study', href: behance, icon: 'article' }, { label: 'Live Project', href: 'https://ajiroba.com', icon: 'open_in_new' }],
+    links: [{ label: 'Live Project', href: 'https://ajiroba.com', icon: 'open_in_new' }],
   },
   {
     id: 'mealflex', title: 'Mealflex', category: 'FoodTech', image: '/images/mealflex.webp',
@@ -63,7 +61,7 @@ export const caseStudies = [
       ['Outcome', 'Clearer workflows, significantly reduced support volume, and a design system that the engineering team actively uses to ship faster.'],
     ],
     tags: 'UX Strategy · IA · User Flows · UI Design · Design Systems · Figma',
-    links: [{ label: 'Case Study', href: behance, icon: 'article' }, { label: 'Live Product', href: 'https://krent.space/', icon: 'open_in_new' }],
+    links: [{ label: 'Live Product', href: 'https://krent.space/', icon: 'open_in_new' }],
   },
   {
     id: 'ajiroba', badge: 'Ajiroba · E-commerce · Web + Mobile', image: '/images/ajiroba.webp', readTime: '3 min read',
@@ -118,7 +116,7 @@ export const moreWork = [
   { id: 'annyshub', title: 'AnnySHub — Designing both sides of a retail experience.', category: 'Retail · Dual Interface', image: '/images/annyshub.webp',
     stats: [['20+', 'Interfaces designed'], ['1', 'Unified design system']],
     summary: 'Designed a retail showroom across both the customer-facing experience and the admin interface — two very different users, one product. Required careful role-based UX thinking and a design system that served both without contradiction.',
-    links: [{ label: 'Case Study', href: behance, icon: 'article' }, { label: 'Live Project', href: 'https://annyshub.store', icon: 'open_in_new' }] },
+    links: [{ label: 'Live Project', href: 'https://annyshub.store', icon: 'open_in_new' }] },
   { id: 'kemi', title: 'Portfolio Website — Oluwakemi', category: 'Web Development · Animation', image: '/images/kemi-portfolio.webp',
     stats: [['7+', 'Pages built end-to-end'], ['100%', 'Client satisfaction']],
     summary: 'A quiet-luxury editorial portfolio site for a virtual assistant, built front-to-back with a full animation layer.',

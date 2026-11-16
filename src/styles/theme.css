@@ -535,3 +535,12 @@ html, body { overflow-x: clip; }
 .lightbox-close { position: fixed; top: 1rem; right: 1rem; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: rgba(13,21,36,.8); border: 1px solid var(--border-strong); }
 .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
 .person-name a { text-decoration: underline; text-decoration-color: rgb(var(--glow-rgb) / .5); text-underline-offset: 3px; }
+
+/* Case study fixes: back link on its own line; alternating rows keep the screenshot in the wide column */
+.back-link { display: flex; width: max-content; }
+@media (min-width: 1000px) {
+  .decision:nth-child(even):not(.is-mobile) { grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); }
+  .decision.is-mobile:nth-child(even) { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+}
+/* Stretched card links must stay absolutely positioned inside tilt cards */
+.tilt > .case-card-link { position: absolute; inset: 0; z-index: 5; }

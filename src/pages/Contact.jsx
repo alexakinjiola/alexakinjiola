@@ -79,7 +79,6 @@ function ContactForm() {
         </motion.div>
       ) : (
         <motion.form key="form" onSubmit={submit} noValidate className="form" exit={{ opacity: 0, y: -10 }}>
-          <div className="hp" aria-hidden="true"><input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" /></div>
           <input type="hidden" name="_subject" value="New enquiry from portfolio — Alex Akinjiola" />
           <div className="field-row">
             {field('firstName', 'First name', { required: true, autoComplete: 'given-name', placeholder: 'Ada' })}

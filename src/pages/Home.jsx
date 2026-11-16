@@ -90,7 +90,7 @@ function Hero({ play }) {
             <div className="device-frame"><img src="/images/paytrackr.webp" alt="" /></div>
           </Float>
           <Float className="hero-widget hero-widget-metric" depth={52} px={px} py={py} delay={0.3} duration={5}>
-            <span className="mono">Usability</span>
+            <span className="mono">Ajiroba usability · reported</span>
             <strong>+89%</strong>
             <svg viewBox="0 0 120 36"><path d="M0 30 C 20 28 30 24 45 22 S 70 12 85 14 S 110 4 120 2" /></svg>
           </Float>
@@ -123,7 +123,7 @@ function About() {
           <SectionHead eyebrow="About me" title="Some products don't have a feature problem. They have a" dim="clarity problem." breakBefore={false} />
           <Reveal as="p" className="lead">I work at the intersection of users, business requirements, technology, and product thinking — to find the friction, structure the problem, and turn complexity into something people can actually use.</Reveal>
           <Stagger as="dl" className="about-stats">
-            {[[5, '+', 'Years experience'], [37, '+', 'Products shipped'], [89, '%', 'Usability improvement']].map(([v, s, l]) => (
+            {[[5, '+', 'Years experience'], [37, '+', 'Products shipped'], [89, '%', 'Usability gain · reported by Ajiroba']].map(([v, s, l]) => (
               <RevealItem key={l} className="about-stat">
                 <dt>{l}</dt>
                 <dd><Counter value={v} suffix={s} /></dd>

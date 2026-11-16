@@ -33,6 +33,7 @@ export const cases = [
     category: 'HR tech · Marketplace · SaaS',
     accent: '#3B82F6',
     cover: `${V}/trustbridge.webp`,
+    research: { summary: 'I ran user interviews and surveys with international students, skilled migrants and SME employers to understand where trust broke down on each side of the hire.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Job seekers and SME employers' }, { name: 'Surveys', icon: 'quiz', detail: 'Job seekers and employers' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -64,7 +65,7 @@ export const cases = [
       { name: 'Operations admin', icon: 'admin_panel_settings', goal: 'Keep the marketplace safe and compliant.', pain: 'Needs to verify businesses, review eligibility and evidence every decision.' },
     ],
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with international students, skilled migrants and SME employers to understand where trust broke down on each side of the hire.', activities: ['User research with job seekers', 'User research with SME employers', 'Synthesis into trust and eligibility needs'], output: 'Research insights and priorities', research: true },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with international students, skilled migrants and SME employers to understand where trust broke down on each side of the hire.', activities: ['User interviews — Job seekers and SME employers', 'Surveys — Job seekers and employers'], output: 'Research insights and priorities', research: true },
       { phase: '01', title: 'Frame', summary: 'Defined the core tension: both sides want to say yes, but neither can see enough to trust the other.', activities: ['Problem framing for three user groups', 'Mapped what each side needs to know vs. what must stay private', 'Defined success as safe, explainable matches'], output: 'Problem statement and trust model' },
       { phase: '02', title: 'Map the system', summary: 'Laid out the marketplace as one system: public site, seeker portal, employer portal and an internal admin console.', activities: ['Service blueprint across three portals', 'Information architecture and navigation per role', 'End-to-end flows from sign-up to offer and reference'], output: 'Sitemap and core user flows' },
       { phase: '03', title: 'Model the rules', summary: 'Turned visa working-hour conditions into a model the interface could explain: limits, academic calendars and existing commitments.', activities: ['Term-time and vacation limits from university dates', 'Committed hours subtracted from the weekly limit', 'Admin-managed, versioned rule sets'], output: 'Eligibility and hours model' },
@@ -158,6 +159,7 @@ export const cases = [
     accent: '#22C55E',
     cover: `${V}/continuum.webp`,
     live: 'https://continuumng.vercel.app/',
+    research: { summary: 'I ran user interviews, surveys and usability testing with patients, carers and healthcare providers to understand how records are kept, lost and shared — and to test the consent flow.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Patients, carers and providers' }, { name: 'Surveys', icon: 'quiz', detail: 'Patients and carers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Consent and sharing flows' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -189,7 +191,7 @@ export const cases = [
       { name: 'Parents & carers', icon: 'family_restroom', goal: 'Manage a child’s or relative’s records and immunisations.', pain: 'Tracking schedules and history on paper.' },
     ],
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with patients, carers and healthcare providers to understand how records are kept, lost and shared today.', activities: ['User research with patients and carers', 'User research with hospitals and labs', 'Synthesis into consent and access needs'], output: 'Research insights and priorities', research: true },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with patients, carers and healthcare providers to understand how records are kept, lost and shared today.', activities: ['User interviews — Patients, carers and providers', 'Surveys — Patients and carers', 'Usability testing — Consent and sharing flows'], output: 'Research insights and priorities', research: true },
       { phase: '01', title: 'Frame', summary: 'Positioned the product around ownership: “Your records, your say.”', activities: ['Defined the patient as the owner of the record', 'Listed what each institution type needs to do', 'Set trust promises the UI must keep'], output: 'Product positioning and trust promises' },
       { phase: '02', title: 'Design the consent model', summary: 'Made consent concrete: which record types, for what purpose, for how long — and revocable in one tap.', activities: ['Granular record types (labs, prescriptions, diagnoses…)', '7 / 30 / 90-day durations', 'Named, time-stamped access log'], output: 'Consent and access model' },
       { phase: '03', title: 'Localise for Nigeria', summary: 'Shaped features around the health problems people actually face.', activities: ['Genotype and sickle-cell status first', 'Immunisation tracker on the national schedule', 'NHIA and HMO numbers on the record'], output: 'Nigeria-specific feature set' },
@@ -271,6 +273,7 @@ export const cases = [
     accent: '#2DD4BF',
     cover: `${V}/krent.webp`,
     live: 'https://krent.space/',
+    research: { summary: 'I ran user interviews and surveys with renters, shortlet guests, buyers, hosts and agents to understand where the existing experience let each of them down.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Renters, guests, buyers, hosts and agents' }, { name: 'Surveys', icon: 'quiz', detail: 'Across all five user groups' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -302,7 +305,7 @@ export const cases = [
       { name: 'Hosts & agents', icon: 'badge', goal: 'List and manage properties easily.', pain: 'Supply-side tasks buried inside a renter experience.' },
     ],
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with renters, shortlet guests, buyers, hosts and agents to understand where the existing experience let each of them down.', activities: ['User research across all five user groups', 'Mapped findings against the existing journeys', 'Prioritised friction to fix first'], output: 'Research insights and priorities', research: true },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with renters, shortlet guests, buyers, hosts and agents to understand where the existing experience let each of them down.', activities: ['User interviews — Renters, guests, buyers, hosts and agents', 'Surveys — Across all five user groups'], output: 'Research insights and priorities', research: true },
       { phase: '01', title: 'Audit', summary: 'Walked the existing product as each user type and documented where content, navigation and actions competed.', activities: ['Heuristic review per user group', 'Inventory of pages and components', 'Mapped existing journeys'], output: 'Audit of friction points' },
       { phase: '02', title: 'Prioritise', summary: 'Separated three core intents — rent, shortlet, buy — and decided what each page is for.', activities: ['Intent-based navigation', 'Page purpose definitions', 'Supply vs. demand paths'], output: 'Restructured IA' },
       { phase: '03', title: 'Restructure', summary: 'Grouped property information into scannable blocks with one obvious next action.', activities: ['Listing card anatomy', 'Area and budget entry points', 'Search placement'], output: 'Wireframes and flows' },
@@ -347,6 +350,7 @@ export const cases = [
     accent: '#F97316',
     cover: `${V}/ajiroba.webp`,
     live: 'https://www.ajiroba.com/',
+    research: { summary: 'I ran user interviews, surveys and usability testing with first-time visitors and participants to understand what they needed to know — and to trust — before taking part.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Prospective and active participants' }, { name: 'Surveys', icon: 'quiz', detail: 'Participants across web and app' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Wallet, ticket and draw flows' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -372,7 +376,7 @@ export const cases = [
       { name: 'Repeat player', icon: 'smartphone', goal: 'Join new draws quickly from their phone.', pain: 'Friction topping up and finding new draws.' },
     ],
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with first-time visitors and participants to understand what they needed to know — and to trust — before taking part.', activities: ['User research with prospective participants', 'User research with active participants', 'Synthesis into comprehension and trust needs'], output: 'Research insights and priorities', research: true },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with first-time visitors and participants to understand what they needed to know — and to trust — before taking part.', activities: ['User interviews — Prospective and active participants', 'Surveys — Participants across web and app', 'Usability testing — Wallet, ticket and draw flows'], output: 'Research insights and priorities', research: true },
       { phase: '01', title: 'Frame the product', summary: 'Worked out what a first-time visitor must know and what helps them judge a product.', activities: ['Proposition and value framing', 'Key questions inventory', 'Trust requirements'], output: 'Experience brief' },
       { phase: '02', title: 'Structure', summary: 'Ordered the experience around: What is this? What can I win? How does it work? What next?', activities: ['Information hierarchy', 'Navigation model', 'Content priorities'], output: 'IA and page structure' },
       { phase: '03', title: 'Design the journey', summary: 'Mapped wallet top-up → ticket → draw → win, with the feedback each step needs.', activities: ['Flows and states', 'Wallet and ticket interactions', 'Draw status feedback'], output: 'End-to-end flows' },
@@ -413,6 +417,7 @@ export const cases = [
     accent: '#84CC16',
     cover: '/images/paytrackr.webp',
     live: 'https://paytrackr-invoice.vercel.app/',
+    research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how freelancers and small businesses track invoices and payments.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small-business owners' }, { name: 'Surveys', icon: 'quiz', detail: 'People who bill clients' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Dashboard and invoice flows' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoicing and finance tools' }] },
     researchLed: true,
     facts: [['Role', 'Lead Product Designer'], ['Type', 'Invoicing & payments'], ['Platform', 'Responsive web app'], ['Focus', 'Hierarchy · flows']],
     tldr: {
@@ -423,7 +428,7 @@ export const cases = [
     overview: ['Paytrackr tracks invoices, payments and earnings by category, with a balance summary and colour-coded statuses.'],
     role: 'As lead designer, I ran the user research and designed the information architecture, dashboard hierarchy, invoicing flows and responsive interface, and prepared the handoff for build.',
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with freelancers and small-business owners to understand how they track invoices and payments today.', activities: ['User research with people who bill clients', 'Mapped current tracking habits', 'Defined the questions the dashboard must answer'], output: 'Research insights and priorities', research: true },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with freelancers and small-business owners to understand how they track invoices and payments today.', activities: ['User interviews — Freelancers and small-business owners', 'Surveys — People who bill clients', 'Usability testing — Dashboard and invoice flows', 'Competitive analysis — Invoicing and finance tools'], output: 'Research insights and priorities', research: true },
       { phase: '01', title: 'Define', summary: 'Turned money anxiety into three questions the dashboard must answer.', activities: ['Core questions', 'Module priorities'], output: 'Dashboard brief' },
       { phase: '02', title: 'Structure', summary: 'Status totals first, then summaries, then breakdowns.', activities: ['Hierarchy', 'Navigation'], output: 'IA' },
       { phase: '03', title: 'Design', summary: 'Short, linear invoice flows with calm visuals.', activities: ['Flows', 'Responsive UI'], output: 'Screens & handoff' },
@@ -448,6 +453,7 @@ export const cases = [
     accent: '#8B5CF6',
     cover: `${V}/ledger.webp`,
     live: 'https://ledger-studio-pi.vercel.app/',
+    research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how designers, developers and studios create and send invoices.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small studios' }, { name: 'Surveys', icon: 'quiz', detail: 'Designers and developers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'The four-step invoice flow' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoice generators and templates' }] },
     researchLed: true,
     facts: [['Role', 'Lead Designer & front-end developer'], ['Type', 'Product, 0 → 1'], ['Platform', 'Responsive web app'], ['Stack', 'Client-side · no backend']],
     glance: [['4', 'Steps from blank page to sent'], ['6', 'Currencies'], ['2', 'Themes: light and dark'], ['1', 'Click to PDF']],
@@ -459,7 +465,7 @@ export const cases = [
     overview: ['Ledger Studio is an invoice generator for designers, developers, studios and small businesses. Set up your studio once; every invoice after that is pre-filled and ready to send.'],
     role: 'As lead designer and developer, I researched, designed and built the whole product: positioning, IA, the invoice editor, the dashboard and the marketing site.',
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with designers, developers and small studios to understand how they create and send invoices today.', activities: ['User research with freelancers and studios', 'Mapped the current invoicing workflow', 'Cut scope to what gets people paid sooner'], output: 'Research insights and priorities', research: true },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with designers, developers and small studios to understand how they create and send invoices today.', activities: ['User interviews — Freelancers and small studios', 'Surveys — Designers and developers', 'Usability testing — The four-step invoice flow', 'Competitive analysis — Invoice generators and templates'], output: 'Research insights and priorities', research: true },
       { phase: '01', title: 'Define the job', summary: 'Strip invoicing down to what gets you paid sooner.', activities: ['Jobs to be done', 'Feature cut'], output: 'Scope' },
       { phase: '02', title: 'Design the flow', summary: 'Set up studio → add client → list the work → send or print.', activities: ['Flow', 'Editor UI', 'Dashboard'], output: 'Screens' },
       { phase: '03', title: 'Build', summary: 'A client-side app with PDF export and shareable read-only links.', activities: ['Front-end build', 'Responsive QA'], output: 'Live product' },

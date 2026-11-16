@@ -26,8 +26,8 @@ export const chapters = [
 export const aboutStats = [
   { value: 5, suffix: '+', label: 'Years experience' },
   { value: 37, suffix: '+', label: 'Products shipped' },
-  { value: 89, suffix: '%', label: 'Usability improvement' },
-  { value: 77, suffix: '%', label: 'Satisfaction increase' },
+  { value: 89, suffix: '%', label: 'Usability improvement · reported by Ajiroba' },
+  { value: 77, suffix: '%', label: 'Satisfaction increase · reported by Creatifff' },
 ];
 
 export const perspectives = [

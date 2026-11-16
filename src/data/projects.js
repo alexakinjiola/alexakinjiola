@@ -132,8 +132,8 @@ export const moreWork = [
 ];
 
 export const workStats = [
-  { value: 89, suffix: '%', label: 'Usability improvement — Ajiroba platform' },
-  { value: 77, suffix: '%', label: 'User satisfaction increase — Creatifff' },
+  { value: 89, suffix: '%', label: 'Usability improvement — reported by Ajiroba' },
+  { value: 77, suffix: '%', label: 'User satisfaction increase — reported by Creatifff' },
   { value: 37, suffix: '+', label: 'Products designed end-to-end' },
   { value: 4, suffix: '', label: 'Companies · 5+ years experience' },
 ];

@@ -27,11 +27,11 @@ function Portrait() {
   return (
     <div ref={ref} className="about-portrait">
       <TiltCard as="div" className="portrait-frame" max={4}>
-        <motion.img src="/images/alex-portrait.webp" alt="Alex Akinjiola, Product Designer based in Lagos" loading="lazy" style={{ y, scale: 1.12 }} />
+        <motion.img src="/images/alex-portrait.webp" alt="Alex Akinjiola, Senior Product Designer based in Lagos" loading="lazy" style={{ y, scale: 1.12 }} />
       </TiltCard>
       <ul className="meta-list">
         <li><Icon name="location_on" size={18} />Lagos, Nigeria</li>
-        <li><Icon name="work" size={18} />Product Designer · 5+ years</li>
+        <li><Icon name="work" size={18} />Senior Product Designer · 5+ years</li>
         <li><Icon name="language" size={18} />Full-time remote &amp; hybrid roles</li>
       </ul>
     </div>
@@ -46,8 +46,8 @@ export default function About() {
         <div className="page-hero-glow" aria-hidden="true" />
         <div className="container">
           <Eyebrow>About</Eyebrow>
-          <SplitText as="h1" className="page-title" text="I'm a Product Designer who likes solving" dim="complicated problems." breakBefore onMount delay={0.35} />
-          <Reveal as="p" className="lead" delay={0.5}>I'm Alex Akinjiola. A Product Designer with 5+ years of experience working across digital products including SaaS, EdTech, e-commerce, and fintech. But design wasn't where my professional journey started.</Reveal>
+          <SplitText as="h1" className="page-title" text="I'm a Senior Product Designer who likes solving" dim="complicated problems." breakBefore onMount delay={0.35} />
+          <Reveal as="p" className="lead" delay={0.5}>I'm Alex Akinjiola. A Senior Product Designer with 5+ years of experience working across digital products including SaaS, EdTech, e-commerce, and fintech. But design wasn't where my professional journey started.</Reveal>
         </div>
       </header>
 

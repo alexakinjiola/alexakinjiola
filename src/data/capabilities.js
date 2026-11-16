@@ -3,7 +3,7 @@ export const tabs = [
     id: 'design', label: 'Design', image: '/images/cap-design.webp',
     kicker: 'Primary discipline', title: ['UI/UX', 'Design'],
     intro: ['I design with empathy and intent. From early research through to pixel-perfect prototypes — always focused on clarity, usability, and reducing friction.', '5+ years of product design across SaaS, EdTech, e-commerce, and fintech. Every project begins with understanding people before touching any tool.'],
-    proficiency: [['Visual & UI Design', 95], ['Prototyping & Figma', 92], ['Design Systems', 88], ['User Research', 85]],
+    evidence: ['Designed Ajiroba from 0 → 1 across web and iOS & Android apps', 'Led the end-to-end redesign of Krent for five user groups', 'Built a 60+ component design system used across a product', 'Every project delivered fully responsive'],
     cards: [
       ['search_insights', 'User Research & Discovery', 'Interviews, surveys, usability testing, and competitive analysis to uncover real user needs before any pixel is drawn. 12+ research sessions conducted across projects.', ['User Interviews', 'Usability Testing', 'Personas', 'Journey Maps']],
       ['account_tree', 'Information Architecture', 'Organising content and navigation so the structure of the product makes sense before a single high-fidelity screen is designed. Reduced navigation complexity by 40% on Ajiroba.', ['Sitemaps', 'Card Sorting', 'User Flows', 'IA']],
@@ -17,7 +17,7 @@ export const tabs = [
     id: 'development', label: 'Development', image: '/images/cap-development.webp',
     kicker: 'Differentiator #1 — Technical awareness', title: ['I understand what happens', 'after Figma.'],
     intro: ['Working knowledge of HTML, CSS, and JavaScript means I design with implementation in mind — reducing the gap between design intent and what actually ships.', 'This makes me more effective in cross-functional teams and results in fewer handoff reworks.'],
-    proficiency: [['Responsive Development', 90], ['HTML5 / CSS3', 88], ['JavaScript', 75], ['React (learning)', 60]],
+    evidence: ['Designed and built Ledger Studio, AnnySHub and Folu Atelier', 'This portfolio is built in React with Motion', 'Deploys and maintains live sites on Vercel', 'Writes specs engineers can build from without rework'],
     cards: [
       ['code', 'HTML & CSS', 'Semantic HTML and modern CSS — Grid, Flexbox, Custom Properties, animations. Building accessible, performant web pages that match design intent precisely.', ['HTML5', 'CSS3', 'Flexbox', 'Grid']],
       ['terminal', 'JavaScript & React', 'Modern JavaScript — DOM manipulation, event handling, async/await, and interactive UI components. This portfolio is built in React.', ['ES6+', 'React', 'Fetch API', 'Async/Await']],
@@ -31,7 +31,7 @@ export const tabs = [
     id: 'data', label: 'Data Analysis', image: '/images/cap-data.webp',
     kicker: 'Differentiator #2 — Analytical thinking', title: ["I don't ignore", 'the numbers.'],
     intro: ['SQL, Excel, and Power BI give me another lens for investigating product problems. I can identify where friction is concentrated, which flows are failing, and what the data suggests should be fixed next.', 'This makes design decisions more defensible and stakeholder conversations more evidence-based.'],
-    proficiency: [['Excel & Google Sheets', 92], ['Power BI & Visualisation', 85], ['SQL & Database Querying', 82], ['Data Cleaning & Modelling', 80]],
+    evidence: ['Uses SQL, Excel and Power BI to investigate product questions', 'Three end-to-end analytics projects completed', 'Data Analytics certification (2026)'],
     cards: [
       ['table_chart', 'Excel & Spreadsheet Modelling', 'Advanced Excel for data analysis, pivot tables, VLOOKUP/INDEX-MATCH, dynamic charts, and automated reporting with Power Query. 3 end-to-end analytics projects completed.', ['Advanced Excel', 'Power Query', 'Pivot Tables']],
       ['storage', 'SQL & Database Analysis', 'Writing complex queries — joins, window functions, CTEs, and subqueries — to extract and transform data from relational databases at scale.', ['SQL', 'Joins', 'CTEs', 'Window Functions']],
@@ -45,7 +45,7 @@ export const tabs = [
     id: 'strategy', label: 'Strategy', image: '/images/cap-strategy.webp',
     kicker: 'Product thinking', title: ['Strategy &', 'Leadership'],
     intro: ["Great products don't happen by accident. I help teams move from fuzzy ideas to clear roadmaps — defining success metrics, aligning stakeholders, and making prioritisation decisions grounded in data and user insight."],
-    proficiency: [['Stakeholder Communication', 90], ['Product Roadmapping', 85], ['Data-Driven Decision Making', 82], ['Agile & Scrum', 80]],
+    evidence: ['Two years embedded as product designer and product manager at Ajiroba', 'Writes PRDs and specs that keep product and engineering aligned', 'Worked in agile teams in every employed role'],
     cards: [
       ['map', 'Product Roadmapping', 'Translating business goals and user needs into prioritised, time-bound roadmaps using RICE and other prioritisation frameworks.', ['OKRs', 'RICE', 'MoSCoW']],
       ['handshake', 'Stakeholder Management', 'Facilitating workshops, presenting to executives, and aligning cross-functional teams around shared goals. Comfortable presenting to C-suite and board-level stakeholders.', ['Workshops', 'Presentations', 'Negotiation']],

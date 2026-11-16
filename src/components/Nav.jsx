@@ -11,7 +11,7 @@ export function Logo() {
       <Mark size={40} className="logo-mark" />
       <span className="logo-text">
         <span className="logo-word">{site.name}</span>
-        <span className="logo-role">Product Designer</span>
+        <span className="logo-role">Senior Product Designer</span>
       </span>
     </Link>
   );

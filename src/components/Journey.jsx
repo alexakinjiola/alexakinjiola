@@ -6,8 +6,8 @@ import Reveal from './Reveal';
 /* Career milestones, oldest first. */
 export const milestones = [
   { years: '2015 — 2019', title: 'B.Sc. Civil Engineering', org: 'Obafemi Awolowo University', text: 'Learned to think in systems, constraints and dependencies — Second Class Upper, 4.09/5.0.', icon: 'architecture' },
-  { years: '2022 — 2023', title: 'Product Designer', org: 'Creatifff · Remote', text: 'Mobile-first fashion e-commerce, from research and journey maps to design system. 77% lift in satisfaction.', icon: 'checkroom' },
-  { years: '2023 — 2025', title: 'Product Designer', org: 'Ajiroba Technologies · Remote', text: 'UX audits, simplified flows and a 60+ component design system. 89% usability improvement.', icon: 'storefront' },
+  { years: '2022 — 2023', title: 'Product Designer', org: 'Creatifff · Remote', text: 'Mobile-first fashion e-commerce, from research and journey maps to design system. 77% satisfaction lift, company-reported.', icon: 'checkroom' },
+  { years: '2023 — 2025', title: 'Product Designer', org: 'Ajiroba Technologies · Remote', text: 'UX audits, simplified flows and a 60+ component design system. 89% usability improvement, company-reported.', icon: 'storefront' },
   { years: '2025 — Present', title: 'Product Designer', org: 'Morgen Green · Hybrid', text: 'Leading design for SaaS and EdTech products with complex, multi-role workflows.', icon: 'rocket_launch', current: true },
 ];
 

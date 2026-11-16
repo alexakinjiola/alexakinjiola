@@ -161,7 +161,7 @@ export default function ParticleIntro({ onDone }) {
         animate={leaving ? { opacity: 0, y: -8, transition: { duration: 0.3 } } : { opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] } }}
       >
         <Mark size={44} />
-        <p className="launch-role mono">Product Designer · Portfolio 2026</p>
+        <p className="launch-role mono">Senior Product Designer · Portfolio 2026</p>
         <span className="launch-line"><motion.span initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.2, duration: HOLD / 1000 - 0.2, ease: 'linear' }} /></span>
       </motion.div>
     </motion.div>

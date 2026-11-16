@@ -14,12 +14,12 @@ export function Quote({ text, highlight }) {
   return <>{a}<mark>{highlight}</mark>{b}</>;
 }
 
-export function Person({ name, role }) {
+export function Person({ name, role, linkedin }) {
   return (
     <figcaption className="person">
       <span className="person-avatar" aria-hidden="true">{initials(name)}</span>
       <span>
-        <cite className="person-name">{name}</cite>
+        <cite className="person-name">{linkedin ? <a href={linkedin} target="_blank" rel="noopener noreferrer">{name}<span className="sr-only"> on LinkedIn (opens in a new tab)</span></a> : name}</cite>
         <span className="person-role">{role}</span>
       </span>
     </figcaption>
@@ -105,7 +105,7 @@ export default function Testimonials() {
               >
                 <Icon name="format_quote" size={40} fill className="quote-icon" />
                 <blockquote><p><Quote text={t.quote} highlight={t.highlight} /></p></blockquote>
-                <Person name={t.name} role={t.role} />
+                <Person name={t.name} role={t.role} linkedin={t.linkedin} />
               </motion.figure>
             );
           })}

@@ -21,7 +21,7 @@ export const roles = [
       'Built a Figma UI and design system spanning 60+ components — reduced design inconsistencies by 80% and cut handoff time significantly',
       'Collaborated with developers throughout implementation — not just at handoff',
     ],
-    result: { value: 89, suffix: '%', label: 'Improvement in platform usability and perceived performance' },
+    result: { value: 89, suffix: '%', label: 'Improvement in platform usability and perceived performance, as reported by Ajiroba' },
     tags: ['UX Audit', 'User Flows', 'Design Systems', 'Navigation', 'E-commerce', 'Mobile'],
   },
   {
@@ -33,7 +33,7 @@ export const roles = [
       'Conducted user research and journey mapping to understand where friction existed',
       'Built and maintained the product UI used across the mobile application',
     ],
-    result: { value: 77, suffix: '%', label: 'Increase in user satisfaction' },
+    result: { value: 77, suffix: '%', label: 'Increase in user satisfaction, as reported by Creatifff' },
     tags: ['User Research', 'Journey Mapping', 'Interaction Design', 'Design Systems', 'Mobile App', 'Prototyping'],
   },
 ];

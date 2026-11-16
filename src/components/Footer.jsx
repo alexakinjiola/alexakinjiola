@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Logo />
-            <p>Product Designer · UX/UI · Design Systems. I turn complex product problems into simple, scalable experiences.</p>
+            <p>Senior Product Designer for complex, multi-role products — SaaS, EdTech, PropTech and fintech. I turn tangled workflows into simple, scalable experiences.</p>
           </div>
           <div>
             <h2 className="footer-label">Navigate</h2>

@@ -12,17 +12,6 @@ import { tabs, learning } from '../data/capabilities';
 
 const ease = [0.22, 1, 0.36, 1];
 
-function Bar({ name, value, i }) {
-  return (
-    <li className="bar">
-      <div className="bar-head"><span>{name}</span><span className="mono">{value}%</span></div>
-      <div className="bar-track" role="progressbar" aria-label={name} aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>
-        <motion.div className="bar-fill" initial={{ scaleX: 0 }} animate={{ scaleX: value / 100 }} transition={{ delay: 0.25 + i * 0.08, duration: 1.2, ease }} />
-      </div>
-    </li>
-  );
-}
-
 function Ring({ value }) {
   const c = 2 * Math.PI * 26;
   return (
@@ -104,8 +93,14 @@ export default function Capabilities() {
                   <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" />{tab.kicker}</p>
                   <h2 className="display">{tab.title[0]} <span className="dim">{tab.title[1]}</span></h2>
                   {tab.intro.map((p) => <p key={p} className="feature-text">{p}</p>)}
-                  {tab.proficiency && (
-                    <ul className="bars">{tab.proficiency.map(([n, v], i) => <Bar key={n} name={n} value={v} i={i} />)}</ul>
+                  {tab.evidence && (
+                    <ul className="evidence">
+                      {tab.evidence.map((e, i) => (
+                        <motion.li key={e} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 + i * 0.08, duration: 0.6, ease }}>
+                          <Icon name="check_circle" size={20} fill />{e}
+                        </motion.li>
+                      ))}
+                    </ul>
                   )}
                 </div>
                 <motion.div className="feature-media" initial={{ clipPath: 'inset(0 0 100% 0)' }} animate={{ clipPath: 'inset(0 0 0% 0)' }} transition={{ duration: 1, ease, delay: 0.1 }}>

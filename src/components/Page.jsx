@@ -9,7 +9,7 @@ const ease = [0.76, 0, 0.24, 1];
 export default function Page({ title, description, children }) {
   return (
     <>
-      <title>{title ? `${title} — Alex Akinjiola` : 'Alex Akinjiola — Product Designer'}</title>
+      <title>{title ? `${title} — Alex Akinjiola` : 'Alex Akinjiola — Senior Product Designer'}</title>
       {description && <meta name="description" content={description} />}
       <motion.main
         id="main"

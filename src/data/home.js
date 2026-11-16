@@ -6,8 +6,8 @@ export const problems = [
 ];
 
 export const impact = [
-  { value: 89, suffix: '%', label: 'Improvement in platform usability', text: "UX audits and usability optimisation across Ajiroba's web and mobile e-commerce experience improved perceived platform performance significantly.", source: 'Ajiroba Technologies · 2023–2025' },
-  { value: 77, suffix: '%', label: 'Increase in user satisfaction', text: 'Improved key onboarding and checkout flows at Creatifff, focusing on making critical user journeys clearer and easier to complete.', source: 'Creatifff · 2022–2023' },
+  { value: 89, suffix: '%', label: 'Improvement in platform usability', text: "UX audits and usability optimisation across Ajiroba's web and mobile e-commerce experience improved perceived platform performance significantly.", source: 'Reported by Ajiroba Technologies · 2023–2025' },
+  { value: 77, suffix: '%', label: 'Increase in user satisfaction', text: 'Improved key onboarding and checkout flows at Creatifff, focusing on making critical user journeys clearer and easier to complete.', source: 'Reported by Creatifff · 2022–2023' },
   { word: 'End-to-end', label: 'From requirements to working experiences', text: 'At Morgen Green I lead and work across strategy, UX, IA, UI design, design systems, PRDs, documentation, prototyping, and engineering collaboration.', source: 'Morgen Green · 2025–Present' },
 ];
 

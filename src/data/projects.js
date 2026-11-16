@@ -9,7 +9,7 @@ export const selectedWork = [
   {
     id: 'ajiroba', title: 'Ajiroba', category: 'E-commerce', image: '/images/ajiroba.webp',
     headline: 'Removing friction from a growing e-commerce experience.',
-    summary: 'UX audit, simplified workflows, improved navigation clarity, and a scalable design system. 70% improvement in usability and perceived performance.',
+    summary: 'UX audit, simplified workflows, improved navigation clarity, and a scalable design system. 89% improvement in usability and perceived performance.',
     links: [{ label: 'Live Project', href: 'https://ajiroba.com', icon: 'open_in_new' }],
   },
   {
@@ -65,17 +65,17 @@ export const caseStudies = [
   },
   {
     id: 'ajiroba', badge: 'Ajiroba · E-commerce · Web + Mobile', image: '/images/ajiroba.webp', readTime: '3 min read',
-    eyebrow: '67% measurable improvement',
+    eyebrow: '89% measurable improvement',
     title: 'Removing friction from a growing e-commerce platform.',
     results: [
-      { value: '67%', label: 'Improvement in platform usability' },
+      { value: '89%', label: 'Improvement in platform usability' },
       { value: '100+', label: 'Core user flows simplified' },
       { value: '2yr', label: 'Embedded as product designer & product manager' },
     ],
     story: [
       ['The Problem', 'The product had all the right features. But the experience accumulated friction — users were dropping off, and the team was spending too much time explaining how things worked.'],
       ['What I Did', 'Conducted a structured UX audit. Identified the highest-friction workflows. Redesigned navigation, simplified checkout and product flows, introduced design tokens and a component library to keep the experience consistent at scale.'],
-      ['Outcome', '67% improvement in platform usability and perceived performance. Engineering handoff time reduced significantly through better documentation and a shared design system.'],
+      ['Outcome', '89% improvement in platform usability and perceived performance. Engineering handoff time reduced significantly through better documentation and a shared design system.'],
     ],
     tags: 'UX Audit · Navigation · Design Systems · Mobile · Nov 2023 – Sep 2025',
     links: [{ label: 'Live Product', href: 'https://ajiroba.org/', icon: 'open_in_new' }],
@@ -105,8 +105,8 @@ export const moreWork = [
     stats: [['60%', 'Fewer steps to order'], ['4.8★', 'Design prototype rating']],
     summary: 'Redesigned the end-to-end food ordering experience — from browse to checkout — reducing unnecessary decision points and improving order completion rates through clearer information hierarchy.',
     links: [{ label: 'View on Behance', href: 'https://www.behance.net/gallery/231847479/Meal-Flex', icon: 'open_in_new' }] },
-  { id: 'creatifff', title: 'Creatifff — Fashion e-commerce with a 75% satisfaction lift.', category: 'Fashion · E-commerce', image: '/images/creatifff.webp',
-    stats: [['75%', 'User satisfaction increase'], ['26', 'Critical flows rebuilt']],
+  { id: 'creatifff', title: 'Creatifff — Fashion e-commerce with a 77% satisfaction lift.', category: 'Fashion · E-commerce', image: '/images/creatifff.webp',
+    stats: [['77%', 'User satisfaction increase'], ['26', 'Critical flows rebuilt']],
     summary: 'Led end-to-end product design for a mobile-first fashion platform. Redesigned onboarding and checkout flows, built the full design system, and worked with engineering through implementation.',
     links: [{ label: 'Case Study', href: 'https://www.behance.net/gallery/236775971/Creatifff-Ecommerce', icon: 'article' }], note: 'Private product' },
   { id: 'ledger', title: 'Ledger Studio — Polished invoicing without complexity.', category: 'SaaS · Design + Dev', image: '/images/ledger-studio.webp',

@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <span className="mono">© {new Date().getFullYear()} {site.name}</span>
           <span className="mono">Designed &amp; built by Alex — React, Motion, Geist</span>
-          <button className="to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <button className="to-top" onClick={() => (window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.6 }) : window.scrollTo({ top: 0, behavior: 'smooth' }))}>
             Back to top <Icon name="north" size={16} />
           </button>
         </div>

@@ -1,11 +1,13 @@
-import { lazy, Suspense, useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router';
-import { AnimatePresence, MotionConfig } from 'motion/react';
+import { AnimatePresence, MotionConfig, useReducedMotion } from 'motion/react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Cursor from './components/Cursor';
 import ScrollProgress from './components/ScrollProgress';
-import Intro from './components/Intro';
+import ParticleIntro from './components/ParticleIntro';
 import Home from './pages/Home';
 
 const Work = lazy(() => import('./pages/Work'));
@@ -19,7 +21,18 @@ const seen = () => { try { return sessionStorage.getItem('aa-intro') === '1'; } 
 
 export default function App() {
   const location = useLocation();
-  const [intro, setIntro] = useState(() => location.pathname === '/' && !seen());
+  const reduce = useReducedMotion();
+  const [intro, setIntro] = useState(() => !seen());
+
+  /* Inertial smooth scrolling (off for reduced motion and while the intro runs). */
+  useEffect(() => {
+    if (reduce) return;
+    const lenis = new Lenis({ autoRaf: true, anchors: { offset: -88 }, lerp: 0.1, wheelMultiplier: 1 });
+    window.__lenis = lenis;
+    return () => { lenis.destroy(); window.__lenis = undefined; };
+  }, [reduce]);
+  useEffect(() => { intro ? window.__lenis?.stop() : window.__lenis?.start(); }, [intro]);
+  const toTop = () => (window.__lenis ? window.__lenis.scrollTo(0, { immediate: true }) : window.scrollTo(0, 0));
   const endIntro = useCallback(() => {
     try { sessionStorage.setItem('aa-intro', '1'); } catch { /* private mode */ }
     setIntro(false);
@@ -28,13 +41,13 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <a href="#main" className="skip-link">Skip to content</a>
-      {intro && <Intro onDone={endIntro} />}
+      {intro && <ParticleIntro onDone={endIntro} />}
       <ScrollProgress />
       <Cursor />
       <div className="grain" aria-hidden="true" />
       <Nav />
       <Suspense fallback={<div className="route-fallback" />}>
-        <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+        <AnimatePresence mode="wait" onExitComplete={toTop}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home introDone={!intro} />} />
             <Route path="/work" element={<Work />} />

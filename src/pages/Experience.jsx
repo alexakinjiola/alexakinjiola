@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Page from '../components/Page';
+import Silk from '../components/Silk';
 import SectionHead, { Eyebrow } from '../components/SectionHead';
 import SplitText from '../components/SplitText';
 import Reveal, { Stagger, RevealItem } from '../components/Reveal';
@@ -52,6 +53,7 @@ export default function Experience() {
   return (
     <Page title="Experience" description="Work history, education, certifications and skills of Alex Akinjiola, Product Designer.">
       <header className="page-hero">
+        <Silk lines={30} intensity={0.65} />
         <div className="page-hero-glow" aria-hidden="true" />
         <div className="container">
           <Eyebrow>Resume</Eyebrow>

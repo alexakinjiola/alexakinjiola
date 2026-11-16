@@ -3,12 +3,16 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { nav, site } from '../data/site';
 import Icon from './Icon';
+import Mark from './Mark';
 
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label={`${site.name} — home`}>
-      <span className="logo-mark" aria-hidden="true">AA</span>
-      <span className="logo-word">{site.name}</span>
+      <Mark size={40} className="logo-mark" />
+      <span className="logo-text">
+        <span className="logo-word">{site.name}</span>
+        <span className="logo-role">Product Designer</span>
+      </span>
     </Link>
   );
 }
@@ -33,6 +37,7 @@ export default function Nav() {
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = 'hidden';
+    window.__lenis?.stop();
     const first = menuRef.current?.querySelector('a');
     first?.focus();
     const onKey = (e) => {
@@ -45,7 +50,7 @@ export default function Nav() {
       }
     };
     window.addEventListener('keydown', onKey);
-    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey); };
+    return () => { document.body.style.overflow = ''; window.__lenis?.start(); window.removeEventListener('keydown', onKey); };
   }, [open]);
 
   return (
@@ -92,6 +97,7 @@ export default function Nav() {
             id="mobile-menu"
             ref={menuRef}
             className="mobile-menu"
+            data-lenis-prevent
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"

@@ -14,6 +14,7 @@ import { workStats } from '../data/projects';
 /* A whole-card link into a case study. */
 export function CaseCard({ c, size = 'md', index }) {
   return (
+    <div className="case-card-wrap" style={{ '--case': c.accent }}>
     <TiltCard as="article" className={`case-card case-card-${size}`} max={size === 'lg' ? 3 : 5} data-cursor="Read">
       <Link to={`/work/${c.slug}`} className="case-card-link" aria-label={`${c.title} case study — ${c.tagline}`} />
       <div className="case-card-media">
@@ -27,6 +28,7 @@ export function CaseCard({ c, size = 'md', index }) {
         <span className="case-card-cta">Read case study <Icon name="arrow_forward" size={18} /></span>
       </div>
     </TiltCard>
+    </div>
   );
 }
 

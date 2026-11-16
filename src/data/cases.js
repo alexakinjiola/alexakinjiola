@@ -33,7 +33,7 @@ export const cases = [
     category: 'HR tech · Marketplace · SaaS',
     accent: '#3B82F6',
     cover: `${V}/trustbridge.webp`,
-    research: { summary: 'I ran user interviews and surveys with international students, skilled migrants and SME employers to understand where trust broke down on each side of the hire.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Job seekers and SME employers' }, { name: 'Surveys', icon: 'quiz', detail: 'Job seekers and employers' }] },
+    research: { summary: 'I ran user interviews and surveys with international students, skilled migrants and SME employers to understand where trust broke down on each side of the hire. Between 15 and 40 participants across interviews and surveys, spanning job seekers and SME employers.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Job seekers and SME employers' }, { name: 'Surveys', icon: 'quiz', detail: 'Job seekers and employers' }], insights: [{ finding: 'Students were afraid of accidentally breaking their 20-hour term-time limit.', change: 'Designed the remaining-hours calculation, built from permission type, term dates and existing jobs, with the working shown.' }, { finding: 'SME employers avoided hiring because visa rules felt risky and confusing.', change: 'Gave employers a verified summary — permission confirmed, hours left — instead of documents to interpret.' }, { finding: '“UK experience required” stopped seekers before their skills were seen.', change: 'Added confirmed UK-experience references that employers complete after each role.' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -159,7 +159,7 @@ export const cases = [
     accent: '#22C55E',
     cover: `${V}/continuum.webp`,
     live: 'https://continuumng.vercel.app/',
-    research: { summary: 'I ran user interviews, surveys and usability testing with patients, carers and healthcare providers to understand how records are kept, lost and shared — and to test the consent flow.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Patients, carers and providers' }, { name: 'Surveys', icon: 'quiz', detail: 'Patients and carers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Consent and sharing flows' }] },
+    research: { summary: 'I ran user interviews, surveys and usability testing with patients, carers and healthcare providers to understand how records are kept, lost and shared — and to test the consent flow. Between 20 and 30 participants across interviews, surveys and usability testing, including patients, carers and providers.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Patients, carers and providers' }, { name: 'Surveys', icon: 'quiz', detail: 'Patients and carers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Consent and sharing flows' }], insights: [{ finding: 'Patients’ records didn’t follow them — they repeated their history and tests at every new facility.', change: 'Built one patient-owned record that brings diagnoses, results and prescriptions from every facility together.' }, { finding: 'People feared losing control over who sees their health information.', change: 'Designed granular consent: patients choose record types and a time limit, can revoke in one tap, and see every access logged.' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -273,7 +273,7 @@ export const cases = [
     accent: '#2DD4BF',
     cover: `${V}/krent.webp`,
     live: 'https://krent.space/',
-    research: { summary: 'I ran user interviews and surveys with renters, shortlet guests, buyers, hosts and agents to understand where the existing experience let each of them down.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Renters, guests, buyers, hosts and agents' }, { name: 'Surveys', icon: 'quiz', detail: 'Across all five user groups' }] },
+    research: { summary: 'I ran user interviews and surveys with renters, shortlet guests, buyers, hosts and agents to understand where the existing experience let each of them down. About 10 interviews with renters and agents and around 40 survey responses.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Renters, guests, buyers, hosts and agents' }, { name: 'Surveys', icon: 'quiz', detail: 'Across all five user groups' }], insights: [{ finding: 'People distrusted listings that showed no sign of verification.', change: 'Made verification badges prominent on every listing card, alongside Top Listing and Instant Booking.' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -350,7 +350,7 @@ export const cases = [
     accent: '#F97316',
     cover: `${V}/ajiroba.webp`,
     live: 'https://www.ajiroba.com/',
-    research: { summary: 'I ran user interviews, surveys and usability testing with first-time visitors and participants to understand what they needed to know — and to trust — before taking part.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Prospective and active participants' }, { name: 'Surveys', icon: 'quiz', detail: 'Participants across web and app' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Wallet, ticket and draw flows' }] },
+    research: { summary: 'I ran user interviews, surveys and usability testing with first-time visitors and participants to understand what they needed to know — and to trust — before taking part. Between 40 and 60 participants across interviews, surveys and usability testing, from first-time visitors to active players.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Prospective and active participants' }, { name: 'Surveys', icon: 'quiz', detail: 'Participants across web and app' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Wallet, ticket and draw flows' }], insights: [{ finding: 'First-time visitors didn’t understand how the raffle model worked.', change: 'Explained it as three plain-language steps — ticket, draw, win — before asking anyone to sign up.' }, { finding: 'Many people worried the platform wasn’t legitimate.', change: 'Brought trust forward: a guaranteed winner every draw, verified winners and a real company voice across the product and campaigns.' }, { finding: 'The low ticket price was what made people curious.', change: 'Led the homepage with value — enter for as little as ₦200 — and introduced the mechanics after.' }] },
     researchLed: true,
     facts: [
       ['Role', 'Lead Product Designer'],
@@ -417,7 +417,7 @@ export const cases = [
     accent: '#84CC16',
     cover: '/images/paytrackr.webp',
     live: 'https://paytrackr-invoice.vercel.app/',
-    research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how freelancers and small businesses track invoices and payments.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small-business owners' }, { name: 'Surveys', icon: 'quiz', detail: 'People who bill clients' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Dashboard and invoice flows' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoicing and finance tools' }] },
+    research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how freelancers and small businesses track invoices and payments. Between 45 and 50 participants across interviews, surveys and usability testing, alongside a competitive review.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small-business owners' }, { name: 'Surveys', icon: 'quiz', detail: 'People who bill clients' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Dashboard and invoice flows' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoicing and finance tools' }], insights: [{ finding: 'People couldn’t tell at a glance what was paid, pending or overdue.', change: 'Put status totals first on the dashboard, colour-coded, with no clicks needed.' }, { finding: 'Creating and chasing invoices took too many steps.', change: 'Reduced invoice tasks to a short, linear flow that only asks for what each step needs.' }] },
     researchLed: true,
     facts: [['Role', 'Lead Product Designer'], ['Type', 'Invoicing & payments'], ['Platform', 'Responsive web app'], ['Focus', 'Hierarchy · flows']],
     tldr: {
@@ -453,7 +453,7 @@ export const cases = [
     accent: '#8B5CF6',
     cover: `${V}/ledger.webp`,
     live: 'https://ledger-studio-pi.vercel.app/',
-    research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how designers, developers and studios create and send invoices.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small studios' }, { name: 'Surveys', icon: 'quiz', detail: 'Designers and developers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'The four-step invoice flow' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoice generators and templates' }] },
+    research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how designers, developers and studios create and send invoices. Between 30 and 45 participants across interviews, surveys and usability testing, alongside a competitive review.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small studios' }, { name: 'Surveys', icon: 'quiz', detail: 'Designers and developers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'The four-step invoice flow' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoice generators and templates' }], insights: [{ finding: 'Freelancers lost track of which invoices were still unpaid.', change: 'Designed a dashboard that separates paid from outstanding and filters by week, month or year.' }, { finding: 'Clients struggled with invoice attachments.', change: 'Added shareable read-only links that open in any browser, plus one-click PDF export.' }] },
     researchLed: true,
     facts: [['Role', 'Lead Designer & front-end developer'], ['Type', 'Product, 0 → 1'], ['Platform', 'Responsive web app'], ['Stack', 'Client-side · no backend']],
     glance: [['4', 'Steps from blank page to sent'], ['6', 'Currencies'], ['2', 'Themes: light and dark'], ['1', 'Click to PDF']],

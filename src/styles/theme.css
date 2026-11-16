@@ -707,3 +707,16 @@ html, body { overflow-x: clip; }
 .case-card-cta { color: var(--case, var(--accent)); }
 .case-card .chip-glass { border-color: color-mix(in srgb, var(--case, var(--accent)) 45%, transparent); }
 @media (prefers-reduced-motion: reduce) { .case-hero-glow { animation: none; } }
+
+/* Polish pass */
+.case-hero-title { text-shadow: none; }
+.phase-rail { padding-top: 10px; }
+.phase-line { top: 31px; }
+.journey-stepper { margin-top: 2rem; }
+.case-grid-featured .case-cell-wide { grid-column: auto; }
+.case-grid-featured .case-card-lg .case-card-media { aspect-ratio: 16 / 10; }
+.case-grid-featured .case-card-lg .case-card-body h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); }
+@media (min-width: 900px) {
+  .glance { position: relative; left: auto; right: auto; bottom: auto; z-index: 2; margin: -4.5rem 4% 2.5rem; padding-inline: 0; }
+}
+.glance-item { background: rgba(8,14,26,.94); }

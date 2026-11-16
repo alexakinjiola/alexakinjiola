@@ -10,7 +10,7 @@ import TiltCard from '../components/TiltCard';
 import CtaBand from '../components/CtaBand';
 import Icon from '../components/Icon';
 import { chapters, aboutStats, perspectives, beyond } from '../data/about';
-import { process } from '../data/home';
+import { process, principles } from '../data/home';
 import WavePanel from '../components/WavePanel';
 
 /* Turns **bold** markers in copy into <strong>. */
@@ -97,6 +97,21 @@ export default function About() {
         </div>
       </WavePanel>
       <section className="section">
+        <div className="container">
+          <SectionHead eyebrow="Design principles" title="What guides" dim="every decision." breakBefore />
+          <Stagger className="principles">
+            {principles.map(([t, d], i) => (
+              <RevealItem key={t} className="principle">
+                <span className="mono principle-num">P/0{i + 1}</span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </RevealItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      <section className="section section-surface">
         <div className="container">
           <SectionHead eyebrow="What I bring" title="Four perspectives." dim="One practice." breakBefore={false} />
           <Stagger className="bento bento-4">

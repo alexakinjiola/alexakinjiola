@@ -8,6 +8,8 @@ import Reveal, { Stagger, RevealItem } from '../components/Reveal';
 import Icon from '../components/Icon';
 import Magnetic from '../components/Magnetic';
 import { site, socials } from '../data/site';
+import { testimonials } from '../data/testimonials';
+import { Quote, Person } from '../components/Testimonials';
 
 const openTo = ['Full-time product design roles', 'Remote opportunities', 'Hybrid opportunities', 'Contract opportunities', 'Relocation opportunities'];
 const topics = ['Full-time role opportunity', 'Freelance / Contract project', 'Product design collaboration', 'Just saying hello', 'Other'];
@@ -168,11 +170,18 @@ export default function Contact() {
             </Stagger>
           </div>
 
-          <Reveal className="contact-card" delay={0.1}>
-            <h2 className="contact-card-title">Send a message</h2>
-            <p className="muted">I respond to every message, usually within 24 hours.</p>
-            <ContactForm />
-          </Reveal>
+          <div className="contact-side">
+            <Reveal className="contact-card" delay={0.1}>
+              <h2 className="contact-card-title">Send a message</h2>
+              <p className="muted">I respond to every message, usually within 24 hours.</p>
+              <ContactForm />
+            </Reveal>
+            <Reveal as="figure" className="mini-quote" delay={0.2}>
+              <Icon name="format_quote" size={28} fill className="quote-icon" />
+              <blockquote><p><Quote text={testimonials[2].quote} highlight={testimonials[2].highlight} /></p></blockquote>
+              <Person name={testimonials[2].name} role={testimonials[2].role} />
+            </Reveal>
+          </div>
         </div>
       </section>
     </Page>

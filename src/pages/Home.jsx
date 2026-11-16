@@ -13,8 +13,8 @@ import Icon from '../components/Icon';
 import Silk from '../components/Silk';
 import WavePanel from '../components/WavePanel';
 import Journey from '../components/Journey';
+import Testimonials from '../components/Testimonials';
 import { selectedWork } from '../data/projects';
-import { principles } from '../data/home';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -256,66 +256,8 @@ function Projects() {
   );
 }
 
-/* ── Principles focus carousel (in place of testimonials) ─────── */
-function Principles() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const reduce = useReducedMotion();
-  const n = principles.length;
-
-  useEffect(() => {
-    if (paused || reduce) return;
-    const id = setInterval(() => setActive((a) => (a + 1) % n), 5200);
-    return () => clearInterval(id);
-  }, [paused, reduce, n]);
-
-  return (
-    <section className="section principles-section" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
-      <div className="ripples" aria-hidden="true"><span /><span /><span /><span /></div>
-      <div className="container principles-grid">
-        <div>
-          <SectionHead eyebrow="Design principles" title="What guides" dim="every decision." breakBefore />
-          <div className="principle-controls">
-            <button type="button" className="pause-btn" onClick={() => setPaused((p) => !p)} aria-label={paused ? 'Play rotation' : 'Pause rotation'}>
-              <Icon name={paused ? 'play_arrow' : 'pause'} size={18} />
-            </button>
-            <div className="dots" role="tablist" aria-label="Choose a principle">
-              {principles.map(([t], i) => (
-                <button key={t} type="button" role="tab" aria-selected={active === i} aria-label={t} className="dot" onClick={() => setActive(i)} />
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="focus-stage" aria-live={paused ? 'polite' : 'off'}>
-          {principles.map(([title, text], i) => {
-            let off = i - active;
-            if (off > n / 2) off -= n;
-            if (off < -n / 2) off += n;
-            const visible = Math.abs(off) <= 1;
-            return (
-              <motion.article
-                key={title}
-                className={`focus-card${off === 0 ? ' is-active' : ''}`}
-                aria-hidden={off !== 0}
-                animate={{ x: `${off * 62}%`, scale: off === 0 ? 1 : 0.82, opacity: visible ? (off === 0 ? 1 : 0.35) : 0, filter: off === 0 ? 'blur(0px)' : 'blur(3px)', zIndex: off === 0 ? 2 : 1 }}
-                transition={{ duration: 0.9, ease }}
-                onClick={() => setActive(i)}
-              >
-                <Icon name="format_quote" size={36} className="quote-icon" />
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <span className="mono focus-num">P/0{i + 1}</span>
-              </motion.article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ── Section rail (desktop) ───────────────────────────────────── */
-const railItems = [['top', 'Intro'], ['about', 'About'], ['skills', 'Skills'], ['work', 'Work'], ['journey', 'Journey']];
+const railItems = [['top', 'Intro'], ['about', 'About'], ['skills', 'Skills'], ['work', 'Work'], ['journey', 'Journey'], ['testimonials', 'Kind words']];
 function SectionRail() {
   const [active, setActive] = useState('top');
   useEffect(() => {
@@ -349,7 +291,7 @@ export default function Home({ introDone = true }) {
           <Reveal className="btn-row"><Button to="/experience" variant="secondary" icon="arrow_forward" magnetic={false}>Full experience</Button></Reveal>
         </div>
       </WavePanel>
-      <Principles />
+      <Testimonials />
       <CtaBand
         eyebrow="Let's work together"
         title="Have a"

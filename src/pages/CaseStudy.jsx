@@ -122,10 +122,10 @@ function ProcessExplorer({ process }) {
             aria-selected={i === k}
             aria-controls="phase-panel"
             tabIndex={i === k ? 0 : -1}
-            className={`phase${i === k ? ' is-active' : ''}${k < i ? ' is-done' : ''}`}
+            className={`phase${i === k ? ' is-active' : ''}${k < i ? ' is-done' : ''}${ph.research ? ' is-research' : ''}`}
             onClick={() => setI(k)}
           >
-            <span className="phase-dot" aria-hidden="true">{k < i ? <Icon name="check" size={14} /> : ph.phase}</span>
+            <span className="phase-dot" aria-hidden="true">{k < i ? <Icon name="check" size={14} /> : ph.research ? <Icon name="person_search" size={18} /> : String(k + 1).padStart(2, '0')}</span>
             <span className="phase-name">{ph.title}</span>
           </button>
         ))}
@@ -133,7 +133,7 @@ function ProcessExplorer({ process }) {
       <AnimatePresence mode="wait">
         <motion.div key={i} id="phase-panel" role="tabpanel" aria-labelledby={`phase-${i}`} className="phase-panel" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4, ease }}>
           <div>
-            <p className="mono phase-count">Phase {p.phase} of {String(process.length).padStart(2, '0')}</p>
+            <p className="mono phase-count">Phase {String(i + 1).padStart(2, '0')} of {String(process.length).padStart(2, '0')}{p.research ? ' · User research' : ''}</p>
             <h3>{p.title}</h3>
             <p className="phase-summary">{p.summary}</p>
           </div>
@@ -258,6 +258,7 @@ export default function CaseStudy() {
     c.tldr && ['summary', 'Summary'],
     ['context', 'Context'],
     c.users?.length && ['users', 'Users'],
+    c.research && ['research', 'Research'],
     c.process?.length && ['process', 'Process'],
     c.journey && ['journey', 'Journey'],
     c.decisions?.length && ['decisions', 'Key decisions'],
@@ -278,6 +279,7 @@ export default function CaseStudy() {
           <div className="container">
             <Link to="/work" className="back-link"><Icon name="arrow_back" size={18} />All work</Link>
             <Eyebrow>{`Case study · ${c.category}`}</Eyebrow>
+            {c.researchLed && <Reveal as="p" className="research-badge" delay={0.2}><Icon name="person_search" size={16} />Research-led · lead designer</Reveal>}
             <SplitText as="h1" className="page-title case-hero-title" text={c.title} onMount delay={0.3} />
             <Reveal as="p" className="lead case-tagline" delay={0.45}>{c.tagline}</Reveal>
             <Stagger as="dl" className="case-facts" gap={0.06}>
@@ -368,6 +370,38 @@ export default function CaseStudy() {
                     </RevealItem>
                   ))}
                 </Stagger>
+              </section>
+            )}
+
+            {/* ── RESEARCH (renders only with real findings supplied by Alex) ── */}
+            {c.research && (
+              <section id="research" className="case-section">
+                <Eyebrow>{`${num('research')} · Research & insights`}</Eyebrow>
+                <Reveal as="h2" className="case-h2">What the research <span className="dim">told me.</span></Reveal>
+                {c.research.summary && <Reveal as="p" className="case-lead">{c.research.summary}</Reveal>}
+                {c.research.methods?.length > 0 && (
+                  <Stagger as="ul" className="methods" gap={0.06}>
+                    {c.research.methods.map((m) => (
+                      <RevealItem as="li" key={m.name} className="method">
+                        <Icon name={m.icon || 'forum'} size={20} />
+                        <span><strong>{m.name}</strong>{m.detail && <small>{m.detail}</small>}</span>
+                      </RevealItem>
+                    ))}
+                  </Stagger>
+                )}
+                {c.research.insights?.length > 0 && (
+                  <Stagger className="insights" gap={0.08}>
+                    {c.research.insights.map((ins, k) => (
+                      <RevealItem key={ins.finding}>
+                        <TiltCard className="insight-card" max={4}>
+                          <span className="mono insight-num">Insight {String(k + 1).padStart(2, '0')}</span>
+                          <p className="insight-finding">{ins.finding}</p>
+                          {ins.change && <p className="insight-change"><Icon name="subdirectory_arrow_right" size={18} /><span><span className="mono">What changed</span>{ins.change}</span></p>}
+                        </TiltCard>
+                      </RevealItem>
+                    ))}
+                  </Stagger>
+                )}
               </section>
             )}
 

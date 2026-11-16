@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Page from '../components/Page';
+import Silk from '../components/Silk';
 import SectionHead, { Eyebrow } from '../components/SectionHead';
 import SplitText from '../components/SplitText';
 import Reveal, { Stagger, RevealItem } from '../components/Reveal';
@@ -9,6 +10,8 @@ import TiltCard from '../components/TiltCard';
 import CtaBand from '../components/CtaBand';
 import Icon from '../components/Icon';
 import { chapters, aboutStats, perspectives, beyond } from '../data/about';
+import { process } from '../data/home';
+import WavePanel from '../components/WavePanel';
 
 /* Turns **bold** markers in copy into <strong>. */
 function Rich({ text }) {
@@ -39,6 +42,7 @@ export default function About() {
   return (
     <Page title="About" description="The story behind Alex Akinjiola — from civil engineering to product design, frontend and data analytics.">
       <header className="page-hero">
+        <Silk lines={30} intensity={0.65} />
         <div className="page-hero-glow" aria-hidden="true" />
         <div className="container">
           <Eyebrow>About</Eyebrow>
@@ -76,7 +80,23 @@ export default function About() {
         </Stagger>
       </section>
 
-      <section className="section section-surface">
+
+      <WavePanel className="process-wave">
+        <div className="container split-2">
+          <div className="sticky-col">
+            <SectionHead eyebrow="How I work" title="I don't start with pixels." dim="I start with the problem." breakBefore lead="Before I design a screen, I want to understand what that screen is supposed to accomplish. The answers determine the design." />
+          </div>
+          <ol className="process">
+            {process.map(([title, text], i) => (
+              <Reveal as="li" key={title} className="process-step" delay={i * 0.04}>
+                <span className="process-num mono">0{i + 1}</span>
+                <div><h3>{title}</h3><p>{text}</p></div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </WavePanel>
+      <section className="section">
         <div className="container">
           <SectionHead eyebrow="What I bring" title="Four perspectives." dim="One practice." breakBefore={false} />
           <Stagger className="bento bento-4">

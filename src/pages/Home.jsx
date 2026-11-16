@@ -1,278 +1,361 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
-import { motion, useScroll, useTransform, useMotionValue, useMotionTemplate, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'motion/react';
 import Page from '../components/Page';
 import SplitText from '../components/SplitText';
 import SectionHead, { Eyebrow } from '../components/SectionHead';
 import Reveal, { Stagger, RevealItem } from '../components/Reveal';
 import Button from '../components/Button';
 import Counter from '../components/Counter';
-import Marquee from '../components/Marquee';
 import TiltCard from '../components/TiltCard';
 import CtaBand from '../components/CtaBand';
 import Icon from '../components/Icon';
-import { marquee } from '../data/site';
+import Silk from '../components/Silk';
+import WavePanel from '../components/WavePanel';
+import Journey from '../components/Journey';
 import { selectedWork } from '../data/projects';
-import { problems, impact, process, principles, capabilities } from '../data/home';
-import { roles } from '../data/experience';
+import { principles } from '../data/home';
 
 const ease = [0.22, 1, 0.36, 1];
 
+/* Shared pointer position (-0.5…0.5) for layered parallax inside a section. */
+function usePointerParallax(ref) {
+  const reduce = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 60, damping: 18 });
+  const sy = useSpring(y, { stiffness: 60, damping: 18 });
+  useEffect(() => {
+    if (reduce) return;
+    const el = ref.current;
+    const move = (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = el.getBoundingClientRect();
+      x.set((e.clientX - r.left) / r.width - 0.5);
+      y.set((e.clientY - r.top) / r.height - 0.5);
+    };
+    el.addEventListener('pointermove', move);
+    return () => el.removeEventListener('pointermove', move);
+  }, [ref, reduce, x, y]);
+  return [sx, sy];
+}
+
+function Float({ children, className, depth = 20, px, py, delay = 0, duration = 6, ...rest }) {
+  const reduce = useReducedMotion();
+  const x = useTransform(px, (v) => v * depth);
+  const y = useTransform(py, (v) => v * depth);
+  return (
+    <motion.div className={className} style={{ x, y }} {...rest}>
+      <motion.div
+        animate={reduce ? undefined : { y: [0, -12, 0] }}
+        transition={{ duration, delay, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ height: '100%' }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
 function Hero({ play }) {
   const ref = useRef(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const photoY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const copyY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const mx = useMotionValue(70);
-  const my = useMotionValue(30);
-  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${mx}% ${my}%, rgb(184 243 90 / .10), transparent 65%)`;
-
-  const onMove = (e) => {
-    if (reduce || e.pointerType !== 'mouse') return;
-    const r = ref.current.getBoundingClientRect();
-    mx.set(((e.clientX - r.left) / r.width) * 100);
-    my.set(((e.clientY - r.top) / r.height) * 100);
-  };
-  const enter = (d) => ({ initial: { opacity: 0, y: 20 }, animate: play ? { opacity: 1, y: 0 } : {}, transition: { delay: d, duration: 0.9, ease } });
+  const [px, py] = usePointerParallax(ref);
+  const enter = (d) => ({ initial: { opacity: 0, y: 24 }, animate: play ? { opacity: 1, y: 0 } : {}, transition: { delay: d, duration: 1, ease } });
 
   return (
-    <section ref={ref} className="hero" onPointerMove={onMove} aria-labelledby="hero-title">
-      <div className="hero-aurora" aria-hidden="true"><span /><span /><span /></div>
-      <motion.div className="hero-spotlight" style={{ background: spotlight }} aria-hidden="true" />
-      <div className="hero-dots" aria-hidden="true" />
-
+    <section ref={ref} id="top" className="hero" aria-labelledby="hero-title">
+      <Silk className="hero-silk" />
+      <div className="hero-vignette" aria-hidden="true" />
       <div className="container hero-grid">
-        <motion.div className="hero-copy" style={{ y: copyY, opacity: fade }}>
-          <motion.p className="hero-chip" {...enter(0.05)}>
-            <span className="pulse-dot" aria-hidden="true" />
-            Product Designer · UX/UI<span className="hide-xs"> · Digital Products</span>
+        <div className="hero-copy">
+          <motion.p className="kicker" {...enter(0.1)}>Product Designer · UX/UI · Design Systems</motion.p>
+          <SplitText as="h1" id="hero-title" className="hero-title" text="I turn complex product problems into" dim="simple, scalable experiences." breakBefore onMount play={play} delay={0.2} />
+          <motion.p className="hero-sub" {...enter(0.6)}>
+            I'm Alex Akinjiola — a Product Designer with 5+ years across SaaS, EdTech, fintech, PropTech and e-commerce, turning tangled workflows into products people actually enjoy using.
           </motion.p>
-          <SplitText as="h1" id="hero-title" className="hero-title" text="I turn complex product problems into" dim="simple, scalable experiences." breakBefore onMount play={play} delay={0.15} />
-          <motion.p className="hero-sub" {...enter(0.55)}>
-            I'm Alex — a Product Designer with 5+ years across SaaS, EdTech, fintech, PropTech and e-commerce, delivering measurable improvements in usability, user satisfaction and product clarity.
-          </motion.p>
-          <motion.div className="btn-row" {...enter(0.7)}>
+          <motion.div className="btn-row" {...enter(0.75)}>
             <Button to="/work" icon="arrow_forward">View my work</Button>
             <Button to="/contact" variant="secondary">Let's talk</Button>
           </motion.div>
-          <motion.ul className="hero-meta" {...enter(0.85)}>
-            <li><Icon name="location_on" size={18} />Lagos, Nigeria</li>
-            <li><Icon name="public" size={18} />Remote · Hybrid · Relocation</li>
-          </motion.ul>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="hero-visual"
-          initial={{ opacity: 0, scale: 0.94, rotate: -2 }}
-          animate={play ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-          transition={{ delay: 0.3, duration: 1.2, ease }}
-        >
-          <TiltCard as="div" className="hero-portrait" max={5}>
-            <motion.img
-              src="/images/alex-portrait.webp"
-              alt="Portrait of Alex Akinjiola in a navy suit"
-              width="1200" height="1500"
-              fetchPriority="high"
-              style={{ y: photoY, scale: 1.12 }}
-            />
-            <div className="hero-badge">
-              <span className="pulse-dot" aria-hidden="true" />
-              <span><strong>Open to work</strong><small>Available immediately</small></span>
-            </div>
-          </TiltCard>
-          <svg className="hero-ring" viewBox="0 0 200 200" aria-hidden="true">
-            <defs><path id="ring-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
-            <text><textPath href="#ring-path">PRODUCT DESIGN · DESIGN SYSTEMS · UX STRATEGY · </textPath></text>
-          </svg>
+        <motion.div className="hero-stage" initial={{ opacity: 0, scale: 0.92 }} animate={play ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.35, duration: 1.4, ease }} aria-hidden="true">
+          <Float className="device device-back" depth={-26} px={px} py={py} duration={7}>
+            <div className="device-frame"><img src="/images/krent.webp" alt="" /></div>
+          </Float>
+          <Float className="device device-front" depth={34} px={px} py={py} delay={0.8} duration={6}>
+            <div className="device-frame"><img src="/images/paytrackr.webp" alt="" /></div>
+          </Float>
+          <Float className="hero-widget hero-widget-metric" depth={52} px={px} py={py} delay={0.3} duration={5}>
+            <span className="mono">Usability</span>
+            <strong>+89%</strong>
+            <svg viewBox="0 0 120 36"><path d="M0 30 C 20 28 30 24 45 22 S 70 12 85 14 S 110 4 120 2" /></svg>
+          </Float>
+          <Float className="hero-widget hero-widget-avail" depth={44} px={px} py={py} delay={1.2} duration={6.5}>
+            <span className="avail-dot" />
+            <span>Available for<br />new opportunities</span>
+          </Float>
         </motion.div>
       </div>
-
-      <motion.a href="#problem" className="scroll-cue" {...enter(1.1)} aria-label="Scroll to content">
-        <span className="scroll-cue-line" aria-hidden="true" />
-        <span className="mono">Scroll</span>
+      <motion.a href="#about" className="scroll-cue" {...enter(1.2)} aria-label="Scroll to the next section">
+        <span className="scroll-mouse" aria-hidden="true"><span /></span>
+        <span className="mono">Scroll down</span>
       </motion.a>
     </section>
   );
 }
 
-function ProcessTimeline() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 70%', 'end 60%'] });
-  const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+/* ── About (white wave panel) ─────────────────────────────────── */
+function About() {
   return (
-    <ol ref={ref} className="process">
-      <motion.span className="process-fill" style={{ height }} aria-hidden="true" />
-      {process.map(([title, text], i) => (
-        <Reveal as="li" key={title} className="process-step" delay={i * 0.04}>
-          <span className="process-num mono">0{i + 1}</span>
-          <div>
-            <h3>{title}</h3>
-            <p>{text}</p>
-          </div>
+    <WavePanel id="about" className="about-wave">
+      <div className="container about-grid">
+        <Reveal className="ink-portrait">
+          <span className="ink ink-1" aria-hidden="true" />
+          <span className="ink ink-2" aria-hidden="true" />
+          <span className="ink ink-3" aria-hidden="true" />
+          <div className="ink-photo"><img src="/images/alex-portrait.webp" alt="Alex Akinjiola, Product Designer" loading="lazy" /></div>
         </Reveal>
+        <div>
+          <SectionHead eyebrow="About me" title="Some products don't have a feature problem. They have a" dim="clarity problem." breakBefore={false} />
+          <Reveal as="p" className="lead">I work at the intersection of users, business requirements, technology, and product thinking — to find the friction, structure the problem, and turn complexity into something people can actually use.</Reveal>
+          <Stagger as="dl" className="about-stats">
+            {[[5, '+', 'Years experience'], [37, '+', 'Products shipped'], [89, '%', 'Usability improvement']].map(([v, s, l]) => (
+              <RevealItem key={l} className="about-stat">
+                <dt>{l}</dt>
+                <dd><Counter value={v} suffix={s} /></dd>
+              </RevealItem>
+            ))}
+          </Stagger>
+          <Reveal className="btn-row"><Button to="/about" variant="secondary" icon="arrow_forward" magnetic={false}>More about me</Button></Reveal>
+        </div>
+      </div>
+    </WavePanel>
+  );
+}
+
+/* ── Floating skill cards ─────────────────────────────────────── */
+const skills = [
+  { name: 'Product Design', note: 'Primary discipline', icon: 'deployed_code', value: 95, pos: 'hub' },
+  { name: 'Figma & Prototyping', icon: 'design_services', value: 92, pos: 'a' },
+  { name: 'Design Systems', icon: 'grid_view', value: 88, pos: 'b' },
+  { name: 'User Research', icon: 'search_insights', value: 85, pos: 'c' },
+  { name: 'Responsive Frontend', icon: 'devices', value: 90, pos: 'd' },
+  { name: 'SQL & Power BI', icon: 'bar_chart', value: 82, pos: 'e' },
+];
+
+function Skills() {
+  const ref = useRef(null);
+  const [px, py] = usePointerParallax(ref);
+  return (
+    <section ref={ref} id="skills" className="section skills-section">
+      <Silk className="skills-silk" lines={30} intensity={0.7} />
+      <div className="container skills-grid">
+        <div>
+          <SectionHead eyebrow="My skills" title="Expertise with" dim="intent." breakBefore lead="Product design at the centre. Frontend awareness and data literacy at the edges — so I design with implementation in mind and validate decisions with real evidence." />
+          <Reveal className="btn-row"><Button to="/capabilities" variant="secondary" icon="arrow_forward" magnetic={false}>All capabilities</Button></Reveal>
+        </div>
+        <Stagger as="ul" className="skill-cloud" gap={0.08}>
+          {skills.map((s, i) => (
+            <RevealItem as="li" key={s.name} className={`skill-slot skill-${s.pos}`}>
+              <Float depth={s.pos === 'hub' ? 14 : 24 + i * 6} px={px} py={py} delay={i * 0.4} duration={5 + (i % 3)}>
+                <TiltCard as="div" className={`skill-card${s.pos === 'hub' ? ' is-hub' : ''}`} max={8}>
+                  <span className="icon-tile"><Icon name={s.icon} size={s.pos === 'hub' ? 30 : 22} /></span>
+                  <span className="skill-name">{s.name}</span>
+                  {s.note && <span className="skill-note mono">{s.note}</span>}
+                  <span className="skill-meter" role="img" aria-label={`${s.value}% proficiency`}>
+                    <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: s.value / 100 }} viewport={{ once: true }} transition={{ duration: 1.4, delay: 0.3 + i * 0.1, ease }} />
+                  </span>
+                  <span className="skill-value mono">{s.value}%</span>
+                </TiltCard>
+              </Float>
+            </RevealItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+/* ── Projects carousel ────────────────────────────────────────── */
+function Projects() {
+  const track = useRef(null);
+  const drag = useRef({ down: false, x: 0, left: 0, moved: false });
+  const [edge, setEdge] = useState({ start: true, end: false });
+
+  const update = () => {
+    const el = track.current;
+    setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
+  };
+  const by = (dir) => {
+    const el = track.current;
+    const card = el.querySelector('.carousel-card');
+    el.scrollBy({ left: dir * (card.offsetWidth + 20), behavior: 'smooth' });
+  };
+  const down = (e) => { if (e.pointerType !== 'mouse') return; drag.current = { down: true, x: e.clientX, left: track.current.scrollLeft, moved: false }; };
+  const move = (e) => {
+    const d = drag.current; if (!d.down) return;
+    const dx = e.clientX - d.x; if (Math.abs(dx) > 4) d.moved = true;
+    track.current.scrollLeft = d.left - dx;
+  };
+  const up = () => { drag.current.down = false; };
+  const click = (e) => { if (drag.current.moved) { e.preventDefault(); e.stopPropagation(); } };
+
+  return (
+    <section id="work" className="section projects-section">
+      <div className="container projects-grid">
+        <div className="projects-intro">
+          <SectionHead eyebrow="Featured projects" title="Digital products" dim="that make an impact." breakBefore lead="Each project is a story of real users, real constraints and design decisions that made complex things easier to use." />
+          <Reveal className="btn-row">
+            <Button to="/work" variant="secondary" icon="add" magnetic={false}>Explore all projects</Button>
+          </Reveal>
+          <div className="carousel-nav">
+            <button type="button" onClick={() => by(-1)} disabled={edge.start} aria-label="Previous projects"><Icon name="arrow_back" /></button>
+            <button type="button" onClick={() => by(1)} disabled={edge.end} aria-label="Next projects"><Icon name="arrow_forward" /></button>
+          </div>
+        </div>
+        <Stagger
+          as="ul"
+          ref={track}
+          className="carousel"
+          gap={0.07}
+          onScroll={update}
+          onPointerDown={down}
+          onPointerMove={move}
+          onPointerUp={up}
+          onPointerLeave={up}
+          onClickCapture={click}
+          aria-label="Selected projects"
+        >
+          {selectedWork.map((p, i) => (
+            <RevealItem as="li" key={p.id} className="carousel-item">
+              <TiltCard className="carousel-card" max={7} data-cursor="Drag">
+                <div className="carousel-media">
+                  <img src={p.image} alt={`${p.title} — ${p.headline}`} loading="lazy" draggable="false" />
+                  <span className="carousel-num mono">0{i + 1}</span>
+                </div>
+                <div className="carousel-body">
+                  <h3>{p.title}</h3>
+                  <p>{p.headline}</p>
+                  <ul className="chips"><li className="chip">{p.category}</li></ul>
+                  <div className="work-links">
+                    {p.links.map((l) => (
+                      <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="text-link">
+                        {l.label}<Icon name="north_east" size={16} /><span className="sr-only"> for {p.title} (opens in a new tab)</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
+            </RevealItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+/* ── Principles focus carousel (in place of testimonials) ─────── */
+function Principles() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduce = useReducedMotion();
+  const n = principles.length;
+
+  useEffect(() => {
+    if (paused || reduce) return;
+    const id = setInterval(() => setActive((a) => (a + 1) % n), 5200);
+    return () => clearInterval(id);
+  }, [paused, reduce, n]);
+
+  return (
+    <section className="section principles-section" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+      <div className="ripples" aria-hidden="true"><span /><span /><span /><span /></div>
+      <div className="container principles-grid">
+        <div>
+          <SectionHead eyebrow="Design principles" title="What guides" dim="every decision." breakBefore />
+          <div className="principle-controls">
+            <button type="button" className="pause-btn" onClick={() => setPaused((p) => !p)} aria-label={paused ? 'Play rotation' : 'Pause rotation'}>
+              <Icon name={paused ? 'play_arrow' : 'pause'} size={18} />
+            </button>
+            <div className="dots" role="tablist" aria-label="Choose a principle">
+              {principles.map(([t], i) => (
+                <button key={t} type="button" role="tab" aria-selected={active === i} aria-label={t} className="dot" onClick={() => setActive(i)} />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="focus-stage" aria-live={paused ? 'polite' : 'off'}>
+          {principles.map(([title, text], i) => {
+            let off = i - active;
+            if (off > n / 2) off -= n;
+            if (off < -n / 2) off += n;
+            const visible = Math.abs(off) <= 1;
+            return (
+              <motion.article
+                key={title}
+                className={`focus-card${off === 0 ? ' is-active' : ''}`}
+                aria-hidden={off !== 0}
+                animate={{ x: `${off * 62}%`, scale: off === 0 ? 1 : 0.82, opacity: visible ? (off === 0 ? 1 : 0.35) : 0, filter: off === 0 ? 'blur(0px)' : 'blur(3px)', zIndex: off === 0 ? 2 : 1 }}
+                transition={{ duration: 0.9, ease }}
+                onClick={() => setActive(i)}
+              >
+                <Icon name="format_quote" size={36} className="quote-icon" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <span className="mono focus-num">P/0{i + 1}</span>
+              </motion.article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Section rail (desktop) ───────────────────────────────────── */
+const railItems = [['top', 'Intro'], ['about', 'About'], ['skills', 'Skills'], ['work', 'Work'], ['journey', 'Journey']];
+function SectionRail() {
+  const [active, setActive] = useState('top');
+  useEffect(() => {
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)), { rootMargin: '-45% 0px -50% 0px' });
+    railItems.forEach(([id]) => { const el = document.getElementById(id); el && io.observe(el); });
+    return () => io.disconnect();
+  }, []);
+  return (
+    <nav className="rail" aria-label="Sections on this page">
+      {railItems.map(([id, label]) => (
+        <a key={id} href={`#${id}`} className={active === id ? 'is-active' : ''} aria-current={active === id ? 'true' : undefined}>
+          <span className="rail-label">{label}</span>
+        </a>
       ))}
-    </ol>
+    </nav>
   );
 }
 
 export default function Home({ introDone = true }) {
   return (
     <Page description="Alex Akinjiola — Product Designer who turns complex product problems into simple, scalable experiences. Available for remote and hybrid roles.">
+      <SectionRail />
       <Hero play={introDone} />
-      <Marquee items={marquee} />
-
-      {/* PROBLEM */}
-      <section id="problem" className="section section-surface">
-        <div className="container narrow">
-          <SectionHead eyebrow="The problem I solve" title="Some products don't have a feature problem." dim="They have a clarity problem." />
-          <Reveal as="p" className="lead">A product can have all the right features and still feel difficult to use.</Reveal>
-          <Stagger as="ul" className="problem-grid">
-            {problems.map((p) => (
-              <RevealItem as="li" key={p.text} className="problem-card">
-                <Icon name={p.icon} size={22} />
-                <span>{p.text}</span>
-              </RevealItem>
-            ))}
-          </Stagger>
-          <Reveal as="p" className="lead">Eventually, complexity becomes part of the user experience. <strong>That's where I come in.</strong></Reveal>
-          <Reveal className="callout">
-            <Icon name="emoji_objects" size={22} />
-            <p>I work at the intersection of users, business requirements, technology, and product thinking — to find the friction, structure the problem, and turn complexity into something people can actually use.</p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* IMPACT */}
-      <section className="section">
+      <About />
+      <Skills />
+      <Projects />
+      <WavePanel id="journey" className="journey-wave">
         <div className="container">
-          <SectionHead eyebrow="Measured outcomes" title="I measure my work by" dim="what changes." lead="Beautiful interfaces are important. But the real question is: what became better because I designed it?" />
-          <Stagger className="bento bento-3">
-            {impact.map((m) => (
-              <RevealItem key={m.label}>
-                <TiltCard className="metric-card" max={4}>
-                  <p className="metric-value">{m.word ?? <Counter value={m.value} suffix={m.suffix} />}</p>
-                  <h3>{m.label}</h3>
-                  <p>{m.text}</p>
-                  <p className="mono metric-source">{m.source}</p>
-                </TiltCard>
-              </RevealItem>
-            ))}
-          </Stagger>
+          <SectionHead eyebrow="Experience" title="The journey" dim="that shaped me." breakBefore />
+          <Journey />
+          <Reveal className="btn-row"><Button to="/experience" variant="secondary" icon="arrow_forward" magnetic={false}>Full experience</Button></Reveal>
         </div>
-      </section>
-
-      {/* SELECTED WORK */}
-      <section className="section section-surface">
-        <div className="container">
-          <div className="section-head-row">
-            <SectionHead eyebrow="Selected work" title="Products I've helped" dim="make clearer." lead="Real products. Real constraints. Real design decisions." />
-            <Reveal className="hide-sm"><Button to="/work" variant="secondary" icon="arrow_forward">All work</Button></Reveal>
-          </div>
-          <Stagger className="work-bento" gap={0.06}>
-            {selectedWork.map((p, i) => (
-              <RevealItem key={p.id} className={`work-cell work-cell-${i + 1}`}>
-                <TiltCard className="work-card" max={3} data-cursor="View">
-                  <div className="work-media">
-                    <img src={p.image} alt={`${p.title} — ${p.headline}`} loading="lazy" decoding="async" />
-                    <span className="chip chip-glass">{p.category}</span>
-                  </div>
-                  <div className="work-body">
-                    <h3><span className="work-name">{p.title}</span> — {p.headline}</h3>
-                    <p>{p.summary}</p>
-                    <div className="work-links">
-                      {p.links.map((l, j) => (
-                        <Button key={l.label} href={l.href} size="sm" variant={j === 0 ? 'light' : 'secondary'} iconStart={l.icon} magnetic={false}>{l.label}</Button>
-                      ))}
-                    </div>
-                  </div>
-                </TiltCard>
-              </RevealItem>
-            ))}
-          </Stagger>
-          <Reveal className="more-strip">
-            <p>More projects including Creatifff, Ledger Studio, Folu Atelier and a data analytics project.</p>
-            <Button to="/work" variant="secondary" icon="arrow_forward">See all work</Button>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* HOW I WORK */}
-      <section className="section">
-        <div className="container split-2">
-          <div className="sticky-col">
-            <SectionHead eyebrow="How I work" title="I don't start with pixels." dim="I start with the problem." lead="Before I design a screen, I want to understand what that screen is supposed to accomplish. The answers determine the design." />
-          </div>
-          <ProcessTimeline />
-        </div>
-      </section>
-
-      {/* PRINCIPLES */}
-      <section className="section section-surface">
-        <div className="container">
-          <SectionHead eyebrow="Design principles" title="What guides" dim="every decision." />
-          <Stagger className="principles">
-            {principles.map(([t, d], i) => (
-              <RevealItem key={t} className="principle">
-                <span className="mono principle-num">P/0{i + 1}</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </RevealItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* CAPABILITIES */}
-      <section className="section">
-        <div className="container">
-          <div className="section-head-row">
-            <SectionHead eyebrow="Capabilities" title="What I bring to" dim="a product team." />
-            <Reveal className="hide-sm"><Button to="/capabilities" variant="secondary" icon="arrow_forward">Capabilities</Button></Reveal>
-          </div>
-          <Stagger className="bento bento-3">
-            {capabilities.map((c) => (
-              <RevealItem key={c.title}>
-                <TiltCard className="cap-card" max={3}>
-                  <span className="icon-tile"><Icon name={c.icon} size={22} /></span>
-                  <h3>{c.title}</h3>
-                  <p>{c.text}</p>
-                  <ul className="chips">{c.tags.map((t) => <li key={t} className="chip">{t}</li>)}</ul>
-                </TiltCard>
-              </RevealItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* EXPERIENCE */}
-      <section className="section section-surface">
-        <div className="container">
-          <SectionHead eyebrow="Experience" title="Where I've" dim="worked." breakBefore={false} />
-          <Stagger as="ol" className="exp-rows">
-            {roles.map((r) => (
-              <RevealItem as="li" key={r.company} className="exp-row">
-                <span className="mono exp-row-period">{r.period}</span>
-                <div>
-                  <h3>{r.company}</h3>
-                  <p className="exp-row-role">{r.role} · {r.type.replace('Current · ', '')}</p>
-                  <p>{r.short}</p>
-                </div>
-                {r.current ? <span className="chip chip-accent">Current</span> : <span />}
-              </RevealItem>
-            ))}
-          </Stagger>
-          <Reveal className="btn-row" delay={0.1}>
-            <Button to="/experience" variant="secondary" icon="arrow_forward">Full experience</Button>
-          </Reveal>
-        </div>
-      </section>
-
+      </WavePanel>
+      <Principles />
       <CtaBand
-        title="Building something complicated?"
-        dim="Let's make it clearer."
-        lead="Whether you're launching a new product, improving an existing experience, or trying to untangle a complex workflow — I'd like to hear about it."
+        eyebrow="Let's work together"
+        title="Have a"
+        dim="project in mind?"
+        breakBefore={false}
+        lead="Whether you're launching a new product, improving an existing experience, or untangling a complex workflow — I'd like to hear about it."
         secondary={{ to: '/work', label: 'See my work' }}
       />
     </Page>

@@ -1,4 +1,5 @@
 import Page from '../components/Page';
+import Silk from '../components/Silk';
 import SectionHead from '../components/SectionHead';
 import SplitText from '../components/SplitText';
 import Reveal, { Stagger, RevealItem } from '../components/Reveal';
@@ -58,6 +59,7 @@ export default function Work() {
   return (
     <Page title="Work" description="Selected product design case studies by Alex Akinjiola across SaaS, PropTech, fintech and e-commerce.">
       <header className="page-hero">
+        <Silk lines={30} intensity={0.65} />
         <div className="page-hero-glow" aria-hidden="true" />
         <div className="container">
           <Eyebrow>Work</Eyebrow>

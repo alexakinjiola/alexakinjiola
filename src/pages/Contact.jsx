@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import Page from '../components/Page';
+import Silk from '../components/Silk';
 import { Eyebrow } from '../components/SectionHead';
 import SplitText from '../components/SplitText';
 import Reveal, { Stagger, RevealItem } from '../components/Reveal';
@@ -111,6 +112,7 @@ export default function Contact() {
   return (
     <Page title="Contact" description="Get in touch with Alex Akinjiola — available for full-time, remote, hybrid, contract and relocation product design roles.">
       <header className="page-hero">
+        <Silk lines={30} intensity={0.65} />
         <div className="page-hero-glow" aria-hidden="true" />
         <div className="container">
           <Eyebrow>Contact</Eyebrow>

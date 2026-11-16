@@ -33,6 +33,7 @@ export default function Nav() {
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = 'hidden';
+    window.__lenis?.stop();
     const first = menuRef.current?.querySelector('a');
     first?.focus();
     const onKey = (e) => {
@@ -45,7 +46,7 @@ export default function Nav() {
       }
     };
     window.addEventListener('keydown', onKey);
-    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey); };
+    return () => { document.body.style.overflow = ''; window.__lenis?.start(); window.removeEventListener('keydown', onKey); };
   }, [open]);
 
   return (
@@ -92,6 +93,7 @@ export default function Nav() {
             id="mobile-menu"
             ref={menuRef}
             className="mobile-menu"
+            data-lenis-prevent
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"

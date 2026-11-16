@@ -3,6 +3,7 @@ import SectionHead from './SectionHead';
 import Button from './Button';
 import Reveal from './Reveal';
 import WavePanel from './WavePanel';
+import { Glyphs } from './Mark';
 
 /* Floating glass "AA" mark with orbit rings — the CTA's focal object. */
 function GlassMark() {
@@ -17,7 +18,7 @@ function GlassMark() {
         animate={reduce ? undefined : { y: [0, -14, 0], rotateY: [-14, 14, -14], rotateX: [8, -4, 8] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <span>AA</span>
+        <svg viewBox="0 0 48 48" className="glass-mark-glyphs"><Glyphs inkA="#FFFFFF" inka="#DCEBFF" /></svg>
       </motion.div>
       <span className="glass-mark-shadow" />
     </div>

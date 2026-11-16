@@ -329,24 +329,10 @@ body { background: radial-gradient(120% 60% at 50% 0%, #0A1426 0%, var(--bg) 55%
 .launch { position: fixed; inset: 0; z-index: 950; background: #02050B; touch-action: none; }
 .launch-glow { position: absolute; inset: 0; background: radial-gradient(50% 40% at 50% 45%, rgb(var(--glow-rgb) / .22), transparent 70%); }
 .launch-canvas { position: absolute; inset: 0; }
-.launch-ui { position: absolute; left: 0; right: 0; bottom: max(8vh, 3rem); display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; padding-inline: 1.5rem; }
 .launch-role { color: var(--accent); letter-spacing: .14em; text-transform: uppercase; font-size: .75rem !important; }
-.launch-hold { position: relative; width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-.launch-hold svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
-.launch-ring-bg { fill: rgba(10,18,34,.6); stroke: rgba(160,190,255,.25); stroke-width: 1.5; }
-.launch-ring { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 6px rgb(var(--glow-rgb))); }
-.launch-hold-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 20px rgb(var(--glow-rgb)); animation: breathe 2s ease-in-out infinite; transition: transform .1s linear; }
-@keyframes breathe { 50% { box-shadow: 0 0 36px 6px rgb(var(--glow-rgb)); } }
-.launch-hint { color: var(--text-dim); font-size: .9375rem; }
-.launch-hint strong { color: var(--text); }
-.pointer-only { display: none; }
-@media (hover: hover) and (pointer: fine) { .pointer-only { display: inline; } }
-.launch-skip { position: absolute; top: 1.25rem; right: 1.25rem; display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--text-dim); background: rgba(10,18,34,.5); }
-.launch-skip:hover { color: var(--text); border-color: var(--accent); }
-.launch-skip kbd { font-family: inherit; font-size: .6875rem; padding: .1rem .35rem; border-radius: 4px; border: 1px solid var(--border-strong); }
 
 @media (prefers-reduced-motion: reduce) {
-  .wave-layer, .ink, .ripples span, .orbit, .launch-hold-dot, .scroll-mouse span { animation: none !important; }
+  .wave-layer, .ink, .ripples span, .orbit, .scroll-mouse span { animation: none !important; }
 }
 
 /* About: process on paper */
@@ -361,3 +347,25 @@ html, body { overflow-x: clip; }
 .wave-panel, .cta-wave-grid { overflow-x: clip; }
 .glass-mark { width: min(100%, 320px); }
 .wave-layer { max-width: none; }
+
+/* ── Logo: "Aa" seal + two-line wordmark ──────────────────────── */
+.logo { gap: .75rem; }
+.logo .logo-mark, .mark { width: 40px; height: 40px; background: none; box-shadow: none; border-radius: 50%; flex-shrink: 0; overflow: visible; transition: transform .7s var(--ease), filter .5s; }
+.logo .logo-mark { filter: drop-shadow(0 0 14px rgb(var(--glow-rgb) / .45)); }
+.logo:hover .logo-mark { transform: rotate(-10deg) scale(1.06); filter: drop-shadow(0 0 20px rgb(var(--glow-rgb) / .8)); }
+.mark-ring { transition: stroke-width .4s; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-word { font-size: 1rem; font-weight: 600; letter-spacing: -.025em; }
+.logo-role { font-family: var(--font-mono); font-size: .625rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-top: .25rem; }
+@media (max-width: 380px) { .logo-role { display: none; } }
+
+/* ── Launch (automatic) ───────────────────────────────────────── */
+.launch { cursor: pointer; }
+.launch-meta { position: absolute; left: 0; right: 0; bottom: max(10vh, 3.5rem); display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+.launch-meta .mark { width: 44px; height: 44px; filter: drop-shadow(0 0 18px rgb(var(--glow-rgb) / .7)); }
+.launch-line { display: block; width: min(220px, 50vw); height: 1px; background: rgba(160,190,255,.18); overflow: hidden; border-radius: 1px; }
+.launch-line span { display: block; height: 100%; background: linear-gradient(90deg, #1D4ED8, #6AA6FF); transform-origin: 0 50%; box-shadow: 0 0 8px rgb(var(--glow-rgb)); }
+
+/* CTA glass mark now carries the real seal glyphs */
+.glass-mark-core { border-radius: 50%; }
+.glass-mark-glyphs { position: relative; z-index: 1; width: 82%; height: 82%; filter: drop-shadow(0 0 14px rgba(255,255,255,.45)); }

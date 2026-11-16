@@ -3,12 +3,16 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { nav, site } from '../data/site';
 import Icon from './Icon';
+import Mark from './Mark';
 
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label={`${site.name} — home`}>
-      <span className="logo-mark" aria-hidden="true">AA</span>
-      <span className="logo-word">{site.name}</span>
+      <Mark size={40} className="logo-mark" />
+      <span className="logo-text">
+        <span className="logo-word">{site.name}</span>
+        <span className="logo-role">Product Designer</span>
+      </span>
     </Link>
   );
 }

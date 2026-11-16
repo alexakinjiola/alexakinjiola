@@ -14,7 +14,9 @@ import Silk from '../components/Silk';
 import WavePanel from '../components/WavePanel';
 import Journey from '../components/Journey';
 import Testimonials from '../components/Testimonials';
-import { selectedWork } from '../data/projects';
+import { cases } from '../data/cases';
+
+const carouselCases = cases.filter((c) => c.group !== 'web');
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -69,10 +71,10 @@ function Hero({ play }) {
       <div className="hero-vignette" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-copy">
-          <motion.p className="kicker" {...enter(0.1)}>Product Designer · UX/UI · Design Systems</motion.p>
+          <motion.p className="kicker" {...enter(0.1)}>Senior Product Designer · Complex products, made clear</motion.p>
           <SplitText as="h1" id="hero-title" className="hero-title" text="I turn complex product problems into" dim="simple, scalable experiences." breakBefore onMount play={play} delay={0.2} />
           <motion.p className="hero-sub" {...enter(0.6)}>
-            I'm Alex Akinjiola — a Product Designer with 5+ years across SaaS, EdTech, fintech, PropTech and e-commerce, turning tangled workflows into products people actually enjoy using.
+            I'm Alex Akinjiola — a Senior Product Designer for complex, multi-role products: SaaS, EdTech, PropTech and fintech platforms where many kinds of users share one system. 5+ years turning tangled workflows into products people actually enjoy using.
           </motion.p>
           <motion.div className="btn-row" {...enter(0.75)}>
             <Button to="/work" icon="arrow_forward">View my work</Button>
@@ -115,7 +117,7 @@ function About() {
           <span className="ink ink-1" aria-hidden="true" />
           <span className="ink ink-2" aria-hidden="true" />
           <span className="ink ink-3" aria-hidden="true" />
-          <div className="ink-photo"><img src="/images/alex-portrait.webp" alt="Alex Akinjiola, Product Designer" loading="lazy" /></div>
+          <div className="ink-photo"><img src="/images/alex-portrait.webp" alt="Alex Akinjiola, Senior Product Designer" loading="lazy" /></div>
         </Reveal>
         <div>
           <SectionHead eyebrow="About me" title="Some products don't have a feature problem. They have a" dim="clarity problem." breakBefore={false} />
@@ -137,12 +139,12 @@ function About() {
 
 /* ── Floating skill cards ─────────────────────────────────────── */
 const skills = [
-  { name: 'Product Design', note: 'Primary discipline', icon: 'deployed_code', value: 95, pos: 'hub' },
-  { name: 'Figma & Prototyping', icon: 'design_services', value: 92, pos: 'a' },
-  { name: 'Design Systems', icon: 'grid_view', value: 88, pos: 'b' },
-  { name: 'User Research', icon: 'search_insights', value: 85, pos: 'c' },
-  { name: 'Responsive Frontend', icon: 'devices', value: 90, pos: 'd' },
-  { name: 'SQL & Power BI', icon: 'bar_chart', value: 82, pos: 'e' },
+  { name: 'Product Design', note: 'Primary discipline', icon: 'deployed_code', proof: '0 → 1 at Ajiroba · redesign at Krent', pos: 'hub' },
+  { name: 'Design Systems', icon: 'grid_view', proof: '60+ component library', pos: 'a' },
+  { name: 'Figma & Prototyping', icon: 'design_services', proof: 'Interactive flows for handoff', pos: 'b' },
+  { name: 'UX Strategy & IA', icon: 'account_tree', proof: 'Five user types, one platform', pos: 'c' },
+  { name: 'Frontend', icon: 'code', proof: 'Ships what it designs — React', pos: 'd' },
+  { name: 'Data & Analytics', icon: 'bar_chart', proof: 'SQL · Excel · Power BI', pos: 'e' },
 ];
 
 function Skills() {
@@ -164,10 +166,7 @@ function Skills() {
                   <span className="icon-tile"><Icon name={s.icon} size={s.pos === 'hub' ? 30 : 22} /></span>
                   <span className="skill-name">{s.name}</span>
                   {s.note && <span className="skill-note mono">{s.note}</span>}
-                  <span className="skill-meter" role="img" aria-label={`${s.value}% proficiency`}>
-                    <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: s.value / 100 }} viewport={{ once: true }} transition={{ duration: 1.4, delay: 0.3 + i * 0.1, ease }} />
-                  </span>
-                  <span className="skill-value mono">{s.value}%</span>
+                  <span className="skill-proof">{s.proof}</span>
                 </TiltCard>
               </Float>
             </RevealItem>
@@ -228,24 +227,19 @@ function Projects() {
           onClickCapture={click}
           aria-label="Selected projects"
         >
-          {selectedWork.map((p, i) => (
+          {carouselCases.map((p, i) => (
             <RevealItem as="li" key={p.id} className="carousel-item">
-              <TiltCard className="carousel-card" max={7} data-cursor="Drag">
+              <TiltCard className="carousel-card" max={7} data-cursor="Read">
+                <Link to={`/work/${p.slug}`} className="case-card-link" aria-label={`${p.title} case study`} draggable="false" />
                 <div className="carousel-media">
-                  <img src={p.image} alt={`${p.title} — ${p.headline}`} loading="lazy" draggable="false" />
+                  <img src={p.cover} alt="" loading="lazy" draggable="false" />
                   <span className="carousel-num mono">0{i + 1}</span>
                 </div>
                 <div className="carousel-body">
                   <h3>{p.title}</h3>
-                  <p>{p.headline}</p>
+                  <p>{p.tagline}</p>
                   <ul className="chips"><li className="chip">{p.category}</li></ul>
-                  <div className="work-links">
-                    {p.links.map((l) => (
-                      <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="text-link">
-                        {l.label}<Icon name="north_east" size={16} /><span className="sr-only"> for {p.title} (opens in a new tab)</span>
-                      </a>
-                    ))}
-                  </div>
+                  <span className="text-link">Read case study<Icon name="arrow_forward" size={16} /></span>
                 </div>
               </TiltCard>
             </RevealItem>
@@ -278,7 +272,7 @@ function SectionRail() {
 
 export default function Home({ introDone = true }) {
   return (
-    <Page description="Alex Akinjiola — Product Designer who turns complex product problems into simple, scalable experiences. Available for remote and hybrid roles.">
+    <Page description="Alex Akinjiola — Senior Product Designer who turns complex product problems into simple, scalable experiences. Available for remote and hybrid roles.">
       <SectionRail />
       <Hero play={introDone} />
       <About />

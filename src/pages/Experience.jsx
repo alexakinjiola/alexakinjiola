@@ -51,7 +51,7 @@ function Timeline() {
 
 export default function Experience() {
   return (
-    <Page title="Experience" description="Work history, education, certifications and skills of Alex Akinjiola, Product Designer.">
+    <Page title="Experience" description="Work history, education, certifications and skills of Alex Akinjiola, Senior Product Designer.">
       <header className="page-hero">
         <Silk lines={30} intensity={0.65} />
         <div className="page-hero-glow" aria-hidden="true" />

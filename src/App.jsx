@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router';
 import { AnimatePresence, MotionConfig, useReducedMotion } from 'motion/react';
 import Lenis from 'lenis';
+import { Analytics } from '@vercel/analytics/react';
 import 'lenis/dist/lenis.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -11,6 +12,7 @@ import ParticleIntro from './components/ParticleIntro';
 import Home from './pages/Home';
 
 const Work = lazy(() => import('./pages/Work'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const About = lazy(() => import('./pages/About'));
 const Capabilities = lazy(() => import('./pages/Capabilities'));
 const Experience = lazy(() => import('./pages/Experience'));
@@ -51,6 +53,7 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home introDone={!intro} />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/work/:slug" element={<CaseStudy />} />
             <Route path="/about" element={<About />} />
             <Route path="/capabilities" element={<Capabilities />} />
             <Route path="/experience" element={<Experience />} />
@@ -60,6 +63,7 @@ export default function App() {
         </AnimatePresence>
       </Suspense>
       <Footer />
+      <Analytics />
     </MotionConfig>
   );
 }

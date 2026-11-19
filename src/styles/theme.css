@@ -760,7 +760,7 @@ html, body { overflow-x: clip; }
 .screen-panel-note { margin: 1.25rem 0 0; max-width: 62ch; color: var(--muted); }
 .screen-grid { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1.75rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); }
 .screen-grid-desktop { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 2rem 1.5rem; }
-.screen-grid-desktop .shot-frame img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.screen-grid-desktop .shot-frame img { aspect-ratio: 16 / 10; object-fit: contain; object-position: center top; background: var(--surface-2); }
 .screen-group + .screen-group { margin-top: 2.5rem; }
 .screen-group-label { display: inline-flex; align-items: center; gap: .4rem; margin: 1.75rem 0 -.5rem; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .screen-grid .shot-mobile { max-width: 100%; }

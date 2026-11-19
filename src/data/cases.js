@@ -163,6 +163,7 @@ export const cases = [
         mobile: true,
       },
     ],
+    screensIntro: 'All 69 screens from the prototype, grouped by flow, including the empty, loading, offline and failure states. Pick a flow, then open any screen to view it full size.',
     screens: [
       { flow: 'Onboarding & KYC', icon: 'how_to_reg', note: 'Seven steps from phone number to Face ID, plus the edge cases: a recycled SIM, a BVN/NIN name mismatch and a sign-in lockout. Each one has a clear way forward.', mobile: true, items: [
         { src: `${C}/tabbas-welcome.webp`, caption: 'Welcome: the promise, before any form' },
@@ -578,6 +579,7 @@ export const cases = [
     ],
     reflection: [
       'In health, the interface is the consent. If people can’t see exactly what they are agreeing to, the agreement isn’t real — so the most important work was making sharing visible, specific and reversible.',
+      'Designing honest empty states, like a directory with no facilities yet, was part of the same principle: never pretend.',
     ],
     next: ['Usability sessions with first-time smartphone users in at least two languages.', 'Clinical workflow testing with a partner hospital and lab.', 'Measure time-to-history at the start of appointments as the north-star metric.'],
     tools: ['Figma', 'Design system', 'Prototyping', 'Localisation', 'Accessibility'],
@@ -652,8 +654,10 @@ export const cases = [
       { title: 'Browse by place and budget', text: 'Curated tiles for Lekki, Victoria Island, Surulere and Yaba — plus a simple budget split — let people start from what they already know instead of a long filter form.', tradeoff: 'Curated tiles need editorial upkeep as the catalogue grows.', image: `${C}/krent-areas.webp`, caption: 'Area and budget entry points.' },
       { title: 'One listing card, built for comparison', text: 'Photo with status badges, price per day, title, location, reference, then bedrooms and bathrooms — always in the same order, with 3D Tour and Quick View one tap away.', tradeoff: 'A fixed template limits per-listing flair, deliberately.', image: `${C}/krent-listings.webp`, caption: 'Consistent listing cards with trust badges.' },
       { title: 'Give owners their own door', text: 'A dedicated “Become a host” path keeps supply-side journeys out of the renter’s way.', tradeoff: 'Another entry point in the navigation.', image: `${C}/krent-home.webp`, caption: 'Desktop home with app download and owner entry point.' },
+      { title: 'A property page that answers everything', text: 'Each property page brings together photos, a 3D tour, amenities, booking, the map and similar homes, so a renter can decide without a phone call.', tradeoff: 'A long page, ordered so price, photos and booking stay at the top.', image: '/images/screens/krent/detail-d0.webp', caption: 'Property: gallery, 3D tour and host.' },
     ],
     gallery: [],
+    screensIntro: '34 screens from the live product, grouped by flow, from first search to property detail. Pick a flow, then open any screen to view it full size.',
     screens: [
       { flow: 'Discover', icon: 'home', note: 'The homepage leads with verified homes and zero scams, then gets people browsing by area and price before asking for anything.', items: [
         { src: `/images/screens/krent/p0-d0.webp`, caption: 'Hero: verified homes only, with search ready' },
@@ -700,9 +704,9 @@ export const cases = [
         { src: `/images/screens/krent/p5-m0.webp`, caption: 'Mobile contact', mobile: true },
       ] },
     ],
-    outcome: ['The redesign produced a clearer structure for the parts of Krent in scope: separate paths for renting, shortlets and buying; curated entry points; a consistent listing card; and visible trust signals throughout. The platform is live at krent.space.'],
-    reflection: ['A redesign is not a visual refresh. The biggest improvements came from deciding what each page is for and who it serves first — the polish only works once that structure is right.'],
-    next: ['Task-based testing for each user group.', 'Instrument search-to-booking to measure the impact of the new entry points.'],
+    outcome: ['The redesign produced a clearer structure for the parts of Krent in scope: separate paths for renting, shortlets and buying; curated entry points; a consistent listing card; and visible trust signals throughout. The platform is live at krent.space.', 'Across the live product, every listing follows one card pattern and every property page follows one template, so renters compare like with like and owners see their homes presented consistently.'],
+    reflection: ['A redesign is not a visual refresh. The biggest improvements came from deciding what each page is for and who it serves first — the polish only works once that structure is right.', 'Trust in property is earned in details: a verified tag, an honest empty state and a clear owner. Those small decisions mattered more than the hero.'],
+    next: ['Task-based testing for each user group.', 'Instrument search-to-booking to measure the impact of the new entry points.', 'Test the property page with renters comparing two homes side by side.'],
     tools: ['Figma', 'Design system', 'Responsive web', 'Mobile app'],
   },
 
@@ -764,6 +768,8 @@ export const cases = [
       { title: 'Sell the value, not the mechanic', text: 'The hero leads with the most compelling fact — enter for as little as ₦200 — paired with real products. The raffle concept comes after the value is clear.', tradeoff: 'Delays the explanation by one scroll, deliberately.', image: `${C}/ajiroba-home.webp`, caption: 'Value-first hero.' },
       { title: 'Explain the model in three steps', text: 'A short numbered sequence answers “how does this work?” before it becomes a reason to leave.', tradeoff: 'Simplifies nuance (multiple tickets, draw timing) into later pages.', image: `${C}/ajiroba-how.webp`, caption: 'Key attributes and “How it works”.' },
       { title: 'Make the app a first-class path', text: 'Repeat participation happens on mobile, so the brand story sits beside the app with store links where intent is highest.', tradeoff: 'Pushes some users away from the web experience.', image: `${C}/ajiroba-why.webp`, caption: 'Brand story beside the app.' },
+      { title: 'Spell out the raffle procedure', text: 'The least understood part of Ajiroba was how a raffle actually works, so it gets its own page: six numbered steps from sign-up to prize.', tradeoff: 'More reading before purchase. People who understand the model trust it more.', image: '/images/screens/ajiroba/p3-d1.webp', caption: 'Six steps from sign-up to prize.' },
+      { title: 'Make trust pages first-class', text: 'About, contact and FAQ answer who runs Ajiroba, how to reach a real person and how fairness is ensured, which matters in a market wary of online giveaways.', tradeoff: 'Extra pages to maintain, but they do real work for conversion.', image: '/images/screens/ajiroba/p6-d0.webp', caption: 'Frequently asked questions.' },
     ],
     gallery: [],
     screens: [
@@ -803,10 +809,10 @@ export const cases = [
         { src: `/images/screens/ajiroba/p6-m0.webp`, caption: 'Mobile FAQ', mobile: true },
       ] },
     ],
-    outcome: ['Ajiroba went from proposition to a live product on web, iOS and Android. The interface patterns established here also carried into Ajiroba’s campaigns, including the Spin & Win giveaway.'],
+    outcome: ['Ajiroba went from proposition to a live product on web, iOS and Android. The interface patterns established here also carried into Ajiroba’s campaigns, including the Spin & Win giveaway.', 'The live site explains the raffle model step by step, gives trust pages real prominence and keeps navigation identical across web and app.'],
     quoteFrom: 'Oloruntoba Ayodele',
-    reflection: ['When the model is unfamiliar, the interface has to explain the value and the mechanics at the same time — and earn trust before asking for money.'],
-    next: ['Design a better post-draw experience for people who didn’t win this time.', 'Simplify wallet top-up on mobile.'],
+    reflection: ['When the model is unfamiliar, the interface has to explain the value and the mechanics at the same time — and earn trust before asking for money.', 'Embedding with the team for two years taught me that trust is a product feature you design on every page, not a badge you add at the end.'],
+    next: ['Design a better post-draw experience for people who didn’t win this time.', 'Simplify wallet top-up on mobile.', 'Measure how many visitors read the procedure before buying their first ticket.'],
     tools: ['Figma', 'Design system', 'Web', 'iOS & Android'],
   },
 
@@ -877,6 +883,7 @@ export const cases = [
       { title: 'Collect invoice details at sign-up', text: 'Company name, role and address are asked for once at sign-up, because every invoice needs them. After that, invoices are pre-filled.', tradeoff: 'A longer sign-up form, in exchange for much faster invoicing afterwards.', image: '/images/screens/paytrackr/p2-d0.webp', caption: 'Sign-up with business details.' },
     ],
     gallery: [{ src: `${C}/paytrackr-mobile.webp`, mobile: true, caption: 'Mobile sign-in.' }],
+    screensIntro: '19 screens from the live app and the dashboard design. Private details are blurred. Pick a flow, then open any screen to view it full size.',
     screens: [
       { flow: 'Dashboard', icon: 'space_dashboard', note: 'Built around three questions: what am I owed, what came in, and what needs chasing. Status totals come first, then trends, then the detail.', items: [
         { src: `/images/screens/paytrackr/app-dashboard-d0.webp`, caption: 'Live dashboard: one action, then paid, pending and overdue' },
@@ -930,35 +937,62 @@ export const cases = [
     live: 'https://ledger-studio-pi.vercel.app/',
     research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how designers, developers and studios create and send invoices. Between 30 and 45 participants across interviews, surveys and usability testing, alongside a competitive review.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small studios' }, { name: 'Surveys', icon: 'quiz', detail: 'Designers and developers' }, { name: 'Usability testing', icon: 'touch_app', detail: 'The four-step invoice flow' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoice generators and templates' }], insights: [{ finding: 'Freelancers lost track of which invoices were still unpaid.', change: 'Designed a dashboard that separates paid from outstanding and filters by week, month or year.' }, { finding: 'Clients struggled with invoice attachments.', change: 'Added shareable read-only links that open in any browser, plus one-click PDF export.' }] },
     researchLed: true,
-    facts: [['Role', 'Lead Designer & front-end developer'], ['Type', 'Product, 0 → 1'], ['Platform', 'Responsive web app'], ['Stack', 'Client-side · no backend']],
-    glance: [['4', 'Steps from blank page to sent'], ['6', 'Currencies'], ['2', 'Themes: light and dark'], ['1', 'Click to PDF']],
+    facts: [['Role', 'Lead Designer & front-end developer'], ['Type', 'Product, 0 → 1'], ['Platform', 'Responsive web app'], ['Stack', 'Front end + Supabase']],
+    glance: [['4', 'Steps from blank page to sent invoice'], ['6', 'Currencies supported'], ['2', 'Themes: light and dark'], ['30–45', 'Research participants']],
     tldr: {
       problem: 'Freelancers and studios lose time rebuilding invoices in spreadsheets, and the results rarely look professional.',
       approach: 'I designed a set-up-once model — brand, details and bank info remembered — with a four-step flow, then built it myself.',
       outcome: 'A live, free product with branded invoices, PDF export, shareable links, six currencies and light and dark modes.',
     },
-    overview: ['Ledger Studio is an invoice generator for designers, developers, studios and small businesses. Set up your studio once; every invoice after that is pre-filled and ready to send.'],
-    role: 'As lead designer and developer, I researched, designed and built the whole product: positioning, IA, the invoice editor, the dashboard and the marketing site.',
+    overview: [
+      'Ledger Studio is an invoice generator for designers, developers, studios and small businesses. You set up your studio once, with your logo, company details and bank details, and every invoice after that is pre-filled and ready to send.',
+      'The real competitor wasn’t another invoicing tool. It was the spreadsheet freelancers already had. To win, Ledger Studio had to be faster than copying last month’s invoice and look far better than it.',
+    ],
+    role: 'As lead designer and front-end developer, I researched, designed and built the product end to end: positioning, information architecture, the invoice editor, the dashboard, studio settings and the marketing site.',
+    constraints: [
+      'It has to be faster than duplicating last month’s spreadsheet, or nobody switches.',
+      'Clients must be able to open an invoice with no account and no attachment hassle.',
+      'Bank details appear on every invoice, so they must be entered once and stored securely.',
+      'It works in light and dark mode and on phones, where many freelancers check payments.',
+    ],
+    users: [
+      { name: 'Freelance designer', icon: 'brush', goal: 'Send an invoice that looks as considered as the work.', pain: 'Rebuilds invoices in spreadsheets, and they rarely look professional.' },
+      { name: 'Independent developer', icon: 'code', goal: 'Bill clients in their currency and get paid sooner.', pain: 'Loses track of which invoices are still unpaid.' },
+      { name: 'Small studio', icon: 'storefront', goal: 'Keep brand, bank details and client records consistent.', pain: 'Clients struggle with attachments, and follow-ups slip.' },
+    ],
     process: [
-      { phase: 'R', title: 'Research', summary: 'Ran user research with designers, developers and small studios to understand how they create and send invoices today.', activities: ['User interviews — Freelancers and small studios', 'Surveys — Designers and developers', 'Usability testing — The four-step invoice flow', 'Competitive analysis — Invoice generators and templates'], output: 'Research insights and priorities', research: true },
-      { phase: '01', title: 'Define the job', summary: 'Strip invoicing down to what gets you paid sooner.', activities: ['Jobs to be done', 'Feature cut'], output: 'Scope' },
-      { phase: '02', title: 'Design the flow', summary: 'Set up studio → add client → list the work → send or print.', activities: ['Flow', 'Editor UI', 'Dashboard'], output: 'Screens' },
-      { phase: '03', title: 'Build', summary: 'A client-side app with PDF export and shareable read-only links.', activities: ['Front-end build', 'Responsive QA'], output: 'Live product' },
+      { phase: 'R', title: 'Research', summary: 'Ran user research with designers, developers and small studios to understand how they create and send invoices today.', activities: ['User interviews: freelancers and small studios', 'Surveys: designers and developers', 'Usability testing: the four-step invoice flow', 'Competitive analysis: invoice generators and templates'], output: 'Research insights and priorities', research: true },
+      { phase: '01', title: 'Define the job', summary: 'Stripped invoicing down to what gets you paid sooner, and cut everything else.', activities: ['Jobs to be done', 'Feature cut against the spreadsheet benchmark', 'Set-up-once model'], output: 'Scope and principles' },
+      { phase: '02', title: 'Design the flow', summary: 'Set up studio, add client, list the work, send or print. The landing page and the app follow the same four steps.', activities: ['Four-step flow', 'Live-preview editor', 'Dashboard for paid and outstanding'], output: 'Core screens' },
+      { phase: '03', title: 'Design the system', summary: 'A calm visual language with light and dark themes, and an invoice template that feels like letterhead.', activities: ['Tokens and components', 'Invoice template', 'Light and dark themes'], output: 'Design system' },
+      { phase: '04', title: 'Build', summary: 'Built the front end with PDF export, shareable read-only links and Supabase accounts.', activities: ['Front-end build', 'PDF and print export', 'Auth and saved studio details'], output: 'Live product' },
+      { phase: '05', title: 'Launch & refine', summary: 'Shipped the marketing site and the app together, then refined edge cases found in use.', activities: ['Responsive QA', 'Empty and error states', 'Marketing site'], output: 'Free public product' },
+    ],
+    principles: [
+      ['Set up once, never again', 'Brand, company and bank details are saved and pre-filled on every invoice.'],
+      ['Show the result early', 'A live preview updates as you type, so there are no surprises when you send.'],
+      ['Nothing an invoice doesn’t need', 'Each feature exists to get you paid sooner.'],
+      ['The landing page is the manual', 'The four steps explained there are the four steps in the app.'],
     ],
     journey: {
       title: 'From blank page to sent invoice',
+      intro: 'The core path, as built. Tap a step to see the screen.',
       steps: [
-        { label: 'Promise', text: 'The hero shows a real invoice and a “Payment received” confirmation.', image: `${C}/ledger-home.webp` },
-        { label: 'Benefits', text: 'Features framed as outcomes: brand remembered, bank details built in.', image: `${C}/ledger-features.webp` },
-        { label: 'Four steps', text: 'The app mirrors the four steps explained on the landing page.', image: `${C}/ledger-steps.webp` },
-        { label: 'Dashboard', text: 'One calm screen for revenue, outstanding and paid.', image: `${C}/ledger-dashboard.webp` },
+        { label: 'Promise', text: 'The hero shows a real invoice and a “Payment received” confirmation, so the result is clear before any feature list.', image: '/images/screens/ledger-studio/p0-d0.webp' },
+        { label: 'Set up once', text: 'Company details and logo are saved once and appear on every invoice.', image: '/images/screens/ledger-studio/app-company-details-d0.webp' },
+        { label: 'Create', text: 'The editor and a live preview sit side by side, so you see the invoice as the client will.', image: '/images/screens/ledger-studio/app-create-invoice-d0.webp' },
+        { label: 'Send', text: 'Print, download a PDF or share a read-only link that opens in any browser.', image: '/images/screens/ledger-studio/app-create-invoice-d1.webp' },
+        { label: 'Track', text: 'The dashboard separates paid from outstanding and filters by period.', image: '/images/screens/ledger-studio/app-dashboard-d0.webp' },
       ],
     },
     decisions: [
-      { title: 'Show the product in the first screen', text: 'The hero pairs the promise with a real invoice preview, so visitors see the result before reading a feature list.', image: `${C}/ledger-home.webp`, caption: '“Invoices worthy of the work you do.”' },
-      { title: 'A four-step mental model', text: 'The whole product is explained as four steps, and the app follows that order — nothing new to learn after the landing page.', tradeoff: 'Advanced options are hidden until needed.', image: `${C}/ledger-steps.webp`, caption: 'Four steps.' },
+      { title: 'Show the product in the first screen', text: 'The hero pairs the promise with a real invoice preview and a payment confirmation, so visitors see the result before they read a feature list.', tradeoff: 'Less room for marketing copy above the fold.', image: '/images/screens/ledger-studio/p0-d0.webp', caption: '“Invoices worthy of the work you do.”' },
+      { title: 'Editor and preview side by side', text: 'Research showed people didn’t trust what they couldn’t see. The live preview updates as you type, in the exact template the client will receive.', tradeoff: 'A wider layout. On phones the preview stacks below the form.', image: '/images/screens/ledger-studio/app-create-invoice-d0.webp', caption: 'Create invoice with a live preview.' },
+      { title: 'Set up once, pre-fill forever', text: 'Company details and bank details have their own settings pages. They are saved once and filled into every invoice automatically.', tradeoff: 'A short set-up before the first invoice, repaid on every invoice after.', image: '/images/screens/ledger-studio/app-bank-details-d0.webp', caption: 'Bank details shown on every invoice.' },
+      { title: 'Links instead of attachments', text: 'Clients struggled with attachments, so every invoice can be shared as a read-only link that opens in any browser, with PDF export for those who want a file.', tradeoff: 'Links need hosting and care with privacy. Read-only views keep them safe.', image: '/images/screens/ledger-studio/app-create-invoice-d1.webp', caption: 'Line items, totals, and print, PDF or share link.' },
+      { title: 'A dashboard that answers “what’s outstanding?”', text: 'Total revenue, outstanding and paid sit at the top, with period filters, so the most important answer is visible immediately.', tradeoff: 'Deeper analytics were left out on purpose.', image: '/images/screens/ledger-studio/app-dashboard-d0.webp', caption: 'Dashboard: revenue, outstanding and recent invoices.' },
     ],
-    gallery: [{ src: `${C}/ledger-mobile.webp`, mobile: true, caption: 'Mobile landing.' }],
+    screensIntro: '26 screens from the live site and app, with sample values in place of real bank details. Pick a flow, then open any screen to view it full size.',
     screens: [
       { flow: 'Landing', icon: 'home', note: 'The landing page shows the product rather than describing it: a real invoice in the hero, outcomes instead of features, and the four-step model the app follows.', items: [
         { src: `/images/screens/ledger-studio/p0-d0.webp`, caption: 'Hero: invoices worthy of the work you do' },
@@ -993,9 +1027,17 @@ export const cases = [
         { src: `/images/screens/ledger-studio/p2-m1.webp`, caption: 'Mobile story', mobile: true },
       ] },
     ],
-    outcome: ['A live, free product used to send branded invoices in minutes.'],
-    reflection: ['Building my own design showed me where designs hide ambiguity — every unanswered edge case becomes a decision in code.'],
-    tools: ['Figma', 'HTML', 'CSS', 'JavaScript'],
+    gallery: [{ src: `${C}/ledger-mobile.webp`, mobile: true, caption: 'Mobile landing.' }],
+    outcome: [
+      'Ledger Studio is live and free: a marketing site and a working app with accounts, saved studio and bank details, a live-preview editor, PDF export, shareable links, six currencies and light and dark themes.',
+      'Because I designed and built it, every decision was tested in code as well as in Figma. The four steps explained on the landing page are exactly the four steps in the app.',
+    ],
+    reflection: [
+      'Building my own design showed me where designs hide ambiguity. Every unanswered edge case becomes a decision in code.',
+      'The most valuable feature turned out to be the least visible one: entering bank details once.',
+    ],
+    next: ['Measure time-to-first-invoice and repeat use per studio.', 'Add payment reminders for overdue invoices.', 'Test the editor with screen-reader users and improve keyboard flow.'],
+    tools: ['Figma', 'HTML', 'CSS', 'JavaScript', 'Supabase'],
   },
 
   /* ═══════════════════════════════ TRENSLEEK ═══════════════════════════════ */
@@ -1044,8 +1086,9 @@ export const cases = [
     },
     decisions: [
       { title: 'Make WhatsApp the booking engine', text: 'Destination tiles and the trip planner open WhatsApp with a pre-written message, so starting a conversation takes one tap and arrives with context.', tradeoff: 'No instant prices online — honest, because fares are confirmed personally.', image: `${C}/trensleek-destinations.webp`, caption: '“Tap a place to start a WhatsApp conversation about it.”' },
-      { title: 'Be explicit about the model', text: '“Not a booking engine. A real person replies with options.” sits right under the planner, setting expectations before anyone types.', image: `${C}/trensleek-home.webp`, caption: 'Hero and trip planner.' },
+      { title: 'Be explicit about the model', text: '“Not a booking engine. A real person replies with options.” sits right under the planner, setting expectations before anyone types.', tradeoff: 'Some visitors expect instant online booking. Saying so clearly avoids a worse surprise later.', image: `${C}/trensleek-home.webp`, caption: 'Hero and trip planner.' },
       { title: 'Sell the values behind the service', text: 'Integrity, confidentiality, customer centricity and speed — with client safety as a thread through everything — address what premium travellers worry about.', tradeoff: 'Testimonials are marked “coming soon” rather than invented.', image: `${C}/trensleek-values.webp`, caption: 'What you can expect from us.' },
+      { title: 'One template for every service', text: 'Every service page follows the same structure: what it is, how we help, and two ways to start. Visitors learn the pattern once.', tradeoff: 'Less room for one-off layouts, in exchange for consistency and faster updates.', image: '/images/screens/trensleek/p5-d0.webp', caption: 'International flight ticketing.' },
     ],
     gallery: [
       { src: `${C}/trensleek-flights.webp`, caption: 'Flights and stays.' },
@@ -1102,9 +1145,9 @@ export const cases = [
         { src: `/images/screens/trensleek/p4-m1.webp`, caption: 'Mobile contact options', mobile: true },
       ] },
     ],
-    outcome: ['A live website with six service pages, a trip planner and an enquiry model that routes every visitor to a real person with context — plus a motion layer that can be paused for accessibility.'],
-    reflection: ['The best conversion design for a personal service is to start the conversation for people.'],
-    next: ['Add real client testimonials when supplied.', 'Track which destinations and services start the most conversations.'],
+    outcome: ['A live website with six service pages, a trip planner and an enquiry model that routes every visitor to a real person with context — plus a motion layer that can be paused for accessibility.', 'Each service page follows one template, so the company can add services without new design work, and every page ends in the same two ways to start a conversation.'],
+    reflection: ['The best conversion design for a personal service is to start the conversation for people.', 'Designing for a service business is designing for a conversation. The website’s job is to make the first message easy and well informed.'],
+    next: ['Add real client testimonials when supplied.', 'Track which destinations and services start the most conversations.', 'Add a short enquiry summary so the team sees trip details before replying.'],
     tools: ['Figma', 'Web', 'Motion'],
   },
 
@@ -1119,17 +1162,55 @@ export const cases = [
     cover: `${V}/spin.webp`,
     live: 'https://campaign.ajiroba.com/',
     facts: [['Role', 'Lead Product Designer'], ['Type', 'Campaign microsite'], ['Platform', 'Responsive web'], ['Status', 'Live campaign']],
+    glance: [['1', 'Primary action on the page'], ['4', 'Trust pillars'], ['3', 'Details asked to play'], ['24/7', 'WhatsApp support promised']],
     tldr: {
-      problem: 'Online giveaways are met with suspicion; a fun mechanic is worthless if people don’t trust it.',
-      approach: 'I designed the page around trust: one action, an official-campaign notice, a message from the CEO and four trust pillars.',
-      outcome: 'A live campaign consistent with the Ajiroba product, built around a single action and visible trust signals.',
+      problem: 'Online giveaways are met with suspicion in Nigeria. A fun mechanic is worthless if people think it’s a scam, and every unnecessary field makes them more wary.',
+      approach: 'I designed the campaign around trust: one action, an official-campaign notice, a message from the CEO, four plain trust pillars, and an entry form that asks only for what’s needed to verify a winner.',
+      outcome: 'A live campaign microsite, consistent with the Ajiroba product, built around a single action and visible trust signals on desktop and mobile.',
     },
-    overview: ['Spin & Win rewards Ajiroba’s community: spin a wheel for a chance to win, with prizes redeemed through a verified support channel.'],
-    role: 'As lead designer, I designed the campaign experience within the Ajiroba design system.',
-    decisions: [
-      { title: 'Put a real person behind the campaign', text: 'A message from Ajiroba’s CEO turns an anonymous promotion into a company speaking to its community.', image: `${C}/spin-trust.webp`, caption: 'Trust pillars.' },
+    overview: [
+      'Spin & Win rewards Ajiroba’s community: enter your details, spin a wheel for a chance to win, and redeem prizes through a verified WhatsApp support channel.',
+      'The design brief was really a trust brief. People have seen fake giveaways that harvest phone numbers, so the page had to prove it was real before asking for anything.',
     ],
-    gallery: [{ src: `${C}/spin-mobile.webp`, mobile: true, caption: 'Mobile campaign page.' }],
+    role: 'As lead product designer, I designed the campaign experience within the Ajiroba design system: page structure, trust content, the entry form and the mobile layout.',
+    constraints: [
+      'It must feel official in a market used to fake promotions.',
+      'Collect the minimum data needed to verify and reach a winner.',
+      'Most visitors arrive on phones from social links, often on slow data.',
+      'It has to match the Ajiroba brand so people recognise the company behind it.',
+    ],
+    users: [
+      { name: 'Existing Ajiroba user', icon: 'person', goal: 'Join quickly and see if they’ve won.', pain: 'Doesn’t want to re-enter details or wonder whether it’s really Ajiroba.' },
+      { name: 'First-time visitor from social', icon: 'share', goal: 'Find out whether the giveaway is legitimate.', pain: 'Has seen fake giveaways and is wary of sharing a phone number.' },
+    ],
+    process: [
+      { phase: '01', title: 'Frame', summary: 'Treated trust as the conversion problem: what would make a wary visitor believe this is real?', activities: ['Listed the doubts a visitor brings', 'Mapped each doubt to a signal on the page', 'Defined one primary action'], output: 'Trust brief' },
+      { phase: '02', title: 'Structure', summary: 'Ordered the page as an argument: the invitation, who’s behind it, what it is, and why it’s safe.', activities: ['Hero with official notice', 'CEO message', 'About the campaign and trust pillars'], output: 'Page structure' },
+      { phase: '03', title: 'Design the entry', summary: 'Kept the entry form to three fields with a privacy note at the point of hesitation.', activities: ['Name, email, phone only', 'Inline privacy reassurance', 'Clear continue action'], output: 'Entry flow' },
+      { phase: '04', title: 'Mobile & brand', summary: 'Designed mobile first within the Ajiroba design system, so the campaign is recognisably part of the product.', activities: ['Mobile layouts', 'Brand colour and type', 'Support and contact footer'], output: 'Live campaign' },
+    ],
+    principles: [
+      ['One action', 'Start Now is the only button competing for attention.'],
+      ['A face, not a logo', 'A message from the CEO turns a promotion into a company speaking to its community.'],
+      ['Ask for less', 'Three fields, each one needed to verify and reach a winner.'],
+      ['Reassure where people hesitate', 'The privacy note sits inside the form, not in the footer.'],
+    ],
+    journey: {
+      title: 'From a shared link to a spin',
+      intro: 'The campaign path, as designed. Tap a step to see the screen.',
+      steps: [
+        { label: 'Arrive', text: 'The hero invites people to spin, with an “Official Campaign” notice right under the headline.', image: '/images/screens/spin-and-win/p0-d0.webp' },
+        { label: 'Who’s behind it', text: 'A message from Ajiroba’s CEO, with name and title, gives the campaign a human face.', image: '/images/screens/spin-and-win/p0-d1.webp' },
+        { label: 'Why it’s safe', text: 'Four pillars (secure and official, verified winners, community first, real rewards) answer the obvious doubts.', image: '/images/screens/spin-and-win/p0-d2.webp' },
+        { label: 'Enter', text: 'A short form asks only for name, email and phone, with a privacy note before continuing.', image: '/images/screens/spin-and-win/start-d0.webp' },
+      ],
+    },
+    decisions: [
+      { title: 'Put a real person behind the campaign', text: 'A message from Ajiroba’s CEO, signed with name and title, turns an anonymous promotion into a company speaking to its own community.', tradeoff: 'Depends on leadership being willing to be visible, which is a brand decision as much as a design one.', image: '/images/screens/spin-and-win/p0-d1.webp', caption: 'A message from the CEO.' },
+      { title: 'Official notice inside the hero', text: 'The “Official Campaign” notice sits right below the headline, where doubt starts, rather than in small print below the fold.', tradeoff: 'A busier hero, accepted because trust comes before delight.', image: '/images/screens/spin-and-win/p0-d0.webp', caption: 'Hero with the official-campaign notice.' },
+      { title: 'Three fields, with privacy in the form', text: 'The entry form asks only for name, email and phone, the minimum needed to verify a winner, with a privacy note just above the button.', tradeoff: 'Less marketing data collected, in exchange for more people willing to enter.', image: '/images/screens/spin-and-win/start-d0.webp', caption: 'Enter your details to play.' },
+      { title: 'Verified redemption through support', text: 'Winners redeem through a named WhatsApp support channel that’s available 24/7, so the “how do I get my prize?” question is answered before it’s asked.', tradeoff: 'Manual verification adds operational work, but it’s what makes prizes believable.', image: '/images/screens/spin-and-win/p0-d2.webp', caption: 'Trust pillars, support and contact.' },
+    ],
     screens: [
       { flow: 'Campaign page', icon: 'campaign', note: 'One action, and trust built around it: an official-campaign notice, a message from the CEO and four plain trust pillars.', items: [
         { src: `/images/screens/spin-and-win/p0-d0.webp`, caption: 'Hero: one action and an official-campaign notice' },
@@ -1145,9 +1226,17 @@ export const cases = [
         { src: `/images/screens/spin-and-win/start-m1.webp`, caption: 'Privacy note before continuing', mobile: true },
       ] },
     ],
-    outcome: ['A live campaign site with one primary action and visible trust signals.'],
-    reflection: ['For promotions, trust is the conversion design.'],
-    tools: ['Figma', 'Web'],
+    gallery: [{ src: `${C}/spin-mobile.webp`, mobile: true, caption: 'Mobile campaign page.' }],
+    outcome: [
+      'A live campaign microsite with one primary action, visible trust signals and a short entry form, designed for mobile and consistent with the Ajiroba product.',
+      'The campaign reuses Ajiroba’s design system, so a promotion that could have felt like a one-off is recognisably part of the platform people already use.',
+    ],
+    reflection: [
+      'For promotions, trust is the conversion design. The mechanic was the easy part. Earning the right to ask for a phone number was the real work.',
+      'The CEO message was the smallest addition with the biggest effect on how official the page feels.',
+    ],
+    next: ['Track entry completion from landing to spin, and where people drop off.', 'Show recent verified winners (with consent) as social proof.', 'Add a lightweight USSD or WhatsApp entry for low-data visitors.'],
+    tools: ['Figma', 'Design system', 'Responsive web'],
   },
 
   /* ═══════════════════════════════ MEALFLEX ═══════════════════════════════ */
@@ -1207,7 +1296,7 @@ export const cases = [
     decisions: [
       { title: 'A dashboard that starts with your goals', text: 'The home screen greets people with their daily targets, quick-add meal logging and tailored recommendations, so the app opens on what matters to them today.', tradeoff: 'Less space for promotions on the home screen, in favour of personal relevance.', image: `${C}/mealflex-home.webp`, mobile: true, caption: 'Home: search, categories, restaurants and popular dishes.' },
       { title: 'A meal builder that shows its working', text: 'The custom meal builder lets people swap ingredients and see the nutritional impact in real time, then save favourite combinations for next time.', tradeoff: 'More states to design for each ingredient change, accepted because instant feedback builds the habit.', image: `${C}/mealflex-home.webp`, mobile: true, caption: 'Discovery screen — the full meal-builder flow is shown on Behance.' },
-      { title: 'Order status you can read at a glance', text: 'Ordering and delivery tracking use large tap targets, high-contrast status badges and step-by-step progress, so people never wonder where their food is.', image: `${C}/mealflex-cart.webp`, mobile: true, caption: 'Cart with nutrition per item and one clear next step.' },
+      { title: 'Order status you can read at a glance', text: 'Ordering and delivery tracking use large tap targets, high-contrast status badges and step-by-step progress, so people never wonder where their food is.', tradeoff: 'Fewer details on the tracking screen, with the full breakdown one tap away.', image: `${C}/mealflex-cart.webp`, mobile: true, caption: 'Cart with nutrition per item and one clear next step.' },
     ],
     gallery: [],
     screens: [
@@ -1218,9 +1307,9 @@ export const cases = [
         { src: `/images/cases/mealflex-cart.webp`, caption: 'Cart: ratings, nutrition, quantity and one clear Proceed', mobile: true },
       ] },
     ],
-    outcome: ['A complete, high-fidelity mobile app and interactive prototype designed to support daily retention, built entirely on a scalable component library for a smooth developer handoff. The full design is presented on Behance.'],
-    reflection: ['Designing a habit product taught me that speed is a feature: every extra tap is a reason to skip a day.'],
-    next: ['Usability-test the meal builder with people tracking different goals.', 'Measure seven-day retention once in market.'],
+    outcome: ['A complete, high-fidelity mobile app and interactive prototype designed to support daily retention, built entirely on a scalable component library for a smooth developer handoff. The full design is presented on Behance.', 'The core ordering path (splash, discovery and cart) shows the visual system at work: one accent colour, generous food photography and a single clear action per screen.'],
+    reflection: ['Designing a habit product taught me that speed is a feature: every extra tap is a reason to skip a day.', 'Working within a component library from day one made the app feel consistent and made handoff much faster.'],
+    next: ['Usability-test the meal builder with people tracking different goals.', 'Measure seven-day retention once in market.', 'Prototype reorder-from-history to make daily ordering even faster.'],
     tools: ['Figma', 'Prototyping', 'Design system', 'WCAG 2.2'],
   },
 
@@ -1280,7 +1369,7 @@ export const cases = [
     },
     decisions: [
       { title: 'Immersive, image-led discovery', text: 'High-aspect-ratio imagery, clean card layouts and quick-view filters let fashion-focused shoppers scan and curate without clutter.', tradeoff: 'Fewer products per screen, in exchange for a calmer, more inspiring browse.', image: `${C}/creatifff-accessories.webp`, mobile: true, caption: 'Accessories category.' },
-      { title: 'Product pages that remove doubt', text: 'Clear size selectors, inventory status, stock alerts and a sticky “Add to Bag” answer the questions that usually cause hesitation.', image: `${C}/creatifff-others.webp`, mobile: true, caption: 'Product discovery with clear next actions.' },
+      { title: 'Product pages that remove doubt', text: 'Clear size selectors, inventory status, stock alerts and a sticky “Add to Bag” answer the questions that usually cause hesitation.', tradeoff: 'Longer product pages, structured so the essentials stay above the fold.', image: `${C}/creatifff-others.webp`, mobile: true, caption: 'Product discovery with clear next actions.' },
       { title: 'A checkout with less to think about', text: 'A collapsible, step-by-step checkout reduces cognitive load, supports saved addresses and integrates trusted payment methods.', tradeoff: 'More steps on screen, but each one is smaller and easier to complete.', image: '/images/creatifff.webp', caption: 'Creatifff on mobile and web.' },
     ],
     gallery: [],
@@ -1292,9 +1381,9 @@ export const cases = [
         { src: `/images/cases/creatifff-others.webp`, caption: 'Others category: fragrance and fashion', mobile: true },
       ] },
     ],
-    outcome: ['A high-end mobile shopping experience and interactive prototype, designed to maximise checkout conversion and built on a scalable editorial component library for a smooth handoff. The product is private; the design is presented on Behance.'],
-    reflection: ['Fashion e-commerce has to inspire first and then get out of the way. The best checkout is the one shoppers barely notice.'],
-    next: ['Usability-test the checkout with first-time shoppers.', 'Track drop-off by checkout step to prioritise the next improvement.'],
+    outcome: ['A high-end mobile shopping experience and interactive prototype, designed to maximise checkout conversion and built on a scalable editorial component library for a smooth handoff. The product is private; the design is presented on Behance.', 'The design spans a mobile app and a web landing page that share one visual language, so shoppers recognise the brand wherever they meet it.'],
+    reflection: ['Fashion e-commerce has to inspire first and then get out of the way. The best checkout is the one shoppers barely notice.', 'Keeping mobile and web in one design system early saved rework and kept the brand coherent.'],
+    next: ['Usability-test the checkout with first-time shoppers.', 'Track drop-off by checkout step to prioritise the next improvement.', 'Test category browsing against search for first-time visitors.'],
     tools: ['Figma', 'Prototyping', 'Design system', 'WCAG 2.2'],
   },
 
@@ -1309,14 +1398,53 @@ export const cases = [
     cover: `${V}/annyshub.webp`,
     live: 'https://www.annyshub.store/',
     facts: [['Role', 'Lead Designer & developer'], ['Type', 'Storefront + admin'], ['Platform', 'Responsive web'], ['Market', 'Nigeria · nationwide']],
-    tldr: { problem: 'A WhatsApp-first business needed a storefront that builds trust without forcing an unfamiliar checkout.', approach: 'I designed the site around the existing habit — browse beautifully, then order via a personal chat — plus an owner console.', outcome: 'A live storefront and catalogue console turning browsing into WhatsApp orders.' },
-    overview: ['AnnySHub sells curated jewellery to Nigerian women. The site fits how customers already buy — through a conversation.'],
-    role: 'I designed and built the storefront and the owner’s console.',
-    decisions: [
-      { title: 'Answer the three worries', text: 'Real photos, personal WhatsApp ordering and delivery costs shown upfront.', image: `${C}/annyshub-confidence.webp`, caption: 'Shop with confidence.' },
-      { title: 'Browse by category', text: 'Necklaces, watches, bracelets and sets as visual entry points.', image: `${C}/annyshub-categories.webp`, caption: 'Find your perfect piece.' },
+    glance: [['300+', 'Pieces in the catalogue'], ['4', 'Steps from browse to delivery'], ['3', 'Worries answered up front'], ['2', 'Interfaces: storefront and owner console']],
+    tldr: { problem: 'A WhatsApp-first jewellery business needed a storefront that builds trust and looks premium, without forcing customers into an unfamiliar checkout.', approach: 'I designed the site around the existing habit (browse beautifully, then order in a personal chat), answered the three big worries up front, and built an owner console so the catalogue stays current.', outcome: 'A live storefront and catalogue console that turn browsing into WhatsApp orders, with nationwide delivery explained before anyone asks.' },
+    overview: [
+      'AnnySHub sells curated jewellery to Nigerian women: necklaces, watches, bracelets and sets. Customers already bought through WhatsApp conversations, and that habit worked.',
+      'So the site doesn’t replace the conversation. It earns it, with real photos, clear categories and upfront delivery information, so the chat that follows is about choosing a piece, not about trust.',
     ],
-    gallery: [{ src: `${C}/annyshub-order.webp`, caption: 'Order directly — no stress, no surprises.' }],
+    role: 'As lead designer and developer, I designed and built the storefront and the owner’s catalogue console: brand direction, structure, ordering flow, responsive UI and front end.',
+    constraints: [
+      'Ordering must stay on WhatsApp, where customers are comfortable and the owner can talk to them.',
+      'Online jewellery invites doubt about authenticity and what will actually arrive.',
+      'Delivery costs vary by state and must be clear before the conversation starts.',
+      'The owner needs to update products without a developer.',
+    ],
+    users: [
+      { name: 'Customer', icon: 'person', goal: 'Find a piece they love and order it with confidence.', pain: 'Worries that photos are filtered, and that delivery will bring surprise fees.' },
+      { name: 'Gift buyer', icon: 'redeem', goal: 'Choose a set quickly and know it will arrive on time.', pain: 'Doesn’t know where to start or how long delivery takes.' },
+      { name: 'Owner', icon: 'storefront', goal: 'Keep the catalogue current and handle orders personally.', pain: 'Can’t keep a website up to date without help.' },
+    ],
+    process: [
+      { phase: '01', title: 'Understand the business', summary: 'Mapped how orders already happened on WhatsApp, and decided to design around that habit, not against it.', activities: ['Order flow as it worked today', 'Owner’s day-to-day tasks', 'Customer worries'], output: 'Design brief' },
+      { phase: '02', title: 'Structure', summary: 'Organised the store by category, with trust and ordering explained on every key page.', activities: ['Category IA', 'How-to-order page', 'About and story'], output: 'Sitemap' },
+      { phase: '03', title: 'Design the storefront', summary: 'An editorial, feminine visual language with real product photography doing the selling.', activities: ['Hero and categories', 'Trust section', 'Order call to action'], output: 'Storefront UI' },
+      { phase: '04', title: 'Owner console', summary: 'A simple console for adding and updating products and collections.', activities: ['Product management', 'Collection management'], output: 'Admin UI' },
+      { phase: '05', title: 'Build & launch', summary: 'Built and shipped both interfaces as a responsive site.', activities: ['Front-end build', 'Responsive QA', 'Launch'], output: 'Live store' },
+    ],
+    principles: [
+      ['Design around the habit', 'WhatsApp ordering stays. The site makes the chat easier, not unnecessary.'],
+      ['Answer worries before they’re asked', 'Real photos, personal ordering and upfront delivery costs, on the homepage.'],
+      ['Let the product sell', 'Large, honest photography and a quiet interface.'],
+    ],
+    journey: {
+      title: 'From scrolling to ordering',
+      intro: 'The customer path, as designed. Tap a step to see the screen.',
+      steps: [
+        { label: 'Arrive', text: 'An editorial hero with the brand promise and two clear actions: shop the collection or order on WhatsApp.', image: '/images/screens/annyshub/p0-d0.webp' },
+        { label: 'Browse', text: 'Categories (necklaces, watches, bracelets, sets) are the main way in.', image: '/images/screens/annyshub/p0-d1.webp' },
+        { label: 'Trust', text: 'Three worries answered before the order: real photos, a real person on WhatsApp, and delivery costs shown upfront.', image: '/images/screens/annyshub/p0-d3.webp' },
+        { label: 'Learn how', text: 'Four simple steps from browsing to delivery, explained on their own page.', image: '/images/screens/annyshub/p2-d0.webp' },
+        { label: 'Order', text: 'A clear WhatsApp call to action: no stress, no surprises.', image: '/images/screens/annyshub/p0-d4.webp' },
+      ],
+    },
+    decisions: [
+      { title: 'Keep the order on WhatsApp', text: 'Instead of forcing a cart and card payment, every “order” button opens a personal WhatsApp chat, the channel customers already trust.', tradeoff: 'No instant checkout, which is accepted because the conversation is where this business converts.', image: '/images/screens/annyshub/p0-d4.webp', caption: 'Order directly: no stress, no surprises.' },
+      { title: 'Answer the three worries on the homepage', text: 'Real product photos, personal WhatsApp ordering and nationwide delivery with costs shown upfront, the doubts that stop online jewellery purchases.', tradeoff: 'More text on the homepage, kept short and visual.', image: '/images/screens/annyshub/p0-d3.webp', caption: 'Shop with confidence.' },
+      { title: 'Browse by category', text: 'Necklaces, watches, bracelets and sets are the visual entry points, because that’s how customers describe what they want.', tradeoff: 'Fewer curated stories up top, in favour of faster browsing.', image: '/images/screens/annyshub/p0-d1.webp', caption: 'Find your perfect piece.' },
+      { title: 'A page just for “how to order”', text: 'Four steps (browse, choose, send your WhatsApp order, pay and receive) on a dedicated page, so first-time buyers know exactly what happens.', tradeoff: 'One more page in the navigation, which earns its place.', image: '/images/screens/annyshub/p2-d1.webp', caption: 'Send your WhatsApp order, then pay and receive.' },
+    ],
     screens: [
       { flow: 'Storefront', icon: 'storefront', note: 'Built around the way customers already buy: browse beautifully, then order in a personal WhatsApp chat. Trust comes before any request.', items: [
         { src: `/images/screens/annyshub/p0-d0.webp`, caption: 'Hero: jewellery that speaks before you do' },
@@ -1340,8 +1468,16 @@ export const cases = [
         { src: `/images/screens/annyshub/p3-m1.webp`, caption: 'Mobile vision', mobile: true },
       ] },
     ],
-    outcome: ['A live storefront and owner console with nationwide delivery.'],
-    reflection: ['The best flow is sometimes the one customers already use.'],
+    gallery: [{ src: `${C}/annyshub-order.webp`, caption: 'Order directly — no stress, no surprises.' }],
+    outcome: [
+      'A live storefront and owner console with nationwide delivery. Customers browse a premium catalogue, and every order still lands in a personal WhatsApp conversation.',
+      'The owner can update products and collections without a developer, so the site stays as current as the WhatsApp status.',
+    ],
+    reflection: [
+      'The best flow is sometimes the one customers already use. My job was to make that habit look and feel premium.',
+      'Designing the owner console mattered as much as the storefront. A beautiful catalogue that goes stale loses trust fast.',
+    ],
+    next: ['Measure clicks from product pages to WhatsApp as the conversion signal.', 'Add a structured order message so chats start with the piece, price and delivery state.', 'Make product loading resilient when the catalogue service is slow.'],
     tools: ['Figma', 'HTML', 'CSS', 'JavaScript'],
   },
 
@@ -1356,14 +1492,53 @@ export const cases = [
     cover: `${V}/folu.webp`,
     live: 'https://folu-atelier.vercel.app/',
     facts: [['Role', 'Lead Designer & developer'], ['Type', 'Brand site + owner studio'], ['Platform', 'Responsive web'], ['Market', 'Lagos · bespoke']],
-    tldr: { problem: 'Made-to-measure fashion can’t be sold through a cart — it needs presence and a conversation.', approach: 'I designed a house, not a shop: collections by occasion, pricing on request and fittings as the primary action.', outcome: 'A live brand site and owner studio routing interest to fittings.' },
-    overview: ['Folu Atelier dresses Lagos women for bespoke, native, bridal and owambe moments.'],
-    role: 'I designed and built the House and the Studio.',
-    decisions: [
-      { title: 'Browse by moment', text: 'Collections grouped by occasion — the way clients actually think.', image: `${C}/folu-collection.webp`, caption: 'Latest from the house.' },
-      { title: 'A house, not a shop', text: 'Two actions — view the collection or book a fitting — the way a client is welcomed in person.', image: `${C}/folu-home.webp`, caption: 'Home.' },
+    glance: [['4', 'Occasions: bespoke, native, bridal, owambe'], ['2', 'Interfaces: the House and the Studio'], ['0', 'Carts, by design'], ['2', 'Primary actions: view or book a fitting']],
+    tldr: { problem: 'Made-to-measure fashion can’t be sold through a cart. A Lagos fashion house needed an online presence that feels like walking into the atelier, and an easy way for the owner to keep it current.', approach: 'I designed a house, not a shop: collections by occasion, pieces with price on request, and a fitting as the main action. A private Studio lets the owner manage pieces.', outcome: 'A live brand site and owner studio that turn interest into fittings and WhatsApp conversations.' },
+    overview: [
+      'Folu Atelier dresses Lagos women for bespoke, native, bridal and owambe moments. Every piece begins with a fitting and ends made to measure.',
+      'The site had to carry the weight of a luxury house in a browser: dark, editorial and unhurried, with every path leading to a conversation rather than a checkout.',
     ],
-    gallery: [{ src: `${C}/folu-occasions.webp`, caption: 'Dressed for every moment.' }, { src: `${C}/folu-atelier.webp`, caption: 'The atelier story.' }],
+    role: 'As lead designer and developer, I designed and built the customer-facing House and the owner-facing Studio: art direction, structure, piece pages, enquiry flow and front end.',
+    constraints: [
+      'Prices depend on fabric and fit, so pieces can’t show a fixed price or a cart.',
+      'The site must feel luxurious without being slow on mobile data.',
+      'Enquiries should land where the owner already works: WhatsApp and bookings.',
+      'The owner must be able to add and update pieces without help.',
+    ],
+    users: [
+      { name: 'Bride-to-be', icon: 'favorite', goal: 'Find a designer they trust for the most important outfit.', pain: 'Needs to see the craft and book a fitting without endless back-and-forth.' },
+      { name: 'Owambe guest', icon: 'celebration', goal: 'Get a statement look made in time for an event.', pain: 'Unsure about price and timelines before reaching out.' },
+      { name: 'Owner', icon: 'storefront', goal: 'Show new work quickly and turn interest into fittings.', pain: 'Social posts get lost, and a website is hard to update.' },
+    ],
+    process: [
+      { phase: '01', title: 'Position', summary: 'Defined the site as the house itself: heritage, craft and personal service, not a catalogue.', activities: ['Brand voice', 'House, not shop', 'Two primary actions'], output: 'Positioning' },
+      { phase: '02', title: 'Structure', summary: 'Organised the collection by occasion, the way clients actually think about what to wear.', activities: ['Occasion-led IA', 'Piece page template', 'Enquiry flow'], output: 'Sitemap' },
+      { phase: '03', title: 'Art direction', summary: 'A dark, gold-accented editorial look with serif display type, letting the photography lead.', activities: ['Type and colour', 'Image treatment', 'Motion and pacing'], output: 'Visual language' },
+      { phase: '04', title: 'Studio', summary: 'A private owner studio for managing pieces behind a simple sign-in.', activities: ['Owner sign-in', 'Piece management'], output: 'Owner tools' },
+      { phase: '05', title: 'Build & launch', summary: 'Built the House and the Studio as a responsive site and shipped it.', activities: ['Front-end build', 'Responsive QA', 'Launch'], output: 'Live site' },
+    ],
+    principles: [
+      ['A house, not a shop', 'Visitors are welcomed, shown the work and invited to a fitting.'],
+      ['Occasion first', 'Bespoke, native, bridal and owambe are the way in.'],
+      ['Luxury is restraint', 'Few words, generous space, and the clothes do the talking.'],
+    ],
+    journey: {
+      title: 'From first look to fitting',
+      intro: 'The client path, as designed. Tap a step to see the screen.',
+      steps: [
+        { label: 'Arrive', text: 'The house introduces itself with two actions: view the collection or book a fitting.', image: '/images/screens/folu-atelier/p0-d0.webp' },
+        { label: 'Browse by moment', text: 'Pieces are grouped by occasion, with price on request rather than a cart.', image: '/images/screens/folu-atelier/p0-d3.webp' },
+        { label: 'See a piece', text: 'Each piece page covers occasion, fabric and fit, with enquiry and fitting actions.', image: '/images/screens/folu-atelier/p5-d0.webp' },
+        { label: 'Meet the atelier', text: 'The story and craft that justify a bespoke price.', image: '/images/screens/folu-atelier/p2-d0.webp' },
+        { label: 'Book', text: 'A short fitting request that continues on WhatsApp.', image: '/images/screens/folu-atelier/p3-d0.webp' },
+      ],
+    },
+    decisions: [
+      { title: 'A house, not a shop', text: 'There’s no cart anywhere. The two primary actions, view the collection and book a fitting, mirror how a client is welcomed in person.', tradeoff: 'No instant sales, which is right for made-to-measure work.', image: '/images/screens/folu-atelier/p0-d0.webp', caption: 'The house of native, bridal and owambe.' },
+      { title: 'Browse by moment', text: 'Collections are grouped by occasion (bespoke, native, bridal, owambe), because clients think about the day before the garment.', tradeoff: 'Less filtering by garment type, offset by search on the collection page.', image: '/images/screens/folu-atelier/p0-d3.webp', caption: 'Dressed for every moment.' },
+      { title: 'Price on request, with a reason', text: 'Piece pages say “price on request” or “by appointment” and explain why: every piece is made to measure. Then they offer WhatsApp or a fitting.', tradeoff: 'Some visitors want a number. The page earns the conversation instead.', image: '/images/screens/folu-atelier/p5-d1.webp', caption: 'Enquire on WhatsApp or book a fitting.' },
+      { title: 'A private Studio for the owner', text: 'A separate, signed-in Studio lets the owner add and update pieces without touching code.', tradeoff: 'A second interface to design and maintain, in exchange for a site that stays current.', image: '/images/screens/folu-atelier/p4-d0.webp', caption: 'Studio sign-in.' },
+    ],
     screens: [
       { flow: 'The House', icon: 'home', note: 'A house, not a shop. Two actions, view the collection or book a fitting, then collections by occasion and the atelier’s story.', items: [
         { src: `/images/screens/folu-atelier/p0-d0.webp`, caption: 'Hero: the house of native, bridal and owambe' },
@@ -1402,8 +1577,16 @@ export const cases = [
         { src: `/images/screens/folu-atelier/p4-m0.webp`, caption: 'Mobile studio sign-in', mobile: true },
       ] },
     ],
-    outcome: ['A live brand site and owner studio.'],
-    reflection: ['Luxury is mostly restraint.'],
+    gallery: [{ src: `${C}/folu-occasions.webp`, caption: 'Dressed for every moment.' }, { src: `${C}/folu-atelier.webp`, caption: 'The atelier story.' }],
+    outcome: [
+      'A live brand site and owner studio. The House presents collections by occasion with dedicated piece pages, and every route leads to a fitting or a WhatsApp conversation.',
+      'The owner can keep the collection current through the Studio, so the site reflects the atelier’s latest work.',
+    ],
+    reflection: [
+      'Luxury is mostly restraint. The hardest decisions were about what to leave out.',
+      'Removing the cart was the boldest choice, and the one that made the site feel most like the real atelier.',
+    ],
+    next: ['Track fitting requests and WhatsApp enquiries per piece.', 'Add appointment scheduling with available fitting slots.', 'Run a performance pass on image-heavy pages for mobile data.'],
     tools: ['Figma', 'HTML', 'CSS', 'JavaScript'],
   },
 
@@ -1417,15 +1600,52 @@ export const cases = [
     accent: '#EF4444',
     cover: `${V}/oluwakemi.webp`,
     live: 'https://oluwakemi-alex-portfolio.vercel.app/',
-    facts: [['Role', 'Lead Designer & developer'], ['Type', 'Personal brand site'], ['Platform', 'Responsive web'], ['Pages', '5']],
-    tldr: { problem: 'A support professional’s value is hard to make tangible to remote hiring managers.', approach: 'A one-line promise, four owned services and proof from past roles.', outcome: 'A live five-page site with an animation layer.' },
-    overview: ['Oluwakemi supports founders and remote teams with inboxes, calendars, recruitment, content and admin.'],
-    role: 'I designed and built the full site, including its animation layer.',
-    decisions: [
-      { title: 'Services as ownership', text: '“What I take off your plate” frames each service as responsibility transferred.', image: `${C}/oluwakemi-services.webp`, caption: 'Services.' },
-      { title: 'Proof, not promises', text: 'Results from previous roles as large, scannable numbers.', image: `${C}/oluwakemi-proof.webp`, caption: 'Results.' },
+    facts: [['Role', 'Lead Designer & developer'], ['Type', 'Personal brand site'], ['Platform', 'Responsive web'], ['Format', 'Single editorial page']],
+    glance: [['4', 'Services, each owned end to end'], ['4', 'Proof points from past roles'], ['3', 'Steps to start working together'], ['1', 'Page, read like a conversation']],
+    tldr: { problem: 'A virtual assistant’s value is hard to make tangible to remote hiring managers, who skim dozens of profiles that all promise to be “organised”.', approach: 'I built the page around one promise, “the calm behind a busy desk”, then four services framed as ownership, proof from past roles, a three-step start and an easy enquiry.', outcome: 'A live, single-page editorial site with a quiet-luxury look, designed to win remote and part-time roles.' },
+    overview: [
+      'Oluwakemi supports founders and remote teams with inboxes, calendars, recruitment, content and admin. The site’s job is to make that support feel real and trustworthy before the first call.',
+      'Instead of a list of tasks, the page reads like a conversation: who Oluwakemi is, what Oluwakemi takes off your plate, the evidence, how working together starts, and how to get in touch.',
     ],
-    gallery: [{ src: `${C}/oluwakemi-mobile.webp`, mobile: true, caption: 'Mobile home.' }],
+    role: 'As lead designer and developer, I designed and built the site: positioning, copy structure, art direction, motion and front end.',
+    constraints: [
+      'Hiring managers skim, so the value must land in the first screen.',
+      'Claims need proof. Every service needs evidence, not adjectives.',
+      'It must feel premium but personal, not like an agency.',
+      'It has to work well on phones, where many links are first opened.',
+    ],
+    users: [
+      { name: 'Startup founder', icon: 'rocket_launch', goal: 'Hand off inbox, calendar and admin to someone reliable.', pain: 'Has been let down by assistants who need managing.' },
+      { name: 'Remote team lead', icon: 'groups', goal: 'Find part-time support for recruitment and operations.', pain: 'Profiles all sound the same, with no evidence.' },
+    ],
+    process: [
+      { phase: '01', title: 'Position', summary: 'Found the one promise that sets Oluwakemi apart: calm, reliable systems that free up attention.', activities: ['Positioning workshop', 'Headline options', 'Tone of voice'], output: 'Promise and voice' },
+      { phase: '02', title: 'Structure the story', summary: 'Ordered the page as a conversation, from promise to proof to next step.', activities: ['Section order', 'Services as ownership', 'Proof points'], output: 'Page outline' },
+      { phase: '03', title: 'Art direction', summary: 'A quiet-luxury editorial look: warm neutrals, serif display type and a terracotta accent.', activities: ['Type pairing', 'Colour and texture', 'Portrait treatment'], output: 'Visual language' },
+      { phase: '04', title: 'Build', summary: 'Built a responsive single page with subtle motion and an enquiry form.', activities: ['Front-end build', 'Motion layer', 'Responsive QA'], output: 'Live site' },
+    ],
+    principles: [
+      ['One promise, everywhere', '“The calm behind a busy desk” shapes every section.'],
+      ['Ownership, not tasks', 'Services describe what you hand over, not what gets done.'],
+      ['Proof, not promises', 'Numbers from past roles sit next to the services they prove.'],
+    ],
+    journey: {
+      title: 'From first impression to first message',
+      intro: 'The page as a hiring manager reads it. Tap a step to see the screen.',
+      steps: [
+        { label: 'Promise', text: 'The hero states the promise, shows availability and gives two clear actions.', image: '/images/screens/oluwakemi/p0-d0.webp' },
+        { label: 'Who', text: 'A short, personal about section: calm systems, clear updates and nothing slipping.', image: '/images/screens/oluwakemi/p0-d1.webp' },
+        { label: 'What & proof', text: 'Four services owned end to end, with proof numbers from past roles beneath them.', image: '/images/screens/oluwakemi/p0-d2.webp' },
+        { label: 'How it starts', text: 'Three simple steps: a short conversation, systems set up, then you get your time back.', image: '/images/screens/oluwakemi/p0-d3.webp' },
+        { label: 'Get in touch', text: 'An enquiry form that asks what’s on your plate, next to the reasons to work together.', image: '/images/screens/oluwakemi/p0-d4.webp' },
+      ],
+    },
+    decisions: [
+      { title: 'Services as ownership', text: '“How I can take work off your plate” frames each service as responsibility transferred, which is what a busy founder is really buying.', tradeoff: 'Fewer services listed, each described more deeply.', image: '/images/screens/oluwakemi/p0-d2.webp', caption: 'Four services, owned end to end.' },
+      { title: 'Proof next to the promise', text: 'Results from previous roles, like visibility growth and zero double-bookings, appear as large, scannable numbers right below the services.', tradeoff: 'Only claims that can be backed up are used.', image: '/images/screens/oluwakemi/p0-d2.webp', caption: 'Proof points from past roles.' },
+      { title: 'Make starting feel easy', text: 'A three-step “simple to begin, easy to keep” section removes the fear that onboarding an assistant is a project in itself.', tradeoff: 'One more section, which answers the last objection before the form.', image: '/images/screens/oluwakemi/p0-d3.webp', caption: 'Simple to begin, easy to keep.' },
+      { title: 'One page, not five', text: 'The redesign moved from separate pages to one editorial page, so a skimming reader gets the full story in a single scroll.', tradeoff: 'Less room per topic, offset by tight writing.', image: '/images/screens/oluwakemi/p0-d0.webp', caption: 'The calm behind a busy desk.' },
+    ],
     screens: [
       { flow: 'Desktop', icon: 'desktop_windows', note: 'One calm, editorial page that reads like a conversation: the promise, who she is, what she takes off your plate, proof, how it starts and how to reach her.', items: [
         { src: `/images/screens/oluwakemi/p0-d0.webp`, caption: 'Hero: the calm behind a busy desk' },
@@ -1442,8 +1662,16 @@ export const cases = [
         { src: `/images/screens/oluwakemi/p0-m3.webp`, caption: 'Services on mobile', mobile: true },
       ] },
     ],
-    outcome: ['A live, five-page portfolio site.'],
-    reflection: ['Positioning first; every section followed from the promise.'],
+    gallery: [{ src: `${C}/oluwakemi-mobile.webp`, mobile: true, caption: 'Mobile home.' }],
+    outcome: [
+      'A live, single-page editorial site that presents Oluwakemi as a calm, reliable remote partner, with services, proof, process and an enquiry form in one scroll.',
+      'The quiet-luxury art direction makes administrative support feel like the premium service it is.',
+    ],
+    reflection: [
+      'Positioning came first. Every section followed from the promise, which made the copy far easier to write.',
+      'Moving to a single page was a reminder that fewer pages often means a clearer story.',
+    ],
+    next: ['Track enquiries per section to learn which proof points convert.', 'Add short testimonials from founders Oluwakemi has supported, with consent.', 'Add a downloadable one-page CV for recruiters.'],
     tools: ['Figma', 'HTML', 'CSS', 'JavaScript'],
   },
 
@@ -1460,7 +1688,7 @@ export const cases = [
     live: '/',
     liveLabel: 'You are here',
     facts: [['Role', 'Lead Designer & developer'], ['Stack', 'React · Motion · Vite'], ['Platform', 'Responsive web'], ['Accessibility', 'Keyboard · screen readers · reduced motion']],
-    glance: [['14', 'In-depth case studies'], ['45 → 1.4', 'MB of images after optimisation'], ['29', 'Automated interaction checks'], ['3s', 'Automatic launch, skippable']],
+    glance: [['15', 'In-depth case studies'], ['375', 'Product screens, curated by flow'], ['29', 'Automated interaction checks'], ['3s', 'Automatic launch, skippable']],
     tldr: {
       problem: 'My previous portfolio was a static, gold-on-black template: it looked like many others, some sections rendered blank, case studies linked off-site, and nothing showed how I think.',
       approach: 'I treated it as a product: researched reference portfolios, set a design direction, built a token-based system in React, designed motion with restraint and wrote in-site case studies for every project — then iterated on feedback.',
@@ -1514,8 +1742,8 @@ export const cases = [
     decisions: [
       { title: 'Make the launch automatic', text: 'The first version asked visitors to hold a button to enter. It was memorable, but a recruiter shouldn’t have to work out how to get in — so the launch now plays for three seconds and opens the site itself, with any input skipping it.', tradeoff: 'Less interactivity, in exchange for zero confusion.', image: `${C}/portfolio-intro.webp`, caption: 'Automatic particle launch.' },
       { title: 'One case-study framework for every project', text: 'Every project follows the same structure, so recruiters learn the pattern once and can compare work quickly — with interactive process and journey sections for those who want depth.', tradeoff: 'Less freedom per project, more consistency for the reader.', image: `${C}/portfolio-casejourney.webp`, caption: 'Journey stepper inside a case study.' },
-      { title: 'A signature that says “designer”', text: 'The “Aa” seal is my initials and the type-specimen symbol designers know, set in the same serif as the site’s italic accents and drawn as vector shapes so it renders identically everywhere.', image: `${C}/portfolio-about.webp`, caption: 'White wave panel with the About story.' },
-      { title: 'Template-inspired, not template-copied', text: 'Reference portfolios set the bar for atmosphere — floating skill cards, wave sections, a horizontal journey — but every section was rebuilt around my real content and evidence.', image: `${C}/portfolio-skills.webp`, caption: 'Floating skill cards with evidence, not percentages.' },
+      { title: 'A signature that says “designer”', text: 'The “Aa” seal is my initials and the type-specimen symbol designers know, set in the same serif as the site’s italic accents and drawn as vector shapes so it renders identically everywhere.', tradeoff: 'A custom mark takes longer to design than a wordmark, but it makes the site recognisable.', image: `${C}/portfolio-about.webp`, caption: 'White wave panel with the About story.' },
+      { title: 'Template-inspired, not template-copied', text: 'Reference portfolios set the bar for atmosphere — floating skill cards, wave sections, a horizontal journey — but every section was rebuilt around my real content and evidence.', tradeoff: 'Slower than using the template as-is, but the result is mine and fits my content.', image: `${C}/portfolio-skills.webp`, caption: 'Floating skill cards with evidence, not percentages.' },
     ],
     gallery: [
       { src: `${C}/portfolio-journey.webp`, caption: 'Career journey that draws itself on scroll.' },
@@ -1565,9 +1793,9 @@ export const cases = [
         { src: `/images/screens/portfolio/contact-m1.webp`, caption: 'Mobile links and form', mobile: true },
       ] },
     ],
-    outcome: ['A fast, accessible React portfolio with 15 interactive case studies, a signature identity and a motion system that respects reduced-motion settings — verified by 29 automated checks with no layout overflow on phones.', 'Images went from roughly 45 MB to 1.4 MB, so the site loads quickly even on mobile data.'],
-    reflection: ['Designing for myself was the hardest brief. It forced me to make the same cuts I ask clients to make — and to drop ideas I liked, like the hold-to-enter intro, when they didn’t serve the user.'],
-    next: ['Add measured research findings to every case study.', 'Review analytics to see which case studies recruiters open most.'],
+    outcome: ['A fast, accessible React portfolio with 15 interactive case studies, a signature identity and a motion system that respects reduced-motion settings — verified by 29 automated checks with no layout overflow on phones.', 'Every image is compressed WebP and lazy-loaded. The original image set went from roughly 45 MB to 1.4 MB, and the 375 product screens added since load only when a flow is opened.'],
+    reflection: ['Designing for myself was the hardest brief. It forced me to make the same cuts I ask clients to make — and to drop ideas I liked, like the hold-to-enter intro, when they didn’t serve the user.', 'Holding every case study to one structure made my own work easier to judge, and showed me where a project needed more evidence.'],
+    next: ['Add measured research findings to every case study.', 'Review analytics to see which case studies recruiters open most.', 'Add a dark/light preference toggle and test contrast across both.'],
     tools: ['React', 'Motion', 'Vite', 'Figma', 'Playwright'],
   },
 ];

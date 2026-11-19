@@ -533,7 +533,7 @@ export default function CaseStudy() {
               <section id="screens" className="case-section">
                 <Eyebrow>{`${num('screens')} · All screens`}</Eyebrow>
                 <Reveal as="h2" className="case-h2">Every screen, <span className="dim">every state.</span></Reveal>
-                <Reveal as="p" className="case-lead">{`All ${c.screens.reduce((n, f) => n + f.items.length, 0)} screens from the prototype, grouped by flow. That includes the empty, loading, offline and failure states. Pick a flow, then open any screen to view it full size.`}</Reveal>
+                <Reveal as="p" className="case-lead">{c.screensIntro || `${c.screens.reduce((n, f) => n + f.items.length, 0)} screens, grouped by flow. Pick a flow, then open any screen to view it full size.`}</Reveal>
                 <Reveal><ScreenLibrary flows={c.screens} onOpen={openSrc} /></Reveal>
               </section>
             )}

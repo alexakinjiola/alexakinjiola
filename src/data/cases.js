@@ -1374,9 +1374,8 @@ export const cases = [
     ],
     gallery: [],
     screens: [
-      { flow: 'Mobile & web', icon: 'shopping_bag', note: 'Creatifff connects shoppers with designers across mobile and web. These views come from the project’s case-study board.', items: [
+      { flow: 'Mobile & web', icon: 'shopping_bag', note: 'Creatifff connects shoppers with designers across mobile and web. The board shows the app and the web landing page together; the two category screens are shown at their original export size.', items: [
         { src: `/images/creatifff.webp`, caption: 'Case-study board: mobile app and web' },
-        { src: `/images/cases/creatifff-web.webp`, caption: 'Web landing: quality, elegance and creativity' },
         { src: `/images/cases/creatifff-accessories.webp`, caption: 'Accessories category', mobile: true },
         { src: `/images/cases/creatifff-others.webp`, caption: 'Others category: fragrance and fashion', mobile: true },
       ] },

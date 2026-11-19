@@ -769,3 +769,17 @@ html, body { overflow-x: clip; }
 @media (max-width: 560px) { .screen-grid-mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem .75rem; } }
 @media (max-width: 899px) { .screen-tabs { mask-image: linear-gradient(90deg, #000 85%, transparent); } }
 @media (min-width: 900px) { .screen-tabs { flex-wrap: wrap; border-radius: 26px; overflow: visible; } }
+
+/* ── Image integrity: every screen keeps its real aspect ratio and is never enlarged ── */
+.shot { align-items: center; }
+.shot figcaption { align-self: stretch; }
+.shot-frame { width: fit-content; max-width: 100%; margin-inline: auto; }
+.shot-frame img { width: auto; max-width: 100%; height: auto; margin-inline: auto; object-fit: unset; aspect-ratio: auto; }
+.shot-mobile .shot-frame img { max-height: 620px; object-fit: unset; }
+.film .shot-frame img { max-height: 360px; object-fit: unset; }
+.film-mobile .shot-frame img { max-height: 480px; }
+.screen-grid { align-items: start; }
+.screen-grid-desktop .shot-frame img { aspect-ratio: auto; object-fit: unset; background: none; }
+.screen-grid .shot-mobile .shot-frame img { aspect-ratio: auto; max-height: 560px; }
+.case-cover-frame { display: grid; place-items: center; }
+.case-cover-frame img { width: auto; max-width: 100%; height: auto; max-height: 820px; aspect-ratio: auto; object-fit: unset; }

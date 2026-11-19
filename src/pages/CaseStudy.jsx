@@ -198,14 +198,19 @@ function ScreenLibrary({ flows, onOpen }) {
       </div>
       <AnimatePresence mode="wait">
         <motion.div key={i} id="flow-panel" role="tabpanel" aria-labelledby={`flow-${i}`} className="screen-panel" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35, ease }}>
-          <p className="screen-panel-note">{f.note}</p>
-          <ul className="screen-grid">
-            {f.items.map((s, k) => (
-              <motion.li key={s.src} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease, delay: Math.min(k * 0.04, 0.4) }}>
-                <Shot src={s.src} caption={s.caption} mobile onOpen={onOpen} />
-              </motion.li>
-            ))}
-          </ul>
+          {f.note && <p className="screen-panel-note">{f.note}</p>}
+          {[['desktop', f.items.filter((s) => !(s.mobile ?? f.mobile))], ['mobile', f.items.filter((s) => s.mobile ?? f.mobile)]].map(([kind, list], g, all) => list.length > 0 && (
+            <div key={kind} className="screen-group">
+              {all[0][1].length > 0 && all[1][1].length > 0 && <p className="screen-group-label mono"><Icon name={kind === 'mobile' ? 'smartphone' : 'desktop_windows'} size={16} />{kind === 'mobile' ? 'Mobile' : 'Desktop'} · {list.length}</p>}
+              <ul className={`screen-grid screen-grid-${kind}`}>
+                {list.map((s, k) => (
+                  <motion.li key={s.src} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease, delay: Math.min(k * 0.04, 0.4) }}>
+                    <Shot src={s.src} caption={s.caption} mobile={kind === 'mobile'} onOpen={onOpen} />
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </motion.div>
       </AnimatePresence>
     </div>
@@ -299,7 +304,7 @@ export default function CaseStudy() {
     const add = (src, caption) => { if (src && !list.find((x) => x.src === src)) list.push({ src, caption }); };
     c.journey?.steps.forEach((s) => add(s.image, s.label));
     c.decisions?.forEach((d) => add(d.image, d.caption));
-    c.gallery?.forEach((g) => add(g.src, g.caption));
+    if (!c.screens?.length) c.gallery?.forEach((g) => add(g.src, g.caption));
     c.screens?.forEach((f) => f.items.forEach((s) => add(s.src, s.caption)));
     return list;
   }, [c]);
@@ -533,7 +538,7 @@ export default function CaseStudy() {
               </section>
             )}
 
-            {c.gallery?.length > 0 && (
+            {!c.screens?.length && c.gallery?.length > 0 && (
               <section className="case-section" aria-label="More screens">
                 <p className="footer-label">More screens · drag or use the arrows</p>
                 <Reveal><Filmstrip items={c.gallery} onOpen={openSrc} /></Reveal>

@@ -164,7 +164,7 @@ export const cases = [
       },
     ],
     screens: [
-      { flow: 'Onboarding & KYC', icon: 'how_to_reg', note: 'Seven steps from phone number to Face ID, plus the edge cases: a recycled SIM, a BVN/NIN name mismatch and a sign-in lockout. Each one has a clear way forward.', items: [
+      { flow: 'Onboarding & KYC', icon: 'how_to_reg', note: 'Seven steps from phone number to Face ID, plus the edge cases: a recycled SIM, a BVN/NIN name mismatch and a sign-in lockout. Each one has a clear way forward.', mobile: true, items: [
         { src: `${C}/tabbas-welcome.webp`, caption: 'Welcome: the promise, before any form' },
         { src: `${C}/tabbas-phone.webp`, caption: 'Your phone number becomes your account number' },
         { src: `${C}/tabbas-otp.webp`, caption: 'SMS code, plus a SIM-swap check' },
@@ -179,7 +179,7 @@ export const cases = [
         { src: `${C}/tabbas-login.webp`, caption: 'Returning user sign-in' },
         { src: `${C}/tabbas-lockout.webp`, caption: 'Lockout: paused, with a selfie reset' },
       ] },
-      { flow: 'Home & activity', icon: 'home', note: 'A calm home screen with no promos. The balance comes with its status, and a transfer in flight is pinned live. Loading, offline, empty and frozen states are all designed.', items: [
+      { flow: 'Home & activity', icon: 'home', note: 'A calm home screen with no promos. The balance comes with its status, and a transfer in flight is pinned live. Loading, offline, empty and frozen states are all designed.', mobile: true, items: [
         { src: `${C}/tabbas-home.webp`, caption: 'Home: balance with status and a live transfer' },
         { src: `${C}/tabbas-notifications.webp`, caption: 'Notifications, grouped by what needs you' },
         { src: `${C}/tabbas-activity.webp`, caption: 'Activity with in, out and reversed filters' },
@@ -191,7 +191,7 @@ export const cases = [
         { src: `${C}/tabbas-activity-empty.webp`, caption: 'Empty activity' },
         { src: `${C}/tabbas-home-frozen.webp`, caption: 'Home while the account is frozen' },
       ] },
-      { flow: 'Send & guarantee', icon: 'arrow_outward', note: 'The core promise in practice: name check, fee preview, scam question, live tracker, and every way a transfer can end.', items: [
+      { flow: 'Send & guarantee', icon: 'arrow_outward', note: 'The core promise in practice: name check, fee preview, scam question, live tracker, and every way a transfer can end.', mobile: true, items: [
         { src: `${C}/tabbas-send.webp`, caption: 'Send: recent payees and ways to pay' },
         { src: `${C}/tabbas-new-recipient.webp`, caption: 'New recipient, name confirmed by their bank' },
         { src: `${C}/tabbas-amount.webp`, caption: 'Amount, with fee, stamp duty and arrival time' },
@@ -206,7 +206,7 @@ export const cases = [
         { src: `${C}/tabbas-not-found.webp`, caption: 'Account not found, and nothing was sent' },
         { src: `${C}/tabbas-contacts.webp`, caption: 'Contacts already on Tabbas' },
       ] },
-      { flow: 'Receive & verify', icon: 'qr_code_2', note: 'For the person being paid: a QR code, a request link and the live receipt that ends fake alerts at the counter.', items: [
+      { flow: 'Receive & verify', icon: 'qr_code_2', note: 'For the person being paid: a QR code, a request link and the live receipt that ends fake alerts at the counter.', mobile: true, items: [
         { src: `${C}/tabbas-receive.webp`, caption: 'Receive: QR code and account number' },
         { src: `${C}/tabbas-scan.webp`, caption: 'Scan a customer’s receipt to verify it' },
         { src: `${C}/tabbas-verified.webp`, caption: 'Verified with the receiving bank' },
@@ -214,14 +214,14 @@ export const cases = [
         { src: `${C}/tabbas-trader-mode.webp`, caption: 'Trader mode reads payments aloud' },
         { src: `${C}/tabbas-request.webp`, caption: 'Request a specific amount' },
       ] },
-      { flow: 'Cards', icon: 'credit_card', note: 'A virtual card with controls that matter: an instant freeze, details shown after Face ID, and limits that are quick to lower but slow to raise.', items: [
+      { flow: 'Cards', icon: 'credit_card', note: 'A virtual card with controls that matter: an instant freeze, details shown after Face ID, and limits that are quick to lower but slow to raise.', mobile: true, items: [
         { src: `${C}/tabbas-cards.webp`, caption: 'Cards: freeze, details, limits' },
         { src: `${C}/tabbas-card-details.webp`, caption: 'Card details, hidden again after 60 s' },
         { src: `${C}/tabbas-card-frozen.webp`, caption: 'Card frozen, account unaffected' },
         { src: `${C}/tabbas-card-limits.webp`, caption: 'Channel controls and daily limits' },
         { src: `${C}/tabbas-physical-card.webp`, caption: 'Order a physical card' },
       ] },
-      { flow: 'Bills', icon: 'receipt', note: 'Airtime, data, electricity and TV, with the same guarantee. No betting top-ups or loan offers.', items: [
+      { flow: 'Bills', icon: 'receipt', note: 'Airtime, data, electricity and TV, with the same guarantee. No betting top-ups or loan offers.', mobile: true, items: [
         { src: `${C}/tabbas-bills.webp`, caption: 'Pay bills, with saved billers' },
         { src: `${C}/tabbas-airtime.webp`, caption: 'Airtime with the fee shown' },
         { src: `${C}/tabbas-electricity.webp`, caption: 'Electricity: meter verified first' },
@@ -230,20 +230,20 @@ export const cases = [
         { src: `${C}/tabbas-data.webp`, caption: 'Data plans' },
         { src: `${C}/tabbas-cable-tv.webp`, caption: 'Cable TV renewal' },
       ] },
-      { flow: 'Security', icon: 'shield_lock', note: 'Calm security: a protection score, a trusted contact who can’t touch your money, new-device alerts and a one-tap freeze.', items: [
+      { flow: 'Security', icon: 'shield_lock', note: 'Calm security: a protection score, a trusted contact who can’t touch your money, new-device alerts and a one-tap freeze.', mobile: true, items: [
         { src: `${C}/tabbas-security.webp`, caption: 'Security: 4 of 5 protections on' },
         { src: `${C}/tabbas-trusted-contact.webp`, caption: 'Trusted contact and their limits' },
         { src: `${C}/tabbas-devices.webp`, caption: 'New device alert, sign it out' },
         { src: `${C}/tabbas-frozen.webp`, caption: 'Account frozen, case opened' },
       ] },
-      { flow: 'Help & cases', icon: 'support_agent', note: 'Support with an owner: a named person, a deadline, a timeline and a chat, plus restrictions explained in plain words.', items: [
+      { flow: 'Help & cases', icon: 'support_agent', note: 'Support with an owner: a named person, a deadline, a timeline and a chat, plus restrictions explained in plain words.', mobile: true, items: [
         { src: `${C}/tabbas-help.webp`, caption: 'Help: open case and our promises' },
         { src: `${C}/tabbas-new-case.webp`, caption: 'Open a case in three taps' },
         { src: `${C}/tabbas-case.webp`, caption: 'Case owner, deadline and timeline' },
         { src: `${C}/tabbas-restriction.webp`, caption: 'Account limit explained' },
         { src: `${C}/tabbas-chat.webp`, caption: 'Chat with the case owner' },
       ] },
-      { flow: 'Profile & limits', icon: 'person', note: 'Tiers explained, statements on demand, themes and languages, and an address check that lifts limits in two minutes.', items: [
+      { flow: 'Profile & limits', icon: 'person', note: 'Tiers explained, statements on demand, themes and languages, and an address check that lifts limits in two minutes.', mobile: true, items: [
         { src: `${C}/tabbas-profile.webp`, caption: 'Profile' },
         { src: `${C}/tabbas-limits.webp`, caption: 'KYC tiers and limits' },
         { src: `${C}/tabbas-statements.webp`, caption: 'Statements in PDF or Excel' },
@@ -377,6 +377,51 @@ export const cases = [
       { src: `${C}/trustbridge-admin-overview.webp`, caption: 'Admin platform overview.' },
       { src: `${C}/trustbridge-admin-matching.webp`, caption: 'AI matching oversight.' },
       { src: `${C}/trustbridge-profile.webp`, caption: 'Seeker professional profile.' },
+    ],
+    screens: [
+      { flow: 'Public site', icon: 'public', note: 'The marketing site speaks to both sides of the hire, so seekers and employers each see the hours promise before they sign up.', items: [
+        { src: `/images/screens/trustbridge/public-00-home.webp`, caption: 'Home: one product, two audiences' },
+        { src: `/images/screens/trustbridge/public-forseekers.webp`, caption: 'For job seekers: hours shown before you apply' },
+        { src: `/images/screens/trustbridge/public-foremployers.webp`, caption: 'For employers: qualified people without the overhead' },
+        { src: `/images/screens/trustbridge/public-howitworks.webp`, caption: 'How it works, from profile to first shift' },
+        { src: `/images/screens/trustbridge/public-register.webp`, caption: 'Register: choose your path' },
+      ] },
+      { flow: 'Job seeker portal', icon: 'badge', note: 'Everything a student or migrant needs to find lawful work: a profile, a CV, eligibility and explainable matches.', items: [
+        { src: `/images/screens/trustbridge/seeker-01-trustbridge.webp`, caption: 'Dashboard: interviews, applications and hours left' },
+        { src: `/images/screens/trustbridge/seeker-02-international-student-80-profi.webp`, caption: 'Profile strength and personal details' },
+        { src: `/images/screens/trustbridge/seeker-03-recommended.webp`, caption: 'Recommended jobs with a match breakdown' },
+        { src: `/images/screens/trustbridge/seeker-04-cv.webp`, caption: 'CV upload and readiness checks' },
+        { src: `/images/screens/trustbridge/seeker-05-skills-qualifications.webp`, caption: 'Skills and qualifications' },
+        { src: `/images/screens/trustbridge/seeker-06-work-eligibility.webp`, caption: 'Work eligibility: 12 of 20 hours left' },
+        { src: `/images/screens/trustbridge/seeker-07-job-preferences.webp`, caption: 'Job preferences' },
+        { src: `/images/screens/trustbridge/seeker-08-settings.webp`, caption: 'Account settings' },
+        { src: `/images/screens/trustbridge/seeker-09-help.webp`, caption: 'Help and contact' },
+      ] },
+      { flow: 'Employer portal', icon: 'storefront', note: 'SME hiring without immigration expertise: verification, vacancies, explained candidates and a familiar applicant board.', items: [
+        { src: `/images/screens/trustbridge/employer-01-trustbridge.webp`, caption: 'Dashboard: what needs your attention' },
+        { src: `/images/screens/trustbridge/employer-02-verified-business.webp`, caption: 'Verified business profile' },
+        { src: `/images/screens/trustbridge/employer-03-vacancies.webp`, caption: 'Vacancies' },
+        { src: `/images/screens/trustbridge/employer-04-new.webp`, caption: 'Applicant board: new to offer' },
+        { src: `/images/screens/trustbridge/employer-05-recommended.webp`, caption: 'Recommended candidates, explained' },
+        { src: `/images/screens/trustbridge/employer-06-find-candidates.webp`, caption: 'Find candidates with filters' },
+        { src: `/images/screens/trustbridge/employer-07-recruitment-activity.webp`, caption: 'Recruitment activity' },
+        { src: `/images/screens/trustbridge/employer-08-verification.webp`, caption: 'Business verification centre' },
+        { src: `/images/screens/trustbridge/employer-09-settings.webp`, caption: 'Settings' },
+      ] },
+      { flow: 'Admin console', icon: 'admin_panel_settings', note: 'The trust the product promises is produced here: verification queues, matching oversight, analytics and an audit log.', items: [
+        { src: `/images/screens/trustbridge/admin-00-signin.webp`, caption: 'Admin sign-in' },
+        { src: `/images/screens/trustbridge/admin-01-trustbridge.webp`, caption: 'Platform overview' },
+        { src: `/images/screens/trustbridge/admin-02-job-seekers.webp`, caption: 'Job seekers' },
+        { src: `/images/screens/trustbridge/admin-03-employers.webp`, caption: 'Employers' },
+        { src: `/images/screens/trustbridge/admin-04-new.webp`, caption: 'Verification queue' },
+        { src: `/images/screens/trustbridge/admin-05-job-postings.webp`, caption: 'Job postings moderation' },
+        { src: `/images/screens/trustbridge/admin-06-applications.webp`, caption: 'Applications' },
+        { src: `/images/screens/trustbridge/admin-07-ai-matching.webp`, caption: 'AI matching oversight' },
+        { src: `/images/screens/trustbridge/admin-08-analytics.webp`, caption: 'Analytics' },
+        { src: `/images/screens/trustbridge/admin-09-reports.webp`, caption: 'Reports' },
+        { src: `/images/screens/trustbridge/admin-10-audit-log.webp`, caption: 'Audit log' },
+        { src: `/images/screens/trustbridge/admin-11-platform-settings.webp`, caption: 'Platform settings and eligibility rules' },
+      ] },
     ],
     outcome: [
       'TrustBridge exists as a complete, clickable product: a public site, a job-seeker portal, an employer portal and an internal admin console, designed as one system with shared foundations and a full library of empty, loading, error and restricted states.',

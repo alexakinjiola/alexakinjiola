@@ -715,6 +715,11 @@ html, body { overflow-x: clip; }
 .journey-stepper { margin-top: 2rem; }
 .case-grid-featured .case-cell-wide { grid-column: auto; }
 .case-grid-featured .case-card-lg .case-card-media { aspect-ratio: 16 / 10; }
+/* Odd number of featured cases: the lead one spans the row so the rest pair up */
+@media (min-width: 900px) {
+  .case-grid-featured > .case-cell-wide:nth-last-child(odd) { grid-column: 1 / -1; }
+  .case-grid-featured > .case-cell-wide:nth-last-child(odd) .case-card-lg .case-card-media { aspect-ratio: 16 / 7; }
+}
 .case-grid-featured .case-card-lg .case-card-body h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); }
 @media (min-width: 900px) {
   .glance { position: relative; left: auto; right: auto; bottom: auto; z-index: 2; margin: -4.5rem 4% 2.5rem; padding-inline: 0; }
@@ -740,3 +745,27 @@ html, body { overflow-x: clip; }
 .insight-change .icon { color: var(--case); }
 .insight-change span span { display: block; font-size: .6875rem !important; text-transform: uppercase; letter-spacing: .12em !important; color: var(--muted); }
 .research-badge { display: flex; width: max-content; max-width: 100%; margin: 0 0 1.25rem; }
+
+/* Screen library: every screen of a product, tabbed by flow */
+.screen-lib { margin-top: 1.75rem; }
+.screen-tabs { display: flex; gap: .4rem; overflow-x: auto; scrollbar-width: none; padding: .35rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); scroll-snap-type: x proximity; }
+.screen-tabs::-webkit-scrollbar { display: none; }
+.screen-tab { position: relative; flex: none; display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 1rem; border-radius: 999px; font-size: .9375rem; font-weight: 500; color: var(--muted); white-space: nowrap; scroll-snap-align: start; transition: color .25s; }
+.screen-tab > :not(.screen-tab-pill) { position: relative; z-index: 1; }
+.screen-tab:hover { color: var(--text); }
+.screen-tab.is-active { color: var(--bg); }
+.screen-tab:focus-visible { outline: 2px solid var(--case); outline-offset: 2px; }
+.screen-tab-pill { position: absolute; inset: 0; border-radius: inherit; background: var(--case); }
+.screen-tab-count { font-size: .75rem; padding: .1rem .45rem; border-radius: 999px; background: color-mix(in srgb, currentColor 14%, transparent); }
+.screen-panel-note { margin: 1.25rem 0 0; max-width: 62ch; color: var(--muted); }
+.screen-grid { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1.75rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); }
+.screen-grid-desktop { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 2rem 1.5rem; }
+.screen-grid-desktop .shot-frame img { aspect-ratio: 16 / 10; object-fit: contain; object-position: center top; background: var(--surface-2); }
+.screen-group + .screen-group { margin-top: 2.5rem; }
+.screen-group-label { display: inline-flex; align-items: center; gap: .4rem; margin: 1.75rem 0 -.5rem; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.screen-grid .shot-mobile { max-width: 100%; }
+.screen-grid .shot-mobile .shot-frame img { max-height: none; aspect-ratio: 600 / 1298; }
+.screen-grid figcaption { font-size: .75rem; line-height: 1.45; }
+@media (max-width: 560px) { .screen-grid-mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem .75rem; } }
+@media (max-width: 899px) { .screen-tabs { mask-image: linear-gradient(90deg, #000 85%, transparent); } }
+@media (min-width: 900px) { .screen-tabs { flex-wrap: wrap; border-radius: 26px; overflow: visible; } }

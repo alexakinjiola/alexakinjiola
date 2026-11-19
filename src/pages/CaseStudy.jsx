@@ -152,6 +152,71 @@ function ProcessExplorer({ process }) {
   );
 }
 
+/* ── Screen library: every screen, grouped by flow, in tabs ──────────── */
+function ScreenLibrary({ flows, onOpen }) {
+  const [i, setI] = useState(0);
+  const refs = useRef([]);
+  const f = flows[i];
+  const total = flows.reduce((n, x) => n + x.items.length, 0);
+  const moved = useRef(false);
+  useEffect(() => {
+    // keep the chosen tab visible in the scrolling bar, but never on first render (that would jump the page)
+    if (!moved.current) { moved.current = true; return; }
+    const tab = refs.current[i]; const bar = tab?.parentElement;
+    if (tab && bar) bar.scrollTo({ left: tab.offsetLeft - bar.clientWidth / 2 + tab.clientWidth / 2, behavior: 'smooth' });
+  }, [i]);
+  const onKey = (e) => {
+    let n = null;
+    if (e.key === 'ArrowRight') n = (i + 1) % flows.length;
+    if (e.key === 'ArrowLeft') n = (i - 1 + flows.length) % flows.length;
+    if (e.key === 'Home') n = 0;
+    if (e.key === 'End') n = flows.length - 1;
+    if (n !== null) { e.preventDefault(); setI(n); refs.current[n]?.focus(); }
+  };
+  return (
+    <div className="screen-lib">
+      <div className="screen-tabs" role="tablist" aria-label={`Screen library, ${total} screens in ${flows.length} flows`} onKeyDown={onKey} data-lenis-prevent-wheel>
+        {flows.map((x, k) => (
+          <button
+            key={x.flow}
+            ref={(el) => (refs.current[k] = el)}
+            type="button"
+            role="tab"
+            id={`flow-${k}`}
+            aria-selected={i === k}
+            aria-controls="flow-panel"
+            tabIndex={i === k ? 0 : -1}
+            className={`screen-tab${i === k ? ' is-active' : ''}`}
+            onClick={() => setI(k)}
+          >
+            {i === k && <motion.span layoutId="screen-tab-pill" className="screen-tab-pill" transition={{ type: 'spring', stiffness: 380, damping: 32 }} aria-hidden="true" />}
+            <Icon name={x.icon} size={18} />
+            <span>{x.flow}</span>
+            <span className="screen-tab-count mono">{x.items.length}</span>
+          </button>
+        ))}
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div key={i} id="flow-panel" role="tabpanel" aria-labelledby={`flow-${i}`} className="screen-panel" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35, ease }}>
+          {f.note && <p className="screen-panel-note">{f.note}</p>}
+          {[['desktop', f.items.filter((s) => !(s.mobile ?? f.mobile))], ['mobile', f.items.filter((s) => s.mobile ?? f.mobile)]].map(([kind, list], g, all) => list.length > 0 && (
+            <div key={kind} className="screen-group">
+              {all[0][1].length > 0 && all[1][1].length > 0 && <p className="screen-group-label mono"><Icon name={kind === 'mobile' ? 'smartphone' : 'desktop_windows'} size={16} />{kind === 'mobile' ? 'Mobile' : 'Desktop'} · {list.length}</p>}
+              <ul className={`screen-grid screen-grid-${kind}`}>
+                {list.map((s, k) => (
+                  <motion.li key={s.src} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease, delay: Math.min(k * 0.04, 0.4) }}>
+                    <Shot src={s.src} caption={s.caption} mobile={kind === 'mobile'} onOpen={onOpen} />
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 /* ── Journey stepper: steps on one side, the screen on the other ──────── */
 function Journey({ journey, onOpen }) {
   const [i, setI] = useState(0);
@@ -239,7 +304,8 @@ export default function CaseStudy() {
     const add = (src, caption) => { if (src && !list.find((x) => x.src === src)) list.push({ src, caption }); };
     c.journey?.steps.forEach((s) => add(s.image, s.label));
     c.decisions?.forEach((d) => add(d.image, d.caption));
-    c.gallery?.forEach((g) => add(g.src, g.caption));
+    if (!c.screens?.length) c.gallery?.forEach((g) => add(g.src, g.caption));
+    c.screens?.forEach((f) => f.items.forEach((s) => add(s.src, s.caption)));
     return list;
   }, [c]);
   const [viewer, setViewer] = useState(null);
@@ -262,6 +328,7 @@ export default function CaseStudy() {
     c.process?.length && ['process', 'Process'],
     c.journey && ['journey', 'Journey'],
     c.decisions?.length && ['decisions', 'Key decisions'],
+    c.screens?.length && ['screens', 'All screens'],
     ['outcome', 'Outcome'],
     ['reflection', 'Reflection'],
   ].filter(Boolean);
@@ -461,7 +528,17 @@ export default function CaseStudy() {
               </section>
             )}
 
-            {c.gallery?.length > 0 && (
+            {/* ── SCREEN LIBRARY ── */}
+            {c.screens?.length > 0 && (
+              <section id="screens" className="case-section">
+                <Eyebrow>{`${num('screens')} · All screens`}</Eyebrow>
+                <Reveal as="h2" className="case-h2">Every screen, <span className="dim">every state.</span></Reveal>
+                <Reveal as="p" className="case-lead">{c.screensIntro || `${c.screens.reduce((n, f) => n + f.items.length, 0)} screens, grouped by flow. Pick a flow, then open any screen to view it full size.`}</Reveal>
+                <Reveal><ScreenLibrary flows={c.screens} onOpen={openSrc} /></Reveal>
+              </section>
+            )}
+
+            {!c.screens?.length && c.gallery?.length > 0 && (
               <section className="case-section" aria-label="More screens">
                 <p className="footer-label">More screens · drag or use the arrows</p>
                 <Reveal><Filmstrip items={c.gallery} onOpen={openSrc} /></Reveal>

@@ -715,6 +715,11 @@ html, body { overflow-x: clip; }
 .journey-stepper { margin-top: 2rem; }
 .case-grid-featured .case-cell-wide { grid-column: auto; }
 .case-grid-featured .case-card-lg .case-card-media { aspect-ratio: 16 / 10; }
+/* Odd number of featured cases: the lead one spans the row so the rest pair up */
+@media (min-width: 900px) {
+  .case-grid-featured > .case-cell-wide:nth-last-child(odd) { grid-column: 1 / -1; }
+  .case-grid-featured > .case-cell-wide:nth-last-child(odd) .case-card-lg .case-card-media { aspect-ratio: 16 / 7; }
+}
 .case-grid-featured .case-card-lg .case-card-body h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); }
 @media (min-width: 900px) {
   .glance { position: relative; left: auto; right: auto; bottom: auto; z-index: 2; margin: -4.5rem 4% 2.5rem; padding-inline: 0; }

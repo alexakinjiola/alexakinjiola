@@ -1,0 +1,69 @@
+/* Tabbas tokens v0.1. Night is the default; add data-theme="forest" for Forest. */
+:root, [data-theme="night"] {
+  --tb-bg: #0A0C0B;
+  --tb-surface: #141816;
+  --tb-surface2: #1C211E;
+  --tb-line: #262C28;
+  --tb-text: #F3F5F1;
+  --tb-muted: #9AA39D;
+  --tb-accent: #D4F53C;
+  --tb-on-accent: #0A0C0B;
+  --tb-accent-text: #D4F53C;
+  --tb-accent-soft: rgba(212,245,60,0.14);
+  --tb-icon-tile: #1C211E;
+  --tb-hero-bg: radial-gradient(120% 100% at 0% 0%, #2B3A10 0%, #141816 62%);
+  --tb-hero-text: #F3F5F1;
+  --tb-hero-muted: #9AA39D;
+  --tb-hero-chip-bg: rgba(212,245,60,0.14);
+  --tb-hero-chip-text: #D4F53C;
+  --tb-danger: #FF7A59;
+  --tb-danger-text: #FF7A59;
+  --tb-danger-soft: rgba(255,122,89,0.13);
+  --tb-wait-text: #F5C451;
+  --tb-wait-soft: rgba(245,196,81,0.13);
+  --tb-nav-bg: #141816;
+  --tb-scrim: rgba(0,0,0,0.62);
+  --tb-confirm-bg: #D4F53C;
+  --tb-confirm-text: #0A0C0B;
+  --tb-confirm-muted: #3A4716;
+  --tb-check-bg: #0A0C0B;
+  --tb-check-color: #D4F53C;
+}
+[data-theme="forest"] {
+  --tb-bg: #F3F1EA;
+  --tb-surface: #FFFFFF;
+  --tb-surface2: #E3ECE5;
+  --tb-line: #E1DED4;
+  --tb-text: #0E1A15;
+  --tb-muted: #55615A;
+  --tb-accent: #0F3D2E;
+  --tb-on-accent: #FFFFFF;
+  --tb-accent-text: #0F3D2E;
+  --tb-accent-soft: #E3ECE5;
+  --tb-icon-tile: #E3ECE5;
+  --tb-hero-bg: #0F3D2E;
+  --tb-hero-text: #FFFFFF;
+  --tb-hero-muted: #B9D3C4;
+  --tb-hero-chip-bg: #D4F53C;
+  --tb-hero-chip-text: #0F3D2E;
+  --tb-danger: #B42318;
+  --tb-danger-text: #8E1B16;
+  --tb-danger-soft: #FBE4E1;
+  --tb-wait-text: #6E5400;
+  --tb-wait-soft: #FFF4CC;
+  --tb-nav-bg: #FFFFFF;
+  --tb-scrim: rgba(14,26,21,0.45);
+  --tb-confirm-bg: #0F3D2E;
+  --tb-confirm-text: #FFFFFF;
+  --tb-confirm-muted: #B9D3C4;
+  --tb-check-bg: #D4F53C;
+  --tb-check-color: #0F3D2E;
+}
+:root {
+  --tb-font-sans: "Geist", system-ui, sans-serif;
+  --tb-font-mono: "Geist Mono", ui-monospace, monospace;
+  --tb-radius-card: 22px;
+  --tb-radius-hero: 28px;
+  --tb-radius-pill: 999px;
+  --tb-target-min: 44px;
+}

@@ -860,7 +860,7 @@ export const cases = [
     tagline: 'A finance dashboard for freelancers and small businesses — designed so money questions have instant answers.',
     category: 'Fintech · Dashboard',
     accent: '#84CC16',
-    cover: '/images/paytrackr.webp',
+    cover: `${V}/paytrackr.webp`,
     live: 'https://paytrackr-invoice.vercel.app/',
     research: { summary: 'I combined user interviews, surveys, usability testing and competitive analysis to understand how freelancers and small businesses track invoices and payments. Between 45 and 50 participants across interviews, surveys and usability testing, alongside a competitive review.', methods: [{ name: 'User interviews', icon: 'forum', detail: 'Freelancers and small-business owners' }, { name: 'Surveys', icon: 'quiz', detail: 'People who bill clients' }, { name: 'Usability testing', icon: 'touch_app', detail: 'Dashboard and invoice flows' }, { name: 'Competitive analysis', icon: 'compare', detail: 'Invoicing and finance tools' }], insights: [{ finding: 'People couldn’t tell at a glance what was paid, pending or overdue.', change: 'Put status totals first on the dashboard, colour-coded, with no clicks needed.' }, { finding: 'Creating and chasing invoices took too many steps.', change: 'Reduced invoice tasks to a short, linear flow that only asks for what each step needs.' }] },
     researchLed: true,

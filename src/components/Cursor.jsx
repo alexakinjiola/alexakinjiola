@@ -1,21 +1,24 @@
-import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring, AnimatePresence, useReducedMotion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 
 /*
   Custom cursor for mouse users: a small dot plus a trailing ring.
   Elements with data-cursor="View" (etc.) expand the ring into a labelled pill.
   Touch devices and reduced-motion users keep the native cursor only.
+
+  Performance: pointer moves never touch React. The dot is moved inside the
+  event itself, so it stays glued to the pointer; the ring eases toward it in
+  one requestAnimationFrame loop that sleeps once it has caught up. React only
+  re-renders when the label actually changes.
 */
+const HOVER = '[data-cursor], a, button, [role="tab"], label, select, summary';
+
 export default function Cursor() {
   const reduce = useReducedMotion();
   const [enabled, setEnabled] = useState(false);
   const [label, setLabel] = useState('');
-  const [hover, setHover] = useState(false);
-  const [down, setDown] = useState(false);
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const rx = useSpring(x, { stiffness: 380, damping: 32, mass: 0.6 });
-  const ry = useSpring(y, { stiffness: 380, damping: 32, mass: 0.6 });
+  const dot = useRef(null);
+  const ring = useRef(null);
 
   useEffect(() => {
     const mq = window.matchMedia('(pointer: fine) and (hover: hover)');
@@ -27,41 +30,62 @@ export default function Cursor() {
 
   useEffect(() => {
     if (!enabled) return;
-    document.documentElement.classList.add('has-cursor');
-    const move = (e) => {
-      x.set(e.clientX); y.set(e.clientY);
-      const t = e.target.closest?.('[data-cursor], a, button, [role="tab"], label, select');
-      setHover(!!t);
-      setLabel(t?.closest('[data-cursor]')?.getAttribute('data-cursor') ?? '');
+    const root = document.documentElement;
+    root.classList.add('has-cursor');
+    const d = dot.current, r = ring.current;
+    const p = { x: -100, y: -100 }, q = { x: -100, y: -100 };
+    d.style.top = r.style.top = '0'; d.style.left = r.style.left = '0';
+    let raf = 0, lastTarget = null, lastLabel = '';
+
+    // centring lives in the same transform so a CSS minifier can never merge it away
+    const place = (el, x, y) => { el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`; };
+    const step = () => {
+      q.x += (p.x - q.x) * 0.5;
+      q.y += (p.y - q.y) * 0.5;
+      if (Math.abs(p.x - q.x) < 0.1 && Math.abs(p.y - q.y) < 0.1) { q.x = p.x; q.y = p.y; raf = 0; }
+      else raf = requestAnimationFrame(step);
+      place(r, q.x, q.y);
     };
-    const d = () => setDown(true);
-    const u = () => setDown(false);
-    const leave = () => { x.set(-100); y.set(-100); };
+    const wake = () => { if (!raf) raf = requestAnimationFrame(step); };
+
+    const move = (e) => {
+      p.x = e.clientX; p.y = e.clientY;
+      place(d, p.x, p.y);
+      wake();
+      // hover state only changes when the element under the pointer changes
+      if (e.target === lastTarget) return;
+      lastTarget = e.target;
+      const t = e.target.closest?.(HOVER);
+      r.classList.toggle('is-hover', !!t);
+      d.classList.toggle('is-hover', !!t);
+      const l = t?.closest('[data-cursor]')?.getAttribute('data-cursor') ?? '';
+      if (l !== lastLabel) { lastLabel = l; r.classList.toggle('has-label', !!l); setLabel(l); }
+    };
+    const down = () => { r.classList.add('is-down'); d.classList.add('is-down'); };
+    const up = () => { r.classList.remove('is-down'); d.classList.remove('is-down'); };
+    const leave = () => { p.x = p.y = -100; place(d, -100, -100); wake(); };
+
     window.addEventListener('pointermove', move, { passive: true });
-    window.addEventListener('pointerdown', d);
-    window.addEventListener('pointerup', u);
+    window.addEventListener('pointerdown', down, { passive: true });
+    window.addEventListener('pointerup', up, { passive: true });
     document.addEventListener('pointerleave', leave);
     return () => {
-      document.documentElement.classList.remove('has-cursor');
+      cancelAnimationFrame(raf);
+      root.classList.remove('has-cursor');
       window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerdown', d);
-      window.removeEventListener('pointerup', u);
+      window.removeEventListener('pointerdown', down);
+      window.removeEventListener('pointerup', up);
       document.removeEventListener('pointerleave', leave);
     };
-  }, [enabled, x, y]);
+  }, [enabled]);
 
   if (!enabled) return null;
-  const size = label ? 88 : hover ? 52 : 34;
 
   return (
     <div className="cursor" aria-hidden="true">
-      <motion.div className="cursor-dot" style={{ x, y }} animate={{ scale: hover ? 0 : down ? 0.6 : 1 }} />
-      <motion.div
-        className={`cursor-ring${label ? ' has-label' : ''}`}
-        style={{ x: rx, y: ry }}
-        animate={{ width: size, height: size, scale: down ? 0.85 : 1 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-      >
+      <div ref={dot} className="cursor-dot" />
+      {/* className stays constant: every state class is toggled directly, so React re-renders can't wipe them */}
+      <div ref={ring} className="cursor-ring">
         <AnimatePresence>
           {label && (
             <motion.span key={label} initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.6 }}>
@@ -69,7 +93,7 @@ export default function Cursor() {
             </motion.span>
           )}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </div>
   );
 }

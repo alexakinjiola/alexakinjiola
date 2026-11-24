@@ -239,14 +239,23 @@ p.metric-source { margin-top: auto; padding-top: .75rem; color: var(--muted-2) !
 .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
 .has-cursor input, .has-cursor textarea { cursor: text; }
 .has-cursor select { cursor: pointer; }
-.cursor { position: fixed; inset: 0; pointer-events: none; z-index: 1001; }
-.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; border-radius: 50%; translate: -50% -50%; }
-.cursor-dot { width: 7px; height: 7px; background: var(--accent); }
-.cursor-ring {
-  display: grid; place-items: center; border: 1px solid rgba(237,237,239,.45);
-  mix-blend-mode: difference; font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+.cursor { position: fixed; inset: 0; pointer-events: none; z-index: 1001; contain: strict; }
+.cursor-dot, .cursor-ring {
+  position: fixed; top: -100px; left: -100px; border-radius: 50%;
+  will-change: transform; backface-visibility: hidden;
 }
-.cursor-ring.has-label { background: var(--accent); border-color: var(--accent); mix-blend-mode: normal; color: var(--on-accent); }
+.cursor-dot { width: 7px; height: 7px; background: var(--accent); transition: scale .2s var(--ease); }
+.cursor-dot.is-hover { scale: 0; }
+.cursor-dot.is-down { scale: .6; }
+.cursor-ring {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  border: 1px solid rgba(237,237,239,.5);
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  transition: width .3s var(--ease), height .3s var(--ease), scale .2s var(--ease), background-color .3s, border-color .3s;
+}
+.cursor-ring.is-hover { width: 52px; height: 52px; border-color: rgba(237,237,239,.75); }
+.cursor-ring.is-down { scale: .85; }
+.cursor-ring.has-label { width: 88px; height: 88px; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 /* ── Page transitions & intro ─────────────────────────────────── */
 .curtain { position: fixed; inset: 0; z-index: 800; background: var(--accent); pointer-events: none; }

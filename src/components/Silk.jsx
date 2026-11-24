@@ -15,7 +15,7 @@ export default function Silk({ className = '', lines = 46, intensity = 1, hue = 
     const canvas = ref.current;
     const ctx = canvas.getContext('2d');
     let w = 0, h = 0, raf = 0, visible = true, t = Math.random() * 10;
-    const pointer = { x: 0.6, y: 0.5, tx: 0.6, ty: 0.5 };
+    const pointer = { x: 0.6, y: 0.5, tx: 0.6, ty: 0.5, cx: null, cy: null };
     const palette = hue === 'blue' ? [[106, 166, 255], [59, 130, 246], [147, 197, 253]] : [[255, 255, 255]];
 
     const size = () => {
@@ -51,12 +51,17 @@ export default function Silk({ className = '', lines = 46, intensity = 1, hue = 
       ctx.globalCompositeOperation = 'source-over';
     };
 
-    const loop = () => { t += 0.012; draw(); if (visible) raf = requestAnimationFrame(loop); };
-    const onMove = (e) => {
+    // Pointer events only record coordinates; the layout read happens once per frame,
+    // at the start of the frame, so moving the mouse never forces an extra layout.
+    const aim = () => {
+      if (pointer.cx === null) return;
       const r = canvas.getBoundingClientRect();
-      pointer.tx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
-      pointer.ty = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+      pointer.tx = Math.min(1, Math.max(0, (pointer.cx - r.left) / r.width));
+      pointer.ty = Math.min(1, Math.max(0, (pointer.cy - r.top) / r.height));
+      pointer.cx = null;
     };
+    const loop = () => { aim(); t += 0.012; draw(); if (visible) raf = requestAnimationFrame(loop); };
+    const onMove = (e) => { pointer.cx = e.clientX; pointer.cy = e.clientY; };
 
     size();
     const ro = new ResizeObserver(() => { size(); if (reduce) draw(); });

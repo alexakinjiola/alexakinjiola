@@ -43,8 +43,6 @@ body { background: radial-gradient(120% 60% at 50% 0%, #0A1426 0%, var(--bg) 55%
 .nav-cta::before { background: var(--accent-strong); }
 .nav-cta:hover { color: #fff; }
 .pulse-dot, .pulse-dot::after { background: #4ADE80; }
-.cursor-dot { background: var(--accent); box-shadow: 0 0 12px rgb(var(--glow-rgb)); }
-.cursor-ring.has-label { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
 .curtain { background: linear-gradient(180deg, #1D4ED8, #0B1E4F); }
 .scroll-progress { background: linear-gradient(90deg, #1D4ED8, #6AA6FF); box-shadow: 0 0 10px rgb(var(--glow-rgb)); }
 .tab-pill { background: var(--accent-strong); box-shadow: 0 0 20px -4px rgb(var(--glow-rgb) / .9); }
@@ -288,13 +286,13 @@ body { background: radial-gradient(120% 60% at 50% 0%, #0A1426 0%, var(--bg) 55%
 .dot[aria-selected="true"]::before { width: 24px; background: var(--accent); box-shadow: 0 0 10px rgb(var(--glow-rgb)); }
 .focus-stage { position: relative; display: grid; place-items: center; min-height: 340px; }
 .focus-card {
-  grid-area: 1 / 1; width: min(100%, 460px); padding: clamp(1.6rem, 3vw, 2.4rem); border-radius: 26px; cursor: pointer;
+  grid-area: 1 / 1; width: min(100%, 460px); padding: clamp(1.6rem, 3vw, 2.4rem); border-radius: 26px; cursor: var(--cur-hover, pointer);
   background: linear-gradient(160deg, rgba(28,46,84,.78), rgba(8,14,26,.92));
   border: 1px solid rgba(160,190,255,.2);
   box-shadow: 0 40px 80px -40px rgba(0,0,0,.9);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
 }
-.focus-card.is-active { border-color: rgb(var(--glow-rgb) / .55); box-shadow: 0 0 80px -20px rgb(var(--glow-rgb) / .8), 0 40px 80px -40px rgba(0,0,0,.9); cursor: default; }
+.focus-card.is-active { border-color: rgb(var(--glow-rgb) / .55); box-shadow: 0 0 80px -20px rgb(var(--glow-rgb) / .8), 0 40px 80px -40px rgba(0,0,0,.9); cursor: var(--cur-default, default); }
 .quote-icon { color: var(--accent); }
 .focus-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.75rem, 3vw, 2.4rem); letter-spacing: -.02em; line-height: 1.1; margin: .75rem 0; }
 .focus-card p { color: var(--text-dim); font-size: 1.0625rem; line-height: 1.65; }
@@ -360,7 +358,7 @@ html, body { overflow-x: clip; }
 @media (max-width: 380px) { .logo-role { display: none; } }
 
 /* ── Launch (automatic) ───────────────────────────────────────── */
-.launch { cursor: pointer; }
+.launch { cursor: var(--cur-hover, pointer); }
 .launch-meta { position: absolute; left: 0; right: 0; bottom: max(10vh, 3.5rem); display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
 .launch-meta .mark { width: 44px; height: 44px; filter: drop-shadow(0 0 18px rgb(var(--glow-rgb) / .7)); }
 .launch-line { display: block; width: min(220px, 50vw); height: 1px; background: rgba(160,190,255,.18); overflow: hidden; border-radius: 1px; }

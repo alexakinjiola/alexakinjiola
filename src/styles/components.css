@@ -237,17 +237,18 @@ p.metric-source { margin-top: auto; padding-top: .75rem; color: var(--muted-2) !
 
 /* ── Cursor ───────────────────────────────────────────────────
    Drawn by the operating system, not JavaScript, so it moves in real time
-   with the mouse on every page. Mouse users get the branded dot and ring;
+   with the mouse on every page. Mouse users get the branded dot and ring, and the
+   standard pointing hand over anything clickable;
    touch devices are unaffected. */
 @media (hover: hover) and (pointer: fine) {
   :root {
     --cur-default: url("/cursor/default.png") 16 16, auto;
-    --cur-hover: url("/cursor/hover.png") 24 24, pointer;
+    /* clickable things get the familiar pointing hand, so people know they can click */
+    --cur-hover: pointer;
   }
   @supports (cursor: -webkit-image-set(url("/cursor/default.png") 1x) 16 16, auto) {
     :root {
       --cur-default: -webkit-image-set(url("/cursor/default.png") 1x, url("/cursor/default@2x.png") 2x) 16 16, auto;
-      --cur-hover: -webkit-image-set(url("/cursor/hover.png") 1x, url("/cursor/hover@2x.png") 2x) 24 24, pointer;
     }
   }
   html { cursor: var(--cur-default); }

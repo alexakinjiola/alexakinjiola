@@ -6,7 +6,6 @@ import { Analytics } from '@vercel/analytics/react';
 import 'lenis/dist/lenis.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Cursor from './components/Cursor';
 import ScrollProgress from './components/ScrollProgress';
 import ParticleIntro from './components/ParticleIntro';
 import Home from './pages/Home';
@@ -45,7 +44,6 @@ export default function App() {
       <a href="#main" className="skip-link">Skip to content</a>
       {intro && <ParticleIntro onDone={endIntro} />}
       <ScrollProgress />
-      <Cursor />
       <div className="grain" aria-hidden="true" />
       <Nav />
       <Suspense fallback={<div className="route-fallback" />}>

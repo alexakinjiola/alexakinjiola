@@ -87,7 +87,7 @@ function Hero({ play }) {
             <div className="device-frame"><img src="/images/covers/krent.webp" alt="" /></div>
           </Float>
           <Float className="device device-front" depth={34} px={px} py={py} delay={0.8} duration={6}>
-            <div className="device-frame"><img src="/images/covers/paytrackr.webp" alt="" /></div>
+            <div className="device-frame"><img src="/images/covers/tabbas.webp" alt="" /></div>
           </Float>
           <Float className="hero-widget hero-widget-metric" depth={52} px={px} py={py} delay={0.3} duration={5}>
             <span className="mono">Ajiroba usability · reported</span>

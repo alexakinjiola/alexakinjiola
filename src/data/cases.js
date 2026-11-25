@@ -28,6 +28,7 @@ export const cases = [
   {
     slug: 'tabbas',
     group: 'featured',
+    status: 'Concept',
     title: 'Tabbas',
     tagline: 'A Nigerian money app built around one promise, certainty, guaranteed. Every transfer is tracked live, a failed one comes back within 60 seconds, and the person you pay can check that it really landed.',
     category: 'Fintech · Consumer banking · Mobile',
@@ -269,7 +270,8 @@ export const cases = [
   /* ═══════════════════════════════ BIMETAL ═══════════════════════════════ */
   {
     slug: "bimetal",
-    group: "featured",
+    group: 'featured',
+    status: 'Concept',
     title: "Bimetal",
     tagline: "A record of every dollar and every naira a Nigerian freelancer earns, valued on the day it landed, ready for the tax office in March and for any lender the user chooses.",
     category: "Fintech · Tax & income records · Mobile",
@@ -902,6 +904,7 @@ export const cases = [
   {
     slug: 'trustbridge',
     group: 'featured',
+    status: 'Prototype',
     title: 'TrustBridge',
     tagline: 'A three-sided hiring platform that helps international students and migrants in the UK gain real work experience — with every role kept inside their visa’s working-hour limits.',
     category: 'HR tech · Marketplace · SaaS',
@@ -1108,6 +1111,7 @@ export const cases = [
   {
     slug: 'continuum',
     group: 'featured',
+    status: 'Live',
     title: 'Continuum',
     tagline: 'Personal health records for Nigeria — one place for every diagnosis, result and prescription, shared only with the people a patient chooses.',
     category: 'HealthTech · Platform',
@@ -1257,6 +1261,7 @@ export const cases = [
   {
     slug: 'krent',
     group: 'featured',
+    status: 'Live',
     title: 'Krent',
     tagline: 'Redesigning a Nigerian property platform around clarity — for renters, buyers, shortlet guests, hosts and agents.',
     category: 'PropTech · Marketplace',
@@ -1381,7 +1386,8 @@ export const cases = [
   /* ═══════════════════════════════ AJIROBA ═══════════════════════════════ */
   {
     slug: 'ajiroba',
-    group: 'featured',
+    group: 'product',
+    status: 'Live',
     title: 'Ajiroba',
     tagline: 'Designing a consumer raffle platform from the ground up — making an unfamiliar way to shop easy to understand and safe to try.',
     category: 'Consumer · E-commerce',
@@ -1396,7 +1402,7 @@ export const cases = [
       ['Timeline', 'Nov 2023 — Sep 2025'],
       ['Platform', 'Web + iOS & Android'],
     ],
-    glance: [['3', 'Step model: ticket, draw, win'], ['3', 'Platforms: web, iOS, Android'], ['2', 'Years embedded with the team'], ['5', 'Core nav items, same on every device']],
+    glance: [['3', 'Step model: ticket, draw, win'], ['3', 'Platforms: web, iOS, Android'], ['2', 'Years embedded with the team'], ['89%', 'Usability gain, reported by Ajiroba']],
     tldr: {
       problem: 'A raffle-based way to get products is unfamiliar — and in a market wary of online schemes, people won’t fund a wallet until they understand how it works and trust it.',
       approach: 'I structured the experience around the questions first-time visitors actually have, led with value before mechanics, explained the model in three steps and built one design system across web and apps.',
@@ -1477,7 +1483,7 @@ export const cases = [
         { src: `/images/screens/ajiroba/p6-m0.webp`, caption: 'Mobile FAQ', mobile: true },
       ] },
     ],
-    outcome: ['Ajiroba went from proposition to a live product on web, iOS and Android. The interface patterns established here also carried into Ajiroba’s campaigns, including the Spin & Win giveaway.', 'The live site explains the raffle model step by step, gives trust pages real prominence and keeps navigation identical across web and app.'],
+    outcome: ['Ajiroba reported an 89% improvement in platform usability and perceived performance after the redesign, and engineering handoff time came down through clearer documentation and a shared design system.', 'Ajiroba went from proposition to a live product on web, iOS and Android. The interface patterns established here also carried into Ajiroba’s campaigns, including the Spin & Win giveaway.', 'The live site explains the raffle model step by step, gives trust pages real prominence and keeps navigation identical across web and app.'],
     quoteFrom: 'Oloruntoba Ayodele',
     reflection: ['When the model is unfamiliar, the interface has to explain the value and the mechanics at the same time — and earn trust before asking for money.', 'Embedding with the team for two years taught me that trust is a product feature you design on every page, not a badge you add at the end.'],
     next: ['Design a better post-draw experience for people who didn’t win this time.', 'Simplify wallet top-up on mobile.', 'Measure how many visitors read the procedure before buying their first ticket.'],
@@ -1488,6 +1494,7 @@ export const cases = [
   {
     slug: 'paytrackr',
     group: 'product',
+    status: 'Live',
     title: 'Paytrackr',
     tagline: 'A finance dashboard for freelancers and small businesses — designed so money questions have instant answers.',
     category: 'Fintech · Dashboard',
@@ -1597,6 +1604,7 @@ export const cases = [
   {
     slug: 'ledger-studio',
     group: 'product',
+    status: 'Live',
     title: 'Ledger Studio',
     tagline: 'An invoicing product that turns client billing into a two-minute ritual — designed and built by me.',
     category: 'SaaS · Design + build',
@@ -1712,6 +1720,7 @@ export const cases = [
   {
     slug: 'trensleek',
     group: 'product',
+    status: 'Live',
     title: 'Trensleek Travels',
     tagline: 'A travel concierge website for a Nigerian-owned agency — flights, private jets, hotels and advice, arranged by a real person rather than a booking engine.',
     category: 'Travel · Web',
@@ -1823,6 +1832,7 @@ export const cases = [
   {
     slug: 'spin-and-win',
     group: 'product',
+    status: 'Live',
     title: 'Ajiroba Spin & Win',
     tagline: 'A campaign microsite designed to feel official and safe in a market wary of online giveaways.',
     category: 'Campaign · Web',
@@ -1910,7 +1920,8 @@ export const cases = [
   /* ═══════════════════════════════ MEALFLEX ═══════════════════════════════ */
   {
     slug: 'mealflex',
-    group: 'product',
+    group: 'archive',
+    status: 'Design project',
     title: 'Meal Flex',
     tagline: 'A food and nutrition app that helps busy people eat well — flexible meal planning, personal nutrition targets and food ordering in one place.',
     category: 'FoodTech · Lifestyle app',
@@ -1984,7 +1995,8 @@ export const cases = [
   /* ═══════════════════════════════ CREATIFFF ═══════════════════════════════ */
   {
     slug: 'creatifff',
-    group: 'product',
+    group: 'archive',
+    status: 'Private product',
     title: 'Creatifff',
     tagline: 'An immersive fashion and lifestyle shopping app — designed to cut decision fatigue and carry inspiration all the way through checkout.',
     category: 'Fashion · E-commerce',
@@ -1994,7 +2006,7 @@ export const cases = [
     live: 'https://www.behance.net/gallery/236775971/Creatifff-Ecommerce',
     liveLabel: 'View on Behance',
     facts: [['Role', 'Lead Product Designer'], ['Timeline', 'Mar 2022 — Oct 2023'], ['Platform', 'Mobile app + web'], ['Status', 'Private product']],
-    glance: [['3', 'Taps or fewer to any core task'], ['3', 'Redesigned stages: discover, product, checkout'], ['44px', 'Minimum touch target'], ['1', 'Editorial design system']],
+    glance: [['3', 'Taps or fewer to any core task'], ['3', 'Redesigned stages: discover, product, checkout'], ['44px', 'Minimum touch target'], ['77%', 'Satisfaction gain, reported by Creatifff']],
     tldr: {
       problem: 'Fashion shoppers face decision fatigue, cluttered navigation and a disconnect between visual inspiration and checkout — so they browse, but drop off before buying.',
       approach: 'I designed an immersive, image-led discovery experience, streamlined product pages with clear size and stock information, and a low-effort checkout with saved details and trusted payment methods.',
@@ -2048,7 +2060,7 @@ export const cases = [
         { src: `/images/cases/creatifff-others.webp`, caption: 'Others category: fragrance and fashion', mobile: true },
       ] },
     ],
-    outcome: ['A high-end mobile shopping experience and interactive prototype, designed to maximise checkout conversion and built on a scalable editorial component library for a smooth handoff. The product is private; the design is presented on Behance.', 'The design spans a mobile app and a web landing page that share one visual language, so shoppers recognise the brand wherever they meet it.'],
+    outcome: ['Creatifff reported a 77% increase in user satisfaction after the redesign, with 26 critical flows rebuilt, including onboarding and checkout.', 'A high-end mobile shopping experience and interactive prototype, designed to maximise checkout conversion and built on a scalable editorial component library for a smooth handoff. The product is private; the design is presented on Behance.', 'The design spans a mobile app and a web landing page that share one visual language, so shoppers recognise the brand wherever they meet it.'],
     reflection: ['Fashion e-commerce has to inspire first and then get out of the way. The best checkout is the one shoppers barely notice.', 'Keeping mobile and web in one design system early saved rework and kept the brand coherent.'],
     next: ['Usability-test the checkout with first-time shoppers.', 'Track drop-off by checkout step to prioritise the next improvement.', 'Test category browsing against search for first-time visitors.'],
     tools: ['Figma', 'Prototyping', 'Design system', 'WCAG 2.2'],
@@ -2058,6 +2070,7 @@ export const cases = [
   {
     slug: 'annyshub',
     group: 'web',
+    status: 'Live',
     title: 'AnnySHub',
     tagline: 'A jewellery storefront and owner console for a Lagos business that sells through WhatsApp.',
     category: 'Retail · Dual interface',
@@ -2152,6 +2165,7 @@ export const cases = [
   {
     slug: 'folu-atelier',
     group: 'web',
+    status: 'Live',
     title: 'Folu Atelier',
     tagline: 'A luxury Lagos fashion house online — a customer-facing House and an owner-facing Studio.',
     category: 'Luxury fashion · Brand',
@@ -2261,6 +2275,7 @@ export const cases = [
   {
     slug: 'oluwakemi',
     group: 'web',
+    status: 'Live',
     title: 'Oluwakemi Alex',
     tagline: 'A quiet-luxury editorial portfolio for a virtual assistant — calm, credible and built to win remote roles.',
     category: 'Portfolio · Web',
@@ -2345,7 +2360,8 @@ export const cases = [
   /* ═══════════════════════════════ THIS PORTFOLIO ═══════════════════════════════ */
   {
     slug: 'portfolio',
-    group: 'web',
+    group: 'archive',
+    status: 'Live',
     title: 'This portfolio',
     tagline: 'Rebuilding my own portfolio as a product — a React application with a motion system, an automatic launch sequence and recruiter-first case studies.',
     category: 'Web · Design + build',
@@ -2468,8 +2484,11 @@ export const cases = [
 ];
 
 export const caseBySlug = Object.fromEntries(cases.map((c) => [c.slug, c]));
+const FEATURED_ORDER = ['tabbas', 'krent', 'continuum', 'bimetal', 'trustbridge'];
+const PRODUCT_ORDER = ['ajiroba'];
 export const caseGroups = {
-  featured: cases.filter((c) => c.group === 'featured'),
-  product: cases.filter((c) => c.group === 'product'),
+  featured: cases.filter((c) => c.group === 'featured').sort((x, y) => FEATURED_ORDER.indexOf(x.slug) - FEATURED_ORDER.indexOf(y.slug)),
+  product: cases.filter((c) => c.group === 'product').sort((x, y) => (PRODUCT_ORDER.indexOf(y.slug) > -1) - (PRODUCT_ORDER.indexOf(x.slug) > -1)),
   web: cases.filter((c) => c.group === 'web'),
+  archive: cases.filter((c) => c.group === 'archive'),
 };

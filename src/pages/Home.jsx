@@ -16,7 +16,7 @@ import Journey from '../components/Journey';
 import Testimonials from '../components/Testimonials';
 import { cases } from '../data/cases';
 
-const carouselCases = cases.filter((c) => c.group !== 'web');
+const carouselCases = cases.filter((c) => c.group !== 'web' && c.group !== 'archive');
 
 const ease = [0.22, 1, 0.36, 1];
 

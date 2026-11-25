@@ -11,6 +11,13 @@ import Icon from '../components/Icon';
 import { caseGroups } from '../data/cases';
 import { workStats } from '../data/projects';
 
+/* Where the work stands today: shipped and in use, or a design that hasn't shipped. */
+export function StatusTag({ status, className = '' }) {
+  if (!status) return null;
+  const tone = status === 'Live' ? 'live' : 'concept';
+  return <span className={`status-tag status-${tone} ${className}`}><i aria-hidden="true" />{status}</span>;
+}
+
 /* A whole-card link into a case study. */
 export function CaseCard({ c, size = 'md', index }) {
   return (
@@ -23,6 +30,7 @@ export function CaseCard({ c, size = 'md', index }) {
         {index != null && <span className="case-card-num mono" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>}
       </div>
       <div className="case-card-body">
+        <StatusTag status={c.status} />
         <h3>{c.title}</h3>
         <p>{c.tagline}</p>
         <span className="case-card-cta">Read case study <Icon name="arrow_forward" size={18} /></span>
@@ -34,7 +42,7 @@ export function CaseCard({ c, size = 'md', index }) {
 
 export default function Work() {
   return (
-    <Page title="Work" description="Product design case studies by Alex Akinjiola — Krent, Ajiroba, Paytrackr and more — across PropTech, consumer, fintech and SaaS.">
+    <Page title="Work" description="Product design case studies by Alex Akinjiola — Tabbas, Krent, Continuum, Bimetal and TrustBridge — across fintech, property, health and hiring.">
       <header className="page-hero">
         <Silk lines={30} intensity={0.65} />
         <div className="page-hero-glow" aria-hidden="true" />
@@ -79,6 +87,29 @@ export default function Work() {
           <SectionHead eyebrow="Web builds" title="Designed and" dim="built end to end." breakBefore={false} lead="Brand sites and storefronts I designed and coded for clients — evidence that my designs survive implementation." />
           <Stagger className="bento bento-4 case-grid" gap={0.06}>
             {caseGroups.web.map((c) => <RevealItem key={c.slug}><CaseCard c={c} size="sm" /></RevealItem>)}
+          </Stagger>
+        </div>
+      </section>
+
+      <section className="section section-surface" aria-labelledby="archive-title">
+        <div className="container">
+          <SectionHead eyebrow="Archive" title="Earlier and" dim="smaller projects." breakBefore={false} lead="Shorter write-ups of earlier work. Fewer screens and less process, kept for completeness." />
+          <span id="archive-title" className="sr-only">Archive</span>
+          <Stagger as="ul" className="archive-list" gap={0.05}>
+            {caseGroups.archive.map((c) => (
+              <RevealItem as="li" key={c.slug} style={{ '--case': c.accent }}>
+                <Link to={`/work/${c.slug}`} className="archive-row">
+                  <img src={c.cover} alt="" loading="lazy" decoding="async" />
+                  <span className="archive-main">
+                    <span className="archive-title">{c.title}</span>
+                    <span className="archive-tagline">{c.tagline}</span>
+                  </span>
+                  <span className="archive-meta mono">{c.category}</span>
+                  <StatusTag status={c.status} />
+                  <Icon name="arrow_forward" size={20} className="archive-arrow" />
+                </Link>
+              </RevealItem>
+            ))}
           </Stagger>
         </div>
       </section>

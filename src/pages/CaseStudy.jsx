@@ -14,6 +14,7 @@ import { Quote, Person } from '../components/Testimonials';
 import { cases, caseBySlug } from '../data/cases';
 import { testimonials } from '../data/testimonials';
 import NotFound from './NotFound';
+import { StatusTag } from './Work';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -347,7 +348,10 @@ export default function CaseStudy() {
           <div className="container">
             <Link to="/work" className="back-link"><Icon name="arrow_back" size={18} />All work</Link>
             <Eyebrow>{`Case study · ${c.category}`}</Eyebrow>
-            {c.researchLed && <Reveal as="p" className="research-badge" delay={0.2}><Icon name="person_search" size={16} />Research-led · lead designer</Reveal>}
+            <Reveal className="case-badges" delay={0.2}>
+              {c.status && <StatusTag status={c.status} className="status-lg" />}
+              {c.researchLed && <span className="research-badge"><Icon name="person_search" size={16} />Research-led · lead designer</span>}
+            </Reveal>
             <SplitText as="h1" className="page-title case-hero-title" text={c.title} onMount delay={0.3} />
             <Reveal as="p" className="lead case-tagline" delay={0.45}>{c.tagline}</Reveal>
             <Stagger as="dl" className="case-facts" gap={0.06}>

@@ -16,7 +16,7 @@ import Journey from '../components/Journey';
 import Testimonials from '../components/Testimonials';
 import { cases } from '../data/cases';
 
-const carouselCases = cases.filter((c) => c.group !== 'web');
+const carouselCases = cases.filter((c) => c.group !== 'web' && c.group !== 'archive');
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -84,10 +84,10 @@ function Hero({ play }) {
 
         <motion.div className="hero-stage" initial={{ opacity: 0, scale: 0.92 }} animate={play ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.35, duration: 1.4, ease }} aria-hidden="true">
           <Float className="device device-back" depth={-26} px={px} py={py} duration={7}>
-            <div className="device-frame"><img src="/images/krent.webp" alt="" /></div>
+            <div className="device-frame"><img src="/images/covers/krent.webp" alt="" /></div>
           </Float>
           <Float className="device device-front" depth={34} px={px} py={py} delay={0.8} duration={6}>
-            <div className="device-frame"><img src="/images/paytrackr.webp" alt="" /></div>
+            <div className="device-frame"><img src="/images/covers/tabbas.webp" alt="" /></div>
           </Float>
           <Float className="hero-widget hero-widget-metric" depth={52} px={px} py={py} delay={0.3} duration={5}>
             <span className="mono">Ajiroba usability · reported</span>

@@ -266,6 +266,630 @@ export const cases = [
     tools: ['Figma', 'Desk research', 'Journey mapping', 'Design system', 'Prototyping'],
   },
 
+  /* ═══════════════════════════════ BIMETAL ═══════════════════════════════ */
+  {
+    slug: "bimetal",
+    group: "featured",
+    title: "Bimetal",
+    tagline: "A record of every dollar and every naira a Nigerian freelancer earns, valued on the day it landed, ready for the tax office in March and for any lender the user chooses.",
+    category: "Fintech · Tax & income records · Mobile",
+    accent: "#5B8DEF",
+    cover: "/images/covers/bimetal.webp",
+    researchLed: true,
+    research: {
+      summary: "Bimetal started with a change in the law, not a feature idea. From 1 January 2026, Nigerian freelancers and remote workers owe personal income tax on worldwide income, and they have to work it out and file it themselves. Before designing anything I wrote a research report, a research pack and an interview plan: I read the Nigeria Tax Act 2025 and the Tax Administration Act 2025, sized the market, profiled eight competitors and substitutes, listened to how people talk about the new rules online, and drafted personas and jobs to be done. Everything is desk research for now, and it is labelled that way. Ten interviews are planned to confirm or overturn it.",
+      methods: [
+        {
+          name: "Policy review",
+          icon: "gavel",
+          detail: "Nigeria Tax Act 2025 and Tax Administration Act 2025: bands, reliefs, deadlines, penalties",
+        },
+        {
+          name: "Competitive audit",
+          icon: "compare",
+          detail: "KeepAm, Grey, Cleva, Raenest, tax calculators, NaijaTrax, Moniepoint, Mono and Kippa",
+        },
+        {
+          name: "Market sizing",
+          icon: "groups",
+          detail: "About 870,000 freelancers and remote workers inside a gig economy of about 3 million",
+        },
+        {
+          name: "Social listening",
+          icon: "forum",
+          detail: "Themes from X, Nairaland, LinkedIn and news coverage, paraphrased, not quoted",
+        },
+        {
+          name: "Personas & jobs to be done",
+          icon: "person_search",
+          detail: "Three proto-personas, an anti-persona and six jobs, all marked as hypotheses",
+        },
+        {
+          name: "Prioritisation",
+          icon: "checklist",
+          detail: "Five opportunity areas, then a MoSCoW scope for the first release",
+        },
+      ],
+      insights: [
+        {
+          finding: "Since 1 January 2026, freelancers owe tax on worldwide income, the first ₦800,000 a year is tax-free, and 2026 returns are due by 31 March 2027. Online, the talk is fear and confusion, not a search for tools.",
+          change: "Made “Do I owe tax?” the first thing the app does, before sign-up: two inputs, a plain estimate and what proof would save.",
+        },
+        {
+          finding: "Without reliable records the tax office can assess people on benchmarks, and only proven expenses count. In my worked example, a freelancer on about ₦18m a year saves roughly ₦415,800 by proving work costs and rent.",
+          change: "Showed the value in naira everywhere (“Proof saves ₦415,800”) and made capturing a receipt quicker than forgetting it: auto-capture camera and an email-forwarding address.",
+        },
+        {
+          finding: "Income is scattered across Grey, Cleva, USDT wallets and Nigerian banks, and the law wants each payment in naira at the rate on the day it arrived.",
+          change: "Pulled every source into one record and stamped each payment with the CBN rate automatically, so nobody ever types an exchange rate.",
+        },
+        {
+          finding: "Trust is the hidden cost. Kippa, a bookkeeping app with a reported 500,000 users, went dark in 2024 with their records. People fear the government will take tax straight from their accounts.",
+          change: "Spelled out on screen what Bimetal can see and can never do, made export free on every plan, and gave every shared link an expiry, a view count and a stop button.",
+        },
+        {
+          finding: "Gifts, family support, loans and transfers between your own accounts are not income, but in a bank feed they look exactly like it.",
+          change: "Designed a short “Sort money in” queue for unclear transfers, with rules like “do the same for Adaeze from now on”, so gifts are never taxed by mistake.",
+        },
+      ],
+    },
+    facts: [
+      ["Role", "Lead Product Designer"],
+      ["Type", "New product · 0 → 1"],
+      ["Platform", "Mobile app · iOS & Android"],
+      ["Market", "Nigeria · 2026 tax year"],
+    ],
+    glance: [
+      ["55", "App screens and states designed"],
+      ["₦415,800", "Tax saved by proof in the worked example"],
+      ["8", "Competitors and substitutes profiled"],
+      ["6", "Design principles, each traced to an insight"],
+    ],
+    tldr: {
+      problem: "Self-employed Nigerians are now expected to behave like small companies: keep records, self-assess and pay. Freelancers paid from abroad have it hardest. Their money moves through three or four apps and two currencies, nobody holds the full picture, and without proof the tax office can assess them on a guess.",
+      approach: "I designed one capture habit with two payoffs. Every payment lands in one record, valued in naira on the day. At tax time that record becomes a return ready to file; when the user wants a loan or a flat, it becomes proof of income they own and choose to share.",
+      outcome: "A research-backed concept: a research report, a research pack and an interview plan; a name and brand; and 55 screens across onboarding, everyday records, proof, tax and filing, sharing and every failure state. Interviews are next, with go, pivot and stop rules written before a single conversation.",
+    },
+    overview: [
+      "The Nigeria Tax Act 2025 brought freelancers and remote workers into the tax net from January 2026, with income taxed at rates up to 25% and returns due each 31 March. Unlike employees, nobody does it for them. Tools exist for each half of the problem: tax calculators and record apps on one side, lenders who want verifiable income on the other. None that I found joins the two.",
+      "Bimetal is named after a bimetal coin, one coin made of two metals. It is one record made of two currencies. The work covered the full arc, from policy reading and competitive research to positioning, brand and a complete mobile app, with the unhappy paths designed as carefully as the happy ones.",
+    ],
+    role: "As lead product designer, I owned Bimetal end to end. I ran the desk research and competitive audit, sized the market, drafted the personas and jobs to be done, set the design principles and first-release scope, named and branded the product, designed all 55 screens and their states, and wrote the interview plan that will test it.",
+    constraints: [
+      "Tax rules and bands will change, so every estimate is labelled as one, rules live in configuration, and the app says plainly that it is not tax advice and never files for you.",
+      "Bank linking depends on Mono, now owned by Flutterwave, and open banking is not fully live, so statement uploads and a watch-only USDT address are first-class fallbacks.",
+      "The Nigeria Data Protection Act 2023 requires explicit consent before processing financial data, so consent has to be readable, not buried in a policy.",
+      "Mobile data is expensive and connections drop, so anything the user adds is saved on the phone first and syncs when they are back online.",
+      "People already fear being reported, so no screen may imply that Bimetal talks to the tax office or a lender unless the user sends something.",
+    ],
+    users: [
+      {
+        name: "Tolu, 29 · Remote designer, Yaba",
+        icon: "laptop_mac",
+        goal: "Know whether she owes tax and roughly how much, file in about 20 minutes in March, and look professional to foreign clients.",
+        pain: "Income sits in Grey, a USDT wallet and two bank apps. She can’t say what she earned last year in naira, and she has lost the receipts for her laptop and Figma.",
+      },
+      {
+        name: "Chiamaka, 33 · Event photographer, Surulere",
+        icon: "photo_camera",
+        goal: "Know her real profit per event and save for a new lens before peak season.",
+        pain: "Business and family money share one GTBank account, bookings live in Instagram DMs, and her statements look too messy for an equipment loan.",
+      },
+      {
+        name: "Alhaji Musa, 52 · Provisions trader, Mile 12",
+        icon: "storefront",
+        goal: "A fair loan before Ramadan and December, instead of expensive supplier credit.",
+        pain: "Banks want papers he doesn’t have. He likely needs an assisted, voice-first product, so he is a later release, possibly through partners.",
+      },
+    ],
+    process: [
+      {
+        phase: "R",
+        title: "Research",
+        summary: "Built the evidence base before any screen: the new tax law, the market, eight competitors and substitutes, and what people were saying online.",
+        activities: [
+          "Policy review of the Nigeria Tax Act 2025 and Tax Administration Act 2025",
+          "Competitive audit with a feature matrix and a positioning map",
+          "Market sizing and social listening across X, Nairaland and news coverage",
+        ],
+        output: "UX research report and research pack",
+        research: true,
+      },
+      {
+        phase: "01",
+        title: "Frame the problem",
+        summary: "Turned the evidence into seven insights, five opportunity areas with “How might we” questions, three proto-personas and an anti-persona.",
+        activities: [
+          "A worked example: ₦3.21m tax with no records versus ₦2.79m with them",
+          "Six jobs to be done, written the way a user would say them",
+          "A current-state journey showing where Tolu’s record breaks",
+        ],
+        output: "Insights, personas and opportunity map",
+      },
+      {
+        phase: "02",
+        title: "Prioritise",
+        summary: "Chose foreign-paid freelancers as the first segment and decided what the first release must, should, could and won’t do.",
+        activities: [
+          "Tolu as primary persona: the clearest worry and the most digital money trail",
+          "Credit kept as a second payoff, after users already trust the record",
+          "Ruled out lending of our own, payroll and business VAT for now",
+        ],
+        output: "First-release scope (MoSCoW)",
+      },
+      {
+        phase: "03",
+        title: "Name & brand",
+        summary: "Named the product after a bimetal coin and built a simple brand around two coins, dollar in front and naira behind.",
+        activities: [
+          "Dropped the working name Twofold after a couples finance app with that name launched in June 2026",
+          "Bimetal blue #1A56DB, Night, Mist, plus green and amber with icons and words",
+          "Manrope with tabular figures for money, and Material Symbols Rounded",
+        ],
+        output: "Brand board and app icon",
+      },
+      {
+        phase: "04",
+        title: "Design the product",
+        summary: "Designed the whole app as one connected flow, from the tax check to a filed return and a shared income record.",
+        activities: [
+          "Onboarding that answers before it asks",
+          "Home, records and a monthly summary in dollars and naira side by side",
+          "Proof capture, tagging, the tax report, a tax pot and a filing guide",
+        ],
+        output: "55-screen clickable prototype",
+      },
+      {
+        phase: "05",
+        title: "Close the gaps",
+        summary: "Reviewed the prototype against the research and added a screen for every flow it asked for, wiring every dead button.",
+        activities: [
+          "Offline, upload failed, sync error and wrong-code states",
+          "Statement upload, a watch-only USDT wallet and reconnecting a source",
+          "After filing: the assessment letter, WHT credit notes, chat and plans",
+        ],
+        output: "Edge-case and failure-state library",
+      },
+      {
+        phase: "06",
+        title: "Plan validation",
+        summary: "Wrote the plan that decides whether to build: ten interviews across three segments, with decision rules fixed in advance.",
+        activities: [
+          "Screener, recruiting plan and a 45-minute interview guide",
+          "Six assumptions ranked riskiest first",
+          "Go, pivot and stop rules agreed before the interviews",
+        ],
+        output: "Research brief and interview guide",
+      },
+    ],
+    principles: [
+      [
+        "Answer first, ask later",
+        "Show people their tax position before asking them to connect anything. Value comes before effort.",
+      ],
+      ["Never make people do sums", "Exchange rates, tax bands and totals are the product’s job. Nobody should ever type a rate."],
+      ["Speak in naira and dates", "“₦1,860,000 put aside, 127 days to file” beats a percentage or a score."],
+      ["Show who sees what", "Every connection and every share says what leaves the app and where it goes, and can be undone."],
+      [
+        "Calm, not fear",
+        "Tax is stressful. The tone is a calm, knowledgeable friend, with no red alarms unless something is truly late.",
+      ],
+      ["Light enough for expensive data", "Saved on the phone first, synced later, and fast on a mid-range Android."],
+    ],
+    journey: {
+      title: "One $1,000 payment, from first look to filed",
+      intro: "Follow Tolu from her first question to a return filed with the state tax office and an income record she shares on her own terms. Tap a step to see the screen.",
+      steps: [
+        {
+          label: "Check",
+          text: "Before any sign-up, two inputs give her 2026 tax, roughly ₦2,794,200, and show that proof saves her ₦415,800.",
+          image: "/images/cases/bimetal-tax-check.webp",
+          mobile: true,
+        },
+        {
+          label: "Connect",
+          text: "Linking GTBank is read-only, and the screen lists exactly what Bimetal will see and what it can never do.",
+          image: "/images/cases/bimetal-bank-consent.webp",
+          mobile: true,
+        },
+        {
+          label: "Record",
+          text: "$1,000 from Northwind Studio lands as ₦1,512,000 at the CBN rate on the day, and the $8 Grey fee becomes a work cost.",
+          image: "/images/cases/bimetal-record-detail.webp",
+          mobile: true,
+        },
+        {
+          label: "Sort",
+          text: "A ₦150,000 birthday transfer from her sister is tagged as a gift, so it stays in the record but isn’t taxed.",
+          image: "/images/cases/bimetal-tag-queue.webp",
+          mobile: true,
+        },
+        {
+          label: "Prove",
+          text: "Her tenancy agreement unlocks ₦480,000 of rent relief: about ₦100,800 less tax.",
+          image: "/images/cases/bimetal-rent-details.webp",
+          mobile: true,
+        },
+        {
+          label: "File",
+          text: "A five-step guide takes her through the LIRS eTax portal in about 20 minutes. Bimetal never files for her.",
+          image: "/images/cases/bimetal-filing-guide.webp",
+          mobile: true,
+        },
+        {
+          label: "Share",
+          text: "For a loan, she shares only monthly income and sources, for 30 days. Transactions stay off by default.",
+          image: "/images/cases/bimetal-share.webp",
+          mobile: true,
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: "Answer the tax question before asking for anything",
+        text: "The research showed people are anxious, not shopping for tools. So the first real screen is a tax check, not a sign-up form: pick dollars or naira, set what you earn a month, and see a rough 2026 bill and what proof would save, worked out from the actual 2026 bands.",
+        tradeoff: "An estimate from two inputs can be wrong. It is labelled “roughly”, and the assumptions it uses (₦2.4m rent, ₦1.5m work costs) are shown with a “Change” link.",
+        image: "/images/cases/bimetal-tax-check.webp",
+        caption: "Tax check: about ₦2.79m due, and proof saves ₦415,800.",
+        mobile: true,
+      },
+      {
+        title: "Value every payment in naira on the day it arrived",
+        text: "The law counts foreign income in naira at the CBN rate on the day you were paid, and nobody remembers that rate months later. Each payment shows the dollar amount, the naira value, the rate used and where the money came from, and platform fees are counted as work costs automatically.",
+        tradeoff: "The official rate often differs from the rate people actually got when they converted. I show both the rate and the fee, so the gap is visible instead of hidden.",
+        image: "/images/cases/bimetal-record-detail.webp",
+        caption: "Payment detail: $1,000 at ₦1,512/$, with the Grey fee counted as a cost.",
+        mobile: true,
+      },
+      {
+        title: "Spell out consent in plain words",
+        text: "Fear of data misuse was the biggest open question in the research. Before handing over to the bank, the consent screen has two short lists: what Bimetal will see (name, 12 months of transactions, balance) and what it can never do (move money, see your PIN, change anything).",
+        tradeoff: "One more screen in onboarding. “Not now” keeps the path open, and statement upload works for anyone who would rather not link at all.",
+        image: "/images/cases/bimetal-bank-consent.webp",
+        caption: "Read-only access to GTBank: what Bimetal sees, and what it never can.",
+        mobile: true,
+      },
+      {
+        title: "Sort money in so gifts aren’t taxed",
+        text: "Gifts, family support, loans and your own transfers aren’t income, but a bank feed can’t tell. Unclear transfers go into a short queue with four big choices and a plain line about the tax effect, and one switch turns the answer into a rule for that sender.",
+        tradeoff: "It asks users to do some work. The queue only holds the transfers the app can’t classify, and rules make it shrink over time.",
+        image: "/images/cases/bimetal-tag-queue.webp",
+        caption: "Sort money in: ₦150,000 from a sister, tagged as a gift and not taxed.",
+        mobile: true,
+      },
+      {
+        title: "A tax pot that watches, never takes",
+        text: "Setting money aside makes March survivable, but people already fear money being taken from their accounts. The pot tracks progress against the bill and suggests a monthly amount to move to the user’s own savings. Bimetal watches the balance and never moves money itself.",
+        tradeoff: "Less automatic than a locked savings account. Whether people want a pot at all is one of the open questions for the interviews.",
+        image: "/images/cases/bimetal-tax-pot.webp",
+        caption: "Tax pot: ₦1,860,000 put aside, 67% of the bill, on track for 31 March.",
+        mobile: true,
+      },
+      {
+        title: "Share an income record on the user’s terms",
+        text: "Lenders want verifiable income, and the record already holds it. A shared link is the user’s choice: they pick how long it works, which parts are visible, and transactions are off by default. Afterwards they can see how often it was opened, and stop it instantly.",
+        tradeoff: "Some lenders will want more detail than the default. The user can add it, but never by accident.",
+        image: "/images/cases/bimetal-share.webp",
+        caption: "Share with a lender: 30 days, monthly income and sources only.",
+        mobile: true,
+      },
+      {
+        title: "Plan for the letter after filing",
+        text: "Filing isn’t the end. The tax office can send an assessment, and people then have 30 days to pay or object. Bimetal compares the assessment with the user’s return, explains the likely cause and drafts an objection with the proof attached, for the user to sign and send.",
+        tradeoff: "This edges towards advice. The screen says it isn’t legal advice and suggests a tax practitioner for large amounts.",
+        image: "/images/cases/bimetal-assessment.webp",
+        caption: "Assessment: a ₦415,800 gap that matches the proof, with 26 days left to reply.",
+        mobile: true,
+      },
+    ],
+    screensIntro: "All 55 app screens from the prototype plus the brand board, grouped by flow, including the empty, offline, failure and confirmation states. Pick a flow, then open any screen to view it full size.",
+    screens: [
+      {
+        flow: "Onboarding & sign-in",
+        icon: "how_to_reg",
+        note: "An answer before any form, four short sign-up steps, read-only bank consent, and the returning-user paths: sign-in, fingerprint and PIN.",
+        mobile: true,
+        items: [
+          {
+            src: "/images/cases/bimetal-splash.webp",
+            caption: "Splash",
+          },
+          {
+            src: "/images/cases/bimetal-main.webp",
+            caption: "Welcome: every dollar, every naira, on record",
+          },
+          {
+            src: "/images/cases/bimetal-tax-check.webp",
+            caption: "Do I owe tax? An estimate before sign-up",
+          },
+          {
+            src: "/images/cases/bimetal-sign-up.webp",
+            caption: "Step 1: phone number, no password",
+          },
+          {
+            src: "/images/cases/bimetal-verify.webp",
+            caption: "Step 2: the 6-digit code",
+          },
+          {
+            src: "/images/cases/bimetal-verify-error.webp",
+            caption: "Wrong code, with tries left and a call option",
+          },
+          {
+            src: "/images/cases/bimetal-tax-id.webp",
+            caption: "Step 3: tax ID, with help if you don’t have one",
+          },
+          {
+            src: "/images/cases/bimetal-connect.webp",
+            caption: "Step 4: where you get paid",
+          },
+          {
+            src: "/images/cases/bimetal-bank-consent.webp",
+            caption: "Read-only bank access, spelled out",
+          },
+          {
+            src: "/images/cases/bimetal-notify.webp",
+            caption: "Notifications: two or three a week at most",
+          },
+          {
+            src: "/images/cases/bimetal-importing.webp",
+            caption: "Building your record, with the CBN rate for each day",
+          },
+          {
+            src: "/images/cases/bimetal-legal.webp",
+            caption: "Terms and privacy in plain words",
+          },
+          {
+            src: "/images/cases/bimetal-sign-in.webp",
+            caption: "Sign in (returning user)",
+          },
+          {
+            src: "/images/cases/bimetal-app-lock.webp",
+            caption: "Unlock with fingerprint",
+          },
+          {
+            src: "/images/cases/bimetal-app-lock-pin.webp",
+            caption: "Unlock with PIN",
+          },
+        ],
+      },
+      {
+        flow: "Everyday records",
+        icon: "receipt_long",
+        note: "Dollars and naira side by side, every payment valued on the day, and a calm empty state for new users.",
+        mobile: true,
+        items: [
+          {
+            src: "/images/cases/bimetal-home.webp",
+            caption: "Home: dollars, naira, tax due and the tax pot",
+          },
+          {
+            src: "/images/cases/bimetal-home-empty.webp",
+            caption: "Home for a new user, before any source is connected",
+          },
+          {
+            src: "/images/cases/bimetal-records.webp",
+            caption: "Records: November so far, in both currencies",
+          },
+          {
+            src: "/images/cases/bimetal-filters.webp",
+            caption: "Filter by type, source, date and amount",
+          },
+          {
+            src: "/images/cases/bimetal-record-detail.webp",
+            caption: "Payment detail, valued at the CBN rate",
+          },
+          {
+            src: "/images/cases/bimetal-record-actions.webp",
+            caption: "Edit, re-tag or delete a payment",
+          },
+          {
+            src: "/images/cases/bimetal-year-picker.webp",
+            caption: "Switch tax year",
+          },
+          {
+            src: "/images/cases/bimetal-summary.webp",
+            caption: "Monthly summary and where the money came from",
+          },
+          {
+            src: "/images/cases/bimetal-notifications.webp",
+            caption: "Notifications",
+          },
+        ],
+      },
+      {
+        flow: "Proof & sorting",
+        icon: "document_scanner",
+        note: "Capturing proof quicker than forgetting it, and sorting the transfers a bank feed can’t classify.",
+        mobile: true,
+        items: [
+          {
+            src: "/images/cases/bimetal-proof.webp",
+            caption: "Add proof: rent relief first, then receipts",
+          },
+          {
+            src: "/images/cases/bimetal-camera.webp",
+            caption: "Snap a receipt, captured automatically",
+          },
+          {
+            src: "/images/cases/bimetal-receipt-review.webp",
+            caption: "Check what was read from the photo",
+          },
+          {
+            src: "/images/cases/bimetal-rent-details.webp",
+            caption: "Rent proof: about ₦100,800 less tax",
+          },
+          {
+            src: "/images/cases/bimetal-wht-note.webp",
+            caption: "WHT credit note: tax a client already took",
+          },
+          {
+            src: "/images/cases/bimetal-tag-queue.webp",
+            caption: "Sort money in: income, gift, transfer or loan",
+          },
+          {
+            src: "/images/cases/bimetal-tag-sheet.webp",
+            caption: "Tag a payment, with a rule for next time",
+          },
+          {
+            src: "/images/cases/bimetal-add-menu.webp",
+            caption: "Add to your record",
+          },
+          {
+            src: "/images/cases/bimetal-add-payment.webp",
+            caption: "Money in, added by hand",
+          },
+        ],
+      },
+      {
+        flow: "Tax & filing",
+        icon: "description",
+        note: "From a checklist to a filed return, and what to do when the tax office replies.",
+        mobile: true,
+        items: [
+          {
+            src: "/images/cases/bimetal-report.webp",
+            caption: "Tax report: file by 31 March, 3 of 5 ready",
+          },
+          {
+            src: "/images/cases/bimetal-tax-pot.webp",
+            caption: "Tax pot and the plan to March",
+          },
+          {
+            src: "/images/cases/bimetal-filing-guide.webp",
+            caption: "How to file with LIRS in about 20 minutes",
+          },
+          {
+            src: "/images/cases/bimetal-filed.webp",
+            caption: "Filed: what happens next",
+          },
+          {
+            src: "/images/cases/bimetal-assessment.webp",
+            caption: "Assessment notice: pay or object",
+          },
+        ],
+      },
+      {
+        flow: "Sources, sharing & export",
+        icon: "hub",
+        note: "Every way money can enter the record, and every way the user can take it out or share it, on their terms.",
+        mobile: true,
+        items: [
+          {
+            src: "/images/cases/bimetal-sources.webp",
+            caption: "Sources and privacy: who sees what",
+          },
+          {
+            src: "/images/cases/bimetal-reconnect.webp",
+            caption: "Reconnect a source that stopped syncing",
+          },
+          {
+            src: "/images/cases/bimetal-usdt-wallet.webp",
+            caption: "Add a watch-only USDT wallet",
+          },
+          {
+            src: "/images/cases/bimetal-statement-upload.webp",
+            caption: "Upload a bank statement",
+          },
+          {
+            src: "/images/cases/bimetal-statement-review.webp",
+            caption: "Check what the statement added",
+          },
+          {
+            src: "/images/cases/bimetal-share.webp",
+            caption: "Share an income record with a lender",
+          },
+          {
+            src: "/images/cases/bimetal-link-created.webp",
+            caption: "Link ready, with an expiry",
+          },
+          {
+            src: "/images/cases/bimetal-shared-links.webp",
+            caption: "Shared links: see opens, stop sharing",
+          },
+          {
+            src: "/images/cases/bimetal-export.webp",
+            caption: "Export everything, free on every plan",
+          },
+          {
+            src: "/images/cases/bimetal-export-done.webp",
+            caption: "Export ready",
+          },
+        ],
+      },
+      {
+        flow: "Account, help & states",
+        icon: "support_agent",
+        note: "Support from a named person, honest pricing, a careful delete, and the offline and failure states.",
+        mobile: true,
+        items: [
+          {
+            src: "/images/cases/bimetal-profile.webp",
+            caption: "Account",
+          },
+          {
+            src: "/images/cases/bimetal-help.webp",
+            caption: "Help and common questions",
+          },
+          {
+            src: "/images/cases/bimetal-chat.webp",
+            caption: "Talk to a person",
+          },
+          {
+            src: "/images/cases/bimetal-plans.webp",
+            caption: "Plans: export stays free",
+          },
+          {
+            src: "/images/cases/bimetal-delete-account.webp",
+            caption: "Delete account, after a download prompt",
+          },
+          {
+            src: "/images/cases/bimetal-offline.webp",
+            caption: "Offline: saved on the phone, synced later",
+          },
+          {
+            src: "/images/cases/bimetal-upload-failed.webp",
+            caption: "Upload failed, with nothing lost",
+          },
+        ],
+      },
+      {
+        flow: "Brand",
+        icon: "palette",
+        note: "One coin made of two metals: the mark, the wordmark, colour and type.",
+        items: [
+          {
+            src: "/images/cases/bimetal-brand.webp",
+            caption: "Bimetal brand board: icon, wordmark, colour and type",
+          },
+        ],
+      },
+    ],
+    outcome: [
+      "Bimetal is a complete, research-backed concept: a UX research report, a research pack with competitors, market size, personas and a first-release scope, and a research brief with an interview guide and decision rules.",
+      "The prototype covers 55 screens across onboarding, everyday records, proof, tax and filing, sources and sharing, and account and help, including empty, offline, failure and confirmation states. Every screen was checked for clipped text and 24px minimum targets, and status always comes with an icon and a word, not colour alone.",
+      "No users have been interviewed yet, so there are no usage metrics to report. The next step is ten interviews, and the rules for what happens after them were written before the first one.",
+    ],
+    reflection: [
+      "The hardest design problem wasn’t tax maths. It was trust. Every useful feature here needs people to let an app see their money, in a market where apps have misused data and one popular bookkeeping app vanished with its users’ records. So consent, export and stopping a share got as much design time as the home screen.",
+      "Writing the go, pivot and stop rules before the interviews kept me honest. It would be easy to hear what I hoped for; fixing the bar in advance means the research can actually say no.",
+    ],
+    next: [
+      "Run ten interviews across freelancers, service providers and traders (7–11 December), then decide on 16 December against the written rules.",
+      "Audit KeepAm hands-on, especially how it handles foreign income and pricing.",
+      "Test the Plans prices in interviews; they are a starting point, not a decision.",
+      "Run a formal trademark and domain check on the name before launch.",
+      "Review the tax rules and copy with a tax practitioner, and plan Chiamaka’s release.",
+    ],
+    tools: [
+      "Desk research",
+      "Competitive analysis",
+      "Personas & JTBD",
+      "Journey mapping",
+      "Design system",
+      "Prototyping",
+    ],
+  },
+
   /* ═══════════════════════════════ TRUSTBRIDGE ═══════════════════════════════ */
   {
     slug: 'trustbridge',
@@ -1723,11 +2347,11 @@ export const cases = [
     live: '/',
     liveLabel: 'You are here',
     facts: [['Role', 'Lead Designer & developer'], ['Stack', 'React · Motion · Vite'], ['Platform', 'Responsive web'], ['Accessibility', 'Keyboard · screen readers · reduced motion']],
-    glance: [['15', 'In-depth case studies'], ['383', 'Product screens, curated by flow'], ['29', 'Automated interaction checks'], ['3s', 'Automatic launch, skippable']],
+    glance: [['16', 'In-depth case studies'], ['439', 'Product screens, curated by flow'], ['29', 'Automated interaction checks'], ['3s', 'Automatic launch, skippable']],
     tldr: {
       problem: 'My previous portfolio was a static, gold-on-black template: it looked like many others, some sections rendered blank, case studies linked off-site, and nothing showed how I think.',
       approach: 'I treated it as a product: researched reference portfolios, set a design direction, built a token-based system in React, designed motion with restraint and wrote in-site case studies for every project — then iterated on feedback.',
-      outcome: 'A fast, accessible React portfolio with 15 interactive case studies, a signature identity and an automatic three-second launch — tested with 29 automated checks across desktop and mobile.',
+      outcome: 'A fast, accessible React portfolio with 16 interactive case studies, a signature identity and an automatic three-second launch — tested with 29 automated checks across desktop and mobile.',
     },
     overview: [
       'A portfolio is the first product a hiring manager uses of mine. It should demonstrate the same craft as the work inside it: clear structure, considered interaction, accessibility and evidence.',
@@ -1759,7 +2383,7 @@ export const cases = [
       { phase: '02', title: 'Direction & identity', summary: 'Chose a midnight-and-paper direction — deep navy, electric blue, serif-italic emphasis and white wave panels — and designed the “Aa” seal.', activities: ['Three logo concepts, one chosen', 'Colour, type and spacing tokens', 'Light paper panels for rhythm'], output: 'Visual identity' },
       { phase: '03', title: 'System & build', summary: 'Rebuilt the site in React with reusable components and a single source of content.', activities: ['React + Vite + Motion', 'Data-driven pages and case studies', 'Image pipeline: 45 MB → 1.4 MB'], output: 'Component system' },
       { phase: '04', title: 'Motion design', summary: 'Designed motion that adds meaning without delay: split-word reveals, tilt cards, page curtains and a particle launch.', activities: ['Automatic, skippable launch', 'Scroll-linked journeys and timelines', 'Reduced-motion fallbacks for everything'], output: 'Motion system' },
-      { phase: '05', title: 'Case-study framework', summary: 'Created one structure for every project: summary, context, users, research, process, journey, decisions, outcome.', activities: ['Process explorer and journey stepper', 'Per-project accent colours', 'Screen viewer with keyboard navigation'], output: '15 case studies' },
+      { phase: '05', title: 'Case-study framework', summary: 'Created one structure for every project: summary, context, users, research, process, journey, decisions, outcome.', activities: ['Process explorer and journey stepper', 'Per-project accent colours', 'Screen viewer with keyboard navigation'], output: '16 case studies' },
       { phase: '06', title: 'Test & iterate', summary: 'Automated checks for navigation, keyboard use, forms and layouts, then iterated on feedback.', activities: ['29 interaction checks', 'Mobile overflow checks on every page', 'Releases revised after review'], output: 'Production-ready site' },
     ],
     principles: [['Evidence over decoration', 'Every section should prove something about the work.'], ['Motion with a job', 'Animation explains, guides or delights — and always yields to reduced-motion settings.'], ['One source of truth', 'Content lives in data; pages never disagree.']],
@@ -1828,7 +2452,7 @@ export const cases = [
         { src: `/images/screens/portfolio/contact-m1.webp`, caption: 'Mobile links and form', mobile: true },
       ] },
     ],
-    outcome: ['A fast, accessible React portfolio with 15 interactive case studies, a signature identity and a motion system that respects reduced-motion settings — verified by 29 automated checks with no layout overflow on phones.', 'Every image is compressed WebP and lazy-loaded. The original image set went from roughly 45 MB to 1.4 MB, and the 383 product screens added since load only when a flow is opened.'],
+    outcome: ['A fast, accessible React portfolio with 16 interactive case studies, a signature identity and a motion system that respects reduced-motion settings — verified by 29 automated checks with no layout overflow on phones.', 'Every image is compressed WebP and lazy-loaded. The original image set went from roughly 45 MB to 1.4 MB, and the 439 product screens added since load only when a flow is opened.'],
     reflection: ['Designing for myself was the hardest brief. It forced me to make the same cuts I ask clients to make — and to drop ideas I liked, like the hold-to-enter intro, when they didn’t serve the user.', 'Holding every case study to one structure made my own work easier to judge, and showed me where a project needed more evidence.'],
     next: ['Add measured research findings to every case study.', 'Review analytics to see which case studies recruiters open most.', 'Add a dark/light preference toggle and test contrast across both.'],
     tools: ['React', 'Motion', 'Vite', 'Figma', 'Playwright'],

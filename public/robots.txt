@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alexakinjiola.com/sitemap.xml
+Sitemap: https://alexakinjiola.vercel.app/sitemap.xml

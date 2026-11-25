@@ -781,3 +781,4 @@ html, body { overflow-x: clip; }
 .screen-grid .shot-mobile .shot-frame img { aspect-ratio: auto; max-height: 560px; }
 .case-cover-frame { display: grid; place-items: center; }
 .case-cover-frame img { width: auto; max-width: 100%; height: auto; max-height: 820px; aspect-ratio: auto; object-fit: unset; }
+.users-note { margin-top: 1.5rem; }

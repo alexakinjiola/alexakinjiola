@@ -325,6 +325,7 @@ export default function CaseStudy() {
     ['context', 'Context'],
     c.users?.length && ['users', 'Users'],
     c.research && ['research', 'Research'],
+    c.validation && ['validation', 'Validation plan'],
     c.process?.length && ['process', 'Process'],
     c.journey && ['journey', 'Journey'],
     c.decisions?.length && ['decisions', 'Key decisions'],
@@ -432,11 +433,14 @@ export default function CaseStudy() {
                         <dl>
                           <div><dt className="mono"><Icon name="target" size={14} />Goal</dt><dd>{u.goal}</dd></div>
                           <div><dt className="mono"><Icon name="error" size={14} />Friction</dt><dd>{u.pain}</dd></div>
+                          {u.context && <div><dt className="mono"><Icon name="info" size={14} />Context</dt><dd>{u.context}</dd></div>}
+                          {u.trust && <div><dt className="mono"><Icon name="verified_user" size={14} />Wins them over</dt><dd>{u.trust}</dd></div>}
                         </dl>
                       </TiltCard>
                     </RevealItem>
                   ))}
                 </Stagger>
+                {c.usersNote && <Reveal as="p" className="case-lead users-note">{c.usersNote}</Reveal>}
               </section>
             )}
 
@@ -468,6 +472,65 @@ export default function CaseStudy() {
                       </RevealItem>
                     ))}
                   </Stagger>
+                )}
+              </section>
+            )}
+
+            {/* ── VALIDATION PLAN ── */}
+            {c.validation && (
+              <section id="validation" className="case-section">
+                <Eyebrow>{`${num('validation')} · Validation plan`}</Eyebrow>
+                <Reveal as="h2" className="case-h2">{c.validation.title || 'How the idea gets tested'} <span className="dim">{c.validation.titleDim || ''}</span></Reveal>
+                {c.validation.intro && <Reveal as="p" className="case-lead">{c.validation.intro}</Reveal>}
+                {c.validation.plan?.length > 0 && (
+                  <Stagger as="ul" className="methods" gap={0.06}>
+                    {c.validation.plan.map((m) => (
+                      <RevealItem as="li" key={m.name} className="method">
+                        <Icon name={m.icon || 'event'} size={20} />
+                        <span><strong>{m.name}</strong>{m.detail && <small>{m.detail}</small>}</span>
+                      </RevealItem>
+                    ))}
+                  </Stagger>
+                )}
+                {c.validation.assumptions?.length > 0 && (
+                  <div className="principles-block">
+                    <p className="footer-label">Assumptions, riskiest first</p>
+                    <Stagger className="case-principles" gap={0.06}>
+                      {c.validation.assumptions.map((a, i) => (
+                        <RevealItem key={a.text} className="case-principle">
+                          <span className="mono">A{i + 1}</span>
+                          <h3>{a.text}</h3>
+                          <p><strong>Supports it:</strong> {a.yes}<br /><strong>Breaks it:</strong> {a.no}</p>
+                        </RevealItem>
+                      ))}
+                    </Stagger>
+                  </div>
+                )}
+                {c.validation.guide?.length > 0 && (
+                  <div className="principles-block">
+                    <p className="footer-label">Interview guide · {c.validation.guideNote || ''}</p>
+                    <Stagger as="ul" className="methods" gap={0.06}>
+                      {c.validation.guide.map((g) => (
+                        <RevealItem as="li" key={g.name} className="method">
+                          <Icon name={g.icon || 'forum'} size={20} />
+                          <span><strong>{g.name}</strong>{g.detail && <small>{g.detail}</small>}</span>
+                        </RevealItem>
+                      ))}
+                    </Stagger>
+                  </div>
+                )}
+                {c.validation.rules?.length > 0 && (
+                  <div className="principles-block">
+                    <p className="footer-label">Decision rules, written before the first interview</p>
+                    <Stagger className="case-principles" gap={0.06}>
+                      {c.validation.rules.map(([t, d]) => (
+                        <RevealItem key={t} className="case-principle">
+                          <span className="mono">{t}</span>
+                          <p>{d}</p>
+                        </RevealItem>
+                      ))}
+                    </Stagger>
+                  </div>
                 )}
               </section>
             )}
